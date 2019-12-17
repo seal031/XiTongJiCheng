@@ -1,0 +1,2110 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FSI.DeviceSDK</name>
+    </assembly>
+    <members>
+        <member name="T:FSI.DeviceSDK.Adam6060.IAdam6060Device">
+            <summary>
+            IAdam6060 is a consolidated interface of the IGeneralDevice, INetConfigDevice, IDigitalInputDevice, IRelayDevice
+            </summary>
+            <remarks>
+            The purpose of this interface is for if a developer wants to pass this around as a single type 
+            without casting it when they need to use it as a different kind of interface. 
+            </remarks>
+            <seealso cref="T:FSI.DeviceSDK.IGeneralDevice"/>
+            <seealso cref="T:FSI.DeviceSDK.Config.INetConfigDevice"/>
+            <seealso cref="T:FSI.DeviceSDK.Input.IDigitalInputDevice"/>
+            <seealso cref="T:FSI.DeviceSDK.Output.IRelayOutputDevice"/>
+        </member>
+        <member name="T:FSI.DeviceSDK.Adam6060.Adam6060Device">
+            <summary>
+            The actual Adapter-like implementation of the IAdam6060Device interface
+            </summary>
+        </member>
+        <member name="P:FSI.DeviceSDK.Adam6060.Adam6060Device.IsConfigChangeInProcess">
+            <summary>
+            Gets whether or not a batch configuration change is in process.
+            </summary>
+            <value>A bool representing whether or not a batch configuration change is in process.</value>
+        </member>
+        <member name="T:FSI.DeviceSDK.Adam6060.Adam6060DeviceFactory">
+            <summary>
+            A Device factory specifically for finding and creating Advantech ADAM 6060 units.
+            </summary>
+        </member>
+        <member name="F:FSI.DeviceSDK.Adam6060.Adam6060DeviceFactory.m_Supervisor">
+            <summary>
+            The lower level AdamSupervisor used to find ADAM devices
+            </summary>
+        </member>
+        <member name="F:FSI.DeviceSDK.Adam6060.Adam6060DeviceFactory.m_SynchronousScanFinished">
+            <summary>
+            The AutoResetEvent that is set when a scan is finished.
+            </summary>
+        </member>
+        <member name="P:FSI.DeviceSDK.Adam6060.Adam6060DeviceFactory.FactoryID">
+            <summary>
+            Gets the string identifier for this factory. This is used by DeviceFinder to determine which IDeviceFactory to use.
+            </summary>
+            <value>A string representing the factory's ID.</value>
+        </member>
+        <member name="M:FSI.DeviceSDK.Adam6060.Adam6060DeviceFactory.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FSI.DeviceSDK.Adam6060.Adam6060DeviceFactory"/> class.
+            </summary>
+        </member>
+        <member name="M:FSI.DeviceSDK.Adam6060.Adam6060DeviceFactory.ScanForDevices(System.Int32)">
+            <summary>
+            Scans for all the devices that are of a type that this factory knows about.
+            </summary>
+            <param name="timeout_ms">The maximum amount of time in milliseconds to spend on the search.</param>
+            <returns>An IList of IGeneralDevices</returns>
+        </member>
+        <member name="T:FSI.DeviceSDK.Config.APUSettingChangedEventArgs">
+            <summary>
+            Holds setting, it's property, and it's new value for when an APU's setting changes.
+            </summary>
+            <seealso cref="T:System.EventArgs"/>
+            <seealso cref="T:FSI.DeviceSDK.Config.IAPUConfigDevice"/>
+        </member>
+        <member name="P:FSI.DeviceSDK.Config.APUSettingChangedEventArgs.SettingName">
+            <summary>
+            Gets the name of the setting that has changed.
+            </summary>
+            <value>A string representing the name of the setting.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Config.APUSettingChangedEventArgs.PropertyName">
+            <summary>
+            Gets the name of the setting's property that has changed.
+            </summary>
+            <value>A string representing the name of the property.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Config.APUSettingChangedEventArgs.NewValue">
+            <summary>
+            Gets the new value of the changed setting's property.
+            </summary>
+            <value>An object containing the new value.</value>
+        </member>
+        <member name="M:FSI.DeviceSDK.Config.APUSettingChangedEventArgs.#ctor(System.String,System.String,System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FSI.DeviceSDK.Config.APUSettingChangedEventArgs"/> class.
+            </summary>
+            <param name="settingName">The name of the setting that changed</param>
+            <param name="propertyName">The name of the setting's property that changed</param>
+            <param name="newValue">The new value of the property</param>
+        </member>
+        <member name="T:FSI.DeviceSDK.Config.IAPUConfigDevice">
+            <summary>
+            Represents an FiberSenSys Inc. Alarm Processing Unit's(APU) ability to be configured
+            </summary>
+            <seealso cref="T:FSI.DeviceSDK.Config.IConfigDevice"/>
+            <seealso cref="T:FSI.DeviceSDK.IGeneralDevice"/>
+        </member>
+        <member name="E:FSI.DeviceSDK.Config.IAPUConfigDevice.APUSettingChangedEvent">
+            <summary>
+            Occurs when the APU has had a change in it's settings
+            </summary>
+        </member>
+        <member name="M:FSI.DeviceSDK.Config.IAPUConfigDevice.GetAllSettings">
+            <summary>
+            Gets all the settings for the device
+            </summary>
+            <remarks>
+            In FSI APUs there are essentially 2 kinds of settings. First is what could be called a scalar value,
+            which is marked by a CurrentValue property. These also have a Units, MinimumValue, and MaximumValue property.
+            Only the CurrentValue property is writable by the <see cref="M:FSI.DeviceSDK.Config.IAPUConfigDevice.SetSetting(System.String,System.String)"/> method. The other kind of setting
+            could be called an enumeration value. These settings have an enumeration of properties, only one of which can be true
+            at a time. The rest are guaranteed to be false. It can also have a separate units property but doesn't have to. For these 
+            settings, the <see cref="M:FSI.DeviceSDK.Config.IAPUConfigDevice.SetSetting(System.String,System.String)"/> method will take the name of the enumerated value to be marked as true
+            as its value parameter.
+            </remarks>
+            <returns>
+            A Dictionary whose keys are the names of the settings and whose values are a Dictionary of properties and their values: <![CDATA[<Dictionary<SettingName, Dictionary<PropertyName, PropertyValue>>]]> 
+            </returns>
+            <example>
+                This example shows how to use the result of GetAllSettings
+                <code lang="C#" title="GetAllSettings Example">
+                    <code source="../FSI.DeviceSDK/Examples/ExampleCode.cs" region="IAPUConfigDevice Example" lang="C#" />
+                    <code source="../FSI.DeviceSDK/Examples/ExampleCode.cs" region="IAPUConfigDevice GetAllSettings Example" lang="C#" />
+                </code>
+            </example>
+        </member>
+        <member name="M:FSI.DeviceSDK.Config.IAPUConfigDevice.GetSetting(System.String)">
+            <summary>
+            Returns the string value of the specified settings current value parameter or the parameter that is true
+            </summary>
+            <param name="settingName">The name of the setting to find</param>
+            <returns>The desired settings value as a string or null if it doesn't exist</returns>
+            <example>
+                This example shows how to use GetSetting
+                <code lang="C#" title="GetSetting Example">
+                    <code source="../FSI.DeviceSDK/Examples/ExampleCode.cs" region="IAPUConfigDevice Example" lang="C#" />
+                    <code source="../FSI.DeviceSDK/Examples/ExampleCode.cs" region="IAPUConfigDevice GetSetting Example" lang="C#" />
+                </code>
+            </example>
+        </member>
+        <member name="M:FSI.DeviceSDK.Config.IAPUConfigDevice.SetSetting(System.String,System.String)">
+            <summary>
+            Sets the specified setting's current value
+            </summary>
+            <remarks>
+            This cannot be used to create new settings. In FSI APUs there are essentially 2 kinds of settings. First is what could be called a scalar value,
+            which is marked by a CurrentValue property. These also have a Units, MinimumValue, and MaximumValue property.
+            The value parameter of this method should be the desired value for CurrentValue for scalar properties. The other kind of setting
+            could be called an enumeration value. These settings have an enumeration of properties, only one of which can be true.
+            The rest are guaranteed to be false. It can also have a separate units property but doesn't have to. For these 
+            settings, the value parameter should be the name of the enumerated value to be marked as true. This will automatically set
+            any other enumerated values to false.
+            </remarks>
+            <param name="settingName">The name of the setting to change</param>
+            <param name="value">The value to be set</param>
+            <exception cref="T:System.InvalidOperationException">Thrown when a setting that either doesn't exist or can't be changed is passed in.</exception>
+            <example>
+                This example shows how to use SetSetting
+                <code lang="C#" title="GetSetting Example">
+                    <code source="../FSI.DeviceSDK/Examples/ExampleCode.cs" region="IAPUConfigDevice Example" lang="C#" />
+                    <code source="../FSI.DeviceSDK/Examples/ExampleCode.cs" region="IAPUConfigDevice SetSetting Example" lang="C#" />
+                </code>
+            </example>
+        </member>
+        <member name="T:FSI.DeviceSDK.Config.IComConfigDevice">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:FSI.DeviceSDK.IGeneralDevice"/>
+        </member>
+        <member name="T:FSI.DeviceSDK.Config.IConfigDevice">
+            <summary>
+            Represents a the ability of a device to be configured
+            </summary>
+            <seealso cref="T:FSI.DeviceSDK.IGeneralDevice"/>
+        </member>
+        <member name="P:FSI.DeviceSDK.Config.IConfigDevice.IsConfigChangeInProcess">
+            <summary>
+            Gets whether or not a batch configuration change is in process.
+            </summary>
+            <value>A bool representing whether or not a batch configuration change is in process.</value>
+        </member>
+        <member name="M:FSI.DeviceSDK.Config.IConfigDevice.StartChangeConfig">
+            <summary>
+            Starts a batch configuration change
+            </summary>
+            <remarks>
+            This method marks the beginning of a batch configuration change. Until <see cref="M:FSI.DeviceSDK.Config.IConfigDevice.EndChangeConfig" /> is called, any
+            calls to methods that change settings will store the setting change until <see cref="M:FSI.DeviceSDK.Config.IConfigDevice.EndChangeConfig" /> is finally 
+            called. Calling <see cref="M:FSI.DeviceSDK.Config.IConfigDevice.CancelChangeConfig" /> will cancel the batch and no changes will be committed.
+            This method is not thread safe. StartChangeConfig must be guaranteed by the caller to be called before either
+            <see cref="M:FSI.DeviceSDK.Config.IConfigDevice.EndChangeConfig" /> or <see cref="M:FSI.DeviceSDK.Config.IConfigDevice.CancelChangeConfig"/>.
+            </remarks>
+            <example>
+                This example shows how <see cref="M:FSI.DeviceSDK.Config.IConfigDevice.StartChangeConfig"/>, <see cref="M:FSI.DeviceSDK.Config.IConfigDevice.CancelChangeConfig"/>, and <see cref="M:FSI.DeviceSDK.Config.IConfigDevice.EndChangeConfig" /> are used
+                <code source="../FSI.DeviceSDK/Examples/ExampleCode.cs" region="IConfigDevice Example" lang="C#" title="StartChangeConfig Example" />
+            </example>
+            <seealso cref="M:FSI.DeviceSDK.Config.IConfigDevice.CancelChangeConfig"/>
+            <seealso cref="M:FSI.DeviceSDK.Config.IConfigDevice.EndChangeConfig"/>
+        </member>
+        <member name="M:FSI.DeviceSDK.Config.IConfigDevice.EndChangeConfig">
+            <summary>
+            Ends and commits a batch configuration change
+            </summary>
+            <remarks>
+            This method marks the end of a batch configuration change. After <see cref="M:FSI.DeviceSDK.Config.IConfigDevice.StartChangeConfig" /> is called,
+            any calls to methods that change settings will store the setting change until <see cref="M:FSI.DeviceSDK.Config.IConfigDevice.EndChangeConfig" /> is finally 
+            called.
+            This method is not thread safe. <see cref="M:FSI.DeviceSDK.Config.IConfigDevice.StartChangeConfig" /> must be guaranteed by the caller to be called before 
+            <see cref="M:FSI.DeviceSDK.Config.IConfigDevice.EndChangeConfig" />.
+            </remarks>
+            <example>
+                This example shows how <see cref="M:FSI.DeviceSDK.Config.IConfigDevice.StartChangeConfig"/>, <see cref="M:FSI.DeviceSDK.Config.IConfigDevice.CancelChangeConfig"/>, and <see cref="M:FSI.DeviceSDK.Config.IConfigDevice.EndChangeConfig" /> are used
+                <code source="../FSI.DeviceSDK/Examples/ExampleCode.cs" region="IConfigDevice Example" lang="C#" title="EndChangeConfig Example" />
+            </example>
+            <seealso cref="M:FSI.DeviceSDK.Config.IConfigDevice.CancelChangeConfig"/>
+            <seealso cref="M:FSI.DeviceSDK.Config.IConfigDevice.StartChangeConfig"/>
+        </member>
+        <member name="M:FSI.DeviceSDK.Config.IConfigDevice.CancelChangeConfig">
+            <summary>
+            Cancels a batch configuration change
+            </summary>
+            <remarks>
+            This method marks the cancels of a batch configuration change. After <see cref="M:FSI.DeviceSDK.Config.IConfigDevice.StartChangeConfig" /> is called,
+            any calls to methods that change settings will store the setting change until either <see cref="M:FSI.DeviceSDK.Config.IConfigDevice.EndChangeConfig" />
+            or <see cref="M:FSI.DeviceSDK.Config.IConfigDevice.CancelChangeConfig"/> is finally called.
+            If <see cref="M:FSI.DeviceSDK.Config.IConfigDevice.CancelChangeConfig"/> is called without <see cref="M:FSI.DeviceSDK.Config.IConfigDevice.StartChangeConfig" /> being called first nothing
+            bad will happen.
+            </remarks>
+            <example>
+                This example shows how <see cref="M:FSI.DeviceSDK.Config.IConfigDevice.StartChangeConfig"/>, <see cref="M:FSI.DeviceSDK.Config.IConfigDevice.CancelChangeConfig"/>, and <see cref="M:FSI.DeviceSDK.Config.IConfigDevice.EndChangeConfig" /> are used
+                <code source="../FSI.DeviceSDK/Examples/ExampleCode.cs" region="IConfigDevice Example" lang="C#" title="CancelChangeConfig Example" />
+            </example>
+            <seealso cref="M:FSI.DeviceSDK.Config.IConfigDevice.CancelChangeConfig"/>
+            <seealso cref="M:FSI.DeviceSDK.Config.IConfigDevice.StartChangeConfig"/>
+        </member>
+        <member name="T:FSI.DeviceSDK.Config.INetConfigDevice">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:FSI.DeviceSDK.IGeneralDevice"/>
+        </member>
+        <member name="P:FSI.DeviceSDK.Config.INetConfigDevice.IPAddress">
+            <summary>
+            Gets the IP address of the device.
+            </summary>
+            <value>The <see cref="P:FSI.DeviceSDK.Config.INetConfigDevice.IPAddress"/> of the device. </value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Config.INetConfigDevice.ListeningPort">
+            <summary>
+            Gets the port that the hardware is listening on.  
+            </summary>
+            <value>An int representing the port number</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Config.INetConfigDevice.CommunicatingPort">
+            <summary>
+            Gets the port this object is sending data from.  
+            </summary>
+            <value>An int representing the port number</value>
+        </member>
+        <member name="M:FSI.DeviceSDK.Config.INetConfigDevice.ChangeIPAddress(System.Net.IPAddress)">
+            <summary>
+            Attempts to change the device's IP address.
+            </summary>
+            <param name="ipAddress">The IP Address to change to.</param>
+        </member>
+        <member name="M:FSI.DeviceSDK.Config.INetConfigDevice.ChangeListeningPort(System.Int32)">
+            <summary>
+            Attempts to change the device's listening port.
+            </summary>
+            <param name="port">The port to change to.</param>
+        </member>
+        <member name="M:FSI.DeviceSDK.Config.INetConfigDevice.ChangeRecievingPort(System.Int32)">
+            <summary>
+            Attempts to change the device's Receiving port.
+            </summary>
+            <param name="port">The port to change to.</param>
+        </member>
+        <member name="T:FSI.DeviceSDK.Connect.IComConnectDevice">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:FSI.DeviceSDK.IGeneralDevice"/>
+        </member>
+        <member name="T:FSI.DeviceSDK.Connect.INetConnectDevice">
+            <summary>
+            Represents a devices ability to be connected to over TCP/IP
+            </summary>
+            <seealso cref="T:FSI.DeviceSDK.IGeneralDevice"/>
+        </member>
+        <member name="E:FSI.DeviceSDK.Connect.INetConnectDevice.NetConnectedEvent">
+            <summary>
+            Occurs when the device establishes a connection over TCP/IP.
+            </summary>
+        </member>
+        <member name="E:FSI.DeviceSDK.Connect.INetConnectDevice.NetDisconnectedEvent">
+            <summary>
+            Occurs when the device disconnects normally.
+            </summary>
+        </member>
+        <member name="E:FSI.DeviceSDK.Connect.INetConnectDevice.NetConnectionDroppedEvent">
+            <summary>
+            Occurs when the device disconnects abnormally.
+            </summary>
+        </member>
+        <member name="E:FSI.DeviceSDK.Connect.INetConnectDevice.NetPingResponseEvent">
+            <summary>
+            Occurs when a ping response message is received.
+            </summary>
+        </member>
+        <member name="E:FSI.DeviceSDK.Connect.INetConnectDevice.NetRecievedDataEvent">
+            <summary>
+            Occurs when the device streams some data over TCP/IP.
+            </summary>
+            <remarks>
+            When some data has been sent from the hardware that isn't something that is handled
+            in the upkeep of the object, it will be passed as a <c>byte[]</c> in the Result
+            property <see cref="T:System.Net.DownloadDataCompletedEventArgs" /> of the event arguments.
+            </remarks>
+        </member>
+        <member name="P:FSI.DeviceSDK.Connect.INetConnectDevice.IPAddress">
+            <summary>
+            Gets the IP address of the device.
+            </summary>
+            <value>The <see cref="P:FSI.DeviceSDK.Connect.INetConnectDevice.IPAddress"/> of the device. </value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Connect.INetConnectDevice.ListeningPort">
+            <summary>
+            Gets the port that the hardware is listening on.  
+            </summary>
+            <value>An int representing the port number</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Connect.INetConnectDevice.CommunicatingPort">
+            <summary>
+            Gets the port this object is sending data from.  
+            </summary>
+            <value>An int representing the port number</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Connect.INetConnectDevice.CanConnect">
+            <summary>
+            Gets whether this device supports being connected to.
+            </summary>
+            <value>A bool representing the ability to be connect.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Connect.INetConnectDevice.CanPing">
+            <summary>
+            Gets whether this device supports being pinged to.
+            </summary>
+            <value>A bool representing the ability to be ping.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Connect.INetConnectDevice.IsConnected">
+            <summary>
+            Gets whether or not this device is currently connected.
+            </summary>
+            <value>A bool representing if this device is currently connected.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Connect.INetConnectDevice.UsesPingUpkeep">
+            <summary>
+            Gets whether or not this device uses pings to keep the connection alive
+            </summary>
+        </member>
+        <member name="P:FSI.DeviceSDK.Connect.INetConnectDevice.MinimumPingUpkeepInterval">
+            <summary>
+            Gets the devices minimum time interval between upkeep pings
+            </summary>
+            <value>A TimeSpan representing the minimum time between upkeep pings</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Connect.INetConnectDevice.MaximumPingUpkeepInterval">
+            <summary>
+            Gets the devices maximum time interval between upkeep pings
+            </summary>
+            <value>A TimeSpan representing the maximum time between upkeep pings</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Connect.INetConnectDevice.PingUpkeepInterval">
+            <summary>
+            Gets or sets the interval between upkeep pings. 
+            </summary>
+            <value>A TimeSpan representing the time between upkeep pings</value>
+            <remarks>
+            <para>
+                It should be noted that if <see cref="P:FSI.DeviceSDK.Connect.INetConnectDevice.UsesPingUpkeep"/> is false, the value of this property
+                is meaningless and wont affect the behavior of the device. 
+            </para>
+            <para>
+                Different devices may have different minimum and maximum intervals allowed. If the value is set
+                to a value outside of the allowed range, an exception may be thrown.
+            </para>
+            </remarks>
+        </member>
+        <member name="P:FSI.DeviceSDK.Connect.INetConnectDevice.MaximumFailedUpkeepPings">
+            <summary>
+            Gets or sets the maximum amount of times the upkeep ping can fail before dropping a connection.
+            </summary>
+            <value>A int representing the maximum amount of failed pings.</value>
+            <remarks>
+            <para>
+                It should be noted that if <see cref="P:FSI.DeviceSDK.Connect.INetConnectDevice.UsesPingUpkeep"/> is false, the value of this property
+                is meaningless and wont affect the behavior of the device. 
+            </para>
+            <para>
+                Different devices may have different minimum and maximum values for the amount of failed pings. If the value is set
+                to a value outside of the allowed range, an exception may be thrown.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:FSI.DeviceSDK.Connect.INetConnectDevice.NetConnect">
+            <summary>
+            Attempts to connect to the device over a TCP/IP connection. This can take a long time.
+            </summary>
+            <remarks>
+            This method will raise the <see cref="E:FSI.DeviceSDK.Connect.INetConnectDevice.NetConnectedEvent"/> when the connection is successful.
+            This method call can take quite a long time to connect to a device depending on the state of the device,
+            sometimes around 2 minutes. It might be wise to call it using <see cref="N:System.Threading.Tasks"/>. If 
+            this method completes and it has failed to connect then it can be inferred that something is wrong with 
+            the connection to the device.
+            </remarks>
+        </member>
+        <member name="M:FSI.DeviceSDK.Connect.INetConnectDevice.NetDisconnect">
+            <summary>
+            Disconnects the device from the TCP/IP connection.
+            </summary>
+            <remarks>
+            This method will raise the <see cref="E:FSI.DeviceSDK.Connect.INetConnectDevice.NetDisconnectedEvent"/> after it disconnects.
+            </remarks>
+        </member>
+        <member name="M:FSI.DeviceSDK.Connect.INetConnectDevice.NetPing">
+            <summary>
+            Pings the device to test the communication between the hardware and this object.
+            </summary>
+            <remarks>
+            The ping will wait up to the <see cref="P:FSI.DeviceSDK.IGeneralDevice.OperationTimeout_ms"/> defined in <see cref="T:FSI.DeviceSDK.IGeneralDevice"/>
+            for a ping response message. It will raise the <see cref="E:FSI.DeviceSDK.Connect.INetConnectDevice.NetPingResponseEvent"/> when a ping is successful.
+            </remarks>
+            <returns>True if a ping response was received, false otherwise.</returns>
+        </member>
+        <member name="T:FSI.DeviceSDK.DeviceCollectionChangedEventArgs">
+            <summary>
+            Holds the values for when a collection of IGeneralDevices changes
+            </summary>
+            <seealso cref="T:System.EventArgs"/>
+            <seealso cref="T:FSI.DeviceSDK.ICompositeDevice"/>
+        </member>
+        <member name="P:FSI.DeviceSDK.DeviceCollectionChangedEventArgs.CollectionDevice">
+            <summary>
+            Gets the device whose collection has changed
+            </summary>
+            <value>An <see cref="T:FSI.DeviceSDK.IGeneralDevice"/> whose collection changed.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.DeviceCollectionChangedEventArgs.Device">
+            <summary>
+            Gets the device in the collection that has changed
+            </summary>
+            <value>An <see cref="T:FSI.DeviceSDK.IGeneralDevice"/> of the item in the collection that changed.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.DeviceCollectionChangedEventArgs.Change">
+            <summary>
+            Gets the <see cref="T:FSI.DeviceSDK.DeviceCollectionChangedEventArgs.ChangeType"/> representing the type of change.
+            </summary>
+            <value>A <see cref="T:FSI.DeviceSDK.DeviceCollectionChangedEventArgs.ChangeType"/> of the change</value>
+        </member>
+        <member name="M:FSI.DeviceSDK.DeviceCollectionChangedEventArgs.#ctor(FSI.DeviceSDK.IGeneralDevice,FSI.DeviceSDK.IGeneralDevice,FSI.DeviceSDK.DeviceCollectionChangedEventArgs.ChangeType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FSI.DeviceSDK.DeviceCollectionChangedEventArgs"/> class.
+            </summary>
+            <param name="collectionDevice">The device whose collection has been changed.</param>
+            <param name="device">The device that has changed.</param>
+            <param name="type">The type of change.</param>
+        </member>
+        <member name="T:FSI.DeviceSDK.DeviceCollectionChangedEventArgs.ChangeType">
+            <summary>
+            An Enumeration representing a change in a device's collection of other devices.
+            </summary>
+        </member>
+        <member name="F:FSI.DeviceSDK.DeviceCollectionChangedEventArgs.ChangeType.Added">
+            <summary>
+            A device has been added to the collection.
+            </summary>
+        </member>
+        <member name="F:FSI.DeviceSDK.DeviceCollectionChangedEventArgs.ChangeType.Removed">
+            <summary>
+            A device has been removed from the collection.
+            </summary>
+        </member>
+        <member name="F:FSI.DeviceSDK.DeviceCollectionChangedEventArgs.ChangeType.Modified">
+            <summary>
+            A device in the collection has been modified.
+            </summary>
+        </member>
+        <member name="T:FSI.DeviceSDK.Examples.ExampleCode">
+            <summary>
+            A static class to hold a bunch of compilable code snippets. This allows testing of the sample code.
+            </summary>
+            <remarks>
+            The sandcastle project recognizes source property of code tags as being relative to the sandcastle project
+            file. For now, this means that ../ will refer to the solutions folder. So to recognize this file, it would
+            <c>&lt;code source="../FSI.DeviceSDK/Examples/ExampleCode.cs"&gt;</c>. You could also specify a region in the
+            file by the property <c>region="Some Region name"</c>.
+            </remarks>
+        </member>
+        <member name="T:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass">
+            <summary>
+            This class is just a simple stub class that implements all the device interfaces
+            </summary>
+        </member>
+        <member name="E:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.AlarmEvent">
+            <summary>
+            Occurs when the device has received an alarm
+            </summary>
+            <seealso cref="T:FSI.DeviceSDK.Input.AlarmEventArgs"/>
+        </member>
+        <member name="E:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.APUSettingChangedEvent">
+            <summary>
+            Occurs when the APU has had a change in it's settings
+            </summary>
+        </member>
+        <member name="E:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.SubDevicesCollectionChangedEvent">
+            <summary>
+            Occurs when the collection of sub-devices has changed
+            </summary>
+            <seealso cref="T:FSI.DeviceSDK.DeviceCollectionChangedEventArgs"/>
+        </member>
+        <member name="E:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.NetConnectedEvent">
+            <summary>
+            Occurs when the device establishes a connection over TCP/IP.
+            </summary>
+        </member>
+        <member name="E:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.NetDisconnectedEvent">
+            <summary>
+            Occurs when the device disconnects normally.
+            </summary>
+        </member>
+        <member name="E:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.NetConnectionDroppedEvent">
+            <summary>
+            Occurs when the device disconnects abnormally.
+            </summary>
+        </member>
+        <member name="E:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.NetPingResponseEvent">
+            <summary>
+            Occurs when the Ping response message is received.
+            </summary>
+        </member>
+        <member name="E:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.NetRecievedDataEvent">
+            <summary>
+            Occurs when the device streams some data over TCP/IP.
+            </summary>
+            <remarks>
+            When some data has been sent from the hardware that isn't something that is handled
+            in the upkeep of the object, it will be passed as a <c>byte[]</c> in the Result
+            property <see cref="T:System.Net.DownloadDataCompletedEventArgs" /> of the event arguments.
+            </remarks>
+        </member>
+        <member name="E:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.RelayStatusChanged">
+            <summary>
+            Occurs when a relay on the device has changed.
+            </summary>
+            <remarks>
+            This event should occur even if the change is caused by a user action.
+            </remarks>
+            <seealso cref="T:FSI.DeviceSDK.Output.RelayStatusChangedEventArgs"/>
+        </member>
+        <member name="P:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.ChildDevices">
+            <summary>
+            Gets the list of child devices.
+            </summary>
+            <value>An <see cref="T:System.Collections.Generic.IList`1"/> of this devices child <see cref="T:FSI.DeviceSDK.IGeneralDevice"/>.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.NumberOfChildren">
+            <summary>
+            Gets the number of child devices.
+            </summary>
+            <value> An int of the number of child devices.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.IsConfigChangeInProcess">
+            <summary>
+            Gets whether or not a batch configuration change is in process.
+            </summary>
+            <value>A bool representing whether or not a batch configuration change is in process.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.Name">
+            <summary>
+            Gets the name of the device.
+            </summary>
+            <remarks>This is not guaranteed to be unique.</remarks>
+            <value>A string of the name of device.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.Description">
+            <summary>
+            Gets the description of the device.
+            </summary>
+            <value>A string of the description of the device.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.OperationTimeout_ms">
+            <summary>
+            Gets or sets the time in milliseconds that device operations should take before they timeout.
+            </summary>
+            <value>An int of the timeout length in milliseconds.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.CanConnect">
+            <summary>
+            Gets whether this device supports being connected to.
+            </summary>
+            <value>A bool representing the ability to be connect.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.CanPing">
+            <summary>
+            Gets whether this device supports being pinged to.
+            </summary>
+            <value>A bool representing the ability to be ping.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.IsConnected">
+            <summary>
+            Gets whether or not this device is currently connected.
+            </summary>
+            <value>A bool representing if this device is currently connected.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.IPAddress">
+            <summary>
+            Gets the IP address of the device.
+            </summary>
+            <value>The <see cref="P:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.IPAddress"/> of the device. </value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.FSI#DeviceSDK#Connect#INetConnectDevice#IPAddress">
+            <summary>
+            Gets the IP address of the device.
+            </summary>
+            <value>The <see cref="P:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.IPAddress"/> of the device. </value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.ListeningPort">
+            <summary>
+            The port that the hardware is listening on.  
+            </summary>
+            <value>An int representing the port number</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.CommunicatingPort">
+            <summary>
+            The port this object is sending data from.  
+            </summary>
+            <value>An int representing the port number</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.UsesPingUpkeep">
+            <summary>
+            Gets whether or not this device uses pings to keep the connection alive
+            </summary>
+        </member>
+        <member name="P:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.PingUpkeepInterval">
+            <summary>
+            Gets or sets the interval, in milliseconds, between upkeep pings. 
+            </summary>
+            <value>A int representing the milliseconds between upkeep pings</value>
+            <remarks>
+            <para>
+                It should be noted that if <see cref="P:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.UsesPingUpkeep"/> is false, the value of this property
+                is meaningless and wont affect the behavior of the device. 
+            </para>
+            <para>
+                Different devices may have different minimum and maximum intervals allowed. If the value is set
+                to a value outside of the allowed range, an exception may be thrown.
+            </para>
+            </remarks>
+        </member>
+        <member name="P:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.MaximumFailedUpkeepPings">
+            <summary>
+            Gets or sets the maximum amount of times the upkeep ping can fail before dropping a connection.
+            </summary>
+            <value>A int representing the maximum amount of failed pings.</value>
+            <remarks>
+            <para>
+                It should be noted that if <see cref="P:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.UsesPingUpkeep"/> is false, the value of this property
+                is meaningless and wont affect the behavior of the device. 
+            </para>
+            <para>
+                Different devices may have different minimum and maximum values for the amount of failed pings. If the value is set
+                to a value outside of the allowed range, an exception may be thrown.
+            </para>
+            </remarks>
+        </member>
+        <member name="P:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.NumberOfRelays">
+            <summary>
+            Gets the number of relays on this device
+            </summary>
+            <value>An int with the number of relays on the device.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.CanCheckRelay">
+            <summary>
+            Gets whether this device supports checking its relays.
+            </summary>
+            <value>A bool representing the ability to be check relays.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.CanOpenRelay">
+            <summary>
+            Gets whether this device supports opening its relays.
+            </summary>
+            <value>A bool representing the ability to be open relays.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.CanCloseRelay">
+            <summary>
+            Gets whether this device supports closing its relays.
+            </summary>
+            <value>A bool representing the ability to be close relays.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.CanToggleRelay">
+            <summary>
+            Gets whether this device supports toggling its relays.
+            </summary>
+            <value>A bool representing the ability to be toggling relays.</value>
+        </member>
+        <member name="M:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.GetAllSettings">
+            <summary>
+            Gets all the settings for the device
+            </summary>
+            <returns>A Dictionary whose keys are the names of the settings and whose values are a Dictionary of properties: <![CDATA[<Dictionary<SettingName, Dictionary<PropertyName, PropertyValue>>]]> </returns>
+        </member>
+        <member name="M:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.GetSetting(System.String)">
+            <summary>
+            Returns the string value of the specified settings current value parameter or the parameter that is true
+            </summary>
+            <param name="settingName">The name of the setting to find</param>
+            <returns>The desired settings value as a string</returns>
+        </member>
+        <member name="M:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.SetSetting(System.String,System.String)">
+            <summary>
+            Sets the specified settings value
+            </summary>
+            <param name="settingName">The name of the setting to change</param>
+            <param name="value">The value to be set</param>
+        </member>
+        <member name="M:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.GetChild(System.Func{FSI.DeviceSDK.IGeneralDevice,System.Boolean})">
+            <summary>
+            Returns the first child that matches the specified condition
+            </summary>
+            <param name="predicate">A predicate function that will return true for some condition</param>
+            <returns>The first child <see cref="T:FSI.DeviceSDK.IGeneralDevice"/> that matches the specified condition</returns>
+        </member>
+        <member name="M:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.StartChangeConfig">
+            <summary>
+            Starts a batch configuration change
+            </summary>
+            <remarks>
+            This method marks the beginning of a batch configuration change. Until <see cref="M:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.EndChangeConfig" /> is called, any
+            calls to <see cref="M:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.SetSetting(System.String,System.String)"/> will store the setting change until <see cref="M:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.EndChangeConfig" /> is finally 
+            called. Calling <see cref="M:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.CancelChangeConfig" /> will cancel the batch and no changes will be committed.
+            This method is not thread safe. StartChangeConfig must be guaranteed by the caller to be called before either
+            <see cref="M:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.EndChangeConfig" /> or <see cref="M:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.CancelChangeConfig"/>.
+            </remarks>
+            <seealso cref="M:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.CancelChangeConfig"/>
+            <seealso cref="M:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.EndChangeConfig"/>
+        </member>
+        <member name="M:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.EndChangeConfig">
+            <summary>
+            Ends and commits a batch configuration change
+            </summary>
+            <remarks>
+            This method marks the end of a batch configuration change. After <see cref="M:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.StartChangeConfig" /> is called,
+            any calls to methods that change settings will store the setting change until <see cref="M:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.EndChangeConfig" /> is finally 
+            called.
+            This method is not thread safe. <see cref="M:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.StartChangeConfig" /> must be guarenteed by the caller to be called before 
+            <see cref="M:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.EndChangeConfig" />.
+            </remarks>
+            <seealso cref="M:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.CancelChangeConfig"/>
+            <seealso cref="M:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.StartChangeConfig"/>
+        </member>
+        <member name="M:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.CancelChangeConfig">
+            <summary>
+            Cancels a batch configuration change
+            </summary>
+            <remarks>
+            This method marks the cancels of a batch configuration change. After <see cref="M:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.StartChangeConfig" /> is called,
+            any calls to methods that change settings will store the setting change until either <see cref="M:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.EndChangeConfig" />
+            or <see cref="M:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.CancelChangeConfig"/> is finally called.
+            If <see cref="M:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.CancelChangeConfig"/> is called without <see cref="M:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.StartChangeConfig" /> being called first nothing
+            bad will happen.
+            </remarks>
+            <seealso cref="M:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.CancelChangeConfig"/>
+            <seealso cref="M:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.StartChangeConfig"/>
+        </member>
+        <member name="M:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.NetConnect">
+            <summary>
+            Attempts to connect to the device over a TCP/IP connection.
+            </summary>
+        </member>
+        <member name="M:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.NetDisconnect">
+            <summary>
+            Disconnects the device from the TCP/IP connection.
+            </summary>
+        </member>
+        <member name="M:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.NetPing">
+            <summary>
+            Pings the device to test the communication between the hardaware and this object.
+            </summary>
+        </member>
+        <member name="M:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.CheckRelay(System.Int32)">
+            <summary>
+            Returns the status of the relay at the specified 0-based index.
+            </summary>
+            <param name="relayIndex">A 0-based index of the relay to check.</param>
+            <returns>A RelayStatus with the current status of the relay.</returns>
+            <exception cref="T:System.IndexOutOfRangeException">Thrown when the index is outside the range of valid relays</exception>
+        </member>
+        <member name="M:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.CloseRelay(System.Int32)">
+            <summary>
+            Closes the relay at the specified 0-based index.
+            </summary>
+            <param name="relayIndex">A 0-based index of the relay to close.</param>
+            <exception cref="T:System.IndexOutOfRangeException">Thrown when the index is outside the range of valid relays</exception>
+        </member>
+        <member name="M:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.OpenRelay(System.Int32)">
+            <summary>
+            Opens the relay at the specified 0-based index.
+            </summary>
+            <param name="relayIndex">A 0-based index of the relay to open.</param>
+            <exception cref="T:System.IndexOutOfRangeException">Thrown when the index is outside the range of valid relays</exception>
+        </member>
+        <member name="M:FSI.DeviceSDK.Examples.ExampleCode.ExampleDeviceClass.ToggleRelay(System.Int32)">
+            <summary>
+            Toggles the relay at the specified 0-based index.
+            </summary>
+            <param name="relayIndex">A 0-based index of the relay to toggle.</param>
+            <exception cref="T:System.IndexOutOfRangeException">Thrown when the index is outside the range of valid relays</exception>
+        </member>
+        <member name="M:FSI.DeviceSDK.Examples.ExampleCode.RunExamples">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:FSI.DeviceSDK.FiberDefenderDevice.IFiberDefenderAPUDevice">
+            <summary>
+            IFiberDefenderAPUDevice is a consolidated interface of the IGeneralDevice, INetConnectDevice, IAlarmInputDevice, ICompositeDevice
+            </summary>
+            <remarks>
+            <para>
+                The purpose of this interface is for if a developer wants to pass this around as a single type 
+                without casting it when they need to use it as a different kind of interface. All <see cref="T:FSI.DeviceSDK.IGeneralDevice"/>
+                sub devices retrieved through the <see cref="P:FSI.DeviceSDK.ICompositeDevice.ChildDevices"/> property in this interface are guaranteed to be 
+                <see cref="T:FSI.DeviceSDK.FiberDefenderDevice.IChannelDevice"/>s.
+            </para>
+            <para>
+                It is recommended to subscribe to the <see cref="E:FSI.DeviceSDK.Input.IAlarmInputDevice.AlarmEvent"/> event before connecting to a <c>IFiberDefenderAPUDevice</c>. 
+                The reason can be best described in the following scenario. If a server running the Device SDK goes down, a backup server
+                could attempt to establish connections to each APU that was connected to the first server. When it is connecting though, it hasn't
+                yet created the child devices to send alarms. As such, any alarms that may occur during the connection will happen on the main
+                <c>IFiberDefenderAPUDevice</c> object itself. Subscribing to the <see cref="E:FSI.DeviceSDK.Input.IAlarmInputDevice.AlarmEvent"/> before connecting 
+                will allow the backup server to maintain monitoring functionality until the connection is properly established.
+            </para>
+            <para>
+                When calling <see cref="M:FSI.DeviceSDK.Connect.INetConnectDevice.NetConnect"/> to connect or reconnecting to a APU, the <see cref="T:System.Net.Sockets.SocketException"/>s
+                may occur depending on the state of the APU at the time of the connection attempt.
+            </para>
+            <para>
+                <c>IFiberDefenderAPUDevice</c>s uses upkeep pings to maintain connections with the APUs the time interval for this is configurable 
+                with the <see cref="P:FSI.DeviceSDK.Connect.INetConnectDevice.PingUpkeepInterval"/> property. This allows applications to ignore the details of maintaining 
+                the connection with the APU. After a successful connection no other work, for example calling Ping manually, is required to keep 
+                the connection with the APU. The minimum value for <see cref="P:FSI.DeviceSDK.Connect.INetConnectDevice.PingUpkeepInterval"/> is   500 milliseconds. The 
+                maximum value for <see cref="P:FSI.DeviceSDK.Connect.INetConnectDevice.PingUpkeepInterval"/> is 110000 milliseconds. It is defaulted to 10 seconds. 
+                <c>IFiberDefenderAPUDevice</c> also uses these pings to detect when the connection to the APU has dropped. The amount of times 
+                that the ping can fail before the connection is declared dropped is configurable with the 
+                <see cref="P:FSI.DeviceSDK.Connect.INetConnectDevice.MaximumFailedUpkeepPings" /> property. The minimum value for <see cref="P:FSI.DeviceSDK.Connect.INetConnectDevice.MaximumFailedUpkeepPings" /> 
+                is 1. There is no maximum, though the dropped connection may be discovered through other means before the maximum is reached.
+            </para>
+            </remarks>
+            <example>
+                This example shows how to properly connect to an APU. It also demonstrates a way to reconnect to a dropped APU.
+                <code source="../FSI.DeviceSDK/Examples/FiberDefenderDeviceExample.cs" lang="C#" region="Basic setup example" title="Using APUs" />
+            </example>
+            <seealso cref="T:FSI.DeviceSDK.IGeneralDevice"/>
+            <seealso cref="T:FSI.DeviceSDK.ICompositeDevice"/>
+            <seealso cref="T:FSI.DeviceSDK.Connect.INetConnectDevice"/>
+            <seealso cref="T:FSI.DeviceSDK.Input.IAlarmInputDevice"/>
+        </member>
+        <member name="P:FSI.DeviceSDK.FiberDefenderDevice.IFiberDefenderAPUDevice.IPAddress">
+            <summary>
+            Gets the IP address of the device.
+            </summary>
+            <value>The <see cref="P:FSI.DeviceSDK.FiberDefenderDevice.IFiberDefenderAPUDevice.IPAddress"/> of the device. </value>
+        </member>
+        <member name="T:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice">
+            <summary>
+            The actual implementation of <see cref="T:FSI.DeviceSDK.FiberDefenderDevice.IFiberDefenderAPUDevice"/>.
+            </summary>
+        </member>
+        <member name="E:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.SubDevicesCollectionChangedEvent">
+            <summary>
+            Occurs when the collection of sub-devices has changed
+            </summary>
+            <seealso cref="T:FSI.DeviceSDK.DeviceCollectionChangedEventArgs"/>
+        </member>
+        <member name="E:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.NetConnectedEvent">
+            <summary>
+            Occurs when the device establishes a connection over TCP/IP.
+            </summary>
+        </member>
+        <member name="E:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.NetDisconnectedEvent">
+            <summary>
+            Occurs when the device disconnects normally.
+            </summary>
+        </member>
+        <member name="E:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.NetConnectionDroppedEvent">
+            <summary>
+            Occurs when the device disconnects abnormally.
+            </summary>
+        </member>
+        <member name="E:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.NetPingResponseEvent">
+            <summary>
+            Occurs when a ping response message is received.
+            </summary>
+        </member>
+        <member name="E:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.NetRecievedDataEvent">
+            <summary>
+            Occurs when the device streams some data over TCP/IP.
+            </summary>
+            <remarks>
+            When some data has been sent from the hardware that isn't something that is handled
+            in the upkeep of the object, it will be passed as a <c>byte[]</c> in the Result
+            property <see cref="T:System.Net.DownloadDataCompletedEventArgs" /> of the event arguments.
+            </remarks>
+        </member>
+        <member name="E:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.AlarmEvent">
+            <summary>
+            Occurs when the device has received an alarm
+            </summary>
+            <seealso cref="T:FSI.DeviceSDK.Input.AlarmEventArgs"/>
+        </member>
+        <member name="F:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.m_FD34x">
+            <summary>
+            The lower level <see cref="T:FSI.DeviceCommunicationLibrary.Virtual_Devices.FiberDefenderAPU"/> object that this class acts as a wrapper for
+            </summary>
+        </member>
+        <member name="F:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.m_channels">
+            <summary>
+            The List of sub channel devices this object has
+            </summary>
+            <seealso cref="T:FSI.DeviceSDK.IGeneralDevice"/>
+            <seealso cref="T:FSI.DeviceSDK.FiberDefenderDevice.IChannelDevice"/>
+        </member>
+        <member name="F:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.m_FirstStatusUpdateReceived">
+            <summary>
+            A ManualResetEventSlim representing whether this object has received its first status update.
+            </summary>
+            <remarks>
+            This gets set once during first time OnFD34xStatusUpdatedEvent is called
+            This is used to ensure that the number of channels is only set once.
+            This prevents hot-swapping channels on devices. The reason is
+            because after this device has started being used, the events of its
+            channels have most likely already been subscribed to. Changing this
+            would require all subscribers to reassign their event handlers. In 
+            the future that may be desired but for now this will reduce overhead
+            for users.
+            </remarks>
+        </member>
+        <member name="F:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.m_PingResponseWait">
+            <summary>
+            The AutoResetEvent that is set when a ping response is received.
+            </summary>
+        </member>
+        <member name="P:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.Name">
+            <summary>
+            Gets the name of the device.
+            </summary>
+            <remarks>This is not guaranteed to be unique.</remarks>
+            <value>A string of the name of device.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.Description">
+            <summary>
+            Gets the description of the device.
+            </summary>
+            <value>A string of the description of the device.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.OperationTimeout_ms">
+            <summary>
+            Gets or sets the time in milliseconds that device operations should take before they timeout.
+            </summary>
+            <value>An int of the timeout length in milliseconds.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.ChildDevices">
+            <summary>
+            Gets the list of child devices.
+            </summary>
+            <value>An <see cref="T:System.Collections.Generic.IList`1"/> of this devices child <see cref="T:FSI.DeviceSDK.IGeneralDevice"/>.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.NumberOfChildren">
+            <summary>
+            Gets the number of child devices.
+            </summary>
+            <value> An int of the number of child devices.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.CanConnect">
+            <summary>
+            Gets whether this device supports being connected to.
+            </summary>
+            <value>A bool representing the ability to be connect.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.CanPing">
+            <summary>
+            Gets whether this device supports being pinged to.
+            </summary>
+            <value>A bool representing the ability to be ping.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.IsConnected">
+            <summary>
+            Gets whether or not this device is currently connected.
+            </summary>
+            <value>A bool representing if this device is currently connected.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.IPAddress">
+            <summary>
+            Gets the IP address of the device.
+            </summary>
+            <value>The <see cref="P:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.IPAddress"/> of the device. </value>
+        </member>
+        <member name="P:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.FSI#DeviceSDK#Connect#INetConnectDevice#IPAddress">
+            <summary>
+            Gets the IP address of the device.
+            </summary>
+            <value>The <see cref="P:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.IPAddress"/> of the device. </value>
+        </member>
+        <member name="P:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.ListeningPort">
+            <summary>
+            The port that the hardware is listening on.  
+            </summary>
+            <value>An int representing the port number</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.CommunicatingPort">
+            <summary>
+            The port this object is sending data from.  
+            </summary>
+            <value>An int representing the port number</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.UsesPingUpkeep">
+            <summary>
+            Gets whether or not this device uses pings to keep the connection alive
+            </summary>
+        </member>
+        <member name="P:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.MinimumPingUpkeepInterval">
+            <summary>
+            Gets the devices minimum time interval between upkeep pings
+            </summary>
+            <value>A TimeSpan representing the minimum time between upkeep pings</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.MaximumPingUpkeepInterval">
+            <summary>
+            Gets the devices maximum time interval between upkeep pings
+            </summary>
+            <value>A TimeSpan representing the maximum time between upkeep pings</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.PingUpkeepInterval">
+            <summary>
+            Gets or sets the interval between upkeep pings. 
+            </summary>
+            <value>A TimeSpan representing the time between upkeep pings</value>
+            <remarks>
+            <para>
+                It should be noted that if <see cref="P:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.UsesPingUpkeep"/> is false, the value of this property
+                is meaningless and wont affect the behavior of the device. 
+            </para>
+            <para>
+                Different devices may have different minimum and maximum intervals allowed. If the value is set
+                to a value outside of the allowed range, an exception may be thrown.
+            </para>
+            </remarks>
+        </member>
+        <member name="P:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.MaximumFailedUpkeepPings">
+            <summary>
+            Gets or sets the maximum amount of times the upkeep ping can fail before dropping a connection.
+            </summary>
+            <value>A int representing the maximum amount of failed pings.</value>
+            <remarks>
+            <para>
+                It should be noted that if <see cref="P:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.UsesPingUpkeep"/> is false, the value of this property
+                is meaningless and wont affect the behavior of the device. 
+            </para>
+            <para>
+                Different devices may have different minimum and maximum values for the amount of failed pings. If the value is set
+                to a value outside of the allowed range, an exception may be thrown.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.GetChild(System.Func{FSI.DeviceSDK.IGeneralDevice,System.Boolean})">
+            <summary>
+            Returns the first child that matches the specified condition
+            </summary>
+            <param name="predicate">A predicate function that will return true for some condition</param>
+            <returns>The first child <see cref="T:FSI.DeviceSDK.IGeneralDevice"/> that matches the specified condition</returns>
+        </member>
+        <member name="M:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.NetConnect">
+            <summary>
+            Attempts to connect to the device over a TCP/IP connection. This can take a long time.
+            </summary>
+            <remarks>
+            This method will raise the <see cref="E:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.NetConnectedEvent"/> when the connection is successful.
+            This method call can take quite a long time to connect to a device depending on the state of the device,
+            sometimes around 2 minutes. It might be wise to call it using <see cref="N:System.Threading.Tasks"/>. If 
+            this method completes and it fails to connect then it can be inferred that something is wrong with 
+            the connection to the device.
+            </remarks>
+        </member>
+        <member name="M:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.NetDisconnect">
+            <summary>
+            Disconnects the device from the TCP/IP connection.
+            </summary>
+        </member>
+        <member name="M:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.NetPing">
+            <summary>
+            Pings the device to test the communication between the hardware and this object.
+            </summary>
+            <remarks>
+            The ping will wait up to the <see cref="P:FSI.DeviceSDK.IGeneralDevice.OperationTimeout_ms"/> defined in <see cref="T:FSI.DeviceSDK.IGeneralDevice"/>
+            for a ping response message.
+            </remarks>
+            <returns>True if a ping response was received, false otherwise.</returns>
+        </member>
+        <member name="M:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.OnFD34xStatusUpdatedEvent(System.Object,System.EventArgs)">
+            <summary>
+            Event handler for when <see cref="F:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.m_FD34x"/>'s StatusUpdatedEvent
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">An EventArgs that contains no event data.</param>
+            <seealso cref="E:FSI.DeviceCommunicationLibrary.Virtual_Devices.FiberDefenderAPU.UpdatedStatusEvent"/>
+        </member>
+        <member name="M:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.OnFD34x_PingResponseEvent(System.Object,System.EventArgs)">
+            <summary>
+            Event handler for when <see cref="F:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice.m_FD34x"/>'s PingResponseEvent
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">An EventArgs that contains no event data.</param>
+            <seealso cref="E:FSI.DeviceCommunicationLibrary.Virtual_Devices.FiberDefenderAPU.PingResponseEvent"/>
+        </member>
+        <member name="T:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDeviceFactory">
+            <summary>
+            A Device factory specifically for finding and creating FiberSenSys Inc. FiberDefender APUs.
+            </summary>
+            <remarks>
+            All <see cref="T:FSI.DeviceSDK.IGeneralDevice"/>s returned by <see cref="M:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDeviceFactory.ScanForDevices(System.Int32)"/>  or <see cref="M:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDeviceFactory.DeviceAt(System.Net.IPAddress,System.Int32)"/> are guaranteed to be 
+            <see cref="T:FSI.DeviceSDK.FiberDefenderDevice.IFiberDefenderAPUDevice"/>s. Sometimes when calling <see cref="M:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDeviceFactory.ScanForDevices(System.Int32)"/>, not all of the APUs on the network
+            will be returned. This usually occurs after an APU has just disconnected. Performing a second scan should return them.
+            <para/>
+            Note:  This class uses shared network resources, therefore, its methods are not thread safe even between different instances of this class.  
+            Make sure only one instance is used at any given time.  
+            </remarks>
+            <example>
+                This example shows how to find and connect to an APU.
+                <code source="../FSI.DeviceSDK/Examples/FiberDefenderDeviceExample.cs" lang="C#" region="Basic setup example" title="Using APUs" />
+                <code source="../Examples/DeviceSDKExamples/FSI.DeviceSDK.VBExamples/Examples/FiberDefenderDeviceExampleVB.vb" lang="VB" region="Basic setup example" title="Using APUs" />
+            </example>
+        </member>
+        <member name="P:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDeviceFactory.FactoryID">
+            <summary>
+            Gets the string identifier for this factory. This is used by DeviceFinder to determine which IDeviceFactory to use.
+            </summary>
+            <value>A string representing the factory's ID.</value>
+        </member>
+        <member name="M:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDeviceFactory.ScanForDevices(System.Int32)">
+            <summary>
+            Scans for all the devices that are of a type that this factory knows about.
+            </summary>
+            <remarks>
+             All <see cref="T:FSI.DeviceSDK.IGeneralDevice"/>s returned by this method are guaranteed to be <see cref="T:FSI.DeviceSDK.FiberDefenderDevice.IFiberDefenderAPUDevice"/>s.
+            </remarks>
+            <param name="timeout_ms">The maximum amount of time in milliseconds to spend on the search.</param>
+            <returns>An IList of IGeneralDevices</returns>
+            <example>
+                This example shows how to properly connect to an APU.
+                <code source="../FSI.DeviceSDK/Examples/FiberDefenderDeviceExample.cs" lang="C#" region="Basic setup example" title="Using APUs" />
+            </example>
+        </member>
+        <member name="M:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDeviceFactory.ScanForPossibleAPUs(System.Int32)">
+            <summary>
+            Scans for possible alarm processing units and returns their IP addresses.
+            </summary>
+            <remarks>
+            The <c>ScanForPossibleAPUs</c> method looks for devices that might be alarm processing units
+            and returns their IP addresses.
+            </remarks>
+            <param name="timeout_ms">The maximum amount of time in milliseconds to spend on the search.</param>
+            <returns>
+            A list of IP addresses that might be alarm processing units. 
+            </returns>
+        </member>
+        <member name="M:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDeviceFactory.DeviceAt(System.Net.IPAddress,System.Int32)">
+            <summary>
+            Attempt to find the device at a specific IP
+            </summary>
+            <remarks>
+            This method will return null if it is unable to find the device. It will still return the object
+            found even if it is unable to connect to the specific device.
+            </remarks>
+            <param name="ipAddress">The <see cref="T:System.Net.IPAddress"/> of the device to connect to</param>
+            <param name="timeout_ms">The maximum amount of time in milliseconds verifying that the device exists. Defaults to 5 seconds</param>
+            <returns>The device with the specified IP. Null if unable to find device or if it times out.</returns>
+            <example>
+            This example show how to use IDeviceFactorys to get a device at a specific IP Address
+            <code source="../FSI.DeviceSDK/Examples/ExampleCode.cs" region="DeviceFactory DeviceAt Example" lang="C#" title="IDeviceFactory DeviceAt Example" />
+            </example>
+        </member>
+        <member name="T:FSI.DeviceSDK.FiberDefenderDevice.__FiberDefenderAPUDeviceFactory">
+            <summary>
+            The original Fiber Defender APU Device Factory.  This class in intended to be used as a singleton.
+            </summary>
+            <remarks>
+            This class was intended to be used as a singleton but customers were creating several instances of this class (it does have a public constructor). 
+            We later found this class is never garbage collected and can cause memory and performance leaks.  This caused problems with customer software.
+            Therefore, the new  <see cref="T:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDeviceFactory"/> class above has an identical interface but ensures only one instance of 
+            this class is created.  
+            </remarks>
+        </member>
+        <member name="F:FSI.DeviceSDK.FiberDefenderDevice.__FiberDefenderAPUDeviceFactory.m_Supervisor">
+            <summary>
+            The lower level XPortSupervisor used to find XPort devices
+            </summary>
+        </member>
+        <member name="F:FSI.DeviceSDK.FiberDefenderDevice.__FiberDefenderAPUDeviceFactory.m_SynchronousScanFinished">
+            <summary>
+            The AutoResetEvent that is set when a scan is finished.
+            </summary>
+        </member>
+        <member name="P:FSI.DeviceSDK.FiberDefenderDevice.__FiberDefenderAPUDeviceFactory.FactoryID">
+            <summary>
+            Gets the string identifier for this factory. This is used by DeviceFinder to determine which IDeviceFactory to use.
+            </summary>
+            <value>A string representing the factory's ID.</value>
+        </member>
+        <member name="M:FSI.DeviceSDK.FiberDefenderDevice.__FiberDefenderAPUDeviceFactory.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FSI.DeviceSDK.FiberDefenderDevice.__FiberDefenderAPUDeviceFactory"/> class.
+            </summary>
+        </member>
+        <member name="M:FSI.DeviceSDK.FiberDefenderDevice.__FiberDefenderAPUDeviceFactory.ScanForDevices(System.Int32)">
+            <summary>
+            Scans for all the devices that are of a type that this factory knows about.
+            </summary>
+            <remarks>
+             All <see cref="T:FSI.DeviceSDK.IGeneralDevice"/>s returned by this method are guaranteed to be <see cref="T:FSI.DeviceSDK.FiberDefenderDevice.IFiberDefenderAPUDevice"/>s.
+            </remarks>
+            <param name="timeout_ms">The maximum amount of time in milliseconds to spend on the search.</param>
+            <returns>An IList of IGeneralDevices</returns>
+            <example>
+                This example shows how to properly connect to an APU.
+                <code source="../FSI.DeviceSDK/Examples/FiberDefenderDeviceExample.cs" lang="C#" region="Basic setup example" title="Using APUs" />
+            </example>
+        </member>
+        <member name="M:FSI.DeviceSDK.FiberDefenderDevice.__FiberDefenderAPUDeviceFactory.ScanForPossibleAPUs(System.Int32)">
+            <summary>
+            Scans for possible alarm processing units and returns their IP addresses.
+            </summary>
+            <remarks>
+            The <c>ScanForPossibleAPUs</c> method looks for devices that might be alarm processing units
+            and returns their IP addresses.
+            </remarks>
+            <param name="timeout_ms">The maximum amount of time in milliseconds to spend on the search.</param>
+            <returns>
+            A list of IP addresses that might be alarm processing units. 
+            </returns>
+        </member>
+        <member name="M:FSI.DeviceSDK.FiberDefenderDevice.__FiberDefenderAPUDeviceFactory.DeviceAt(System.Net.IPAddress,System.Int32)">
+            <summary>
+            Attempt to find the device at a specific IP
+            </summary>
+            <remarks>
+            This method will return null if it is unable to find the device. It will still return the object
+            found even if it is unable to connect to the specific device.
+            </remarks>
+            <param name="ipAddress">The <see cref="T:System.Net.IPAddress"/> of the device to connect to</param>
+            <param name="timeout_ms">The maximum amount of time in milliseconds verifying that the device exists. Defaults to 5 seconds</param>
+            <returns>The device with the specified IP. Null if unable to find device or if it times out.</returns>
+            <example>
+            This example show how to use IDeviceFactorys to get a device at a specific IP Address
+            <code source="../FSI.DeviceSDK/Examples/ExampleCode.cs" region="DeviceFactory DeviceAt Example" lang="C#" title="IDeviceFactory DeviceAt Example" />
+            </example>
+        </member>
+        <member name="T:FSI.DeviceSDK.FiberDefenderDevice.IChannelDevice">
+            <summary>
+            IChannelDevice is a consolidated interface of the IGeneralDevice, IAlarmInputDevice, IAPUConfigDevice
+            </summary>
+            <remarks>
+            The purpose of this interface is for if a developer wants to pass this around as a single type 
+            without casting it when they need to use it as a different kind of interface. All <see cref="T:FSI.DeviceSDK.IGeneralDevice"/>
+            sub devices retrieved through the <see cref="P:FSI.DeviceSDK.ICompositeDevice.ChildDevices"/> property in this interface are guaranteed to be 
+            <see cref="T:FSI.DeviceSDK.FiberDefenderDevice.IChannelDevice"/>s.
+            </remarks>
+            <seealso cref="T:FSI.DeviceSDK.IGeneralDevice"/>
+            <seealso cref="T:FSI.DeviceSDK.Input.IAlarmInputDevice"/>
+            <seealso cref="T:FSI.DeviceSDK.Config.IAPUConfigDevice"/>
+        </member>
+        <member name="T:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice">
+            <summary>
+            The actual implementation of <see cref="T:FSI.DeviceSDK.FiberDefenderDevice.IChannelDevice"/>.
+            </summary>
+        </member>
+        <member name="E:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.AlarmEvent">
+            <summary>
+            Occurs when the device has received an alarm
+            </summary>
+            <seealso cref="T:FSI.DeviceSDK.Input.AlarmEventArgs"/>
+        </member>
+        <member name="E:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.APUSettingChangedEvent">
+            <summary>
+            Occurs when the APU has had a change in it's settings
+            </summary>
+        </member>
+        <member name="E:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.SubDevicesCollectionChangedEvent">
+            <summary>
+            Occurs when the collection of sub-devices has changed
+            </summary>
+            <seealso cref="T:FSI.DeviceSDK.DeviceCollectionChangedEventArgs"/>
+        </member>
+        <member name="F:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.m_Parent">
+            <summary>
+            The parent device of this channel.
+            </summary>
+        </member>
+        <member name="F:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.m_Channel">
+            <summary>
+            The lower level <see cref="T:FSI.DeviceCommunicationLibrary.Virtual_Devices.APUChannel"/> object that this class acts as a wrapper for
+            </summary>
+        </member>
+        <member name="F:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.m_ConfigUpdateWait">
+            <summary>
+            An <see cref="T:System.Threading.AutoResetEvent"/> that gets set when the configuration has been updated
+            </summary>
+        </member>
+        <member name="F:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.m_IsConfigurationChangeStarted">
+            <summary>
+            A bool to represent that a batch configuration(i.e. StartConfigChange) is currently going on.
+            </summary>
+            <seealso cref="M:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.SetSetting(System.String,System.String)"/>
+            <seealso cref="M:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.StartChangeConfig"/>
+        </member>
+        <member name="F:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.m_ConfigurationChanges">
+            <summary>
+            A dictionary to hold changes to the configuration while a batch change is going on
+            </summary>
+            <seealso cref="M:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.SetSetting(System.String,System.String)"/>
+            <seealso cref="M:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.StartChangeConfig"/>
+        </member>
+        <member name="P:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.ChildDevices">
+            <summary>
+            Gets the list of child devices
+            </summary>
+            <value>An <see cref="T:System.Collections.Generic.IList`1"/> of this devices child <see cref="T:FSI.DeviceSDK.IGeneralDevice"/> .</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.NumberOfChildren">
+            <summary>
+            Gets the number of child devices
+            </summary>
+            <value> An int of the number of child devices</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.IsConfigChangeInProcess">
+            <summary>
+            Gets whether or not a batch configuration change is in process.
+            </summary>
+            <value>A bool representing whether or not a batch configuration change is in process.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.Name">
+            <summary>
+            Gets the name of the device.
+            </summary>
+            <remarks>This is not guaranteed to be unique.</remarks>
+            <value>A string of the name of device.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.Description">
+            <summary>
+            Gets the description of the device.
+            </summary>
+            <value>A string of the description of the device.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.OperationTimeout_ms">
+            <summary>
+            Gets or sets the time in milliseconds that device operations should take before they timeout.
+            </summary>
+            <value>An int of the timeout length in milliseconds</value>
+        </member>
+        <member name="M:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.#ctor(FSI.DeviceSDK.IGeneralDevice,FSI.DeviceCommunicationLibrary.Virtual_Devices.IAPUChannel)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice"/> class.
+            </summary>
+            <param name="parent">The parent device of this device. I.e. the <see cref="T:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDevice"/>.</param>
+            <param name="channel">The <see cref="T:FSI.DeviceCommunicationLibrary.Virtual_Devices.APUChannel"/> that this device will be a wrapper for.</param>
+        </member>
+        <member name="M:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.StartChangeConfig">
+            <summary>
+            Starts a batch configuration change
+            </summary>
+            <remarks>
+            This method marks the beginning of a batch configuration change. Until <see cref="M:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.EndChangeConfig" /> is called, any
+            calls to <see cref="M:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.SetSetting(System.String,System.String)"/> will store the setting change until <see cref="M:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.EndChangeConfig" /> is finally 
+            called. Calling <see cref="M:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.CancelChangeConfig" /> will cancel the batch and no changes will be committed.
+            This method is not thread safe. StartChangeConfig must be guaranteed by the caller to be called before either
+            <see cref="M:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.EndChangeConfig" /> or <see cref="M:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.CancelChangeConfig"/>.
+            </remarks>
+            <seealso cref="M:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.CancelChangeConfig"/>
+            <seealso cref="M:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.EndChangeConfig"/>
+        </member>
+        <member name="M:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.EndChangeConfig">
+            <summary>
+            Ends and commits a batch configuration change
+            </summary>
+            <remarks>
+            This method marks the end of a batch configuration change. After <see cref="M:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.StartChangeConfig" /> is called,
+            any calls to methods that change settings will store the setting change until <see cref="M:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.EndChangeConfig" /> is finally 
+            called.
+            This method is not thread safe. <see cref="M:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.StartChangeConfig" /> must be guaranteed by the caller to be called before 
+            <see cref="M:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.EndChangeConfig" />.
+            </remarks>
+            <seealso cref="M:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.CancelChangeConfig"/>
+            <seealso cref="M:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.StartChangeConfig"/>
+        </member>
+        <member name="M:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.CancelChangeConfig">
+            <summary>
+            Cancels a batch configuration change
+            </summary>
+            <remarks>
+            This method marks the cancels of a batch configuration change. After <see cref="M:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.StartChangeConfig" /> is called,
+            any calls to methods that change settings will store the setting change until either <see cref="M:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.EndChangeConfig" />
+            or <see cref="M:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.CancelChangeConfig"/> is finally called.
+            If <see cref="M:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.CancelChangeConfig"/> is called without <see cref="M:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.StartChangeConfig" /> being called first nothing
+            bad will happen.
+            </remarks>
+            <seealso cref="M:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.CancelChangeConfig"/>
+            <seealso cref="M:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.StartChangeConfig"/>
+        </member>
+        <member name="M:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.GetAllSettings">
+            <summary>
+            Gets all the settings for the device
+            </summary>
+            <remarks>
+            In FSI APUs there are essentially 2 kinds of settings. First is what could be called a scalar value,
+            which is marked by a CurrentValue property. These also have a Units, MinimumValue, and MaximumValue property.
+            Only the CurrentValue property is writable by the <see cref="M:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.SetSetting(System.String,System.String)"/> method. The other kind of setting
+            could be called an enumeration value. These settings have an enumeration of properties, only one of which can be true
+            at a time. The rest are guaranteed to be false. It can also have a separate units property but doesn't have to. For these 
+            settings, the <see cref="M:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.SetSetting(System.String,System.String)"/> method will take the name of the enumerated value to be marked as true
+            as its value parameter.
+            </remarks>
+            <returns>
+            A Dictionary whose keys are the names of the settings and whose values are a Dictionary of properties and their values: <![CDATA[<Dictionary<SettingName, Dictionary<PropertyName, PropertyValue>>]]> 
+            </returns>
+            <example>
+                This example shows how to use the result of GetAllSettings
+                <code lang="C#" title="GetAllSettings Example">
+                    <code source="../FSI.DeviceSDK/Examples/ExampleCode.cs" region="IAPUConfigDevice Example" lang="C#" />
+                    <code source="../FSI.DeviceSDK/Examples/ExampleCode.cs" region="IAPUConfigDevice GetAllSettings Example" lang="C#" />
+                </code>
+            </example>
+        </member>
+        <member name="M:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.GetSetting(System.String)">
+            <summary>
+            Returns the string value of the specified settings current value parameter or the parameter that is true
+            </summary>
+            <param name="settingName">The name of the setting to find</param>
+            <returns>The desired settings value as a string or null if it doesn't exist</returns>
+            <example>
+                This example shows how to use GetSetting
+                <code lang="C#" title="GetSetting Example">
+                    <code source="../FSI.DeviceSDK/Examples/ExampleCode.cs" region="IAPUConfigDevice Example" lang="C#" />
+                    <code source="../FSI.DeviceSDK/Examples/ExampleCode.cs" region="IAPUConfigDevice GetSetting Example" lang="C#" />
+                </code>
+            </example>
+        </member>
+        <member name="M:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.SetSetting(System.String,System.String)">
+            <summary>
+            Sets the specified settings current value
+            </summary>
+            <remarks>
+            This cannot be used to create new settings. In FSI APUs there are essentially 2 kinds of settings. First is what could be called a scalar value,
+            which is marked by a CurrentValue property. These also have a Units, MinimumValue, and MaximumValue property.
+            The value parameter of this method should be the desired value for CurrentValue for scalar properties. The other kind of setting
+            could be called an enumeration value. These settings have an enumeration of properties, only one of which can be true.
+            The rest are guaranteed to be false. It can also have a separate units property but doesn't have to. For these 
+            settings, the value parameter should be the name of the enumerated value to be marked as true. This will automatically set
+            any other enumerated values to false.
+            </remarks>
+            <param name="settingName">The name of the setting to change</param>
+            <param name="value">The value to be set</param>
+            <exception cref="T:System.InvalidOperationException">Thrown when a setting that either doesn't exist or can't be changed is passed in.</exception>
+            <example>
+                This example shows how to use SetSetting
+                <code lang="C#" title="GetSetting Example">
+                    <code source="../FSI.DeviceSDK/Examples/ExampleCode.cs" region="IAPUConfigDevice Example" lang="C#" />
+                    <code source="../FSI.DeviceSDK/Examples/ExampleCode.cs" region="IAPUConfigDevice SetSetting Example" lang="C#" />
+                </code>
+            </example>
+        </member>
+        <member name="M:FSI.DeviceSDK.FiberDefenderDevice.ChannelDevice.GetChild(System.Func{FSI.DeviceSDK.IGeneralDevice,System.Boolean})">
+            <summary>
+            Returns the first child that matches the specified condition
+            </summary>
+            <example>
+            This example shows how to use GetChild with a Lambda Expression
+            <code source="../FSI.DeviceSDK/Examples/ExampleCode.cs" region="GetChild Example" lang="C#" />
+            <code source="../Examples/DeviceSDKExamples/FSI.DeviceSDK.VBExamples/Examples/ExampleCodeVB.vb" region="GetChild Example" lang="VB"/>
+            </example>
+            <param name="predicate">A predicate function that will return true for some condition</param>
+            <returns>The first child <see cref="T:FSI.DeviceSDK.IGeneralDevice"/> that matches the specified condition</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when no matching child is found.</exception>
+        </member>
+        <member name="T:FSI.DeviceSDK.Extensions.FSIClassExtensions">
+            <summary>
+            A class to hold extensions that are specific to interfaces.
+            </summary>
+            <remarks>
+            This class should not be made public for release
+            </remarks>
+        </member>
+        <member name="M:FSI.DeviceSDK.Extensions.FSIClassExtensions.NetBeginConnect(FSI.DeviceSDK.Connect.INetConnectDevice)">
+            <summary>
+            Asynchronously calls <see cref="M:FSI.DeviceSDK.Connect.INetConnectDevice.NetConnect"/>
+            </summary>
+            <param name="inet">An INetConnectDevice to return an element from.</param>
+        </member>
+        <member name="M:FSI.DeviceSDK.Extensions.FSIClassExtensions.NetBeginDisconnect(FSI.DeviceSDK.Connect.INetConnectDevice)">
+            <summary>
+            Asynchronously calls <see cref="M:FSI.DeviceSDK.Connect.INetConnectDevice.NetDisconnect"/>
+            </summary>
+            <param name="inet">An INetConnectDevice to return an element from.</param>
+        </member>
+        <member name="M:FSI.DeviceSDK.Extensions.FSIClassExtensions.NetBeginPing(FSI.DeviceSDK.Connect.INetConnectDevice)">
+            <summary>
+            Asynchronously calls <see cref="M:FSI.DeviceSDK.Connect.INetConnectDevice.NetPing"/>
+            </summary>
+            <param name="inet">An INetConnectDevice to return an element from.</param>
+        </member>
+        <member name="M:FSI.DeviceSDK.Extensions.FSIClassExtensions.AsyncEndChangeConfig(FSI.DeviceSDK.Config.IConfigDevice)">
+            <summary>
+            Asynchronously calls <see cref="M:FSI.DeviceSDK.Config.IConfigDevice.EndChangeConfig"/>
+            </summary>
+            <param name="idev">An IConfigDevice to return an element from.</param>
+        </member>
+        <member name="T:FSI.DeviceSDK.ICompositeDevice">
+            <summary>
+            A device that is made of other sub-devices
+            </summary>
+            <remarks>
+            This interface is for describing a device that is made of other devices. 
+            E.g. a device with multiple channels, each of which can be made of multiple 
+            interfaces. This can be be used to make a tree structure of devices with
+            sub-devices having further sub-devices.
+            </remarks>
+            <seealso cref="T:FSI.DeviceSDK.IGeneralDevice"/>
+        </member>
+        <member name="E:FSI.DeviceSDK.ICompositeDevice.SubDevicesCollectionChangedEvent">
+            <summary>
+            Occurs when the collection of sub-devices has changed
+            </summary>
+            <seealso cref="T:FSI.DeviceSDK.DeviceCollectionChangedEventArgs"/>
+        </member>
+        <member name="P:FSI.DeviceSDK.ICompositeDevice.ChildDevices">
+            <summary>
+            Gets the list of child devices
+            </summary>
+            <value>An <see cref="T:System.Collections.Generic.IList`1"/> of this devices child <see cref="T:FSI.DeviceSDK.IGeneralDevice"/> .</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.ICompositeDevice.NumberOfChildren">
+            <summary>
+            Gets the number of child devices
+            </summary>
+            <value> An int of the number of child devices</value>
+        </member>
+        <member name="M:FSI.DeviceSDK.ICompositeDevice.GetChild(System.Func{FSI.DeviceSDK.IGeneralDevice,System.Boolean})">
+            <summary>
+            Returns the first child that matches the specified condition
+            </summary>
+            <example>
+            This example shows how to use GetChild with a Lambda Expression
+            <code source="../FSI.DeviceSDK/Examples/ExampleCode.cs" region="GetChild Example" lang="C#"/>
+            <code source="../Examples/DeviceSDKExamples/FSI.DeviceSDK.VBExamples/Examples/ExampleCodeVB.vb" region="GetChild Example" lang="VB"/>
+            </example>
+            <param name="predicate">A predicate function that will return true for some condition</param>
+            <returns>The first child <see cref="T:FSI.DeviceSDK.IGeneralDevice"/> that matches the specified condition</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when no matching child is found.</exception>
+        </member>
+        <member name="T:FSI.DeviceSDK.IGeneralDevice">
+            <summary>
+            Represents a basic device.
+            </summary>
+            <remarks>
+            All devices that inherit from any of the FSI device interfaces should also inherit from this interface as well.
+            </remarks>
+        </member>
+        <member name="P:FSI.DeviceSDK.IGeneralDevice.Name">
+            <summary>
+            Gets the name of the device.
+            </summary>
+            <remarks>This is not guaranteed to be unique.</remarks>
+            <value>A string of the name of device.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.IGeneralDevice.Description">
+            <summary>
+            Gets the description of the device.
+            </summary>
+            <value>A string of the description of the device.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.IGeneralDevice.OperationTimeout_ms">
+            <summary>
+            Gets or sets the time in milliseconds that device operations should take before they timeout.
+            </summary>
+            <value>An int of the timeout length in milliseconds</value>
+        </member>
+        <member name="T:FSI.DeviceSDK.AnalogChangedEventArgs">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:FSI.DeviceSDK.DigitalChangedEventArgs">
+            <summary>
+            Holds the values for when a digital status has changed
+            </summary>
+            <seealso cref="T:System.EventArgs"/>
+            <seealso cref="T:FSI.DeviceSDK.Input.IDigitalInputDevice"/>
+            <seealso cref="T:FSI.DeviceSDK.Output.IDigitalOutputDevice"/>
+        </member>
+        <member name="P:FSI.DeviceSDK.DigitalChangedEventArgs.InputIndex">
+            <summary>
+            Gets the index in respect to the Digital device that was changed.
+            </summary>
+            <value>An int for the index of the digital value.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.DigitalChangedEventArgs.NewValue">
+            <summary>
+            Gets the value of digital signal that has changed.
+            </summary>
+            <value>A boolean for the value of the digital signal.</value>
+        </member>
+        <member name="M:FSI.DeviceSDK.DigitalChangedEventArgs.#ctor(System.Int32,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FSI.DeviceSDK.DigitalChangedEventArgs"/> class.
+            </summary>
+            <param name="inputIndex">The 0-based index of the signal that changed.</param>
+            <param name="newValue">The new value of the digital signal</param>
+        </member>
+        <member name="T:FSI.DeviceSDK.Input.AlarmEventArgs">
+            <summary>
+            Holds the values for when an alarm of some kind occurs
+            </summary>
+            <seealso cref="T:System.EventArgs"/>
+            <seealso cref="T:FSI.DeviceSDK.Input.IAlarmInputDevice"/>
+        </member>
+        <member name="P:FSI.DeviceSDK.Input.AlarmEventArgs.Device">
+            <summary>
+            Gets the device that set off the alarm
+            </summary>
+            <value>A <see cref="T:FSI.DeviceSDK.IGeneralDevice"/> representing the device has raised an alarm.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Input.AlarmEventArgs.Type">
+            <summary>
+            Gets the type of alarm that was raised. E.g. alarm, fault, or tamper.
+            </summary>
+            <value>A <see cref="T:FSI.DeviceSDK.Input.AlarmType"/> for the type of the alarm.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Input.AlarmEventArgs.Status">
+            <summary>
+            Gets the status of alarm that was raised. E.g. instantaneous, or on.
+            </summary>
+            <value>A <see cref="T:FSI.DeviceSDK.Input.AlarmStatus"/> for the status of the alarm.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Input.AlarmEventArgs.Time">
+            <summary>
+            Gets the time that the alarm was raised.
+            </summary>
+            <value>A <see cref="T:System.DateTime"/> for the time of the alarm.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Input.AlarmEventArgs.ChildDeviceName">
+            <summary>
+            Gets the name of the child device that raised the alarm
+            </summary>
+            <remarks>
+            In general, child devices will their own alarms on their own objects. 
+            In those cases this would be null. However, there could be occasions 
+            where the there is no separate child device object. In those cases, 
+            the identifier of that child device will be put into this string.
+            </remarks>
+        </member>
+        <member name="M:FSI.DeviceSDK.Input.AlarmEventArgs.#ctor(FSI.DeviceSDK.IGeneralDevice,FSI.DeviceSDK.Input.AlarmType,FSI.DeviceSDK.Input.AlarmStatus,System.DateTime,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FSI.DeviceSDK.Input.AlarmEventArgs"/> class.
+            </summary>
+            <param name="alarmName">The device that set off the alarm.</param>
+            <param name="type">The type of alarm.</param>
+            <param name="status">The status of the alarm.</param>
+            <param name="time">The time of the alarm</param>
+            <param name="childDeviceName">The name of the child device that is alarming</param>
+        </member>
+        <member name="T:FSI.DeviceSDK.Input.AlarmType">
+            <summary>
+            A Enumeration representing the types of alarms
+            </summary>
+        </member>
+        <member name="F:FSI.DeviceSDK.Input.AlarmType.Alarm">
+            <summary>
+            A actual intrusion type alarm has occurred.
+            </summary>
+        </member>
+        <member name="F:FSI.DeviceSDK.Input.AlarmType.Fault">
+            <summary>
+            A fault has occurred in the alarm unit
+            </summary>
+        </member>
+        <member name="F:FSI.DeviceSDK.Input.AlarmType.Tamper">
+            <summary>
+            A tamper has occurred in the alarm unit
+            </summary>
+        </member>
+        <member name="T:FSI.DeviceSDK.Input.AlarmStatus">
+            <summary>
+            A Enumeration representing the status of alarms
+            </summary>
+        </member>
+        <member name="F:FSI.DeviceSDK.Input.AlarmStatus.AlarmInstant">
+            <summary>
+            An alarm that happens at a single instant
+            </summary>
+        </member>
+        <member name="F:FSI.DeviceSDK.Input.AlarmStatus.AlarmOn">
+            <summary>
+            An alarm has turned on and will be on for a period of time
+            </summary>
+        </member>
+        <member name="F:FSI.DeviceSDK.Input.AlarmStatus.AlarmOff">
+            <summary>
+            An alarm has turned off after being on for a period of time
+            </summary>
+        </member>
+        <member name="T:FSI.DeviceSDK.Input.IAlarmInputDevice">
+            <summary>
+            Represents a device that can receive alarms
+            </summary>
+            <seealso cref="T:FSI.DeviceSDK.IGeneralDevice"/>
+        </member>
+        <member name="E:FSI.DeviceSDK.Input.IAlarmInputDevice.AlarmEvent">
+            <summary>
+            Occurs when the device has received an alarm
+            </summary>
+            <seealso cref="T:FSI.DeviceSDK.Input.AlarmEventArgs"/>
+        </member>
+        <member name="T:FSI.DeviceSDK.Input.ITextInputDevice">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:FSI.DeviceSDK.Input.IAnalogInputDevice">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:FSI.DeviceSDK.Input.IDigitalInputDevice">
+            <summary>
+            Represents a device that has digital inputs
+            </summary>
+            <example>
+            <code source="../FSI.DeviceSDK/Examples/ExampleCode.cs" region="IDigitalInputDevice Example" lang="C#" title="IDigitalInputDevice Example" />
+            </example>
+            <seealso cref="T:FSI.DeviceSDK.IGeneralDevice"/>
+        </member>
+        <member name="E:FSI.DeviceSDK.Input.IDigitalInputDevice.DigitalInputChangedEvent">
+            <summary>
+            Occurs when a digital input on the device has changed.
+            </summary>
+            <remarks>
+            This event should occur even if the change is caused by a user action.
+            </remarks>
+            <seealso cref="T:FSI.DeviceSDK.DigitalChangedEventArgs"/>
+        </member>
+        <member name="P:FSI.DeviceSDK.Input.IDigitalInputDevice.NumberOfDigitalInputs">
+            <summary>
+            Gets the number of digital inputs on this device
+            </summary>
+            <value>An int with the number of digital inputs on the device.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Input.IDigitalInputDevice.CanReadDigitalInputs">
+            <summary>
+            Gets whether this device supports reading the state of its digital inputs.
+            </summary>
+            <value>A bool representing the ability to be read inputs.</value>
+        </member>
+        <member name="M:FSI.DeviceSDK.Input.IDigitalInputDevice.ReadDigitalInput(System.Int32)">
+            <summary>
+            Returns the status of the digital input at the specified 0-based index.
+            </summary>
+            <param name="inputIndex">A 0-based index of the input to check.</param>
+            <returns>A boolean with the current status of the digital input.</returns>
+            <example>
+            <code source="../FSI.DeviceSDK/Examples/ExampleCode.cs" region="IDigitalInputDevice Example" lang="C#" title="IDigitalInputDevice ReadDigitalInput Example" />
+            </example>
+        </member>
+        <member name="T:FSI.DeviceSDK.MOXA.IMoxaIOE1KDevice">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:FSI.DeviceSDK.MOXA.MoxaIOE1kDeviceFactory">
+            <summary>
+            A Device factory specifically for finding and creating Moxa ioLogic E1xxx units.
+            </summary>
+        </member>
+        <member name="F:FSI.DeviceSDK.MOXA.MoxaIOE1kDeviceFactory.m_Supervisor">
+            <summary>
+            The lower level AdamSupervisor used to find ADAM devices
+            </summary>
+        </member>
+        <member name="P:FSI.DeviceSDK.MOXA.MoxaIOE1kDeviceFactory.FactoryID">
+            <summary>
+            Gets the string identifier for this factory. This is used by DeviceFinder to determine which IDeviceFactory to use.
+            </summary>
+            <value>A string representing the factory's ID.</value>
+        </member>
+        <member name="M:FSI.DeviceSDK.MOXA.MoxaIOE1kDeviceFactory.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FSI.DeviceSDK.MOXA.MoxaIOE1kDeviceFactory"/> class.
+            </summary>
+        </member>
+        <member name="M:FSI.DeviceSDK.MOXA.MoxaIOE1kDeviceFactory.ScanForDevices(System.Int32)">
+            <summary>
+            Scans for all the devices that are of a type that this factory knows about.
+            </summary>
+            <param name="timeout_ms">The maximum amount of time in milliseconds to spend on the search.</param>
+            <returns>An IList of IGeneralDevices</returns>
+        </member>
+        <member name="T:FSI.DeviceSDK.Output.ITextOutputDevice">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:FSI.DeviceSDK.Output.IAnalogOutputDevice">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:FSI.DeviceSDK.Output.IDigitalOutputDevice">
+            <summary>
+            Represents a device that has digital outputs
+            </summary>
+            <seealso cref="T:FSI.DeviceSDK.IGeneralDevice"/>
+        </member>
+        <member name="E:FSI.DeviceSDK.Output.IDigitalOutputDevice.DigitalOutputChangedEvent">
+            <summary>
+            Occurs when a digital output on the device has changed.
+            </summary>
+            <remarks>
+            This event should occur even if the change is caused by a user action.
+            </remarks>
+            <seealso cref="T:FSI.DeviceSDK.DigitalChangedEventArgs"/>
+        </member>
+        <member name="P:FSI.DeviceSDK.Output.IDigitalOutputDevice.NumberOfDigitalOutputs">
+            <summary>
+            Gets the number of digital outputs on this device
+            </summary>
+            <value>An int with the number of digital outputs on the device.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Output.IDigitalOutputDevice.CanSetDigitalOutput">
+            <summary>
+            Gets whether this device supports setting the state of its digital outputs.
+            </summary>
+            <value>A bool representing the ability to be set outputs.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Output.IDigitalOutputDevice.CanCheckDigitalOutput">
+            <summary>
+            Gets whether this device supports reading the state of its digital outputs.
+            </summary>
+            <value>A bool representing the ability to be read outputs.</value>
+        </member>
+        <member name="M:FSI.DeviceSDK.Output.IDigitalOutputDevice.CheckDigitalOutput(System.Int32)">
+            <summary>
+            Returns the status of the digital output at the specified 0-based index.
+            </summary>
+            <param name="outputIndex">A 0-based index of the output to check.</param>
+            <returns>A boolean with the current status of the digital output.</returns>
+        </member>
+        <member name="M:FSI.DeviceSDK.Output.IDigitalOutputDevice.SetDigitalOutput(System.Int32,System.Boolean)">
+            <summary>
+            Sets the status of the digital output at the specified 0-based index.
+            </summary>
+            <param name="outputIndex">A 0-based index of the output to set.</param>
+            <param name="newValue">The value to set the output to.</param>
+        </member>
+        <member name="T:FSI.DeviceSDK.Output.IRelayOutputDevice">
+            <summary>
+            Represents a device that has relays
+            </summary>
+            <example>
+                <code lang="C#" title="IRelayOutputDevice Example">
+                    <code source="../FSI.DeviceSDK/Examples/ExampleCode.cs" region="PrintRelayToConsole" lang="C#"/>
+                    <code source="../FSI.DeviceSDK/Examples/ExampleCode.cs" region="IRelayOutputDevice Example" lang="C#"/>
+                </code>
+            </example>
+            <seealso cref="T:FSI.DeviceSDK.IGeneralDevice"/>
+        </member>
+        <member name="E:FSI.DeviceSDK.Output.IRelayOutputDevice.RelayStatusChanged">
+            <summary>
+            Occurs when a relay on the device has changed.
+            </summary>
+            <remarks>
+            This event should occur even if the change is caused by a user action.
+            </remarks>
+            <seealso cref="T:FSI.DeviceSDK.Output.RelayStatusChangedEventArgs"/>
+        </member>
+        <member name="P:FSI.DeviceSDK.Output.IRelayOutputDevice.NumberOfRelays">
+            <summary>
+            Gets the number of relays on this device
+            </summary>
+            <value>An int with the number of relays on the device.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Output.IRelayOutputDevice.CanCheckRelay">
+            <summary>
+            Gets whether this device supports checking its relays.
+            </summary>
+            <value>A bool representing the ability to be check relays.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Output.IRelayOutputDevice.CanOpenRelay">
+            <summary>
+            Gets whether this device supports opening its relays.
+            </summary>
+            <value>A bool representing the ability to be open relays.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Output.IRelayOutputDevice.CanCloseRelay">
+            <summary>
+            Gets whether this device supports closing its relays.
+            </summary>
+            <value>A bool representing the ability to be close relays.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Output.IRelayOutputDevice.CanToggleRelay">
+            <summary>
+            Gets whether this device supports toggling its relays.
+            </summary>
+            <value>A bool representing the ability to be toggling relays.</value>
+        </member>
+        <member name="M:FSI.DeviceSDK.Output.IRelayOutputDevice.CheckRelay(System.Int32)">
+            <summary>
+            Returns the status of the relay at the specified 0-based index.
+            </summary>
+            <param name="relayIndex">A 0-based index of the relay to check.</param>
+            <returns>A RelayStatus with the current status of the relay.</returns>
+        </member>
+        <member name="M:FSI.DeviceSDK.Output.IRelayOutputDevice.CloseRelay(System.Int32)">
+            <summary>
+            Closes the relay at the specified 0-based index.
+            </summary>
+            <param name="relayIndex">A 0-based index of the relay to close.</param>
+        </member>
+        <member name="M:FSI.DeviceSDK.Output.IRelayOutputDevice.OpenRelay(System.Int32)">
+            <summary>
+            Opens the relay at the specified 0-based index.
+            </summary>
+            <param name="relayIndex">A 0-based index of the relay to open.</param>
+        </member>
+        <member name="M:FSI.DeviceSDK.Output.IRelayOutputDevice.ToggleRelay(System.Int32)">
+            <summary>
+            Toggles the relay at the specified 0-based index.
+            </summary>
+            <param name="relayIndex">A 0-based index of the relay to toggle.</param>
+        </member>
+        <member name="T:FSI.DeviceSDK.Output.RelayStatus">
+            <summary>
+            A Enumeration representing the status of relays.
+            </summary>
+        </member>
+        <member name="F:FSI.DeviceSDK.Output.RelayStatus.Open">
+            <summary>
+            A relay that is currently open.
+            </summary>
+        </member>
+        <member name="F:FSI.DeviceSDK.Output.RelayStatus.Close">
+            <summary>
+            A relay that is currently closed.
+            </summary>
+        </member>
+        <member name="T:FSI.DeviceSDK.Output.RelayStatusChangedEventArgs">
+            <summary>
+            Holds the values for when a relays status has changed
+            </summary>
+            <seealso cref="T:System.EventArgs"/>
+            <seealso cref="T:FSI.DeviceSDK.Output.IRelayOutputDevice"/>
+        </member>
+        <member name="P:FSI.DeviceSDK.Output.RelayStatusChangedEventArgs.Device">
+            <summary>
+            Gets the device whose relay has changed.
+            </summary>
+            <value>An <see cref="T:FSI.DeviceSDK.Output.IRelayOutputDevice"/> of the device whose relay changed.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Output.RelayStatusChangedEventArgs.RelayIndex">
+            <summary>
+            Gets the index in respect to the IRelayOutputDevice of relay that was changed.
+            </summary>
+            <value>An int for the index of the relay.</value>
+        </member>
+        <member name="P:FSI.DeviceSDK.Output.RelayStatusChangedEventArgs.Status">
+            <summary>
+            Gets the status of relay that has changed.
+            </summary>
+            <value>A <see cref="T:FSI.DeviceSDK.Output.RelayStatus"/> for the status of the relay.</value>
+        </member>
+        <member name="M:FSI.DeviceSDK.Output.RelayStatusChangedEventArgs.#ctor(FSI.DeviceSDK.Output.IRelayOutputDevice,FSI.DeviceSDK.Output.RelayStatus,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FSI.DeviceSDK.Output.RelayStatusChangedEventArgs"/> class.
+            </summary>
+            <param name="device">The device that has a change in its relay.</param>
+            <param name="status">The status of the relay.</param>
+            <param name="relayIndex">The index of the relay that changed.</param>
+        </member>
+        <member name="T:FSI.DeviceSDK.Services.DeviceFinder">
+            <summary>
+            DeviceFinder allows for the consolidating device factories.
+            </summary>
+            <remarks>
+            The DeviceFinder class should be used as a central place to scan for all of the various different kinds of devices.
+            Factories can be added using the <see cref="M:FSI.DeviceSDK.Services.DeviceFinder.RegisterFactory(FSI.DeviceSDK.Services.IDeviceFactory)"/> method. To use them simply call <see cref="M:FSI.DeviceSDK.Services.DeviceFinder.ScanForDevices(System.String,System.Int32)"/>.
+            </remarks>
+            <example>
+            This example shows how to register factories and how to search for devices.
+            <code source="../FSI.DeviceSDK/Examples/ExampleCode.cs" region="DeviceFinder Example" lang="C#" />
+            <code source="../Examples/DeviceSDKExamples/FSI.DeviceSDK.VBExamples/Examples/ExampleCodeVB.vb" region="DeviceFinder Example" lang="VB" />
+            </example>
+            <seealso cref="T:FSI.DeviceSDK.Services.IDeviceFactory"/>
+            <seealso cref="T:FSI.DeviceSDK.FiberDefenderDevice.FiberDefenderAPUDeviceFactory"/>
+        </member>
+        <member name="F:FSI.DeviceSDK.Services.DeviceFinder.m_DeviceFactories">
+            <summary>
+            A dictionary to hold changes to the registered device factories
+            </summary>
+            <seealso cref="T:FSI.DeviceSDK.Services.IDeviceFactory"/>
+        </member>
+        <member name="M:FSI.DeviceSDK.Services.DeviceFinder.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FSI.DeviceSDK.Services.DeviceFinder"/> class.
+            </summary>
+        </member>
+        <member name="M:FSI.DeviceSDK.Services.DeviceFinder.ScanForDevices(System.String,System.Int32)">
+            <summary>
+            Tells the specified Factory(s) to scan
+            </summary>
+            <param name="type">The Factory ID of the factory to scan. "all" will scan with all registered factories</param>
+            <param name="timeout_ms">The timeout value for factories to stop their scans</param>
+            <returns>A list of devices found</returns>
+            <example>
+            This example shows how to register factories and how to search for devices.
+            <code source="../FSI.DeviceSDK/Examples/ExampleCode.cs" region="DeviceFinder Example" lang="C#" />
+            <code source="../Examples/DeviceSDKExamples/FSI.DeviceSDK.VBExamples/Examples/ExampleCodeVB.vb" region="DeviceFinder Example" lang="VB" />
+            </example>
+        </member>
+        <member name="M:FSI.DeviceSDK.Services.DeviceFinder.GetFactory(System.String)">
+            <summary>
+            Gets the current factory that is registered under the specified type
+            </summary>
+            <param name="type">The Factory ID of the factory to search for</param>
+            <returns>The specified IDeviceFactory or null if it doesn't exist</returns>
+        </member>
+        <member name="M:FSI.DeviceSDK.Services.DeviceFinder.RegisterFactory(FSI.DeviceSDK.Services.IDeviceFactory)">
+            <summary>
+            Registers the passed in factory for scanning.
+            </summary>
+            <param name="factory">The IDeviceFactory to register</param>
+            <example>
+            This example shows how to register factories and how to search for devices.
+            <code source="../FSI.DeviceSDK/Examples/ExampleCode.cs" region="DeviceFinder Example" lang="C#" />
+            <code source="../Examples/DeviceSDKExamples/FSI.DeviceSDK.VBExamples/Examples/ExampleCodeVB.vb" region="DeviceFinder Example" lang="VB" />
+            </example>
+        </member>
+        <member name="T:FSI.DeviceSDK.Services.IDeviceFactory">
+            <summary>
+            Defines methods for factory classes that generate device objects
+            </summary>
+            <remarks>
+            A DeviceFactory should be defined for most devices so that client code doesn't need to worry about
+            how to find and create the device objects.
+            </remarks>
+            <example>
+            This example show how to use IDeviceFactorys to find devices.
+            <code source="../FSI.DeviceSDK/Examples/ExampleCode.cs" region="DeviceFactory ScanForDevice Example" lang="C#" title="IDeviceFactory Example" />
+            </example>
+            <seealso cref="T:FSI.DeviceSDK.Services.DeviceFinder"/>
+            <seealso cref="T:FSI.DeviceSDK.IGeneralDevice"/>
+        </member>
+        <member name="P:FSI.DeviceSDK.Services.IDeviceFactory.FactoryID">
+            <summary>
+            Gets the string identifier for this factory. This is used by DeviceFinder to determine which IDeviceFactory to use.
+            </summary>
+            <value>A string representing the factory's ID.</value>
+        </member>
+        <member name="M:FSI.DeviceSDK.Services.IDeviceFactory.ScanForDevices(System.Int32)">
+            <summary>
+            Scans for all the devices that are of a type that this factory knows about
+            </summary>
+            <param name="timeout_ms">The amount of time in milliseconds to spend on the search. Defaults to 5 seconds</param>
+            <returns>An IList of IGeneralDevices</returns>
+            <example>
+            This example show how to use IDeviceFactorys to find devices.
+            <code source="../FSI.DeviceSDK/Examples/ExampleCode.cs" region="DeviceFactory ScanForDevice Example" lang="C#" title="IDeviceFactory ScanForDevices Example" />
+            </example>
+        </member>
+        <member name="M:FSI.DeviceSDK.Services.IDeviceFactory.DeviceAt(System.Net.IPAddress,System.Int32)">
+            <summary>
+            Attempt to find the device at a specific IP
+            </summary>
+            <remarks>
+            This method will return null if it is unable to find the device. It will still return the object
+            found even if it is unable to connect to the specific device.
+            </remarks>
+            <param name="ipAddress">The <see cref="T:System.Net.IPAddress"/> of the device to connect to</param>
+            <param name="timeout_ms">The maximum amount of time in milliseconds verifying that the device exists. Defaults to 5 seconds</param>
+            <returns>The device with the specified IP. Null if unable to find device or if it times out.</returns>
+            <example>
+            This example show how to use IDeviceFactorys to get a device at a specific IP Address
+            <code source="../FSI.DeviceSDK/Examples/ExampleCode.cs" region="DeviceFactory DeviceAt Example" lang="C#" title="IDeviceFactory DeviceAt Example" />
+            </example>
+        </member>
+    </members>
+</doc>

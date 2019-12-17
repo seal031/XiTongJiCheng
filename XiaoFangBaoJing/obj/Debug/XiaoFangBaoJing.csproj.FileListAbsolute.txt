@@ -1,0 +1,52 @@
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\XiaoFangBaoJing.exe.config
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\XiaoFangBaoJing.exe
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\XiaoFangBaoJing.pdb
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\NModbus4.DLL
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\XiaoFangBaoJing\obj\Debug\XiaoFangBaoJing.Form1.resources
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\XiaoFangBaoJing\obj\Debug\XiaoFangBaoJing.Properties.Resources.resources
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\XiaoFangBaoJing\obj\Debug\XiaoFangBaoJing.csproj.GenerateResource.Cache
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\XiaoFangBaoJing\obj\Debug\XiaoFangBaoJing.exe
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\XiaoFangBaoJing\obj\Debug\XiaoFangBaoJing.pdb
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\XiaoFangBaoJing.exe.config
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\XiaoFangBaoJing.exe
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\XiaoFangBaoJing.pdb
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\NModbus4.DLL
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\obj\Debug\XiaoFangBaoJing.Form1.resources
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\obj\Debug\XiaoFangBaoJing.Properties.Resources.resources
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\obj\Debug\XiaoFangBaoJing.csproj.GenerateResource.Cache
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\obj\Debug\XiaoFangBaoJing.exe
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\obj\Debug\XiaoFangBaoJing.pdb
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\librdkafka\x86\librdkafka.dll
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\librdkafka\x86\librdkafkacpp.dll
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\librdkafka\x86\libzstd.dll
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\librdkafka\x86\msvcp120.dll
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\librdkafka\x86\msvcr120.dll
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\librdkafka\x86\zlib.dll
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\librdkafka\x64\librdkafka.dll
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\librdkafka\x64\librdkafkacpp.dll
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\librdkafka\x64\libzstd.dll
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\librdkafka\x64\msvcp120.dll
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\librdkafka\x64\msvcr120.dll
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\librdkafka\x64\zlib.dll
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\Confluent.Kafka.dll
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\System.Buffers.dll
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\System.Memory.dll
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\Confluent.Kafka.xml
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\System.Buffers.xml
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\System.Memory.xml
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\log4net.dll
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\log4net.xml
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\Common.Logging.Core.dll
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\Common.Logging.dll
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\Newtonsoft.Json.dll
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\Quartz.dll
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\Common.Logging.pdb
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\Common.Logging.xml
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\Common.Logging.Core.pdb
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\Common.Logging.Core.xml
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\Newtonsoft.Json.xml
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\Quartz.pdb
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\Quartz.xml
+E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\obj\Debug\XiaoFangBaoJing.csprojResolveAssemblyReference.cache

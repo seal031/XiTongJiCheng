@@ -1,0 +1,80 @@
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\WeiJieBaoJing\bin\Debug\WeiJieBaoJing.exe.config
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\WeiJieBaoJing\obj\Debug\WeiJieBaoJing.Form1.resources
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\WeiJieBaoJing\obj\Debug\WeiJieBaoJing.Properties.Resources.resources
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\WeiJieBaoJing\obj\Debug\WeiJieBaoJing.csproj.GenerateResource.Cache
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\WeiJieBaoJing\bin\Debug\WeiJieBaoJing.exe
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\WeiJieBaoJing\bin\Debug\WeiJieBaoJing.pdb
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\WeiJieBaoJing\bin\Debug\FSI.DeviceSDK.dll
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\WeiJieBaoJing\bin\Debug\Newtonsoft.Json.dll
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\WeiJieBaoJing\bin\Debug\FSI.DeviceSDK.xml
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\WeiJieBaoJing\bin\Debug\Newtonsoft.Json.xml
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\WeiJieBaoJing\obj\Debug\WeiJieBaoJing.exe
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\WeiJieBaoJing\obj\Debug\WeiJieBaoJing.pdb
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\WeiJieBaoJing\bin\Debug\librdkafka\x86\librdkafka.dll
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\WeiJieBaoJing\bin\Debug\librdkafka\x86\librdkafkacpp.dll
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\WeiJieBaoJing\bin\Debug\librdkafka\x86\libzstd.dll
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\WeiJieBaoJing\bin\Debug\librdkafka\x86\msvcp120.dll
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\WeiJieBaoJing\bin\Debug\librdkafka\x86\msvcr120.dll
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\WeiJieBaoJing\bin\Debug\librdkafka\x86\zlib.dll
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\WeiJieBaoJing\bin\Debug\librdkafka\x64\librdkafka.dll
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\WeiJieBaoJing\bin\Debug\librdkafka\x64\librdkafkacpp.dll
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\WeiJieBaoJing\bin\Debug\librdkafka\x64\libzstd.dll
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\WeiJieBaoJing\bin\Debug\librdkafka\x64\msvcp120.dll
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\WeiJieBaoJing\bin\Debug\librdkafka\x64\msvcr120.dll
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\WeiJieBaoJing\bin\Debug\librdkafka\x64\zlib.dll
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\WeiJieBaoJing\bin\Debug\Confluent.Kafka.dll
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\WeiJieBaoJing\bin\Debug\System.Buffers.dll
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\WeiJieBaoJing\bin\Debug\System.Memory.dll
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\WeiJieBaoJing\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\WeiJieBaoJing\bin\Debug\Confluent.Kafka.xml
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\WeiJieBaoJing\bin\Debug\System.Buffers.xml
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\WeiJieBaoJing\bin\Debug\System.Memory.xml
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\WeiJieBaoJing\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\WeiJieBaoJing\bin\Debug\FSIDeviceCommunicationLibrary.dll
+E:\Users\Administrator\Documents\Visual Studio 2015\Projects\XiTongJiCheng\WeiJieBaoJing\bin\Debug\FSIUtilitiesLibrary.dll
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\librdkafka\x86\librdkafka.dll
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\librdkafka\x86\librdkafkacpp.dll
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\librdkafka\x86\libzstd.dll
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\librdkafka\x86\msvcp120.dll
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\librdkafka\x86\msvcr120.dll
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\librdkafka\x86\zlib.dll
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\librdkafka\x64\librdkafka.dll
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\librdkafka\x64\librdkafkacpp.dll
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\librdkafka\x64\libzstd.dll
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\librdkafka\x64\msvcp120.dll
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\librdkafka\x64\msvcr120.dll
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\librdkafka\x64\zlib.dll
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\WeiJieBaoJing.exe.config
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\WeiJieBaoJing.exe
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\WeiJieBaoJing.pdb
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\Common.Logging.Core.dll
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\Common.Logging.dll
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\Confluent.Kafka.dll
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\FSI.DeviceSDK.dll
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\FSIDeviceCommunicationLibrary.dll
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\FSIUtilitiesLibrary.dll
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\Newtonsoft.Json.dll
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\System.Buffers.dll
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\System.Memory.dll
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\Common.Logging.pdb
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\Common.Logging.xml
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\Common.Logging.Core.pdb
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\Common.Logging.Core.xml
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\Confluent.Kafka.xml
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\FSI.DeviceSDK.xml
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\Newtonsoft.Json.xml
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\System.Buffers.xml
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\System.Memory.xml
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\obj\Debug\WeiJieBaoJing.Form1.resources
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\obj\Debug\WeiJieBaoJing.Properties.Resources.resources
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\obj\Debug\WeiJieBaoJing.csproj.GenerateResource.Cache
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\obj\Debug\WeiJieBaoJing.exe
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\obj\Debug\WeiJieBaoJing.pdb
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\log4net.dll
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\log4net.xml
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\zh-Hans\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\log4net.config
+E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\obj\Debug\WeiJieBaoJing.csprojResolveAssemblyReference.cache

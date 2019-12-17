@@ -1,0 +1,10 @@
+E:\GitHubProject\XiTongJiCheng\JiDianQiKongZhi\bin\Debug\JiDianQiKongZhi.exe.config
+E:\GitHubProject\XiTongJiCheng\JiDianQiKongZhi\bin\Debug\JiDianQiKongZhi.exe
+E:\GitHubProject\XiTongJiCheng\JiDianQiKongZhi\bin\Debug\JiDianQiKongZhi.pdb
+E:\GitHubProject\XiTongJiCheng\JiDianQiKongZhi\bin\Debug\NModbus4.DLL
+E:\GitHubProject\XiTongJiCheng\JiDianQiKongZhi\obj\Debug\JiDianQiKongZhi.csprojResolveAssemblyReference.cache
+E:\GitHubProject\XiTongJiCheng\JiDianQiKongZhi\obj\Debug\JiDianQiKongZhi.Form1.resources
+E:\GitHubProject\XiTongJiCheng\JiDianQiKongZhi\obj\Debug\JiDianQiKongZhi.Properties.Resources.resources
+E:\GitHubProject\XiTongJiCheng\JiDianQiKongZhi\obj\Debug\JiDianQiKongZhi.csproj.GenerateResource.Cache
+E:\GitHubProject\XiTongJiCheng\JiDianQiKongZhi\obj\Debug\JiDianQiKongZhi.exe
+E:\GitHubProject\XiTongJiCheng\JiDianQiKongZhi\obj\Debug\JiDianQiKongZhi.pdb

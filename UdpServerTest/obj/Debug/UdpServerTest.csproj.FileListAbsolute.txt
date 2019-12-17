@@ -1,0 +1,12 @@
+E:\GitHubProject\XiTongJiCheng\UdpServerTest\bin\Debug\UdpServerTest.exe.config
+E:\GitHubProject\XiTongJiCheng\UdpServerTest\bin\Debug\UdpServerTest.exe
+E:\GitHubProject\XiTongJiCheng\UdpServerTest\bin\Debug\UdpServerTest.pdb
+E:\GitHubProject\XiTongJiCheng\UdpServerTest\obj\Debug\UdpServerTest.Form1.resources
+E:\GitHubProject\XiTongJiCheng\UdpServerTest\obj\Debug\UdpServerTest.Properties.Resources.resources
+E:\GitHubProject\XiTongJiCheng\UdpServerTest\obj\Debug\UdpServerTest.csproj.GenerateResource.Cache
+E:\GitHubProject\XiTongJiCheng\UdpServerTest\obj\Debug\UdpServerTest.exe
+E:\GitHubProject\XiTongJiCheng\UdpServerTest\obj\Debug\UdpServerTest.pdb
+E:\GitHubProject\XiTongJiCheng\UdpServerTest\bin\Debug\LiteNetLib.dll
+E:\GitHubProject\XiTongJiCheng\UdpServerTest\bin\Debug\LiteNetLib.pdb
+E:\GitHubProject\XiTongJiCheng\UdpServerTest\bin\Debug\LiteNetLib.xml
+E:\GitHubProject\XiTongJiCheng\UdpServerTest\obj\Debug\UdpServerTest.csprojResolveAssemblyReference.cache

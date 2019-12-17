@@ -1,0 +1,6 @@
+E:\GitHubProject\XiTongJiCheng\HwMenJin\bin\Release\门禁数据接入程序.exe.config
+E:\GitHubProject\XiTongJiCheng\HwMenJin\obj\Release\Interop.SMSDKPWEventInfo.dll
+E:\GitHubProject\XiTongJiCheng\HwMenJin\obj\Release\Interop.SMSDKPWReaderControl.dll
+E:\GitHubProject\XiTongJiCheng\HwMenJin\obj\Release\AxInterop.SMSDKPWEventInfo.dll
+E:\GitHubProject\XiTongJiCheng\HwMenJin\obj\Release\AxInterop.SMSDKPWReaderControl.dll
+E:\GitHubProject\XiTongJiCheng\HwMenJin\obj\Release\HwMenJin.csproj.ResolveComReference.cache

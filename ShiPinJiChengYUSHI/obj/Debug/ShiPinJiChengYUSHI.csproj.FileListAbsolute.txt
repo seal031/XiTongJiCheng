@@ -1,0 +1,10 @@
+E:\GitHubProject\XiTongJiCheng\ShiPinJiChengYUSHI\bin\Debug\ShiPinJiChengYUSHI.exe.config
+E:\GitHubProject\XiTongJiCheng\ShiPinJiChengYUSHI\bin\Debug\ShiPinJiChengYUSHI.exe
+E:\GitHubProject\XiTongJiCheng\ShiPinJiChengYUSHI\bin\Debug\ShiPinJiChengYUSHI.pdb
+E:\GitHubProject\XiTongJiCheng\ShiPinJiChengYUSHI\obj\Debug\ShiPinJiChengYUSHI.csprojResolveAssemblyReference.cache
+E:\GitHubProject\XiTongJiCheng\ShiPinJiChengYUSHI\obj\Debug\ShiPinJiChengYUSHI.Form1.resources
+E:\GitHubProject\XiTongJiCheng\ShiPinJiChengYUSHI\obj\Debug\ShiPinJiChengYUSHI.Properties.Resources.resources
+E:\GitHubProject\XiTongJiCheng\ShiPinJiChengYUSHI\obj\Debug\ShiPinJiChengYUSHI.videoPanel.resources
+E:\GitHubProject\XiTongJiCheng\ShiPinJiChengYUSHI\obj\Debug\ShiPinJiChengYUSHI.csproj.GenerateResource.Cache
+E:\GitHubProject\XiTongJiCheng\ShiPinJiChengYUSHI\obj\Debug\ShiPinJiChengYUSHI.exe
+E:\GitHubProject\XiTongJiCheng\ShiPinJiChengYUSHI\obj\Debug\ShiPinJiChengYUSHI.pdb

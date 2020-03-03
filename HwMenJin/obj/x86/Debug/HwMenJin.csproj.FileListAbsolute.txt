@@ -1,4 +1,3 @@
-E:\GitHubProject\XiTongJiCheng\HwMenJin\bin\x86\Debug\HwMenJin.exe.config
 E:\GitHubProject\XiTongJiCheng\HwMenJin\obj\x86\Debug\Interop.SMSDKPWEventInfo.dll
 E:\GitHubProject\XiTongJiCheng\HwMenJin\obj\x86\Debug\Interop.SMSDKPWReaderControl.dll
 E:\GitHubProject\XiTongJiCheng\HwMenJin\obj\x86\Debug\AxInterop.SMSDKPWEventInfo.dll
@@ -17,8 +16,6 @@ E:\GitHubProject\XiTongJiCheng\HwMenJin\bin\x86\Debug\librdkafka\x64\msvcp120.dl
 E:\GitHubProject\XiTongJiCheng\HwMenJin\bin\x86\Debug\librdkafka\x64\msvcr120.dll
 E:\GitHubProject\XiTongJiCheng\HwMenJin\bin\x86\Debug\librdkafka\x64\zlib.dll
 E:\GitHubProject\XiTongJiCheng\HwMenJin\bin\x86\Debug\log4net.config
-E:\GitHubProject\XiTongJiCheng\HwMenJin\bin\x86\Debug\HwMenJin.exe
-E:\GitHubProject\XiTongJiCheng\HwMenJin\bin\x86\Debug\HwMenJin.pdb
 E:\GitHubProject\XiTongJiCheng\HwMenJin\bin\x86\Debug\Confluent.Kafka.dll
 E:\GitHubProject\XiTongJiCheng\HwMenJin\bin\x86\Debug\log4net.dll
 E:\GitHubProject\XiTongJiCheng\HwMenJin\bin\x86\Debug\Newtonsoft.Json.dll
@@ -38,5 +35,18 @@ E:\GitHubProject\XiTongJiCheng\HwMenJin\bin\x86\Debug\AxInterop.SMSDKPWReaderCon
 E:\GitHubProject\XiTongJiCheng\HwMenJin\obj\x86\Debug\HwMenJin.Form1.resources
 E:\GitHubProject\XiTongJiCheng\HwMenJin\obj\x86\Debug\HwMenJin.Properties.Resources.resources
 E:\GitHubProject\XiTongJiCheng\HwMenJin\obj\x86\Debug\HwMenJin.csproj.GenerateResource.Cache
-E:\GitHubProject\XiTongJiCheng\HwMenJin\obj\x86\Debug\HwMenJin.exe
-E:\GitHubProject\XiTongJiCheng\HwMenJin\obj\x86\Debug\HwMenJin.pdb
+E:\GitHubProject\XiTongJiCheng\HwMenJin\bin\x86\Debug\门禁数据接入程序.exe.config
+E:\GitHubProject\XiTongJiCheng\HwMenJin\bin\x86\Debug\门禁数据接入程序.exe
+E:\GitHubProject\XiTongJiCheng\HwMenJin\bin\x86\Debug\门禁数据接入程序.pdb
+E:\GitHubProject\XiTongJiCheng\HwMenJin\bin\x86\Debug\Common.Logging.Core.dll
+E:\GitHubProject\XiTongJiCheng\HwMenJin\bin\x86\Debug\Common.Logging.dll
+E:\GitHubProject\XiTongJiCheng\HwMenJin\bin\x86\Debug\Quartz.dll
+E:\GitHubProject\XiTongJiCheng\HwMenJin\bin\x86\Debug\Common.Logging.pdb
+E:\GitHubProject\XiTongJiCheng\HwMenJin\bin\x86\Debug\Common.Logging.xml
+E:\GitHubProject\XiTongJiCheng\HwMenJin\bin\x86\Debug\Common.Logging.Core.pdb
+E:\GitHubProject\XiTongJiCheng\HwMenJin\bin\x86\Debug\Common.Logging.Core.xml
+E:\GitHubProject\XiTongJiCheng\HwMenJin\bin\x86\Debug\Quartz.pdb
+E:\GitHubProject\XiTongJiCheng\HwMenJin\bin\x86\Debug\Quartz.xml
+E:\GitHubProject\XiTongJiCheng\HwMenJin\obj\x86\Debug\门禁数据接入程序.exe
+E:\GitHubProject\XiTongJiCheng\HwMenJin\obj\x86\Debug\门禁数据接入程序.pdb
+E:\GitHubProject\XiTongJiCheng\HwMenJin\obj\x86\Debug\HwMenJin.csprojResolveAssemblyReference.cache

@@ -89,7 +89,6 @@ public class KafkaWorker
             //    e.Cancel = true; // prevent the process from terminating.
             //    cts.Cancel();
             //};
-
             try
             {
                 while (true)
@@ -98,20 +97,16 @@ public class KafkaWorker
                     {
                         var cr = consumerCommand.Consume(cts.Token);
                         OnGetMessage(cr.Value);
-                        //Console.WriteLine($"Consumed message '{cr.Value}' at: '{cr.TopicPartitionOffset}'.");
                     }
                     catch (ConsumeException e)
                     {
-                        FileWorker.PrintLog($"Error occured: {e.Error.Reason}");
-                        FileWorker.WriteLog($"Error occured: {e.Error.Reason}");
+                        FileWorker.LogHelper.WriteLog($"Error occured: {e.Error.Reason}");
                     }
                 }
             }
             catch (OperationCanceledException e)
             {
-                // Ensure the consumer leaves the group cleanly and final offsets are committed.
-                FileWorker.PrintLog($"Error occured1: {e.Message}");
-                FileWorker.WriteLog($"Error occured1: {e.Message}");
+                FileWorker.LogHelper.WriteLog($"Error occured1: {e.Message}");
                 consumerCommand.Close();
             }
         }

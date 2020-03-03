@@ -2,12 +2,8 @@
 using Quartz.Impl;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace HwMenJin
@@ -16,8 +12,11 @@ namespace HwMenJin
     {
         IScheduler scheduler;
         IJobDetail job;
+
+        Thread threadGetMessage;
         string connectStr = "";
         Dictionary<string,string> eventDic = new Dictionary<string,string>();
+
 
         public Form1()
         {
@@ -26,24 +25,47 @@ namespace HwMenJin
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //string kafka = "{\"body\": {\"equId\": \"0028accc-a677-4e70-a148-b62ac227454e\"},\"meta\": { \"eventType\": \"OPEN_DOOR\",\"sendTime\": \"20200212150205\",\"sender\": \"habs\",\"receiver\": \"\",\"msgType\": \"COMMAND\",\"forwardTime\": \"\",\"recvSequence\": \"\",\"recvTime\": \"\",\"sequence\": \"4b77a03333894d6388add7967a0490f9\"}}";
+            //KafkaWorker_OnGetMessage(kafka);
             if (loadLocalConfig() == false)
             {
                 return;
             }
             connectToServer();
             KafkaWorker.OnGetMessage += KafkaWorker_OnGetMessage;
+            threadGetMessage= new Thread(new ThreadStart(KafkaWorker.startGetMessage));
+        }
+
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            threadGetMessage.Start();
         }
 
         private void KafkaWorker_OnGetMessage(string message)
         {
+            FileWorker.LogHelper.WriteLog("收到kafka消息" + message);
             string doorName = pickDoorNameFormMessage(message);
-            unlockDoor(doorName);
+            if (doorName != string.Empty)
+            {
+                unlockDoor(doorName);
+            }
+            else
+            {
+                FileWorker.LogHelper.WriteLog("门id为空，无法执行开门操作");
+            }
         }
 
         private string pickDoorNameFormMessage(string message)
         {
-
-            return "";
+            CommandEntity command = CommandEntity.fromJson(message);
+            if (command != null)
+            {
+                return command.body.equId;
+            }
+            else
+            {
+                return string.Empty;
+            }
         }
 
         private bool loadLocalConfig()

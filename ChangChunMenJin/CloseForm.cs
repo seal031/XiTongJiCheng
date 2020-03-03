@@ -24,7 +24,7 @@ namespace ChangChunMenJin
             {
                 canClose = true;
                 this.Close();
-                Application.Exit();
+                System.Environment.Exit(0);
             }
             else
             {

@@ -24,7 +24,7 @@ public class AlarmEntity
         public Head()
         {
             this.eventType = "ACS_ALARM";
-            this.sendTime = DateTime.Now.ToString("yyyyMMddhhmmss");
+            this.sendTime = DateTime.Now.ToString("yyyyMMddHHmmss");
             this.msgType = "ALARM";
             this.sequence = Guid.NewGuid().ToString("N");
         }
@@ -96,7 +96,7 @@ public class SwipeEntity
         public Head()
         {
             this.eventType = "ACS_RECORD_CARD";
-            this.sendTime = DateTime.Now.ToString("yyyyMMddhhmmss");
+            this.sendTime = DateTime.Now.ToString("yyyyMMddHHmmss");
             this.msgType = "RECORD_CARD";
             this.sequence = Guid.NewGuid().ToString("N");
         }
@@ -135,6 +135,77 @@ public class SwipeEntity
 
     public string toJson()
     { 
+        return JsonConvert.SerializeObject(this);
+    }
+}
+
+public class PersonEntity
+{
+    public PersonEntity()
+    {
+        meta = new Head();
+        body = new Body();
+    }
+
+    public Head meta { get; set; }
+    public class Head
+    {
+        public Head()
+        {
+            this.eventType = "FIRST_CARD_DATA_UE";
+            this.sendTime = DateTime.Now.ToString("yyyyMMddHHmmss");
+            this.msgType = "CARD_DATA";
+            this.sequence = Guid.NewGuid().ToString("N");
+        }
+        //public string sender { get; set; }
+        public string msgType { get; set; }
+        public string eventType { get; set; }
+        //public string receiver { get; set; }
+        public string sequence { get; set; }
+        //public string recvSequence { get; set; }
+        public string sendTime { get; set; }
+        //public string recvTime { get; set; }
+    }
+    public Body body { get; set; }
+
+    public class Body
+    {
+        public Body()
+        {
+            
+        }
+        /// <summary>
+        /// 部门编号
+        /// </summary>
+        public string stcStaffCode { get; set; }//
+        /// <summary>
+        /// 中文姓名
+        /// </summary>
+        public string stcStaffName { get; set; }//
+        /// <summary>
+        /// 证件号
+        /// </summary>
+        public string stcIdNumber { get; set; }//
+        /// <summary>
+        /// 通行区域
+        /// </summary>
+        public string stcArea { get; set; }//
+        /// <summary>
+        /// 通行证号
+        /// </summary>
+        public string stcStaffCardId { get; set; }//
+        /// <summary>
+        /// 卡号
+        /// </summary>
+        public string stcStaffIcId { get; set; }//
+        /// <summary>
+        /// 照片地址
+        /// </summary>
+        public string stcPhotoPath { get; set; }
+    }
+
+    public string toJson()
+    {
         return JsonConvert.SerializeObject(this);
     }
 }

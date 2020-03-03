@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
-namespace WhGuanlang
-{
-    /// <summary>
-    /// 发送至kafka的消息
-    /// </summary>
-    public class AlarmEntity
+/// <summary>
+/// 发送至kafka的消息
+/// </summary>
+public class AlarmEntity
     {
         public AlarmEntity()
         {
@@ -65,5 +58,31 @@ namespace WhGuanlang
         {
             return JsonConvert.SerializeObject(this);
         }
+    }
+
+public class CommandEntity
+{
+    public Head meta { get; set; }
+    public class Head
+    {
+        public string sender { get; set; }
+        public string msgType { get; set; }
+        public string eventType { get; set; }
+        public string receiver { get; set; }
+        public string sequence { get; set; }
+        public string recvSequence { get; set; }
+        public string sendTime { get; set; }
+        public string recvTime { get; set; }
+    }
+    public Body body { get; set; }
+
+    public class Body
+    {
+        public string equId { get; set; }
+    }
+
+    public static CommandEntity fromJson(string json)
+    {
+        return JsonConvert.DeserializeObject<CommandEntity>(json);
     }
 }

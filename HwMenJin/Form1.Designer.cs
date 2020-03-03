@@ -64,6 +64,7 @@
             this.Name = "Form1";
             this.Text = "门禁数据接入程序";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Shown += new System.EventHandler(this.Form1_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.axHSCEventSDK1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.axHSCReaderSDK1)).EndInit();
             this.ResumeLayout(false);

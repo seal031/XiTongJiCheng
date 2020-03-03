@@ -27,6 +27,7 @@ namespace ChangChunMenJin
         string localIp = string.Empty;
         string port = string.Empty;
         Thread thread;
+        Thread threadPerson;
         DateTime currentHearTime;
         IScheduler scheduler;
         IJobDetail job;
@@ -39,7 +40,6 @@ namespace ChangChunMenJin
             //string a = "/ lgnr = 92852 / cats = !0000000000000000040000000000000000000000000000000000000000000000 / ltim = 20191212173623W / levl = 0 / msid = 16777985 / ctim = 20191212173624W / sndr = \"MAC-1\" / macdevid = \"FF00003300000003\" / Devices.id = \"00135A4897EA11D2\" / MSGNR = 16777985 / MSGTEXT = \"access\" / Cards.cardid = \"00135A5BF00244D7\" / Areas.areaid = \"FF00000900000002\" / DeviceGroups.devgroupid = \"00135A4897E9A7F1\" 1 / Cards.cardid = \"00135A5BF00244D7\" / Cards.cardno = \"000677701472\" / Persons.persid = \"00135A5BA84741CE\" / Persons.lastname = \"测试\" / Persons.firstname = ! / Persons.dateofbirth = ! / Persons.persno = ! / Persons.persclass = 69 / Persons.department = ! / Companies.companyid = ! / Companies.companyno = ! / OsDaten.datevaliduntil = ! / Devices.id = \"00135A4897EA11D2\" / Devices.id02 = ! / Devices.locator = \"$/AC\" / Devices.type = \"WIE1\" / Devices.displaytext = \"WIE1 读卡器-1\" / DeviceGroups.devgroupid = \"00135A4897E9A7F1\" / DeviceGroups.displaytext = \"123\" / Areas.name = \"之外\" / host = \"BISSERVER\"";
             //SwipeEntity swipe = tcpToSwipe(a);
             //string s = swipe.toJson();
-
             //string b = "/ lgnr = 98284 / cats = !0000000000000000040000000000000000000000000000000000200000000000 / ltim = 20191213103301W / levl = 0 / msid = 16778245 / ctim = 20191213103301W / sndr = \"MAC-1\" / macdevid = \"FF00003300000003\" / Devices.id = \"00135A4897EA11D2\" / MSGNR = 16778245 / MSGTEXT = \"NOT authorized, card is unknown\" / CODENR = !000000006e255cc5 / DeviceGroups.devgroupid = \"00135A4897E9A7F1\" 1 / Devices.id = \"00135A4897EA11D2\" / Devices.id02 = ! / Devices.locator = \"$/AC\" / Devices.type = \"WIE1\" / Devices.displaytext = \"WIE1 读卡器-1\" / DeviceGroups.devgroupid = \"00135A4897E9A7F1\" / DeviceGroups.displaytext = \"123\" / host = \"BISSERVER\"ALIVE = \"20191213103331W\"";
             //AlarmEntity alarm = tcpToAlarm(b);
             //string ss = alarm.toJson();
@@ -54,10 +54,13 @@ namespace ChangChunMenJin
             localIp = ConfigWorker.GetConfigValue("localIp");
             port = ConfigWorker.GetConfigValue("port");
             thread = new Thread(new ThreadStart(startListener));
+            threadPerson = new Thread(new ThreadStart(KafkaWorker.startGetMessage));
+            KafkaWorker.OnGetMessage += KafkaWorker_OnGetMessage;
         }
 
         private void Form1_Shown(object sender, EventArgs e)
         {
+            threadPerson.Start();
             if (login())
             {
                 //startListener();
@@ -213,7 +216,7 @@ namespace ChangChunMenJin
                 {
                     SwipeEntity swipte = tcpToSwipe(tcpMessage);
                     string message = swipte.toJson();
-                    KafkaWorker.sendAlarmMessage(message);
+                    KafkaWorker.sendSwipeMessage(message);
                 }
                 else //报警信息发送至报警队列
                 {
@@ -389,7 +392,7 @@ namespace ChangChunMenJin
             return swipte;
         }
 
-
+        #region 防误关
         private void Form1_SizeChanged(object sender, EventArgs e)
         {
             //判断是否选择的是最小化按钮
@@ -434,6 +437,24 @@ namespace ChangChunMenJin
                 notifyIcon1.Visible = false;
             }
         }
+        #endregion
+        
 
+        /// <summary>
+        /// 命令接收、执行
+        /// </summary>
+        /// <param name="message"></param>
+        private void KafkaWorker_OnGetMessage(string message)
+        {
+            if (message.Contains("FIRST_CARD_DATA_REQ"))
+            {
+                var persons = SqlServerHelper.getPersons();
+                foreach (PersonEntity person in persons)
+                {
+                    string personMsg = person.toJson().Replace(@"\\",@"\") ;
+                    KafkaWorker.sendPersonMessage(personMsg);
+                }
+            }
+        }
     }
 }

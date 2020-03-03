@@ -1,5 +1,4 @@
 ﻿using AxIPModuleLib;
-using IPMALARM;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -12,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace IPMALARM
+namespace WhShouDongBaoJing
 {
     public partial class Form1 : Form
     {
@@ -178,11 +177,11 @@ namespace IPMALARM
                     e.strCode.ToString(),
                     "\r\n"
                 });
+                FileWorker.LogHelper.WriteLog(text.Replace("\r\n", " "));
                 AlarmEntity alarmEntity = AlarmParseTool.parseAlarm(e);
                 string msg = alarmEntity.toJson();
-                Debug.WriteLine(msg);
-                //KafkaWorker.sendAlarmMessage(msg);
-                FileWorker.LogHelper.WriteLog(text.Replace("\r\n", " "));
+                //Debug.WriteLine(msg);
+                KafkaWorker.sendAlarmMessage(msg);
             }
             catch (Exception ex)
             {

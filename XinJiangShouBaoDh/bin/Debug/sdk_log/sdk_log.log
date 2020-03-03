@@ -1,0 +1,6 @@
+Begin Time:2020-01-09 15:35:39.380
+[2020-01-09 15:35:39.381][P:26580/T:4948][dhnetsdk.cpp:116][Info][0] Leave CLIENT_InitEx.
+[2020-01-09 15:35:39.381][P:26580/T:4948][dhnetsdk.cpp:148][Info][0] Enter CLIENT_SetAutoReconnect:[cbAutoConnect=04C84456, dwUser=00000000].
+[2020-01-09 15:35:39.381][P:26580/T:4948][dhnetsdk.cpp:150][Info][0] Leave CLIENT_SetAutoReconnect.
+[2020-01-09 15:35:39.382][P:26580/T:4948][dhnetsdk.cpp:223][Info][0] Enter CLIENT_SetDVRMessCallBackEx1: [cbMessage=04C844A6, dwUser=00000000].
+[2020-01-09 15:35:39.382][P:26580/T:4948][dhnetsdk.cpp:225][Info][0] Leave CLIENT_SetDVRMessCallBackEx1.

@@ -28,7 +28,7 @@
         "Entry"
         {
         "MsmKey" = "8:_079034C0E5FBCFA68447AF4478D13045"
-        "OwnerKey" = "8:_32C9CB65393845C783F51505F253E6F8"
+        "OwnerKey" = "8:_323C4C95F34D4147889E1BCBA8704BF5"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -99,7 +99,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_32C9CB65393845C783F51505F253E6F8"
+        "MsmKey" = "8:_323C4C95F34D4147889E1BCBA8704BF5"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -190,7 +190,7 @@
         "Entry"
         {
         "MsmKey" = "8:_72C4ABE9A70855A76BC7D04F43D52657"
-        "OwnerKey" = "8:_32C9CB65393845C783F51505F253E6F8"
+        "OwnerKey" = "8:_323C4C95F34D4147889E1BCBA8704BF5"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -238,7 +238,7 @@
         "Entry"
         {
         "MsmKey" = "8:_9C9801579EF1D45195C8315E75A9231C"
-        "OwnerKey" = "8:_32C9CB65393845C783F51505F253E6F8"
+        "OwnerKey" = "8:_323C4C95F34D4147889E1BCBA8704BF5"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -262,7 +262,7 @@
         "Entry"
         {
         "MsmKey" = "8:_B0310DD9E7C6333E44FDD8C482765E42"
-        "OwnerKey" = "8:_32C9CB65393845C783F51505F253E6F8"
+        "OwnerKey" = "8:_323C4C95F34D4147889E1BCBA8704BF5"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -370,7 +370,7 @@
         "Entry"
         {
         "MsmKey" = "8:_FBDF4F374AC708E72FF624972097B57E"
-        "OwnerKey" = "8:_32C9CB65393845C783F51505F253E6F8"
+        "OwnerKey" = "8:_323C4C95F34D4147889E1BCBA8704BF5"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -382,7 +382,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_32C9CB65393845C783F51505F253E6F8"
+        "OwnerKey" = "8:_323C4C95F34D4147889E1BCBA8704BF5"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -499,6 +499,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.5 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.5"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -515,6 +531,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -879,14 +903,14 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_32C9CB65393845C783F51505F253E6F8"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_323C4C95F34D4147889E1BCBA8704BF5"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:ChangChunMenJin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_32C9CB65393845C783F51505F253E6F8"
+                    "_323C4C95F34D4147889E1BCBA8704BF5"
                     {
                     "Name" = "8:ChangChunMenJin.exe"
                     "Attributes" = "3:512"
@@ -1976,7 +2000,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:长春机场门禁数据接入安装程序"
         "ProductCode" = "8:{7AD3147C-1255-4F5C-B74C-BE967D78F91A}"
-        "PackageCode" = "8:{9387E875-A2B3-4A01-8B45-395733CB93DC}"
+        "PackageCode" = "8:{715BF38A-F46A-45AF-8438-C4D8D18E6E20}"
         "UpgradeCode" = "8:{519E52AD-7FEE-43AF-82B2-08A3F4DA3E2E}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -2104,7 +2128,7 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_32C9CB65393845C783F51505F253E6F8"
+            "Target" = "8:_323C4C95F34D4147889E1BCBA8704BF5"
             "Folder" = "8:_1E5B6CB6C06E4DA5A0CD249865039A0B"
             "WorkingFolder" = "8:_3635FF1CD64B47A6B034069314D96158"
             "Icon" = "8:"

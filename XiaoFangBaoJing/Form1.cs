@@ -1,28 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Modbus.Device;
-using System.Net;
-using System.Net.Sockets;
-using Quartz;
-using Quartz.Impl;
-using System.Threading;
-
-namespace XiaoFangBaoJing
+﻿namespace XiaoFangBaoJing
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Data;
+    using System.Drawing;
+    using System.Linq;
+    using System.Net;
+    using System.Net.Sockets;
+    using System.Text;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using System.Windows.Forms;
+    using Modbus.Device;
+    using Quartz;
+    using Quartz.Impl;
+
     public partial class Form1 : Form
     {
-        IScheduler scheduler;
-        IJobDetail job;
-        List<Device> deviceList = new List<Device>();
+        private IScheduler scheduler;
+        private IJobDetail job;
+        private List<Device> deviceList = new List<Device>();
 
-        string ip;
+        private string ip;
         byte slaveAddress;
         ushort startAddress;
         ushort numInputs;
@@ -35,7 +35,7 @@ namespace XiaoFangBaoJing
             InitializeComponent();
             //var a = MathTransfer.Ten2Tow(720);
             functionType = ConfigWorker.GetConfigValue("functionType");
-            scanTimeSpan = int.Parse(ConfigWorker.GetConfigValue("scanTimeSpan"));
+            this.scanTimeSpan = int.Parse(ConfigWorker.GetConfigValue("scanTimeSpan"));
             var lines = FileWorker.readTxt(System.AppDomain.CurrentDomain.BaseDirectory.ToString() + "device.txt");
             foreach (string line in lines)
             {
@@ -47,6 +47,7 @@ namespace XiaoFangBaoJing
                 }
             }
         }
+
         private void startJob()
         {
             if (scheduler == null && job == null)

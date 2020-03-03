@@ -1,4 +1,4 @@
-﻿namespace IPMALARM
+﻿namespace WhShouDongBaoJing
 {
     partial class Form1
     {

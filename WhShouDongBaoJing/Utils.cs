@@ -1,5 +1,6 @@
 ﻿using AxIPModuleLib;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
@@ -98,6 +99,14 @@ public class AlarmParseTool
 {
     public static AlarmEntity parseAlarm(_ICooMonitorEvents_VistaCIDReportEvent alarmInfo)
     {
+    //  strMac： 设备的Mac地址；
+    //lPlayback：0为实时上报，1为回放；
+    //Acct：帐号；
+    //IsNewEvent：是否为新事件，0为恢复；
+    //CID：ContactID；
+    //SubSystemID：子系统编号；
+    //IsZone：strCode是否为防区号；1为防区号，0为用户号；
+    //strCode，防区号或者用户号；
         AlarmEntity alarmEntity = null;
         try
         {
@@ -118,7 +127,7 @@ public class AlarmParseTool
             alarmEntity.body.alarmTime = DateTime.Now.ToString("yyyyMMddHHmmss");
             alarmEntity.body.alarmLevelCode = "AL01";
             alarmEntity.body.alarmLevelName = "一级";
-            alarmEntity.body.alarmEquCode = "";
+            alarmEntity.body.alarmEquCode = alarmInfo.strMac;
         }
         catch (Exception ex)
         {

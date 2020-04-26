@@ -55,12 +55,13 @@ public class KafkaWorker
         FileWorker.WriteLog("正在向kafka发送device消息" + message);
         try
         {
-            if (producerDevice == null) { producerDevice = new ProducerBuilder<Null, string>(configDevice).Build(); }
+            if (producerDevice == null)
             {
-                //var dr = await producerDevice.ProduceAsync(deviceTopicName, new Message<Null, string> { Value = message });
-                producerDevice.Produce(deviceTopicName, new Message<Null, string> { Value = message }, handler);
-                producerAlarm.Flush(TimeSpan.FromSeconds(5));
+                producerDevice = new ProducerBuilder<Null, string>(configDevice).Build();
             }
+            //var dr = await producerDevice.ProduceAsync(deviceTopicName, new Message<Null, string> { Value = message });
+            producerDevice.Produce(deviceTopicName, new Message<Null, string> { Value = message }, handler);
+            producerDevice.Flush(TimeSpan.FromSeconds(5));
         }
         catch (Exception e)
         {

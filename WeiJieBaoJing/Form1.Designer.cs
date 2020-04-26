@@ -34,6 +34,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.btn_closeAllSetting = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // rtb
@@ -99,11 +100,23 @@
             this.button4.Visible = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // btn_closeAllSetting
+            // 
+            this.btn_closeAllSetting.Location = new System.Drawing.Point(1032, 613);
+            this.btn_closeAllSetting.Name = "btn_closeAllSetting";
+            this.btn_closeAllSetting.Size = new System.Drawing.Size(252, 48);
+            this.btn_closeAllSetting.TabIndex = 6;
+            this.btn_closeAllSetting.Text = "关闭所有防区声光报警";
+            this.btn_closeAllSetting.UseVisualStyleBackColor = true;
+            this.btn_closeAllSetting.Visible = false;
+            this.btn_closeAllSetting.Click += new System.EventHandler(this.btn_closeAllSetting_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1296, 673);
+            this.Controls.Add(this.btn_closeAllSetting);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button2);
@@ -115,6 +128,7 @@
             this.Text = "围界报警数据接入程序";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Shown += new System.EventHandler(this.Form1_Shown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -128,6 +142,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btn_closeAllSetting;
     }
 }
 

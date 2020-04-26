@@ -121,13 +121,19 @@ public class AlarmParseTool
             alarmEntity.meta.sequence = "";
             alarmEntity.body.alarmClassCode = "AC03";
             alarmEntity.body.alarmClassName = "手动报警事件";
-            alarmEntity.body.alarmTypeCode = "";
-            alarmEntity.body.alarmTypeName = "";
-            alarmEntity.body.alarmName = "";
-            alarmEntity.body.alarmTime = DateTime.Now.ToString("yyyyMMddHHmmss");
-            alarmEntity.body.alarmLevelCode = "AL01";
-            alarmEntity.body.alarmLevelName = "一级";
+            //alarmEntity.body.alarmTypeCode = "";
+            //alarmEntity.body.alarmTypeName = "";
+            //alarmEntity.body.alarmName = "";
+            //alarmEntity.body.alarmTime = DateTime.Now.ToString("yyyyMMddHHmmss");
+            //alarmEntity.body.alarmLevelCode = "AL01";
+            //alarmEntity.body.alarmLevelName = "一级";
             alarmEntity.body.alarmEquCode = alarmInfo.strMac;
+            alarmEntity.body.alarmName = "手动报警新事件";
+            alarmEntity.body.alarmNameCode = "AC0301";
+            alarmEntity.body.alarmStateCode = "AS01";
+            alarmEntity.body.alarmStateName = "未解除";
+            alarmEntity.body.airportIata = "WUH";
+            alarmEntity.body.airportName = "武汉";
         }
         catch (Exception ex)
         {

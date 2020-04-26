@@ -37,11 +37,11 @@ public class AlarmEntity
         public string alarmName { get; set; }
         public string alarmClassCode { get; set; }
         public string alarmClassName { get; set; }
-        public string alarmTypeCode { get; set; }
-        public string alarmTypeName { get; set; }
-        public string alarmLevelCode { get; set; }
-        public string alarmLevelName { get; set; }
-        public string alarmTime { get; set; }
+        //public string alarmTypeCode { get; set; }
+        //public string alarmTypeName { get; set; }
+        //public string alarmLevelCode { get; set; }
+        //public string alarmLevelName { get; set; }
+        //public string alarmTime { get; set; }
         //public string areaName { get; set; }
         //public string alarmAddress { get; set; }
         //public string alarmDescibe { get; set; }
@@ -57,7 +57,11 @@ public class AlarmEntity
         //public string gisZ { get; set; }
         //public string floorCode { get; set; }
         //public string floorName { get; set; }
-
+        public string alarmStateCode { get; set; }
+        public string alarmStateName { get; set; }
+        public string airportIata { get; set; }
+        public string airportName { get; set; }
+        public string alarmNameCode { get; set; }
     }
     public string toJson()
     {

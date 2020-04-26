@@ -35,7 +35,6 @@ E:\GitHubProject\XiTongJiCheng\HwMenJin\bin\Debug\AxInterop.SMSDKPWReaderControl
 E:\GitHubProject\XiTongJiCheng\HwMenJin\obj\Debug\HwMenJin.Form1.resources
 E:\GitHubProject\XiTongJiCheng\HwMenJin\obj\Debug\HwMenJin.Properties.Resources.resources
 E:\GitHubProject\XiTongJiCheng\HwMenJin\obj\Debug\HwMenJin.csproj.GenerateResource.Cache
-E:\GitHubProject\XiTongJiCheng\HwMenJin\obj\Debug\HwMenJin.csprojResolveAssemblyReference.cache
 E:\GitHubProject\XiTongJiCheng\HwMenJin\bin\Debug\门禁数据接入程序.exe.config
 E:\GitHubProject\XiTongJiCheng\HwMenJin\bin\Debug\门禁数据接入程序.exe
 E:\GitHubProject\XiTongJiCheng\HwMenJin\bin\Debug\门禁数据接入程序.pdb

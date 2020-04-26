@@ -1,4 +1,3 @@
-E:\GitHubProject\XiTongJiCheng\WhShouDongBaoJing\obj\Debug\WhShouDongBaoJing.csprojResolveAssemblyReference.cache
 E:\GitHubProject\XiTongJiCheng\WhShouDongBaoJing\obj\Debug\Interop.IPModuleLib.dll
 E:\GitHubProject\XiTongJiCheng\WhShouDongBaoJing\obj\Debug\AxInterop.IPModuleLib.dll
 E:\GitHubProject\XiTongJiCheng\WhShouDongBaoJing\obj\Debug\WhShouDongBaoJing.csproj.ResolveComReference.cache

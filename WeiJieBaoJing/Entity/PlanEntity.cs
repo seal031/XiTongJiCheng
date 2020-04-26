@@ -114,8 +114,8 @@ namespace WeiJieBaoJing.Entity
             }
             catch (Exception ex)
             {
-                FileWorker.PrintLog(ex.Message);
-                FileWorker.WriteLog(ex.Message);
+                FileWorker.PrintLog("判断IsInPlan异常：" + ex.Message);
+                FileWorker.WriteLog("判断IsInPlan异常：" + ex.Message);
                 return false;
             }
         }

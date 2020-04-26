@@ -167,15 +167,21 @@ public class AlarmParseTool
             alarmEntity.meta.sender = "GLALARM";
             alarmEntity.meta.sendTime = DateTime.Now.ToString("yyyyMMddHHmmss");
             alarmEntity.meta.sequence = "";
-            alarmEntity.body.alarmClassCode = "AC04";
+            alarmEntity.body.alarmClassCode = "AC12";
             alarmEntity.body.alarmClassName = "管廊报警";
-            alarmEntity.body.alarmTypeCode = "AC0401";
-            alarmEntity.body.alarmTypeName = "管廊报警";
-            alarmEntity.body.alarmName = "管廊报警";
-            alarmEntity.body.alarmTime = (alarmTimeStr==string.Empty?DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") : alarmTimeStr);
-            alarmEntity.body.alarmLevelCode = "AL01";
-            alarmEntity.body.alarmLevelName = "一级";
+            //alarmEntity.body.alarmTypeCode = "AC0401";
+            //alarmEntity.body.alarmTypeName = "管廊报警";
+            //alarmEntity.body.alarmName = "管廊报警";
+            //alarmEntity.body.alarmTime = (alarmTimeStr==string.Empty?DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") : alarmTimeStr);
+            //alarmEntity.body.alarmLevelCode = "AL01";
+            //alarmEntity.body.alarmLevelName = "一级";
             alarmEntity.body.alarmEquCode = deviceName;
+            alarmEntity.body.alarmName = "管廊报警新事件";
+            alarmEntity.body.alarmNameCode = "AC1201";
+            alarmEntity.body.alarmStateCode = "AS01";
+            alarmEntity.body.alarmStateName = "未解除";
+            alarmEntity.body.airportIata = "WUH";
+            alarmEntity.body.airportName = "武汉";
         }
         catch (Exception ex)
         {

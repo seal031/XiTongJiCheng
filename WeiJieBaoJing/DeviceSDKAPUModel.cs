@@ -11,14 +11,12 @@ using System.Net;
 using System.IO;
 using FSI.DeviceSDK.Config;
 using FSI.DeviceSDK.Input;
+using WeiJieBaoJing;
 
 namespace IntegrationClient.Model
 {
     public class DeviceSDKAPUModel
     {
-        #region Events
-
-        #endregion
         #region Properties
 
         /// <summary>
@@ -42,12 +40,9 @@ namespace IntegrationClient.Model
         /// Gets or sets whether the system time is used for timestamps or not.
         /// </summary>
         public bool UseSystemTimeInsteadOfAlarmTime { get; set; }
-
         #endregion
+
         #region Fields
-
-        //public static List<CommandItem> commands = new List<CommandItem>();
-
         public const string UCRM = "User controlled relay mode";
         public const string ALARMA = "Alarm A Relay";
         public const string ALARMB = "Alarm B Relay";
@@ -60,27 +55,25 @@ namespace IntegrationClient.Model
         private Dictionary<System.Net.IPAddress, bool> m_IsAPUsConnectionCurrentlyDown;
         private object m_IsStartedLockObject;
         private Mutex m_ScanMutex;
-        //private AutoResetEvent WaitForSettingChangeToBeConfirmed = new AutoResetEvent(false);
+        private DateTime startTime = DateTime.Now;
+        /// <summary>
+        /// 设备状态列表（防区设备）
+        /// </summary>
         public List<DeviceAlarmState> deviceAlarmStates = new List<DeviceAlarmState>();
-
         #endregion
-        #region Constructors
-
+        
         public DeviceSDKAPUModel()
         {
             // Fields
             m_FDFactory = new FiberDefenderAPUDeviceFactory();
             m_IsAPUsConnectionCurrentlyDown = new Dictionary<System.Net.IPAddress, bool>();
             m_IsStartedLockObject = new object();
-            m_ScanMutex = new Mutex();
-
+            m_ScanMutex = new Mutex();//用于扫描设备的锁
             // Properties
             IsStarted = false;
         }
 
-        #endregion
         #region Methods
-
         /// <summary>
         /// Removes a device based on a description string of the device
         /// </summary>
@@ -112,7 +105,6 @@ namespace IntegrationClient.Model
         private IList<string> RemoveDevice(Predicate<IFiberDefenderAPUDevice> compare)
         {
             List<string> names = new List<string>();
-
             try
             {
                 // We are locking this mutex so that scanning will wait until after this removal is finished.
@@ -124,7 +116,6 @@ namespace IntegrationClient.Model
                 {
                     foreach (var fd in m_Devices)
                     {
-                        // If it matches, remove it from the list of devices
                         if (compare(fd))
                         {
                             toRemove = fd;
@@ -231,14 +222,11 @@ namespace IntegrationClient.Model
                         continue;
 
                     fd.NetConnectionDroppedEvent += new EventHandler<EventArgs>(OnFdNetConnectionDroppedEvent);
-                    fd.NetDisconnectedEvent += new EventHandler<EventArgs>(OnFdNetDisconnectedEvent);
                     fd.AlarmEvent += new EventHandler<FSI.DeviceSDK.Input.AlarmEventArgs>(OnFdAlarmEvent);
-                    Debug.WriteLine("IntegrationClient: Connecting to: " + fd.Name + "," + fd.IPAddress);
                     try
                     {
                         fd.NetConnect();
-                        // The IFiberDefenderAPUDevice ChildDevices property will never be null after a successful
-                        // NetConnect.
+                        // The IFiberDefenderAPUDevice ChildDevices property will never be null after a successful NetConnect.
                         AttachChildren(fd.ChildDevices);
                         apus.Add(fd);
                         SendDevices(fd);
@@ -250,8 +238,8 @@ namespace IntegrationClient.Model
                     }
                     catch (TimeoutException)
                     {
-                        FileWorker.PrintLog("IntegrationClient: Failed to connect");
-                        FileWorker.WriteLog("IntegrationClient: Failed to connect");
+                        FileWorker.PrintLog("IntegrationClient: Failed to connect,time out");
+                        FileWorker.WriteLog("IntegrationClient: Failed to connect,time out");
                     }
                     catch (Exception e)
                     {
@@ -297,8 +285,6 @@ namespace IntegrationClient.Model
                                 var fd = (device as IFiberDefenderAPUDevice);
                                 FileWorker.PrintLog("");
                                 fd.NetConnectionDroppedEvent += new EventHandler<EventArgs>(OnFdNetConnectionDroppedEvent);
-                                FileWorker.PrintLog("");
-                                fd.NetDisconnectedEvent += new EventHandler<EventArgs>(OnFdNetDisconnectedEvent);
                                 FileWorker.PrintLog("");
                                 fd.AlarmEvent += new EventHandler<FSI.DeviceSDK.Input.AlarmEventArgs>(OnFdAlarmEvent);
                                 FileWorker.PrintLog("");
@@ -349,13 +335,12 @@ namespace IntegrationClient.Model
 
         private void SendDevices(IFiberDefenderAPUDevice APUdevice)
         {
-            MessageDevice messageObj = new WeiJieBaoJing.Entity.MessageDevice(APUdevice);
+            MessageDevice messageObj = new MessageDevice(APUdevice);
             string message = messageObj.toJson();
-            //FileWorker.WriteTxt(message);
             KafkaWorker.sendDeviceMessage(message);
             foreach (IGeneralDevice device in APUdevice.ChildDevices)
             {
-                MessageDevice messageSubObj = new WeiJieBaoJing.Entity.MessageDevice(device);
+                MessageDevice messageSubObj = new MessageDevice(device);
                 string messageSub = messageSubObj.toJson();
                 KafkaWorker.sendDeviceMessage(messageSub);
             }
@@ -371,23 +356,38 @@ namespace IntegrationClient.Model
         {
             if (m_Devices != null)
             {
-                lock (m_Devices)
+                //lock (m_Devices)
+                //{
+                //    Parallel.ForEach(m_Devices, (device) =>
+                //    {
+                //        try
+                //        {
+                //            var fd = (device as IFiberDefenderAPUDevice);
+                //            FileWorker.PrintLog("程序即将关闭，SDK即将断开设备: Disconnecting from: " + fd.Name + "," + fd.IPAddress);
+                //            FileWorker.WriteLog("程序即将关闭，SDK即将断开设备: Disconnecting from: " + fd.Name + "," + fd.IPAddress);
+                //            fd.NetDisconnect();
+                //        }
+                //        catch(Exception ex)
+                //        {
+                //            FileWorker.PrintLog("程序即将关闭，SDK断开发时生异常: "+ex.Message);
+                //            FileWorker.WriteLog("程序即将关闭，SDK断开时发生异常:"+ex.Message);
+                //        }
+                //    });
+                //}
+                foreach (var device in m_Devices)
                 {
-                    Parallel.ForEach(m_Devices, (device) =>
+                    try
                     {
-                        try
-                        {
-                            var fd = (device as IFiberDefenderAPUDevice);
-                            FileWorker.PrintLog("IntegrationClient: Disconnecting from: " + fd.Name + "," + fd.IPAddress);
-                            FileWorker.WriteLog("IntegrationClient: Disconnecting from: " + fd.Name + "," + fd.IPAddress);
-                            fd.NetDisconnect();
-                        }
-                        catch
-                        {
-                            FileWorker.PrintLog("IntegrationClient: Failed to correctly disconnect!");
-                            FileWorker.WriteLog("IntegrationClient: Failed to correctly disconnect!");
-                        }
-                    });
+                        var fd = (device as IFiberDefenderAPUDevice);
+                        FileWorker.PrintLog("程序即将关闭，SDK即将断开设备: Disconnecting from: " + fd.Name + "," + fd.IPAddress);
+                        FileWorker.WriteLog("程序即将关闭，SDK即将断开设备: Disconnecting from: " + fd.Name + "," + fd.IPAddress);
+                        fd.NetDisconnect();
+                    }
+                    catch (Exception ex)
+                    {
+                        FileWorker.PrintLog("程序即将关闭，SDK断开发时生异常: " + ex.Message);
+                        FileWorker.WriteLog("程序即将关闭，SDK断开时发生异常:" + ex.Message);
+                    }
                 }
             }
             IsStarted = false;
@@ -420,7 +420,6 @@ namespace IntegrationClient.Model
                 }
                 else
                 {
-                    //channel.AlarmEvent += OnFdAlarmEvent;
                     if (channel is IAlarmInputDevice)
                     {
                         (channel as IAlarmInputDevice).AlarmEvent += new EventHandler<AlarmEventArgs>(OnFdAlarmEvent);
@@ -443,12 +442,15 @@ namespace IntegrationClient.Model
             //if (fd != null && m_IsAPUsConnectionCurrentlyDown.ContainsKey(fd.IPAddress))
             {
                 string deviceFullName = string.IsNullOrEmpty(e.ChildDeviceName) ? e.Device.Name : e.ChildDeviceName;
+                string deviceName = deviceFullName.Split(new string[] { "." }, StringSplitOptions.RemoveEmptyEntries)[0];
+                string channelName = deviceFullName.Split(new string[] { "." }, StringSplitOptions.RemoveEmptyEntries)[1];
                 //FileWorker.PrintLog("设备是" + deviceFullName + " 类型是" + ((int)(e.Type)).ToString() + " 状态是" + ((int)(e.Status)).ToString());
-                DeviceAlarmState deviceAlarmState = deviceAlarmStates.FirstOrDefault(d => d.deviceFullName == deviceFullName);
+                //报警产生后，从报警状态列表deviceAlarmStates中查找到该设备的状态对象。如果没有则新增一个。
+                DeviceAlarmState deviceAlarmState = deviceAlarmStates.FirstOrDefault(d => d.deviceName == deviceFullName);
                 if (deviceAlarmState == null)
                 {
                     deviceAlarmState = new DeviceAlarmState();
-                    deviceAlarmState.deviceFullName = deviceFullName;
+                    deviceAlarmState.deviceName = deviceFullName;
                     deviceAlarmStates.Add(deviceAlarmState);
                 }
                 if (deviceAlarmState.canOutputAlarm)//如果超过设置的时间间隔，才可以触发
@@ -457,28 +459,21 @@ namespace IntegrationClient.Model
                     FileWorker.WriteLog("设备" + deviceFullName + "开始进行判定，判定结果是(true布防false撤防)："+isInPlan.ToString());
                     if (isInPlan)
                     {
-                        //bool makeCommand = false;
                         DateTime time = UseSystemTimeInsteadOfAlarmTime ? DateTime.Now : e.Time;
                         switch (e.Type)
                         {
                             case FSI.DeviceSDK.Input.AlarmType.Alarm:
                                 {
-                                    //makeCommand = true;
                                     //下游设备一直响
                                     if (deviceFullName.Contains("."))
                                     {
-                                        string deviceName = deviceFullName.Split(new string[] { "." }, StringSplitOptions.RemoveEmptyEntries)[0];
-                                        string channelName = deviceFullName.Split(new string[] { "." }, StringSplitOptions.RemoveEmptyEntries)[1];
-                                        FileWorker.WriteLog("*******准备向设备" + deviceFullName + "输出端口持续发送信号******");
                                         switch (channelName)
                                         {
                                             case "CHA":
                                                 ToggleSetting(deviceName, DeviceSDKAPUModel.ALARMA, DeviceSDKAPUModel.ENABLED_PROPERTY);
-                                                FileWorker.WriteLog("*******向设备" + deviceName + "的" + channelName + "输出端口持续发送信号******");
                                                 break;
                                             case "CHB":
                                                 ToggleSetting(deviceName, DeviceSDKAPUModel.ALARMB, DeviceSDKAPUModel.ENABLED_PROPERTY);
-                                                FileWorker.WriteLog("*******向设备" + deviceName + "的" + channelName + "输出端口持续发送信号******");
                                                 break;
                                         }
                                     }
@@ -491,7 +486,7 @@ namespace IntegrationClient.Model
                                 {
                                     switch (e.Status)
                                     {
-                                        //防拆、故障产生的状态改变、报警，拆分成2条消息，分别表示AB端
+                                        //防拆产生的报警，拆分成2条消息，分别表示AB端
                                         case FSI.DeviceSDK.Input.AlarmStatus.AlarmOn:
                                             {
                                                 MessageAlarm messageAlarmA = new MessageAlarm(e.Device.Name + ".CHA", "ALARM_INFO", "04", "防拆");
@@ -522,122 +517,42 @@ namespace IntegrationClient.Model
                                 break;
                             case FSI.DeviceSDK.Input.AlarmType.Fault:
                                 {
-                                    //防拆、故障产生的状态改变、报警，拆分成2条消息，分别表示AB端
+                                    //防拆、故障产生的状态改变、报警
                                     //20190823修改，e.Device.Name是具体设备名，所以只发本设备的
                                     if (e.Status == FSI.DeviceSDK.Input.AlarmStatus.AlarmOn)
                                     {
                                         //发送设备状态信息
-                                        //MessageDeviceChange messageDeviceChangeA = new MessageDeviceChange(e.Device.Name + ".CHA", "ES03", "故障", "");
-                                        //string messageA = messageDeviceChangeA.toJson();
-                                        //KafkaWorker.sendDeviceMessage(messageA);
-                                        //MessageDeviceChange messageDeviceChangeB = new MessageDeviceChange(e.Device.Name + ".CHB", "ES03", "故障", "");
-                                        //string messageB = messageDeviceChangeB.toJson();
-                                        //KafkaWorker.sendDeviceMessage(messageB);
                                         MessageDeviceChange messageDeviceChangeA = new MessageDeviceChange(e.Device.Name , "ES03", "故障", "");
                                         string messageA = messageDeviceChangeA.toJson();
                                         KafkaWorker.sendDeviceMessage(messageA);
                                         //发送报警信息
-                                        //MessageAlarm messageAlarmA = new MessageAlarm(e.Device.Name + ".CHA", "ALARM_INFO", "02", "故障");
-                                        //KafkaWorker.sendAlarmMessage(messageAlarmA.toJson());
-                                        //MessageAlarm messageAlarmB = new MessageAlarm(e.Device.Name + ".CHB", "ALARM_INFO", "02", "故障");
-                                        //KafkaWorker.sendAlarmMessage(messageAlarmB.toJson());
-                                        MessageAlarm messageAlarmA = new MessageAlarm(e.Device.Name, "ALARM_INFO", "02", "故障");
-                                        KafkaWorker.sendAlarmMessage(messageAlarmA.toJson());
+                                        MessageAlarm messageAlarm = new MessageAlarm(e.Device.Name, "ALARM_INFO", "02", "故障");
+                                        KafkaWorker.sendAlarmMessage(messageAlarm.toJson());
                                     }
                                     else if (e.Status == FSI.DeviceSDK.Input.AlarmStatus.AlarmOff)
                                     {
-                                        //发送设备状态信息
-                                        //MessageDeviceChange messageDeviceChangeA = new MessageDeviceChange(e.Device.Name + ".CHA", "ES01", "在线", "");
-                                        //string messageA = messageDeviceChangeA.toJson();
-                                        //KafkaWorker.sendDeviceMessage(messageA);
-                                        //MessageDeviceChange messageDeviceChangeB = new MessageDeviceChange(e.Device.Name + ".CHB", "ES01", "在线", "");
-                                        //string messageB = messageDeviceChangeB.toJson();
-                                        //KafkaWorker.sendDeviceMessage(messageB);
-                                        MessageDeviceChange messageDeviceChangeA = new MessageDeviceChange(e.Device.Name, "ES01", "在线", "");
-                                        string messageA = messageDeviceChangeA.toJson();
-                                        KafkaWorker.sendDeviceMessage(messageA);
-                                        //发送报警信息
-                                        //MessageAlarm messageAlarmA = new MessageAlarm(e.Device.Name + ".CHA", "ALARM_INFO", "03", "故障解除");
-                                        //KafkaWorker.sendAlarmMessage(messageAlarmA.toJson());
-                                        //MessageAlarm messageAlarmB = new MessageAlarm(e.Device.Name + ".CHB", "ALARM_INFO", "03", "故障解除");
-                                        //KafkaWorker.sendAlarmMessage(messageAlarmB.toJson());
-                                        MessageAlarm messageAlarmA = new MessageAlarm(e.Device.Name , "ALARM_INFO", "03", "故障解除");
-                                        KafkaWorker.sendAlarmMessage(messageAlarmA.toJson());
+                                        if ((DateTime.Now - startTime).TotalMinutes > 3)//系统启动前3分钟不发故障解除信息
+                                        {
+                                            //发送设备状态信息
+                                            MessageDeviceChange messageDeviceChange = new MessageDeviceChange(e.Device.Name, "ES01", "在线", "");
+                                            KafkaWorker.sendDeviceMessage(messageDeviceChange.toJson());
+                                            //发送报警信息
+                                            MessageAlarm messageAlarm = new MessageAlarm(e.Device.Name, "ALARM_INFO", "03", "故障解除");
+                                            KafkaWorker.sendAlarmMessage(messageAlarm.toJson());
+                                        }
+                                        else
+                                        {
+                                            FileWorker.WriteLog(e.Device.Name + "收到故障解除信号，但不发送信息");
+                                        }
                                     }
                                 }
                                 break;
                         }
                     }
                 }
-                //if (makeCommand)
-                //{
-                //    CommandItem command = makeCommandItem(deviceName);
-                //    if (command != null)
-                //    {
-                //        DeviceSDKAPUModel.commands.Add(command);
-                //        command.task.Start();
-                //    }
-                //}
             }
         }
-
-        //private CommandItem makeCommandItem(string deviceFullName)
-        //{
-        //    if (deviceFullName.Contains("."))
-        //    {
-        //        string[] strArray = deviceFullName.Split(new string[] { "." }, StringSplitOptions.RemoveEmptyEntries);
-        //        string deviceName = strArray[0];
-        //        string channelName = strArray[1];
-        //        DeviceSDKAPUModel.CommandItem commandItem = DeviceSDKAPUModel.commands.FirstOrDefault(c => c.deviceName == deviceName && c.channelName == channelName);
-        //        if (commandItem == null)
-        //        {
-        //            CommandItem command = new Model.DeviceSDKAPUModel.CommandItem();
-        //            command.deviceName = deviceName;
-        //            command.channelName = channelName;
-        //            command.task = new Task(async () =>
-        //            {
-        //                while (true)
-        //                {
-        //                    if (command.token.IsCancellationRequested)
-        //                    {
-        //                        return;
-        //                    }
-        //                    command.resetEvent.WaitOne();// 初始化为true时执行WaitOne不阻塞
-        //                    FileWorker.WriteTxt("*******准备向设备"+deviceFullName+"输出端口发送信号******");
-        //                    //MessageBox.Show("*******向设备" + deviceFullName + "输出端口发送信号******");
-        //                    switch (channelName) 
-        //                    {
-        //                        case "CHA":
-        //                            ToggleSetting(deviceName, DeviceSDKAPUModel.ALARMA,DeviceSDKAPUModel.ENABLED_PROPERTY);
-        //                            FileWorker.WriteTxt("*******向设备" + deviceName + "的" + channelName + "输出端口发送信号******");
-        //                            break;
-        //                        case "CHB":
-        //                            ToggleSetting(deviceName, DeviceSDKAPUModel.ALARMB,DeviceSDKAPUModel.ENABLED_PROPERTY);
-        //                            FileWorker.WriteTxt("*******向设备" + deviceName + "的" + channelName + "输出端口发送信号******");
-        //                            break;
-        //                    }
-
-        //                    // 模拟等待3000ms
-        //                    await Task.Delay(3000);
-        //                }
-
-        //            }, command.token);
-        //            return command;
-        //        }
-        //    }
-        //    return null;
-        //}
-
-        /// <summary>
-        /// Event Handler for a planned disconnect from a device
-        /// </summary>
-        /// <param name="sender">The sender of the event</param>
-        /// <param name="e">An EventArgs for the event</param>
-        private void OnFdNetDisconnectedEvent(object sender, EventArgs e)
-        {
-            FileWorker.PrintLog("IntegrationClient: Disconnected from: " + sender);
-            FileWorker.WriteLog("IntegrationClient: Disconnected from: " + sender);
-        }
+        
 
         /// <summary>
         /// Event Handler for an unplanned disconnect from a device
@@ -650,9 +565,7 @@ namespace IntegrationClient.Model
 
             if (fd != null)
             {
-                // Check if we already know this connection has been dropped.
-                // Since this will run a continuous loop until it reconnects,
-                // we don't need to have multiple threads looping.
+                // Check if we already know this connection has been dropped. Since this will run a continuous loop until it reconnects,we don't need to have multiple threads looping.
                 lock (m_IsAPUsConnectionCurrentlyDown)
                 {
                     if (!m_IsAPUsConnectionCurrentlyDown[fd.IPAddress])
@@ -664,16 +577,25 @@ namespace IntegrationClient.Model
                         return;
                     }
                 }
-
-                // At this point we can tell other software that the connection has be lost
-                //SendMessageToOtherSoftware(fd.Name, DateTime.Now, IntegrationStrings.CommunicationsLost);
-                FileWorker.PrintLog("设备"+fd.Name+"意外离线");
+                // At this point we can tell other software that the connection has be lost. SendMessageToOtherSoftware(fd.Name, DateTime.Now, IntegrationStrings.CommunicationsLost);
+                FileWorker.PrintLog("设备" + fd.Name + "意外离线");
                 FileWorker.WriteLog("设备" + fd.Name + "意外离线");
                 MessageDeviceChange messageAlarmA = new MessageDeviceChange(fd.Name + ".CHA", "ES02", "离线", "");
                 KafkaWorker.sendDeviceMessage(messageAlarmA.toJson());
                 MessageDeviceChange messageAlarmB = new MessageDeviceChange(fd.Name + ".CHB", "ES02", "离线", "");
                 KafkaWorker.sendDeviceMessage(messageAlarmB.toJson());
-                
+
+                //DeviceAlarmState das = deviceAlarmStates.FirstOrDefault(d => d.deviceName == fd.Name);
+                DeviceAlarmState dasA = deviceAlarmStates.FirstOrDefault(d => d.deviceName == fd.Name + ".CHA");
+                DeviceAlarmState dasB = deviceAlarmStates.FirstOrDefault(d => d.deviceName == fd.Name + ".CHB");
+                //if (das != null)
+                //{
+                //    das.IsOnline = false;
+                //}
+                if (dasA != null) { dasA.IsOnline = false; }
+                else { FileWorker.WriteLog("设备" + fd.Name + "意外离线，但.CHA不在设备状态列表中"); }
+                if (dasB != null) { dasB.IsOnline = false; }
+                else { FileWorker.WriteLog("设备" + fd.Name + "意外离线，但.CHB不在设备状态列表中"); }
                 while (!fd.IsConnected)
                 {
                     // Check if the device has been removed so we don't keep bothering to attempt a reconnection
@@ -682,7 +604,6 @@ namespace IntegrationClient.Model
                         if (!m_Devices.Contains(fd))
                             return;
                     }
-                    //FileWorker.WriteTxt("IntegrationClient: Attempting reconnection to: " + sender);
                     try
                     {
                         fd.NetConnect();
@@ -690,44 +611,20 @@ namespace IntegrationClient.Model
                         {
                             m_IsAPUsConnectionCurrentlyDown[fd.IPAddress] = false;
                         }
-                        //FileWorker.WriteTxt("IntegrationClient: Reconnection Succeeded to: " + sender);
                         FileWorker.PrintLog("设备" + fd.Name + "恢复连接成功");
                         FileWorker.WriteLog("设备" + fd.Name + "恢复连接成功");
                         MessageDeviceChange messageAlarmOnLineA = new MessageDeviceChange(fd.Name + ".CHA", "ES01", "在线", "");
                         KafkaWorker.sendDeviceMessage(messageAlarmOnLineA.toJson());
                         MessageDeviceChange messageAlarmOnLineB = new MessageDeviceChange(fd.Name + ".CHB", "ES01", "在线", "");
                         KafkaWorker.sendDeviceMessage(messageAlarmOnLineB.toJson());
-                        //重连成功后，解除setting中的阻塞
-                        DeviceAlarmState dasA = deviceAlarmStates.FirstOrDefault(d => d.deviceFullName == fd.Name + ".CHA");
-                        DeviceAlarmState dasB = deviceAlarmStates.FirstOrDefault(d => d.deviceFullName == fd.Name + ".CHB");
-                        if (dasA != null)
-                        {
-                            if (dasA.isWait)
-                            {
-                                FileWorker.PrintLog("设备" + fd.Name + ".CHA" + "恢复连接,释放锁");
-                                FileWorker.WriteLog("设备" + fd.Name + ".CHA" + "恢复连接,释放锁");
-                                //dasA.WaitForSettingChangeToBeConfirmed.Set();
-                                dasA.isWait = false;
-                                ToggleSetting(dasA.settingDeviceName, dasA.settingName, dasA.settingValue);
-                            }
-                        }
-                        if (dasB != null)
-                        {
-                            if (dasB.isWait)
-                            {
-                                FileWorker.PrintLog("设备" + fd.Name + ".CHB" + "恢复连接,释放锁");
-                                FileWorker.WriteLog("设备" + fd.Name + ".CHB" + "恢复连接,释放锁");
-                                //dasB.WaitForSettingChangeToBeConfirmed.Set();
-                                dasB.isWait = false;
-                                ToggleSetting(dasB.settingDeviceName, dasB.settingName, dasB.settingValue);
-                            }
-                        }
+                        if (dasA != null) { dasA.IsOnline = true; }
+                        if (dasB != null) { dasB.IsOnline = true; }
                     }
                     catch (System.Net.Sockets.SocketException ex)
                     {
                         // The NetConnect failed.
-                        FileWorker.PrintLog(ex.Message);
-                        FileWorker.WriteLog(ex.Message);
+                        FileWorker.PrintLog("OnFdNetConnectionDroppedEvent异常：" + ex.Message);
+                        FileWorker.WriteLog("OnFdNetConnectionDroppedEvent异常：" + ex.Message);
                         if (ex.SocketErrorCode == System.Net.Sockets.SocketError.ConnectionRefused)
                         {
                             FileWorker.PrintLog("IntegrationClient: Connection Refused");
@@ -736,57 +633,73 @@ namespace IntegrationClient.Model
                         FileWorker.PrintLog("IntegrationClient: Failed To Reconnect");
                         FileWorker.WriteLog("IntegrationClient: Failed To Reconnect");
                     }
-                    // Lets try waiting longer and trying again. Will sleep for the ping interval since that should
-                    // be an appropriate time.
+                    // Lets try waiting longer and trying again. Will sleep for the ping interval since that should be an appropriate time.
                     Thread.Sleep((int)(fd.PingUpkeepInterval.TotalMilliseconds));
                 };
             }
         }
-
-        private bool setted = false;
+        
         public void ToggleSetting(string  deviceName, string setting,string value)
         {
             IFiberDefenderAPUDevice device = m_Devices.FirstOrDefault(d => d.Name == deviceName);
-            
             if (device != null)
             {
                 {
                     try
                     {
                         IChannelDevice subDevice = setting == DeviceSDKAPUModel.ALARMA ? (IChannelDevice)device.ChildDevices[0] : (IChannelDevice)device.ChildDevices[1];
-                        
                         string channelName = setting == DeviceSDKAPUModel.ALARMA ? ".CHA" : ".CHB";
-                        DeviceAlarmState das = deviceAlarmStates.FirstOrDefault(d => d.deviceFullName == deviceName + channelName);
+                        DeviceAlarmState das = deviceAlarmStates.FirstOrDefault(d => d.deviceName == deviceName + channelName);
                         if (das == null)
                         {
                             das = new DeviceAlarmState();
+                            das.deviceName = deviceName + channelName;
                             deviceAlarmStates.Add(das);
                         }
-                        if (das.hadSetUserControll == false)
+                        if (das.hadSetUserControl == false)
                         {
-                            subDevice.SetSetting("User controlled relay mode", "Enabled");//对应每个防区，只需设置一次即可
-                            das.hadSetUserControll = true;
+                            ucrmSetting(subDevice, ENABLED_PROPERTY);//SDK用户获取控制权。对应每个防区，只需设置一次即可
+                            das.hadSetUserControl = true;
                         }
-                        FileWorker.PrintLog("设备" + deviceName + channelName + "进行设置，加锁");
-                        FileWorker.WriteLog("设备" + deviceName + channelName + "进行设置，加锁");
-                        das.isWait = true;
-                        das.settingDeviceName = deviceName;
-                        das.settingName = setting;
-                        das.settingValue = value;
-                        subDevice.SetSetting(setting, value);
-                        //das.WaitForSettingChangeToBeConfirmed.WaitOne();
+                        if (das.IsOnline)
+                        {
+                            if (das.IsSending == false && value == ENABLED_PROPERTY)//如果现在为“关”状态，且用户要设为“开”，此时执行设置
+                            {
+                                FileWorker.PrintLog("**********设备" + deviceName + channelName + "进行设置，值为" + value);
+                                FileWorker.WriteLog("**********设备" + deviceName + channelName + "进行设置，值为" + value);
+                                das.IsSending = true;//设置为正在发送“开”状态
+                                subDevice.SetSetting(setting, value);
+                            }
+                            else if (das.IsSending == true && value == DISABLED_PROPERTY)//如果现在为“开”状态，且用户要设置为“关”，此时执行设置
+                            {
+                                FileWorker.PrintLog("**********设备" + deviceName + channelName + "进行设置，值为" + value);
+                                FileWorker.WriteLog("**********设备" + deviceName + channelName + "进行设置，值为" + value);
+                                das.IsSending = false;//设置为正在发送“关”状态
+                                subDevice.SetSetting(setting, value);
+                            }
+                            else//其他情况不做处理
+                            {
+                                FileWorker.PrintLog("@@@@@@@@@@设备" + deviceName + channelName + "想设置为" + value + "，但目前状态已经是" + das.IsSending + "，故不做处理");
+                                FileWorker.WriteLog("@@@@@@@@@@设备" + deviceName + channelName + "想设置为" + value + "，但目前状态已经是" + das.IsSending + "，故不做处理");
+                            }
+                        }
+                        else
+                        {
+                            FileWorker.PrintLog("#########未对设备" + deviceName + channelName + "设置为" + value + "，因为其断线");
+                            FileWorker.WriteLog("#########未对设备" + deviceName + channelName + "设置为" + value + "，因为其断线");
+                        }
                     }
                     catch (InvalidOperationException e)
                     {
-                        System.Console.WriteLine(e.Message);
-                        FileWorker.PrintLog(e.Message);
-                        FileWorker.WriteLog(e.Message);
+                        System.Console.WriteLine("设置引发InvalidOperationException异常：" + e.Message);
+                        FileWorker.PrintLog("设置引发InvalidOperationException异常：" + e.Message);
+                        FileWorker.WriteLog("设置引发InvalidOperationException异常：" + e.Message);
                     }
                     catch (Exception ex)
                     {
-                        System.Console.WriteLine(ex.Message);
-                        FileWorker.PrintLog(ex.Message);
-                        FileWorker.WriteLog(ex.Message);
+                        System.Console.WriteLine("设置引发Exception异常：" + ex.Message);
+                        FileWorker.PrintLog("设置引发Exception异常：" + ex.Message);
+                        FileWorker.WriteLog("设置引发Exception异常：" + ex.Message);
                     }
                 }
             }
@@ -799,30 +712,28 @@ namespace IntegrationClient.Model
 
         void ucrmSetting(IChannelDevice device, string value)
         {
-            device.SetSetting(DeviceSDKAPUModel.UCRM, value);
-            DeviceAlarmState DeviceAlarmState = deviceAlarmStates.FirstOrDefault(d => d.deviceFullName == device.Name);
-            if (DeviceAlarmState != null)
+            try
             {
-                //DeviceAlarmState.WaitForSettingChangeToBeConfirmed.WaitOne();
+                device.SetSetting(DeviceSDKAPUModel.UCRM, value);
+            }
+            catch (Exception ex)
+            {
+                FileWorker.WriteLog("设备" + device.Name + "设置ucrmSetting为" + value + "时出现异常：" + ex.Message);
             }
         }
         void OnAPUSettingChangedEvent(object sender, APUSettingChangedEventArgs e)
         {
             string deviceName = ((IChannelDevice)sender).Name;
-            DeviceAlarmState DeviceAlarmState = deviceAlarmStates.FirstOrDefault(d => d.deviceFullName == deviceName);
-            if (DeviceAlarmState != null)
+            DeviceAlarmState deviceAlarmState = deviceAlarmStates.FirstOrDefault(d => d.deviceName == deviceName);
+            if (deviceAlarmState != null)
             {
-                //DeviceAlarmState.WaitForSettingChangeToBeConfirmed.Set();
-                DeviceAlarmState.isWait = false;
-                FileWorker.WriteLog("设备" + deviceName + "设置成功，释放锁");
-                FileWorker.PrintLog("Configuration Updated on device " + deviceName);
-                FileWorker.WriteLog("Configuration Updated on device " + deviceName);
+                //deviceAlarmState.IsSending = false;
+                FileWorker.WriteLog("设备" + deviceName + "成功设置" + e.SettingName + "为" + e.NewValue);
             }
             else
             {
-                FileWorker.WriteLog("Configuration Updated on device " + deviceName+"，但未找到设备");
+                FileWorker.WriteLog("设备" + deviceName + "成功设置" + e.SettingName + "为" + e.NewValue+"。但该设备未储存于设备状态列表中");
             }
-            //WaitForSettingChangeToBeConfirmed.Set();
         }
 
         public void closeAllDeviceUserControl()
@@ -833,90 +744,33 @@ namespace IntegrationClient.Model
                 {
                     foreach (IChannelDevice subDevice in device.ChildDevices)
                     {
-                        ucrmSetting(subDevice, DeviceSDKAPUModel.DISABLED_PROPERTY);
+                        ucrmSetting(subDevice, DISABLED_PROPERTY);//SDK用户放弃控制权
                     }
                 }
             }
-        }
-        #endregion
-
-
-        //public class CommandItem
-        //{
-        //    public string deviceName { get; set; }
-        //    public string channelName { get; set; }
-        //    public Task task { get; set; }
-        //    public CancellationTokenSource tokenSource = new CancellationTokenSource();
-        //    public CancellationToken token;
-        //    public ManualResetEvent resetEvent = new ManualResetEvent(true);
-
-        //    public CommandItem()
-        //    {
-        //        token = tokenSource.Token;
-        //    }
-        //}
-        #endregion
-
-        public class DeviceAlarmState
-        {
-            public DeviceAlarmState()
-            {
-                if (int.TryParse(ConfigWorker.GetConfigValue("alarmTimespan"), out alarmTimespan))
-                { }
-                else
-                {
-                    alarmTimespan = 30;
-                }
-                hadSetUserControll = false;
-            }
-            private int alarmTimespan = 0;
-            public string deviceFullName { get; set; }
-            public DateTime lastAlarmTime { get; set; }
-            public bool canOutputAlarm {
-                get
-                {
-                    if (lastAlarmTime == null)
-                    {
-                        lastAlarmTime = DateTime.Now;
-                        return true;
-                    }
-                    else
-                    {
-                        if ((DateTime.Now - lastAlarmTime).TotalSeconds >= alarmTimespan)
-                        {
-                            lastAlarmTime = DateTime.Now;
-                            return true;
-                        }
-                        else
-                        {
-                            return false;
-                        }
-                    }
-                }
-            }
-            /// <summary>
-            /// 是否已经设置了“用户可控”
-            /// </summary>
-            public bool hadSetUserControll { get; set; }
-
-            public AutoResetEvent WaitForSettingChangeToBeConfirmed = new AutoResetEvent(false);
-
-            public bool isWait = false;
-
-            public string settingDeviceName { get; set; }
-            public string settingName { get; set; }
-            public string settingValue { get; set; }
         }
 
         /// <summary>
-        /// 用于控制设备布放撤防旁路对象
+        /// 关闭所有防区的控制开关（下游声光报警）
         /// </summary>
-        public class DevicePanglu
+        public void closeAllDeviceSetting()
         {
-            public string deviceName { get; set; }
-            public bool isOnLine { get; set; }
-            public DateTime beginTime { get; set; }
-            public DateTime endTime { get; set; }
+            if (m_Devices != null)
+            {
+                foreach (var device in m_Devices)
+                {
+                    foreach (IChannelDevice subDevice in device.ChildDevices)
+                    {
+                        ToggleSetting(subDevice.Name, DeviceSDKAPUModel.ALARMA, DeviceSDKAPUModel.DISABLED_PROPERTY);
+                        ToggleSetting(subDevice.Name, DeviceSDKAPUModel.ALARMB, DeviceSDKAPUModel.DISABLED_PROPERTY);
+                    }
+                }
+            }
         }
+        #endregion
+        
+        #endregion
+
+        
     }
 }

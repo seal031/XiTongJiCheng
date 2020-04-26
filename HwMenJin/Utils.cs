@@ -120,13 +120,19 @@ public class AlarmParseTool
             alarmEntity.meta.sequence = "";
             alarmEntity.body.alarmClassCode = "AC02";
             alarmEntity.body.alarmClassName = "门禁报警事件";
-            alarmEntity.body.alarmTypeCode = alarmTypeCode;
-            alarmEntity.body.alarmTypeName = alarmInfo.sEventName;
-            alarmEntity.body.alarmName = alarmInfo.sEventDes;
-            alarmEntity.body.alarmTime = DateTime.Parse(alarmInfo.sEventTime).ToString("yyyy-MM-dd HH:mm:ss"); //alarmInfo.sEventTime.Replace("/","-");
-            alarmEntity.body.alarmLevelCode = "AL01";
-            alarmEntity.body.alarmLevelName = "一级";
+            //alarmEntity.body.alarmTypeCode = alarmTypeCode;
+            //alarmEntity.body.alarmTypeName = alarmInfo.sEventName;
+            //alarmEntity.body.alarmName = alarmInfo.sEventDes;
+            //alarmEntity.body.alarmTime = DateTime.Parse(alarmInfo.sEventTime).ToString("yyyy-MM-dd HH:mm:ss"); //alarmInfo.sEventTime.Replace("/","-");
+            //alarmEntity.body.alarmLevelCode = "AL01";
+            //alarmEntity.body.alarmLevelName = "一级";
             alarmEntity.body.alarmEquCode = alarmInfo.sEventLocation;
+            alarmEntity.body.alarmName = alarmInfo.sEventName;
+            alarmEntity.body.alarmNameCode = alarmTypeCode;
+            alarmEntity.body.alarmStateCode = "AS01";
+            alarmEntity.body.alarmStateName = "未解除";
+            alarmEntity.body.airportIata = "WUH";
+            alarmEntity.body.airportName = "武汉";
         }
         catch (Exception ex)
         {

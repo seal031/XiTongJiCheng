@@ -11,16 +11,27 @@ using System.Net;
 using SuperSocket.ClientEngine;
 using System.Diagnostics;
 using System.Net.Sockets;
+using System.Threading;
+using Quartz;
+using Quartz.Impl;
 
 namespace WhGuanlang
 {
     public partial class Form1 : Form
     {
+        public bool isConnected = false;
         string localIp;
         int localPort;
         string remoteIp;
         int remotePort;
         TcpClientSession client;
+        IScheduler scheduler;
+        IJobDetail job;
+        JobKey jobKey;
+
+        TcpClient tcpClient;
+        Thread thrRecv;
+
         public Form1()
         {
             InitializeComponent();
@@ -36,12 +47,19 @@ namespace WhGuanlang
                 MessageBox.Show("配置文件中的配置项解析失败，请检查配置文件内容");
                 return; 
             }
+            initJob();
             client = new AsyncTcpSession(); 
             client.LocalEndPoint = new IPEndPoint(IPAddress.Parse(localIp), localPort);
             client.Connected += Client_Connected;
             client.Closed += Client_Closed;
             client.DataReceived += Client_DataReceived;
             client.Error += Client_Error;
+            connectToServer();
+
+            //tcpClient = new TcpClient(localIp, localPort);
+            //thrRecv = new Thread(ReceiveMessage);
+            //thrRecv.Start();
+            //FileWorker.LogHelper.WriteLog("TCP监听线程已启动");
         }
         
         private bool loadConfig()
@@ -60,20 +78,93 @@ namespace WhGuanlang
             }
         }
 
+        private void initJob()
+        {
+            try
+            {
+                if (scheduler == null && job == null)
+                {
+                    scheduler = StdSchedulerFactory.GetDefaultScheduler();
+                    JobWorker.form = this;
+                    job = JobBuilder.Create<JobWorker>().WithIdentity("connectJob", "jobs").Build();
+                    ITrigger trigger = TriggerBuilder.Create().WithIdentity("connectTrigger", "triggers").StartAt(DateTimeOffset.Now.AddSeconds(1))
+                        .WithSimpleSchedule(x => x.WithIntervalInSeconds(5).RepeatForever()).Build();
+                    scheduler.ScheduleJob(job, trigger);//把作业，触发器加入调度器。  
+                    jobKey = job.Key;
+                }
+                //scheduler.Start();
+            }
+            catch (Exception ex)
+            {
+                FileWorker.LogHelper.WriteLog("定时任务异常：" + ex.Message);
+            }
+        }
+        public void startJob()
+        {
+            try
+            {
+                if (scheduler != null && job != null && jobKey != null)
+                {
+                    if (scheduler.IsStarted == false)
+                    {
+                        FileWorker.LogHelper.WriteLog("定时任务初次开启");
+                        scheduler.Start();
+                    }
+                    else
+                    {
+                        FileWorker.LogHelper.WriteLog("定时任务恢复运行");
+                        scheduler.ResumeJob(jobKey);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                FileWorker.LogHelper.WriteLog("定时任务开启/恢复过程中出现异常：" + ex.Message);
+            }
+        }
+        public void stopJob()
+        {
+            try
+            {
+                if (scheduler != null && job != null && jobKey != null)
+                {
+                    if (scheduler.IsStarted)
+                    {
+                        FileWorker.LogHelper.WriteLog("定时任务暂停运行");
+                        scheduler.PauseJob(jobKey);
+                    }
+                    else
+                    {
+                        FileWorker.LogHelper.WriteLog("定时任务尚未初次启动，所以不需要暂停");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                FileWorker.LogHelper.WriteLog("定时任务暂停过程中出现异常："+ex.Message);
+            }
+        }
+
         private void Client_Connected(object sender, EventArgs e)
         {
             FileWorker.LogHelper.WriteLog("已连接到服务器");
+            isConnected = true;
+            stopJob();//连接成功后，不再执行重试连接的定时任务
             login();
         }
 
         private void Client_Closed(object sender, EventArgs e)
         {
+            isConnected = false;
             FileWorker.LogHelper.WriteLog("连接关闭");
+            startJob();//连接断开后，开始执行重试连接的定时任务
         }
 
         private void Client_Error(object sender, ErrorEventArgs e)
         {
+            isConnected = false;
             FileWorker.LogHelper.WriteLog("client error"+e.Exception.Message);
+            startJob();//连接断开后，开始执行重试连接的定时任务
         }
         
         private void Client_DataReceived(object sender, DataEventArgs e)
@@ -102,8 +193,32 @@ namespace WhGuanlang
             }
         }
 
+        //private void ReceiveMessage(object obj)
+        //{
+        //    IPEndPoint remoteIpep = new IPEndPoint(IPAddress.Parse(remoteIp), remotePort);
+        //    while (true)
+        //    {
+        //        try
+        //        {
+        //            byte[] bytRecv = tcpClient.Client.Receive(ref remoteIpep);
+        //            string bytRecvStr = string.Join(" ", bytRecv);
+        //            FileWorker.LogHelper.WriteLog("接收到的原始数据是：" + bytRecvStr);
+        //            string msg = Encoding.Default.GetString(bytRecv);
+        //            FileWorker.LogHelper.WriteLog("原始数据解析后是：" + msg);
 
-        private bool connectToServer()
+        //            AlarmEntity alarm = udpToAlarm(msg);
+        //            string messageAlarm = alarm.toJson();
+        //            KafkaWorker.sendAlarmMessage(messageAlarm);
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MessageBox.Show(ex.Message);
+        //            break;
+        //        }
+        //    }
+        //}
+
+        public bool connectToServer()
         {
             if (client != null)
             {
@@ -121,6 +236,14 @@ namespace WhGuanlang
             else
             {
                 return false;
+            }
+        }
+        public void checkAndReconnectToServer()
+        {
+            FileWorker.LogHelper.WriteLog("定时任务执行重连检查，当前连接状态为"+isConnected );
+            if (isConnected == false)
+            {
+                connectToServer();
             }
         }
 

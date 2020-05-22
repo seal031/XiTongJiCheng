@@ -12,14 +12,17 @@ public class KafkaWorker
 {
     static string brokerList = ConfigWorker.GetConfigValue("kafkaUrl");
     static string messageTopicName = ConfigWorker.GetConfigValue("topicAlarm");
-    //static string deviceTopicName= ConfigWorker.GetConfigValue("topicDevice");
+    static string deviceTopicName = ConfigWorker.GetConfigValue("topicDevice");
+    static string accessTopicName = ConfigWorker.GetConfigValue("topicAccess");
     static string commandTopicName = ConfigWorker.GetConfigValue("topicCommand");
     static string consumerGroupId = ConfigWorker.GetConfigValue("consumerGroupId");
     static IProducer<Null, string> producerAlarm=null;
-    //static IProducer<Null, string> producerDevice= null;
+    static IProducer<Null, string> producerDevice = null;
+    static IProducer<Null, string> producerAccess = null;
     static IConsumer<Ignore, string> consumerCommand = null;
     static ProducerConfig configAlarm = null;
-    //static ProducerConfig configDevice = null;
+    static ProducerConfig configDevice = null;
+    static ProducerConfig configAccess = null;
     static ConsumerConfig configCommand = null;
     //static Action<DeliveryReport<Null, string>> handler = r =>
     //   FileWorker.WriteLog(!r.Error.IsError
@@ -33,7 +36,7 @@ public class KafkaWorker
     public static void sendAlarmMessage(string message)
     {
         if (configAlarm == null) { configAlarm = new ProducerConfig { BootstrapServers = brokerList}; }
-        //FileWorker.WriteLog("正在向kafka发送alarm消息" + message);
+        //FileWorker.LogHelper.WriteLog("正在向kafka发送alarm消息" + message);
         try
         {
             if (producerAlarm == null)
@@ -50,25 +53,42 @@ public class KafkaWorker
             FileWorker.LogHelper.WriteLog("alarm error  " + e.Message);
         }
     }
-    //public static void sendDeviceMessage(string message)
-    //{
-    //    if (configDevice == null) { configDevice = new ProducerConfig { BootstrapServers = brokerList }; }
-    //    FileWorker.WriteLog("正在向kafka发送device消息" + message);
-    //    try
-    //    {
-    //        if (producerDevice == null) { producerDevice = new ProducerBuilder<Null, string>(configDevice).Build(); }
-    //        {
-    //            //var dr = await producerDevice.ProduceAsync(deviceTopicName, new Message<Null, string> { Value = message });
-    //            producerDevice.Produce(deviceTopicName, new Message<Null, string> { Value = message }, handler);
-    //            producerAlarm.Flush(TimeSpan.FromSeconds(5));
-    //        }
-    //    }
-    //    catch (Exception e)
-    //    {
-    //        FileWorker.PrintLog("device error  " + e.Message);
-    //        FileWorker.WriteLog("device error  " + e.Message);
-    //    }
-    //}
+    public static void sendDeviceMessage(string message)
+    {
+        if (configDevice == null) { configDevice = new ProducerConfig { BootstrapServers = brokerList }; }
+        //FileWorker.WriteLog("正在向kafka发送device消息" + message);
+        try
+        {
+            if (producerDevice == null) { producerDevice = new ProducerBuilder<Null, string>(configDevice).Build(); }
+            {
+                producerDevice.Produce(deviceTopicName, new Message<Null, string> { Value = message }, handler);
+                producerDevice.Flush(TimeSpan.FromSeconds(5));
+            }
+        }
+        catch (Exception e)
+        {
+            FileWorker.PrintLog("device error  " + e.Message);
+            FileWorker.WriteLog("device error  " + e.Message);
+        }
+    }
+
+    public static void sendAccessMessage(string message)
+    {
+        if (configAccess == null) { configAccess = new ProducerConfig { BootstrapServers = brokerList }; }
+        try
+        {
+            if (producerAccess == null)
+            {
+                producerAccess = new ProducerBuilder<Null, string>(configAccess).Build();
+            }
+            producerAccess.Produce(accessTopicName, new Message<Null, string> { Value = message }, handler);
+            producerAccess.Flush(TimeSpan.FromSeconds(5));
+        }
+        catch (Exception e)
+        {
+            FileWorker.LogHelper.WriteLog("access error  " + e.Message);
+        }
+    }
 
     public delegate void GetMessage(string message);
     public static event GetMessage OnGetMessage;

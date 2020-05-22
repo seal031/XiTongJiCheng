@@ -170,12 +170,12 @@ public class AlarmParseTool
                 }
             }
             alarmEntity = new AlarmEntity();
-            alarmEntity.meta.eventType = "GL_ALARM";
+            alarmEntity.meta.eventType = "WJ_ALARM";
             alarmEntity.meta.msgType = "ALARM";
             alarmEntity.meta.receiver = "";
             alarmEntity.meta.recvSequence = "";
             alarmEntity.meta.recvTime = "";
-            alarmEntity.meta.sender = "GLALARM";
+            alarmEntity.meta.sender = "WJALARM";
             alarmEntity.meta.sendTime = DateTime.Now.ToString("yyyyMMddHHmmss");
             alarmEntity.meta.sequence = "";
             alarmEntity.body.alarmClassCode = "AC06";
@@ -183,7 +183,7 @@ public class AlarmParseTool
             //alarmEntity.body.alarmTypeCode = "AC0401";
             //alarmEntity.body.alarmTypeName = "管廊报警";
             //alarmEntity.body.alarmName = "管廊报警";
-            //alarmEntity.body.alarmTime = (alarmTimeStr==string.Empty?DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") : alarmTimeStr);
+            alarmEntity.body.alarmTime = (alarmTimeStr == string.Empty ? DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") : alarmTimeStr);
             //alarmEntity.body.alarmLevelCode = "AL01";
             //alarmEntity.body.alarmLevelName = "一级";
             alarmEntity.body.alarmEquCode = deviceName;

@@ -1,0 +1,7 @@
+Begin Time:2020-05-22 17:53:41.992
+[2020-05-22 17:53:41.992][P:96016/T:93408][dhnetsdk.cpp:116][Info][0] Leave CLIENT_InitEx.
+[2020-05-22 17:53:45.494][P:96016/T:93408][dhnetsdk.cpp:611][Info][0] Enter CLIENT_Logout. [lLoginID=0.]
+[2020-05-22 17:53:45.494][P:96016/T:93408][dhnetsdk.cpp:630][Error][90010004] Failed to logout, id:0
+[2020-05-22 17:53:45.494][P:96016/T:93408][dhnetsdk.cpp:633][Info][0] Leave CLIENT_Logout. [ret=0]
+[2020-05-22 17:53:45.495][P:96016/T:93408][dhnetsdk.cpp:5438][Info][0] Enter CLIENT_GetLastError.
+[2020-05-22 17:53:45.495][P:96016/T:93408][dhnetsdk.cpp:5441][Info][0] Leave CLIENT_GetLastError.[Error code=80000004.]

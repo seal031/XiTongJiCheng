@@ -123,7 +123,7 @@ public class AlarmParseTool
             //alarmEntity.body.alarmTypeCode = alarmTypeCode;
             //alarmEntity.body.alarmTypeName = alarmInfo.sEventName;
             //alarmEntity.body.alarmName = alarmInfo.sEventDes;
-            //alarmEntity.body.alarmTime = DateTime.Parse(alarmInfo.sEventTime).ToString("yyyy-MM-dd HH:mm:ss"); //alarmInfo.sEventTime.Replace("/","-");
+            alarmEntity.body.alarmTime = DateTime.Parse(alarmInfo.sEventTime).ToString("yyyy-MM-dd HH:mm:ss"); //alarmInfo.sEventTime.Replace("/","-");
             //alarmEntity.body.alarmLevelCode = "AL01";
             //alarmEntity.body.alarmLevelName = "一级";
             alarmEntity.body.alarmEquCode = alarmInfo.sEventLocation;
@@ -142,3 +142,89 @@ public class AlarmParseTool
         return alarmEntity;
     }
 }
+
+/// <summary>
+/// 接收的正常刷卡信息解析工具
+/// </summary>
+public class AccessParseTool
+{
+    public static AccessEntity parseAccess(AxHSCEventSDK accessInfo)
+    {
+        AccessEntity accessEntity = null;
+        try
+        {
+            accessEntity = new AccessEntity();
+            accessEntity.meta.eventType = "ACS_RECORD_CARD";
+            accessEntity.meta.msgType = "RECORD_CARD";
+            accessEntity.meta.receiver = "";
+            accessEntity.meta.recvSequence = "";
+            accessEntity.meta.recvTime = "";
+            accessEntity.meta.sender = "MJRECORD";
+            accessEntity.meta.sendTime = DateTime.Now.ToString("yyyyMMddHHmmss");
+            accessEntity.meta.sequence = "";
+
+            accessEntity.body.cardNumber = accessInfo.sUserCardID;
+            accessEntity.body.cardStatus = "";
+            accessEntity.body.cardType = "";
+            accessEntity.body.channelCode = "";
+            accessEntity.body.channelName = accessInfo.sPanelName;
+            accessEntity.body.deptName = accessInfo.sUserDepartment;
+            accessEntity.body.deviceCode = accessInfo.sEventDevice;
+            accessEntity.body.deviceName = accessInfo.sEventDevice;
+            accessEntity.body.enterOrExit = "3";
+            accessEntity.body.id = "";
+            accessEntity.body.openResult = "1";
+            accessEntity.body.openType = "";
+            accessEntity.body.paperNumber = "";
+            accessEntity.body.personCode = "";
+            accessEntity.body.personId = accessInfo.sUserID;
+            accessEntity.body.personName = accessInfo.sUserName;
+            accessEntity.body.swingTime = DateTime.Parse(accessInfo.sEventTime).ToString("yyyy-MM-dd HH:mm:ss");
+        }
+        catch (Exception ex)
+        {
+            FileWorker.LogHelper.WriteLog("解析刷卡失败，" + ex.Message);
+        }
+        return accessEntity;
+    }
+
+}
+
+/// <summary>
+/// 接收的设备状态信息解析工具
+/// </summary>
+public class DeviceStateParseTool
+{
+    public static Dictionary<string, string> stateDic = new Dictionary<string, string>();
+    static DeviceStateParseTool()
+    {
+        stateDic.Add("ES01", "在线");
+        stateDic.Add("ES02", "离线");
+    }
+
+    public static DeviceStateEntity parseDeviceState(AxHSCEventSDK deviceStateInfo,string stateId)
+    {
+        DeviceStateEntity deviceStateEntity = null;
+        try
+        {
+            deviceStateEntity = new DeviceStateEntity();
+            deviceStateEntity.meta.eventType = "ACS_RECORD_CARD";
+            deviceStateEntity.meta.msgType = "RECORD_CARD";
+            deviceStateEntity.meta.receiver = "";
+            deviceStateEntity.meta.recvSequence = "";
+            deviceStateEntity.meta.recvTime = "";
+            deviceStateEntity.meta.sender = "MJRECORD";
+            deviceStateEntity.meta.sendTime = DateTime.Now.ToString("yyyyMMddHHmmss");
+            deviceStateEntity.meta.sequence = "";
+
+            deviceStateEntity.body.createDate =deviceStateInfo.sEventTime;
+            deviceStateEntity.body.equCode =deviceStateInfo.sEventLocation;
+            deviceStateEntity.body.timeStateId = stateId;
+            deviceStateEntity.body.timeStateName = stateDic[stateId];
+        }
+        catch (Exception ex)
+        {
+            FileWorker.LogHelper.WriteLog("解析刷卡失败，" + ex.Message);
+        }
+        return deviceStateEntity;
+    } }

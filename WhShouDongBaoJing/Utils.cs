@@ -124,7 +124,7 @@ public class AlarmParseTool
             //alarmEntity.body.alarmTypeCode = "";
             //alarmEntity.body.alarmTypeName = "";
             //alarmEntity.body.alarmName = "";
-            //alarmEntity.body.alarmTime = DateTime.Now.ToString("yyyyMMddHHmmss");
+            alarmEntity.body.alarmTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             //alarmEntity.body.alarmLevelCode = "AL01";
             //alarmEntity.body.alarmLevelName = "一级";
             alarmEntity.body.alarmEquCode = alarmInfo.strMac;

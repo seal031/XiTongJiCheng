@@ -177,15 +177,45 @@ namespace HwMenJin
 
         private void axHSCEventSDK1_NewEvent(object sender, EventArgs e)
         {
-            if (eventDic.ContainsKey(axHSCEventSDK1.sEventName))
+            if (eventDic.ContainsKey(axHSCEventSDK1.sEventName))//报警信息
             {
                 var alarmEntity = AlarmParseTool.parseAlarm(axHSCEventSDK1, eventDic);
                 if (alarmEntity != null)
                 {
                     string alarmMessage = alarmEntity.toJson();
-                    FileWorker.LogHelper.WriteLog("正在向kafka发送数据"+alarmMessage);
+                    FileWorker.LogHelper.WriteLog("正在向kafka发送报警数据" + alarmMessage);
                     Debug.WriteLine(alarmMessage);
                     KafkaWorker.sendAlarmMessage(alarmMessage);
+                }
+            }
+            else if (axHSCEventSDK1.sEventName == "正常开门")//正常刷卡信息
+            {
+                var accessEntity = AccessParseTool.parseAccess(axHSCEventSDK1);
+                if (accessEntity != null)
+                {
+                    string accessMessage = accessEntity.toJson();
+                    FileWorker.LogHelper.WriteLog("正在向kafka发送正常刷卡数据" + accessMessage);
+                    KafkaWorker.sendAccessMessage(accessMessage);
+                }
+            }
+            else if (axHSCEventSDK1.sEventName == "控制器上线")//设备状态信息
+            {
+                var deviceEntity = DeviceStateParseTool.parseDeviceState(axHSCEventSDK1, "ES01");
+                if (deviceEntity != null)
+                {
+                    string deviceMessage = deviceEntity.toJson();
+                    FileWorker.LogHelper.WriteLog("正在向kafka发送设备状态数据" + deviceMessage);
+                    KafkaWorker.sendDeviceMessage(deviceMessage);
+                }
+            }
+            else if (axHSCEventSDK1.sEventName == "控制器离线")
+            {
+                var deviceEntity = DeviceStateParseTool.parseDeviceState(axHSCEventSDK1, "ES02");
+                if (deviceEntity != null)
+                {
+                    string deviceMessage = deviceEntity.toJson();
+                    FileWorker.LogHelper.WriteLog("正在向kafka发送设备状态数据" + deviceMessage);
+                    KafkaWorker.sendDeviceMessage(deviceMessage);
                 }
             }
         }

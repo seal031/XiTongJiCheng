@@ -1,19 +1,31 @@
-﻿using System;
+﻿using NetSDKCS;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using NetClient;
 
 namespace XinJiangShouBaoDh
 {
     public partial class Form1 : Form
     {
-        private AlarmClient client;
+        private static fDisConnectCallBack m_DisConnectCallBack;
+        private static fHaveReConnectCallBack m_ReConnectCallBack;
+        private static fMessCallBackEx m_AlarmCallBack;
+        private const int ALARM_START = 1;
+        private const int ALARM_STOP = 0;
+
+        private IntPtr m_LoginID = IntPtr.Zero;
+        private NET_DEVICEINFO_Ex m_DeviceInfo;
+        private bool m_IsListen = false;
+        private Int64 m_ID = 1;
+        private byte[] data;
+
         private string ip;
         private ushort port;
         private string username;
@@ -28,13 +40,15 @@ namespace XinJiangShouBaoDh
         {
             if (loadLocalConfig())
             {
+                m_DisConnectCallBack = new fDisConnectCallBack(DisConnectCallBack);
+                m_ReConnectCallBack = new fHaveReConnectCallBack(ReConnectCallBack);
+                m_AlarmCallBack = new fMessCallBackEx(AlarmCallBackEx);
                 try
                 {
-                    client = new AlarmClient();
-                    client.Login(ip, port, username, password);
-                    client.AlarmReceived += Client_AlarmReceived;
-                    client.DisConnectChanged += Client_DisConnectChanged;
-                    client.StartListen();//开始监听
+                    NETClient.Init(m_DisConnectCallBack, IntPtr.Zero, null);
+                    NETClient.SetAutoReconnect(m_ReConnectCallBack, IntPtr.Zero);
+                    NETClient.SetDVRMessCallBack(m_AlarmCallBack, IntPtr.Zero);
+                    login();
                 }
                 catch (Exception ex)
                 {
@@ -44,20 +58,73 @@ namespace XinJiangShouBaoDh
             }
         }
 
-        private void Client_DisConnectChanged(object sender, DeviceEventArgs args)
+        private void DisConnectCallBack(IntPtr lLoginID, IntPtr pchDVRIP, int nDVRPort, IntPtr dwUser)
         {
             FileWorker.LogHelper.WriteLog("连接已断开");
         }
-
-        private void Client_AlarmReceived(object sender, AlarmEventArgs args)
+        private void ReConnectCallBack(IntPtr lLoginID, IntPtr pchDVRIP, int nDVRPort, IntPtr dwUser)
         {
-            if (args.AlarmType == EM_ALARM_TYPE.COMM_ALARM)
+            FileWorker.LogHelper.WriteLog("重连成功");
+        }
+
+        private bool AlarmCallBackEx(int lCommand, IntPtr lLoginID, IntPtr pBuf, uint dwBufLen, IntPtr pchDVRIP, int nDVRPort, bool bAlarmAckFlag, int nEventID, IntPtr dwUser)
+        {
+            EM_ALARM_TYPE type = (EM_ALARM_TYPE)lCommand;
+            switch (type)
             {
-                AlarmEntity alarm = new AlarmEntity();
-                FileWorker.LogHelper.WriteLog(args.AlarmInfo.ToString());
-                string message = alarm.toJson();
-                KafkaWorker.sendAlarmMessage(message);
+                case EM_ALARM_TYPE.ALARM_INPUT_SOURCE_SIGNAL:  //12675  0x3183
+                    data = new byte[dwBufLen];
+                    Marshal.Copy(pBuf, data, 0, (int)dwBufLen);
+                    for (int i = 0; i < dwBufLen; i++)
+                    {
+                        if (data[i] == ALARM_START) // alarm start 报警开始
+                        {
+                            AlarmEntity alarmEntity = new AlarmEntity();
+                            alarmEntity.body.alarmTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                            alarmEntity.body.alarmEquCode = m_ID.ToString();
+                            alarmEntity.body.alarmName = "手动报警新事件";
+                            alarmEntity.body.alarmNameCode = "AC0301";
+                            alarmEntity.body.alarmStateCode = "AS01";
+                            alarmEntity.body.alarmStateName = "未解除";
+                            alarmEntity.body.airportIata = "KCA";
+                            alarmEntity.body.airportName = "库车";
+                            //info.ID = m_ID;
+                            //info.Channel = i;
+                            string alarmMessage = alarmEntity.toJson();
+                            KafkaWorker.sendAlarmMessage(alarmMessage);
+                        }
+                        else //alarm stop 报警停止
+                        {
+                            
+                        }
+                    }
+                    break;
+                default:
+                    break;
             }
+
+            return true;
+        }
+
+        private void login()
+        {
+            m_DeviceInfo = new NET_DEVICEINFO_Ex();
+            m_LoginID = NETClient.LoginWithHighLevelSecurity(ip, port, username, password, EM_LOGIN_SPAC_CAP_TYPE.TCP, IntPtr.Zero, ref m_DeviceInfo);
+            if (IntPtr.Zero == m_LoginID)
+            {
+                FileWorker.LogHelper.WriteLog("登录返回异常：" + NETClient.GetLastError());
+                return;
+            }
+        }
+        private void logout()
+        {
+            bool result = NETClient.Logout(m_LoginID);
+            if (!result)
+            {
+                FileWorker.LogHelper.WriteLog("登出返回异常：" + NETClient.GetLastError());
+                return;
+            }
+            m_LoginID = IntPtr.Zero;
         }
 
         private bool loadLocalConfig()
@@ -84,11 +151,12 @@ namespace XinJiangShouBaoDh
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (client != null)
-            {
-                client.StopListen();
-                client.Logout();
-            }
+            logout();
+        }
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            NETClient.Cleanup();
         }
     }
 }

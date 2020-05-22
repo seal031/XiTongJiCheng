@@ -43,7 +43,7 @@ namespace WhGuanlang
             //public string alarmTypeName { get; set; }
             //public string alarmLevelCode { get; set; }
             //public string alarmLevelName { get; set; }
-            //public string alarmTime { get; set; }
+            public string alarmTime { get; set; }
             //public string areaName { get; set; }
             //public string alarmAddress { get; set; }
             //public string alarmDescibe { get; set; }

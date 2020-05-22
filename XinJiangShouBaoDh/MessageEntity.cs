@@ -56,35 +56,42 @@ public class AlarmEntity
         public Body()
         {
             alarmClassCode = "AC03";
-            alarmClassName = "手动报警";
-            alarmLevelCode = "AL01";
-            alarmLevelName = "一级";
+            alarmClassName = "手动报警事件";
         }
-        public string alarmCode { get; set; }
+        //public string alarmCode { get; set; }
+        //public string alarmName { get; set; }
+        //public string alarmClassCode { get; set; }
+        //public string alarmClassName { get; set; }
+        //public string alarmTypeCode { get; set; }
+        //public string alarmTypeName { get; set; }
+        //public string alarmLevelCode { get; set; }
+        //public string alarmLevelName { get; set; }
+        //public string alarmTime { get; set; }
+        //public string areaName { get; set; }
+        //public string alarmAddress { get; set; }
+        //public string alarmDescibe { get; set; }
+        //public string alarmStateCode { get; set; }
+        //public string alarmStateName { get; set; }
+        //public string alarmEquCode { get; set; }
+        //public string alarmEquName { get; set; }
+        //public string equClassCode { get; set; }
+        //public string equClassName { get; set; }
+        //public string alarmSource { get; set; }
+        //public string gisX { get; set; }
+        //public string gisY { get; set; }
+        //public string gisZ { get; set; }
+        //public string floorCode { get; set; }
+        //public string floorName { get; set; }
         public string alarmName { get; set; }
         public string alarmClassCode { get; set; }
         public string alarmClassName { get; set; }
-        public string alarmTypeCode { get; set; }
-        public string alarmTypeName { get; set; }
-        public string alarmLevelCode { get; set; }
-        public string alarmLevelName { get; set; }
         public string alarmTime { get; set; }
-        public string areaName { get; set; }
-        public string alarmAddress { get; set; }
-        public string alarmDescibe { get; set; }
+        public string alarmEquCode { get; set; }
         public string alarmStateCode { get; set; }
         public string alarmStateName { get; set; }
-        public string alarmEquCode { get; set; }
-        public string alarmEquName { get; set; }
-        public string equClassCode { get; set; }
-        public string equClassName { get; set; }
-        public string alarmSource { get; set; }
-        public string gisX { get; set; }
-        public string gisY { get; set; }
-        public string gisZ { get; set; }
-        public string floorCode { get; set; }
-        public string floorName { get; set; }
-
+        public string airportIata { get; set; }
+        public string airportName { get; set; }
+        public string alarmNameCode { get; set; }
     }
     public string toJson()
     {

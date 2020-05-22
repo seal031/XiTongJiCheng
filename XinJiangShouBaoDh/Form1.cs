@@ -12,6 +12,11 @@ using System.Windows.Forms;
 
 namespace XinJiangShouBaoDh
 {
+    /// <summary>
+    /// *****************************************************
+    /// 注意。大华手报用x64编译******************************
+    /// *****************************************************
+    /// </summary>
     public partial class Form1 : Form
     {
         private static fDisConnectCallBack m_DisConnectCallBack;
@@ -49,11 +54,12 @@ namespace XinJiangShouBaoDh
                     NETClient.SetAutoReconnect(m_ReConnectCallBack, IntPtr.Zero);
                     NETClient.SetDVRMessCallBack(m_AlarmCallBack, IntPtr.Zero);
                     login();
+                    startListener();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
-                    FileWorker.LogHelper.WriteLog("SDK调用错误：" + ex.Message);
+                    FileWorker.LogHelper.WriteLog("SDK初始化错误：" + ex.Message);
                 }
             }
         }
@@ -116,6 +122,24 @@ namespace XinJiangShouBaoDh
                 return;
             }
         }
+        private void startListener()
+        {
+            bool ret = NETClient.StartListen(m_LoginID);
+            if (!ret)
+            {
+                FileWorker.LogHelper.WriteLog("开启监听返回异常：" + NETClient.GetLastError());
+                return;
+            }
+        }
+        private void stopListener()
+        {
+            bool ret = NETClient.StopListen(m_LoginID);
+            if (!ret)
+            {
+                FileWorker.LogHelper.WriteLog("停止监听返回异常：" + NETClient.GetLastError());
+                return;
+            }
+        }
         private void logout()
         {
             bool result = NETClient.Logout(m_LoginID);
@@ -151,6 +175,7 @@ namespace XinJiangShouBaoDh
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            stopListener();
             logout();
         }
         protected override void OnClosed(EventArgs e)

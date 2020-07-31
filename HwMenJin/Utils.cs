@@ -169,8 +169,8 @@ public class AccessParseTool
             accessEntity.body.channelCode = "";
             accessEntity.body.channelName = accessInfo.sPanelName;
             accessEntity.body.deptName = accessInfo.sUserDepartment;
-            accessEntity.body.deviceCode = accessInfo.sEventDevice;
-            accessEntity.body.deviceName = accessInfo.sEventDevice;
+            accessEntity.body.deviceCode = accessInfo.sEventLocation;
+            accessEntity.body.deviceName = accessInfo.sEventDes;
             accessEntity.body.enterOrExit = "3";
             accessEntity.body.id = "";
             accessEntity.body.openResult = "1";
@@ -208,12 +208,12 @@ public class DeviceStateParseTool
         try
         {
             deviceStateEntity = new DeviceStateEntity();
-            deviceStateEntity.meta.eventType = "ACS_RECORD_CARD";
-            deviceStateEntity.meta.msgType = "RECORD_CARD";
+            deviceStateEntity.meta.eventType = "ACS_EQUINFO_UE";
+            deviceStateEntity.meta.msgType = "EQU";
             deviceStateEntity.meta.receiver = "";
             deviceStateEntity.meta.recvSequence = "";
             deviceStateEntity.meta.recvTime = "";
-            deviceStateEntity.meta.sender = "MJRECORD";
+            deviceStateEntity.meta.sender = "MJEQU";
             deviceStateEntity.meta.sendTime = DateTime.Now.ToString("yyyyMMddHHmmss");
             deviceStateEntity.meta.sequence = "";
 
@@ -224,7 +224,7 @@ public class DeviceStateParseTool
         }
         catch (Exception ex)
         {
-            FileWorker.LogHelper.WriteLog("解析刷卡失败，" + ex.Message);
+            FileWorker.LogHelper.WriteLog("解析设备状态失败，" + ex.Message);
         }
         return deviceStateEntity;
     } }

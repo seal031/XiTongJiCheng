@@ -1,20 +1,15 @@
 ﻿namespace XiaoFangBaoJing
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Data;
-    using System.Drawing;
-    using System.Linq;
-    using System.Net;
-    using System.Net.Sockets;
-    using System.Text;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using System.Windows.Forms;
     using Modbus.Device;
     using Quartz;
     using Quartz.Impl;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Net;
+    using System.Net.Sockets;
+    using System.Threading;
+    using System.Windows.Forms;
 
     public partial class Form1 : Form
     {
@@ -32,11 +27,12 @@
 
         public Form1()
         {
-            InitializeComponent();
+            this.InitializeComponent();
             //var a = MathTransfer.Ten2Tow(720);
             functionType = ConfigWorker.GetConfigValue("functionType");
             this.scanTimeSpan = int.Parse(ConfigWorker.GetConfigValue("scanTimeSpan"));
             var lines = FileWorker.readTxt(System.AppDomain.CurrentDomain.BaseDirectory.ToString() + "device.txt");
+            LogHelper.WriteLog("从文件" + System.AppDomain.CurrentDomain.BaseDirectory.ToString() + "device.txt" + "中加载设备名称");
             foreach (string line in lines)
             {
                 string[] deviceInfo = line.Split(new string[] { "\t" }, StringSplitOptions.RemoveEmptyEntries);
@@ -46,6 +42,7 @@
                     deviceList.Add(device);
                 }
             }
+            LogHelper.WriteLog("共加载设备" + deviceList.Count + "个");
         }
 
         private void startJob()
@@ -61,6 +58,7 @@
             }     
             scheduler.Start();
         }
+
         private void btn_readHodingRegister_Click(object sender, EventArgs e)
         {
             //this.getData(this.txt_ip.Text.Trim(), (byte)this.num_slaveId.Value, (ushort)this.num_startAddress.Value, (ushort)this.num_pointNumber.Value, "HodingRegister");
@@ -97,16 +95,18 @@
                             if (functionType == "Input")
                             {
                                 ushort[] data = modbusIpMaster.ReadInputRegisters(slaveAddress, startAddress, numInputs);
+                                LogHelper.WriteLog("收到数据" + string.Join(",", data));
                                 this.dealData(data, (int)numInputs);
                             }
                         }
                         else
                         {
                             ushort[] data = modbusIpMaster.ReadHoldingRegisters(slaveAddress, startAddress, numInputs);
+                            LogHelper.WriteLog("收到数据" + string.Join(",", data));
                             this.dealData(data, (int)numInputs);
                         }
                         startAddress += numInputs;
-                        richTextBox1.Text += Environment.NewLine;
+                        //richTextBox1.Text += Environment.NewLine;
                     }
                 }
             }
@@ -117,9 +117,9 @@
             finally
             {
                 LogHelper.WriteLog("一次扫描完毕");
-                richTextBox1.Text += Environment.NewLine;
-                richTextBox1.Text += "-------------------------------------------------------------";
-                richTextBox1.Text += Environment.NewLine;
+                //richTextBox1.Text += Environment.NewLine;
+                //richTextBox1.Text += "-------------------------------------------------------------";
+                //richTextBox1.Text += Environment.NewLine;
             }
         }
 
@@ -130,7 +130,7 @@
             {
                 foreach (ushort uData in data)
                 {
-                    richTextBox1.Text += uData.ToString() + ",";
+                    //richTextBox1.Text += uData.ToString() + ",";
                     if (uData == 0)
                     {
                         deviceIndex += 16;
@@ -146,8 +146,8 @@
                                 var device = deviceList.FirstOrDefault(d => d.index == deviceIndex.ToString());
                                 if (device != null)
                                 {
-                                    richTextBox1.Text += "第" + deviceIndex + "个设备故障" + "设备名:" + device.name;
-                                    richTextBox1.Text += Environment.NewLine;
+                                    //richTextBox1.Text += "第" + deviceIndex + "个设备故障" + "设备名:" + device.name;
+                                    //richTextBox1.Text += Environment.NewLine;
                                     LogHelper.WriteLog("第" + deviceIndex + "个设备故障" + "设备名:" + device.name);
                                     MessageEntity message = new MessageEntity();
                                     message.meta.sequence= Guid.NewGuid().ToString("N");
@@ -174,8 +174,8 @@
                                 }
                                 else
                                 {
-                                    richTextBox1.Text += "第" + deviceIndex + "个设备故障。设备名未找到";
-                                    richTextBox1.Text += Environment.NewLine;
+                                    //richTextBox1.Text += "第" + deviceIndex + "个设备故障。设备名未找到";
+                                    //richTextBox1.Text += Environment.NewLine;
                                     LogHelper.WriteLog("第" + deviceIndex + "个设备故障。设备名未找到");
                                 }
                             }
@@ -206,8 +206,8 @@
             }
             catch (Exception ex)
             {
-                richTextBox1.Text += ex.Message;
-                richTextBox1.Text += Environment.NewLine;
+                //richTextBox1.Text += ex.Message;
+                //richTextBox1.Text += Environment.NewLine;
                 LogHelper.WriteLog(ex.Message);
             }
         }

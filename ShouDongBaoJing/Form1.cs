@@ -16,22 +16,20 @@ namespace IPMALARM
     public partial class Form1 : Form
     {
         private delegate void delInfoList(string text);
-        private KafkaWorker kafka;
         private int sdkPort = 0;
         public Form1()
         {
             try
             {
-                FileWorker.WriteLog("页面初始化开始");
+                FileWorker.LogHelper.WriteLog("页面初始化开始");
                 this.InitializeComponent();
-                this.kafka = new KafkaWorker();
-                FileWorker.WriteLog("页面初始化结束");
+                FileWorker.LogHelper.WriteLog("页面初始化结束");
             }
             catch (Exception ex)
             {
-                FileWorker.WriteLog("页面初始化异常");
-                this.SetrichTextBox("******" + ex.Message);
-                FileWorker.WriteLog(ex.Message);
+                FileWorker.LogHelper.WriteLog("页面初始化异常" + ex.Message);
+                //this.SetrichTextBox("******" + ex.Message);
+                //FileWorker.LogHelper.WriteLog(ex.Message);
             }
             try
             {
@@ -40,32 +38,33 @@ namespace IPMALARM
             }
             catch (Exception ex)
             {
-                FileWorker.WriteLog("SDK端口配置不正确");
-                this.SetrichTextBox("****** SDK端口配置不正确");
+                FileWorker.LogHelper.WriteLog("SDK端口配置不正确" + ex.Message);
+                //this.SetrichTextBox("****** SDK端口配置不正确");
             }
         }
         private void Form1_Load(object sender, EventArgs e)
         {
             try
             {
-                FileWorker.WriteLog("页面加载开始");
+                 FileWorker.LogHelper.WriteLog("页面加载开始");
                 this.SDK.NewAlarm += new _ICooMonitorEvents_NewAlarmEventHandler(this.SDK_NewAlarm);
                 this.SDK.PanelStatusEx += new _ICooMonitorEvents_PanelStatusExEventHandler(this.SDK_PanelStatusEx);
                 this.SDK.ArmReport += new _ICooMonitorEvents_ArmReportEventHandler(this.SDK_ArmReport);
+                this.SDK.VistaCIDReport += new _ICooMonitorEvents_VistaCIDReportEventHandler(this.SDK_VistaCIDReport);
                 this.SDK.Startup();
-                FileWorker.WriteLog("页面加载结束");
+                 FileWorker.LogHelper.WriteLog("页面加载结束");
             }
             catch (Exception ex)
             {
-                FileWorker.WriteLog("页面加载异常");
-                this.SetrichTextBox("******" + ex.Message);
-                FileWorker.WriteLog(ex.Message);
+                 FileWorker.LogHelper.WriteLog("页面加载异常"+ex.Message);
+                //this.SetrichTextBox("******" + ex.Message);
+                // FileWorker.LogHelper.WriteLog(ex.Message);
             }
         }
 
         private void SDK_ArmReport(object sender, _ICooMonitorEvents_ArmReportEvent e)
         {
-            this.SetrichTextBox("接收到23系列主机布/撤防事件");
+            //this.SetrichTextBox("接收到23系列主机布/撤防事件");
             string value = string.Concat(new string[]
             {
                 "主机:",
@@ -78,13 +77,14 @@ namespace IPMALARM
                 e.lUser.ToString(),
                 "\r\n"
             });
-            this.SetrichTextBox(value);
-            FileWorker.WriteLog("接收到23系列主机布/撤防事件");
+            FileWorker.LogHelper.WriteLog(value);
+            //this.SetrichTextBox(value);
+             FileWorker.LogHelper.WriteLog("接收到23系列主机布/撤防事件");
         }
         private void SDK_PanelStatusEx(object sender, _ICooMonitorEvents_PanelStatusExEvent e)
         {
-            FileWorker.WriteLog("接收到TL/PLUS主机报警事件 或 23系列主机状态信息事件");
-            this.SetrichTextBox("接收到TL/PLUS主机报警事件 或 23系列主机状态信息事件");
+             FileWorker.LogHelper.WriteLog("接收到TL/PLUS主机报警事件 或 23系列主机状态信息事件");
+            //this.SetrichTextBox("接收到TL/PLUS主机报警事件 或 23系列主机状态信息事件");
             string recvTime = DateTime.Now.ToString("yyyyMMddHHmmss");
             string alarmTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             string sequence = Guid.NewGuid().ToString("N");
@@ -107,6 +107,7 @@ namespace IPMALARM
                     e.troubleBit.ToString(),
                     "\r\n"
                 });
+                FileWorker.LogHelper.WriteLog(text);
                 //this.SetrichTextBox(text);
                 //MessageEntity messageEntity = new MessageEntity();
                 //messageEntity.meta = new MessageEntity.MessageHead
@@ -136,22 +137,22 @@ namespace IPMALARM
                 //};
                 //string log = JsonConvert.SerializeObject(logEntity);
                 //this.kafka.sendLog(log);
-                FileWorker.WriteLog(text.Replace("\r\n", " "));
+                 FileWorker.LogHelper.WriteLog(text.Replace("\r\n", " "));
             }
             catch (Exception ex)
             {
-                FileWorker.WriteLog("获取报警信息及发送消息异常");
-                this.SetrichTextBox("******" + ex.Message);
-                FileWorker.WriteLog(ex.Message);
+                 FileWorker.LogHelper.WriteLog("获取报警信息及发送消息异常"+ex.Message);
+                //this.SetrichTextBox("******" + ex.Message);
+                // FileWorker.LogHelper.WriteLog(ex.Message);
             }
         }
         private void SDK_NewAlarm(object sender, _ICooMonitorEvents_NewAlarmEvent e)
         {
             bool flag = e.lPlayback == 0 && e.lState == 1;
-            FileWorker.WriteLog("e.lPlayback:" + e.lPlayback.ToString() + "  e.lState:" + e.lState.ToString());
+            FileWorker.LogHelper.WriteLog("e.lPlayback:" + e.lPlayback.ToString() + "  e.lState:" + e.lState.ToString());
             if (flag)
             {
-                FileWorker.WriteLog("接收到PLUS II / SUPER主机报警事件");
+                 FileWorker.LogHelper.WriteLog("接收到PLUS II / SUPER主机报警事件");
                 string recvTime = DateTime.Now.ToString("yyyyMMddHHmmss");
                 string alarmTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                 string sequence = Guid.NewGuid().ToString("N");
@@ -169,8 +170,9 @@ namespace IPMALARM
                         "\r\nlState:",
                         e.lState.ToString()
                     });
-                    this.SetrichTextBox(text);
-                    MessageEntity messageEntity = new MessageEntity();
+                    //this.SetrichTextBox(text);
+                    FileWorker.LogHelper.WriteLog(text);
+                   MessageEntity messageEntity = new MessageEntity();
                     messageEntity.meta = new MessageEntity.MessageHead
                     {
                         receiver = "",
@@ -184,38 +186,39 @@ namespace IPMALARM
                     messageEntity.body.buildFromEvent(e);
                     messageEntity.body.alarmTime = alarmTime;
                     string msg = JsonConvert.SerializeObject(messageEntity);
-                    this.kafka.sendMsg(msg);
-                    LogEntity value = new LogEntity
-                    {
-                        uuid = uuid,
-                        content = e,
-                        receiver = "",
-                        sequence = sequence,
-                        recvSequence = "",
-                        sendTime = DateTime.Now.ToString("yyyyMMddHHmmss"),
-                        recvTime = recvTime,
-                        forwardTime = DateTime.Now.ToString("yyyyMMddHHmmss")
-                    };
-                    string log = JsonConvert.SerializeObject(value);
-                    this.kafka.sendLog(log);
-                    FileWorker.WriteLog(text.Replace("\r\n", " "));
+                    //this.kafka.sendMsg(msg);
+                    KafkaWorker.sendAlarmMessage(msg);
+                    //LogEntity value = new LogEntity
+                    //{
+                    //    uuid = uuid,
+                    //    content = e,
+                    //    receiver = "",
+                    //    sequence = sequence,
+                    //    recvSequence = "",
+                    //    sendTime = DateTime.Now.ToString("yyyyMMddHHmmss"),
+                    //    recvTime = recvTime,
+                    //    forwardTime = DateTime.Now.ToString("yyyyMMddHHmmss")
+                    //};
+                    //string log = JsonConvert.SerializeObject(value);
+                    //this.kafka.sendLog(log);
+                    // FileWorker.LogHelper.WriteLog(text.Replace("\r\n", " "));
                 }
                 catch (Exception ex)
                 {
-                    FileWorker.WriteLog("获取报警信息及发送消息异常");
-                    this.SetrichTextBox("******" + ex.Message);
-                    FileWorker.WriteLog(ex.Message);
+                     FileWorker.LogHelper.WriteLog("获取报警信息及发送消息异常"+ex.Message);
+                    //this.SetrichTextBox("******" + ex.Message);
+                    // FileWorker.LogHelper.WriteLog(ex.Message);
                 }
-                this.SetrichTextBox("接收到PLUS II / SUPER主机报警事件");
+                //this.SetrichTextBox("接收到PLUS II / SUPER主机报警事件");
             }
         }
         private void SDK_VistaKeypadInfo(object sender, _ICooMonitorEvents_VistaKeypadInfoEvent e)
         {
-            FileWorker.WriteLog("获取到了一个KeypadInfo事件");
+             FileWorker.LogHelper.WriteLog("获取到了一个KeypadInfo事件");
         }
         private void SDK_VistaCIDReport(object sender, _ICooMonitorEvents_VistaCIDReportEvent e)
         {
-            FileWorker.WriteLog("获取到了一个CIDReport事件");
+             FileWorker.LogHelper.WriteLog("获取到了一个CIDReport事件");
             string recvTime = DateTime.Now.ToString("yyyyMMddHHmmss");
             string alarmTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             string sequence = Guid.NewGuid().ToString("N");
@@ -242,8 +245,9 @@ namespace IPMALARM
                     e.strCode.ToString(),
                     "\r\n"
                 });
-                this.SetrichTextBox(text);
-                MessageEntity messageEntity = new MessageEntity();
+                FileWorker.LogHelper.WriteLog(text);
+               //this.SetrichTextBox(text);
+               MessageEntity messageEntity = new MessageEntity();
                 messageEntity.meta = new MessageEntity.MessageHead
                 {
                     receiver = "",
@@ -257,27 +261,28 @@ namespace IPMALARM
                 messageEntity.body.buildFromEvent(e);
                 messageEntity.body.alarmTime = alarmTime;
                 string msg = JsonConvert.SerializeObject(messageEntity);
-                this.kafka.sendMsg(msg);
-                LogEntity value = new LogEntity
-                {
-                    uuid = uuid,
-                    content = e,
-                    receiver = "",
-                    sequence = sequence,
-                    recvSequence = "",
-                    sendTime = DateTime.Now.ToString("yyyyMMddHHmmss"),
-                    recvTime = recvTime,
-                    forwardTime = DateTime.Now.ToString("yyyyMMddHHmmss")
-                };
-                string log = JsonConvert.SerializeObject(value);
-                this.kafka.sendLog(log);
-                FileWorker.WriteLog(text.Replace("\r\n", " "));
+                //this.kafka.sendMsg(msg);
+                KafkaWorker.sendAlarmMessage(msg);
+                //LogEntity value = new LogEntity
+                //{
+                //    uuid = uuid,
+                //    content = e,
+                //    receiver = "",
+                //    sequence = sequence,
+                //    recvSequence = "",
+                //    sendTime = DateTime.Now.ToString("yyyyMMddHHmmss"),
+                //    recvTime = recvTime,
+                //    forwardTime = DateTime.Now.ToString("yyyyMMddHHmmss")
+                //};
+                //string log = JsonConvert.SerializeObject(value);
+                //this.kafka.sendLog(log);
+                // FileWorker.LogHelper.WriteLog(text.Replace("\r\n", " "));
             }
             catch (Exception ex)
             {
-                FileWorker.WriteLog("获取报警信息及发送消息异常");
-                this.SetrichTextBox("******" + ex.Message);
-                FileWorker.WriteLog(ex.Message);
+                FileWorker.LogHelper.WriteLog("获取报警信息及发送消息异常" + ex.Message);
+                //this.SetrichTextBox("******" + ex.Message);
+                // FileWorker.LogHelper.WriteLog(ex.Message);
             }
         }
         private void SetrichTextBox(string value)

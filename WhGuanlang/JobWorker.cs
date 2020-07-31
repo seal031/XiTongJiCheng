@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 public class JobWorker : IInterruptableJob
 {
     private bool _stop;
-    public static Form1 form;
+    public static IForm form;
 
     public void Interrupt()
     {

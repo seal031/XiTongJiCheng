@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -28,18 +29,26 @@ namespace XinJiangShouBao
         int remotePort;
         string username;
         string password;
+        string airportIata;
+        string airportName;
+        int reconnectInterval=30;
         TcpClientSession client;
+
+        private volatile bool isConnected = false;
+        private volatile bool isReconecting = false;
 
         public Form1()
         {
             InitializeComponent();
             //var a = pickUserId("}}}{\"AlertUserList\":\"0001, 0002\"}寋\"ProcUserName\":\"admin\",\"LogGuid\":\"log_e2b9186fb4a443ef8953154315534906\",\"ProcResultType\":3,\"ProcResultTypeText\":\"预处理\",\"ProcContenet\":\"\"}");
-            string tcpMessage = "!寋\"UserId\":1,\"UserNumber\":1,\"UserName\":\"IP7400\",\"UserType\":0,\"UserTypeText\":\"主机用户\",\"CanControl\":true,\"ZoneNumberList\":null,\"Enable\":true}#閧\"UserId\":1,\"UserNumber\":1,\"ZoneNumber\":\"9\",\"ElementId\":2,\"ZoneName\":\"防区9\",\"ZoneType\":0,\"ZoneTypeText\":\"即时防区\",\"MapElementImg\":\"/Images/ready.png\",\"DetectorType\":0,\"DetectorTypeText\":\"双鉴探测器\",\"CanControl\":true,\"Enable\":true}#雥\"UserId\":1,\"UserNumber\":1,\"ZoneNumber\":\"10\",\"ElementId\":3,\"ZoneName\":\"防区10\",\"ZoneType\":0,\"ZoneTypeText\":\"即时防区\",\"MapElementImg\":\"/Images/ready.png\",\"DetectorType\":0,\"DetectorTypeText\":\"双鉴探测器\",\"CanControl\":true,\"Enable\":true}#雥\"UserId\":1,\"UserNumber\":1,\"ZoneNumber\":\"11\",\"ElementId\":4,\"ZoneName\":\"防区11\",\"ZoneType\":0,\"ZoneTypeText\":\"即时防区\",\"MapElementImg\":\"/Images/ready.png\",\"DetectorType\":0,\"DetectorTypeText\":\"双鉴探测器\",\"CanControl\":true,\"Enable\":true}";
-            var devices = tcpToDevices(tcpMessage);
-            foreach (DeviceEntity device in devices)
-            {
-                pushDeviceEntity(device);
-            }
+            //string tcpMessage = "!寋\"UserId\":1,\"UserNumber\":1,\"UserName\":\"IP7400\",\"UserType\":0,\"UserTypeText\":\"主机用户\",\"CanControl\":true,\"ZoneNumberList\":null,\"Enable\":true}#閧\"UserId\":1,\"UserNumber\":1,\"ZoneNumber\":\"9\",\"ElementId\":2,\"ZoneName\":\"防区9\",\"ZoneType\":0,\"ZoneTypeText\":\"即时防区\",\"MapElementImg\":\"/Images/ready.png\",\"DetectorType\":0,\"DetectorTypeText\":\"双鉴探测器\",\"CanControl\":true,\"Enable\":true}#雥\"UserId\":1,\"UserNumber\":1,\"ZoneNumber\":\"10\",\"ElementId\":3,\"ZoneName\":\"防区10\",\"ZoneType\":0,\"ZoneTypeText\":\"即时防区\",\"MapElementImg\":\"/Images/ready.png\",\"DetectorType\":0,\"DetectorTypeText\":\"双鉴探测器\",\"CanControl\":true,\"Enable\":true}#雥\"UserId\":1,\"UserNumber\":1,\"ZoneNumber\":\"11\",\"ElementId\":4,\"ZoneName\":\"防区11\",\"ZoneType\":0,\"ZoneTypeText\":\"即时防区\",\"MapElementImg\":\"/Images/ready.png\",\"DetectorType\":0,\"DetectorTypeText\":\"双鉴探测器\",\"CanControl\":true,\"Enable\":true}";
+            //var devices = tcpToDevices(tcpMessage);
+            //foreach (DeviceEntity device in devices)
+            //{
+            //    pushDeviceEntity(device);
+            //}
+            //var b = "{ \"ProcUserName\":\"admin\",\"LogGuid\":\"log_bf9ff2e9d72b4f16bcb75eee0bb93f3a\",\"ProcResultType\":3,\"ProcResultTypeText\":\"预处理\",\"ProcContenet\":\"\"}onState\":0,\"PartitionStateText\":\"报警\",\"PartitionStateCate\":0,\"PartionStateImage\":\"/Images/StateRed.png\"}e\":\"IP7400\",\"EventCode\":\"A203\",\"EventName\":\"防区报警恢复\",\"DeviceCode\":\"\",\"AlertUserId\":1,\"AlertUserName\":\"IP7400\",\"AlertUserNumber\":\"0001\",\"AlertUserCode\":\"\",\"AlertZoneId\":5,\"AlertZoneName\":\"防区12\",\"AlertZoneNumber\":\"12\",\"AlertUserType\":0,\"AlertZoneType\":0,\"AlertDetectorType\":0,\"PartitionNumber\":1,\"Telephone\":\"\",\"DoorCardUserId\":0,\"DoorCardUserName\":null,\"DoorElementId\":0,\"DoorName\":null,\"DoorNumber\":0,\"DoorType\":-1,\"DoorCardStyle\":-1,\"DoorCardNumber\":\"\",\"DoorLockNumber\":\"\",\"ChannelId\":0,\"ChannelName\":null,\"ChannelNumber\":\"\",\"Position\":\"\",\"SystemCate\":1,\"SysProtocolCate\":3,\"ProcStyle\":0,\"ProcResultCate\":-1,\"ProcUserId\":0,\"ProcUserName\":\"\",\"ProcContent\":\"\",\"OtherInfo\":\"\",\"MachineName\":\"DESKTOP-LJ18965\",\"Enable\":true,\"LogGuid\":\"log_c3c6112b2f0c42fcb90c0edd2ab06308\",\"ParamId\":0,\"ParamName\":null,\"ParamValueType\":0,\"ParamValue\":null,\"ParamOkValue\":null,\"ResFlage\":\"12=1\",\"StationCode\":null,\"StationId\":0,\"SyncFlage\":0}serAlarm.gif\",\"PartitionState\":0,\"PartitionStateText\":\"报警\",\"PartitionStateCate\":0,\"PartionStateImage\":\"/Images/StateRed.png\"}";
+            //var alarm = AlarmParseTool.parseAlarm(b, "A203", "KCA", "库车");
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -58,7 +67,7 @@ namespace XinJiangShouBao
         }
         private void Form1_Shown(object sender, EventArgs e)
         {
-            client.Connect(new IPEndPoint(IPAddress.Parse(remoteIp), remotePort));
+            connect();    
         }
         private bool loadConfig()
         {
@@ -70,6 +79,9 @@ namespace XinJiangShouBao
                 remotePort = int.Parse(ConfigWorker.GetConfigValue("remotePort"));
                 username = ConfigWorker.GetConfigValue("username");
                 password = ConfigWorker.GetConfigValue("password");
+                airportIata = ConfigWorker.GetConfigValue("airportIata");
+                airportName = ConfigWorker.GetConfigValue("airportName");
+                reconnectInterval = int.Parse(ConfigWorker.GetConfigValue("reconnectInterval"));
                 return true;
             }
             catch (Exception)
@@ -77,8 +89,23 @@ namespace XinJiangShouBao
                 return false;
             }
         }
+
+        private void connect()
+        {
+            try
+            {
+                client.Connect(new IPEndPoint(IPAddress.Parse(remoteIp), remotePort));
+            }
+            catch (Exception ex)
+            {
+                FileWorker.LogHelper.WriteLog("连接时出现异常："+ex.Message);
+            }
+        }
+
         private void Client_Connected(object sender, EventArgs e)
         {
+            isConnected = true;
+            isReconecting = false;
             FileWorker.LogHelper.WriteLog("已连接到服务器");
             setFormate();
             login();
@@ -87,11 +114,42 @@ namespace XinJiangShouBao
         private void Client_Closed(object sender, EventArgs e)
         {
             FileWorker.LogHelper.WriteLog("连接关闭");
+            isConnected = false;
+            if (isReconecting == false)
+            {
+                Task.Run(() =>
+                {
+                    reConnect();
+                });
+            }
         }
 
         private void Client_Error(object sender, ErrorEventArgs e)
         {
             FileWorker.LogHelper.WriteLog("client error" + e.Exception.Message);
+            isConnected = false;
+            if (isReconecting == false)
+            {
+                Task.Run(() =>
+                {
+                    reConnect();
+                });
+            }
+        }
+
+        private void reConnect()
+        {
+            FileWorker.LogHelper.WriteLog("执行断线重连");
+            isReconecting = true;
+            while (true)
+            {
+                connect();
+                if (isConnected)
+                {
+                    break;
+                }
+                Thread.Sleep(reconnectInterval * 1000);
+            }
         }
 
         private void Client_DataReceived(object sender, DataEventArgs e)
@@ -105,20 +163,48 @@ namespace XinJiangShouBao
                 //Debug.WriteLine(tcpMessage);
                 foreach (string subTcpMessage in tcpMessageClean.Split(new string[] { "IsDisposed" }, StringSplitOptions.RemoveEmptyEntries))
                 {
-                    if (subTcpMessage.Contains("A202") && subTcpMessage.Contains("EventCode"))
+                    AlarmEntity alarm = null;
+                    DeviceStateEntity deviceState = null;
+                    if (subTcpMessage.Contains("A202") && subTcpMessage.Contains("EventCode"))//防区报警
                     {
-                        AlarmEntity alarm = tcpToAlarm(subTcpMessage);
-                        if (alarm != null)
+                        alarm = AlarmParseTool.parseAlarm(subTcpMessage, "A202", airportIata, airportName);
+                    }
+                    else if (subTcpMessage.Contains("A203") && subTcpMessage.Contains("EventCode"))//防区报警恢复
+                    {
+                        alarm = AlarmParseTool.parseAlarm(subTcpMessage, "A203", airportIata, airportName);
+                    }
+                    else if (subTcpMessage.Contains("A206") && subTcpMessage.Contains("EventCode"))//防区故障
+                    {
+                        alarm = AlarmParseTool.parseAlarm(subTcpMessage, "A206", airportIata, airportName);
+                        deviceState = AlarmParseTool.parseDeviceState(subTcpMessage, "A206",airportIata);
+                    }
+                    else if (subTcpMessage.Contains("A207") && subTcpMessage.Contains("EventCode"))//防区故障恢复
+                    {
+                        alarm = AlarmParseTool.parseAlarm(subTcpMessage, "A207", airportIata, airportName);
+                        deviceState = AlarmParseTool.parseDeviceState(subTcpMessage, "A207",airportIata);
+                    }
+                    else if (subTcpMessage.Contains("A208") && subTcpMessage.Contains("EventCode"))//防区防拆
+                    {
+                        alarm = AlarmParseTool.parseAlarm(subTcpMessage, "A208", airportIata, airportName);
+                    }
+                    else if (subTcpMessage.Contains("A209") && subTcpMessage.Contains("EventCode"))//防区防拆恢复
+                    {
+                        alarm = AlarmParseTool.parseAlarm(subTcpMessage, "A209", airportIata, airportName);
+                    }
+                    if (alarm != null)
+                    {
+                        if (alarm.body.alarmTime == null || alarm.body.alarmEquCode == null)
                         {
-                            if (alarm.body.alarmTime==null||alarm.body.alarmEquCode==null||alarm.body.alarmEquName==null)
+                            FileWorker.LogHelper.WriteLog("通过tcp消息转换出的alarm对象信息不全：" + subTcpMessage);
+                        }
+                        else
+                        {
+                            KafkaWorker.sendAlarmMessage(alarm.toJson());
+                            if (deviceState != null)
                             {
-                                FileWorker.LogHelper.WriteLog("通过tcp消息转换出的alarm对象信息不全："+subTcpMessage);
+                                KafkaWorker.sendDeviceMessage(deviceState.toJson());
                             }
-                            else
-                            {
-                                string message = alarm.toJson();
-                                KafkaWorker.sendAlarmMessage(message);
-                            }
+                            return;
                         }
                     }
                 }
@@ -175,48 +261,7 @@ namespace XinJiangShouBao
                 FileWorker.LogHelper.WriteLog("发送登录错误" + ex.Message);
             }
         }
-
-
-        public AlarmEntity tcpToAlarm(string tcpMsg)
-        {
-            AlarmEntity alarm = new AlarmEntity();
-            foreach (string item in tcpMsg.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries))
-            {
-                var kvpair = item.Split(new string[] { ":" }, StringSplitOptions.RemoveEmptyEntries);
-                if (kvpair.Length >= 2)
-                {
-                    switch (kvpair[0].Trim())
-                    {
-                        case "EventDateTime":
-                            if (kvpair.Length >= 4)
-                            {
-                                alarm.body.alarmTime = kvpair[1].Trim() + ":" + kvpair[2].Trim() + ":" + kvpair[3].Trim();
-                            }
-                            break;
-                        case "DeviceId":
-                            alarm.body.alarmEquCode = kvpair[1].Trim();
-                            break;
-                        case "DeviceName":
-                            alarm.body.alarmEquName = kvpair[1].Trim();
-                            alarm.body.alarmName = kvpair[1].Trim();
-                            break;
-                        case "AlertZoneName":
-                            alarm.body.alarmAddress = kvpair[1].Trim();
-                            break;
-                        case "EventCode":
-                            if (kvpair[1].Trim() != "A202")
-                            { return null; }
-                            break;
-                        case "EventName":
-                            alarm.body.alarmDescibe = kvpair[1].Trim();
-                            break;
-                        default:
-                            break;
-                    }
-                }
-            }
-            return alarm;
-        }
+        
         public List<string> pickUserId(string tcpMessage)
         {
             tcpMessage = tcpMessage.Replace("\"", "");

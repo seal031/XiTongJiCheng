@@ -36,3 +36,4 @@ E:\GitHubProject\XiTongJiCheng\WhShouDongBaoJing\obj\Release\WhShouDongBaoJing.P
 E:\GitHubProject\XiTongJiCheng\WhShouDongBaoJing\obj\Release\WhShouDongBaoJing.csproj.GenerateResource.Cache
 E:\GitHubProject\XiTongJiCheng\WhShouDongBaoJing\obj\Release\WhShouDongBaoJing.exe
 E:\GitHubProject\XiTongJiCheng\WhShouDongBaoJing\obj\Release\WhShouDongBaoJing.pdb
+E:\GitHubProject\XiTongJiCheng\WhShouDongBaoJing\obj\Release\WhShouDongBaoJing.csprojResolveAssemblyReference.cache

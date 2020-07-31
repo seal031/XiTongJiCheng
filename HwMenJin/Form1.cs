@@ -219,5 +219,17 @@ namespace HwMenJin
                 }
             }
         }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (axHSCEventSDK1.lDisConnectSQLDB() > 0 && axHSCReaderSDK1.lDisConnectSQLDB() > 0)
+            {
+                FileWorker.LogHelper.WriteLog("断开sdk连接成功");
+            }
+            else
+            {
+                FileWorker.LogHelper.WriteLog("断开sdk连接失败");
+            }
+        }
     }
 }

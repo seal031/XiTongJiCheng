@@ -158,3 +158,42 @@ public class DeviceEntity
         return JsonConvert.SerializeObject(this, JsonSerializer.IgnoreSerializerSetting);
     }
 }
+
+/// <summary>
+/// 发送至kafka的设备状态变化消息
+/// </summary>
+public class DeviceStateEntity
+{
+    public DeviceStateEntity()
+    {
+        meta = new Head();
+        body = new Body();
+
+    }
+
+    public Head meta { get; set; }
+    public class Head
+    {
+        public string sender { get; set; }
+        public string msgType { get; set; }
+        public string eventType { get; set; }
+        public string receiver { get; set; }
+        public string sequence { get; set; }
+        public string recvSequence { get; set; }
+        public string sendTime { get; set; }
+        public string recvTime { get; set; }
+    }
+    public Body body { get; set; }
+
+    public class Body
+    {
+        public string equCode { get; set; }
+        public string timeStateId { get; set; }
+        public string createDate { get; set; }
+        public string timeStateName { get; set; }
+    }
+    public string toJson()
+    {
+        return JsonConvert.SerializeObject(this);
+    }
+}

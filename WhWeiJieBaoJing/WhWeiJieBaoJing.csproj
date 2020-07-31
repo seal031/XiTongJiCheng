@@ -9,7 +9,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WhWeiJieBaoJing</RootNamespace>
-    <AssemblyName>WhWeiJieBaoJing</AssemblyName>
+    <AssemblyName>围界报警接入程序</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>

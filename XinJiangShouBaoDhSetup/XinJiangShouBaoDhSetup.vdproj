@@ -1694,7 +1694,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:新疆大华手报接入安装程序"
         "ProductCode" = "8:{819179F3-8D2E-42FB-BF80-097411EE3EAE}"
-        "PackageCode" = "8:{D46B490F-B089-489F-A5CE-614D0798F2B1}"
+        "PackageCode" = "8:{5E85293B-5648-4609-89D8-47C1874284BE}"
         "UpgradeCode" = "8:{A7747C3B-0E8E-4DC3-826B-BDB43D7FCC3C}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -1814,6 +1814,20 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_65B88C31B0464EF4ACD8600E75CCC522"
+            {
+            "Name" = "8:新疆大华手动报警数据接入程序.exe"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_2EC6754BD7684B1581EB67CBBB20B647"
+            "Folder" = "8:_A7FB8BED79954E91BC8D467CB367851F"
+            "WorkingFolder" = "8:_6EADE44ED11D4F5AAC615960FE9A28A4"
+            "Icon" = "8:"
+            "Feature" = "8:"
+            }
         }
         "UserInterface"
         {

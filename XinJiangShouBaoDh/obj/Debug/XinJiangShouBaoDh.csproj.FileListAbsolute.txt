@@ -1,3 +1,4 @@
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBaoDh\bin\Debug\XinJiangShouBaoDh.exe.config
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBaoDh\obj\Debug\XinJiangShouBaoDh.exe
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBaoDh\obj\Debug\XinJiangShouBaoDh.pdb
+E:\GitHubProject\XiTongJiCheng\XinJiangShouBaoDh\bin\Debug\新疆大华手动报警数据接入程序.exe.config

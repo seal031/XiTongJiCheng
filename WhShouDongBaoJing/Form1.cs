@@ -46,6 +46,7 @@ namespace WhShouDongBaoJing
                 //this.SDK.PanelStatusEx += new _ICooMonitorEvents_PanelStatusExEventHandler(this.SDK_PanelStatusEx);
                 //this.SDK.ArmReport += new _ICooMonitorEvents_ArmReportEventHandler(this.SDK_ArmReport);
                 this.SDK.VistaCIDReport += SDK_VistaCIDReport;
+                this.SDK.VistaKeypadInfo += SDK_VistaKeypadInfo;
                 this.SDK.Startup();
             }
             catch (Exception ex)
@@ -54,7 +55,7 @@ namespace WhShouDongBaoJing
                 FileWorker.LogHelper.WriteLog(ex.Message);
             }
         }
-        
+
         private void SDK_ArmReport(object sender, _ICooMonitorEvents_ArmReportEvent e)
         {
             FileWorker.LogHelper.WriteLog("接收到23系列主机布/撤防事件");
@@ -147,14 +148,41 @@ namespace WhShouDongBaoJing
         private void SDK_VistaKeypadInfo(object sender, _ICooMonitorEvents_VistaKeypadInfoEvent e)
         {
             FileWorker.LogHelper.WriteLog("获取到了一个KeypadInfo事件");
+            try
+            {
+                string text = string.Concat(new string[]
+                {
+                    "主机:",
+                    e.strMac,
+                    "的VistaKeypad如下： lplayback:",
+                    e.lPlayback.ToString(),
+                    " cursorPos：",
+                    e.cursorPos.ToString(),
+                    " lState:",
+                    e.lState.ToString(),
+                    " showCursor:",
+                    e.showCursor.ToString(),
+                    " strInfo：",
+                    e.strInfo.ToString()
+                });
+                FileWorker.LogHelper.WriteLog(text);
+                //DeviceStateEntity deviceStateEntity = AlarmParseTool.parseDeviceState(e);
+                //string msg = deviceStateEntity.toJson();
+                //KafkaWorker.sendDeviceMessage(msg);
+            }
+            catch (Exception ex)
+            {
+                FileWorker.LogHelper.WriteLog("获取设备状态信息及发送消息异常" + ex.Message);
+            }
+
         }
         private void SDK_VistaCIDReport(object sender, _ICooMonitorEvents_VistaCIDReportEvent e)
         {
-            FileWorker.LogHelper.WriteLog("获取到了一个CIDReport事件");
-            string recvTime = DateTime.Now.ToString("yyyyMMddHHmmss");
-            string alarmTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-            string sequence = Guid.NewGuid().ToString("N");
-            string uuid = Guid.NewGuid().ToString();
+            //FileWorker.LogHelper.WriteLog("获取到了一个CIDReport事件");
+            //string recvTime = DateTime.Now.ToString("yyyyMMddHHmmss");
+            //string alarmTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            //string sequence = Guid.NewGuid().ToString("N");
+            //string uuid = Guid.NewGuid().ToString();
             try
             {
                 string text = string.Concat(new string[]
@@ -185,8 +213,7 @@ namespace WhShouDongBaoJing
             }
             catch (Exception ex)
             {
-                FileWorker.LogHelper.WriteLog("获取报警信息及发送消息异常");
-                FileWorker.LogHelper.WriteLog(ex.Message);
+                FileWorker.LogHelper.WriteLog("获取报警信息及发送消息异常"+ex.Message);
             }
         }
     }

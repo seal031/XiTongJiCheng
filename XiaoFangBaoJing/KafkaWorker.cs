@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Confluent.Kafka;
-using System.Diagnostics;
-using System.Windows.Forms;
-using System.Threading;
+﻿using Confluent.Kafka;
+using System;
 
 namespace XiaoFangBaoJing
 {
@@ -17,16 +10,21 @@ namespace XiaoFangBaoJing
         static IProducer<Null, string> producerAlarm = null;
         static ProducerConfig configAlarm = null;
 
+        static Action<DeliveryReport<Null, string>> handler = r =>
+           LogHelper.WriteLog(!r.Error.IsError
+               ? $"Delivered message to {r.TopicPartitionOffset}"
+               : $"Delivery Error: {r.Error.Reason}");
+
         public static async void sendMessage(string message)
         {
-            LogHelper.WriteLog(message);
             if (configAlarm == null) { configAlarm = new ProducerConfig { BootstrapServers = brokerList }; }
-            //var config = new ProducerConfig { BootstrapServers = brokerList };
+            LogHelper.WriteLog("正在向kafka发送alarm消息" + message);
             try
             {
                 if (producerAlarm == null) { producerAlarm = new ProducerBuilder<Null, string>(configAlarm).Build(); }
                 {
-                    var dr = await producerAlarm.ProduceAsync(messageTopicName, new Message<Null, string> { Value = message });
+                    producerAlarm.Produce(messageTopicName, new Message<Null, string> { Value = message }, handler);
+                    producerAlarm.Flush(TimeSpan.FromSeconds(5));
                 }
             }
             catch (Exception e)

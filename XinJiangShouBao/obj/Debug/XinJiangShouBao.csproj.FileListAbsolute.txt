@@ -16,7 +16,6 @@ E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Debug\XinJiangShouBao.exe
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Debug\XinJiangShouBao.pdb
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Debug\Confluent.Kafka.dll
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Debug\log4net.dll
-E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Debug\NetSDKCS.dll
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Debug\Newtonsoft.Json.dll
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Debug\SuperSocket.ClientEngine.dll
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Debug\SuperSocket.ProtoBase.dll
@@ -25,7 +24,6 @@ E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Debug\System.Memory.dll
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Debug\Confluent.Kafka.xml
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Debug\log4net.xml
-E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Debug\NetSDKCS.pdb
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Debug\Newtonsoft.Json.xml
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Debug\SuperSocket.ProtoBase.xml
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Debug\System.Buffers.xml

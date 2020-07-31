@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WhGuanlang;
 
 public class ConfigWorker
 {
@@ -105,15 +104,33 @@ public class MessageParser
     {
         return System.Text.Encoding.Default.GetBytes(str);
     }
-
+    /// <summary>
+    /// byte转16进制
+    /// </summary>
+    /// <param name="bytes"></param>
+    /// <returns></returns>
     public static string byteToHex(byte[] bytes)
     {
-        string hexOutput = string.Empty;
+        StringBuilder sb = new StringBuilder(bytes.Length * 3);
         for (int i = 0; i < bytes.Length; i++)
         {
-            hexOutput += string.Format("{0:X}", bytes[i]) + " ";
+            sb.Append(Convert.ToString(bytes[i], 16).PadLeft(2, '0'));
         }
-        return hexOutput;
+        var sbStr = sb.ToString();
+        return sbStr;
+    }
+
+    public static string HexToDec(string hex)
+    {
+        try
+        {
+            return Int32.Parse(hex, System.Globalization.NumberStyles.AllowHexSpecifier).ToString("D2");//不足2位左侧补零
+        }
+        catch (Exception ex)
+        {
+            FileWorker.LogHelper.WriteLog("十六进制的值" + hex + "转换为十进制失败：" + ex.Message);
+            return "";
+        } 
     }
 }
 
@@ -123,82 +140,69 @@ public class MessageParser
 /// </summary>
 public class AlarmParseTool
 {
-    public static AlarmEntity parseAlarm(string alarmStr)
+    public static Dictionary<string, string> stateDic = new Dictionary<string, string>();
+    public static Dictionary<string, string> alarmDic = new Dictionary<string, string>();
+
+    static AlarmParseTool()
     {
-        AlarmEntity alarmEntity = null;
+        stateDic.Add("ES01", "在线");
+        stateDic.Add("ES02", "离线");
+        stateDic.Add("AS01", "未解除");
+        stateDic.Add("AS02", "已解除");
+
+        alarmDic.Add("AC0601", "围界入侵报警");
+        alarmDic.Add("AC0602", "围界防拆报警");
+        alarmDic.Add("AC0603", "围界故障报警");
+        alarmDic.Add("AC0604", "围界离线报警");
+    }
+    public static AlarmEntity parseAlarm(string equCode,string alarmCode,string stateCode)
+    {
+        AlarmEntity alarmEntity = new AlarmEntity();
+        alarmEntity.meta.eventType = "WJ_ALARM";
+        alarmEntity.meta.msgType = "ALARM";
+        alarmEntity.meta.receiver = "";
+        alarmEntity.meta.recvSequence = "";
+        alarmEntity.meta.recvTime = "";
+        alarmEntity.meta.sender = "WJALARM";
+        alarmEntity.meta.sendTime = DateTime.Now.ToString("yyyyMMddHHmmss");
+        alarmEntity.meta.sequence = "";
+        alarmEntity.body.alarmClassCode = "AC06";
+        alarmEntity.body.alarmClassName = "围界报警";
+        alarmEntity.body.alarmTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+        alarmEntity.body.alarmEquCode = equCode;
+        alarmEntity.body.alarmName = alarmDic[alarmCode];
+        alarmEntity.body.alarmNameCode = alarmCode;
+        alarmEntity.body.alarmStateCode = stateCode;
+        alarmEntity.body.alarmStateName = stateDic[stateCode];
+        alarmEntity.body.airportIata = "WUH";
+        alarmEntity.body.airportName = "武汉";
+        return alarmEntity;
+    }
+    public static DeviceStateEntity parseDeviceState(string equCode,string stateId)
+    {
+        DeviceStateEntity deviceStateEntity = null;
         try
         {
-            int timeBeginIndex = alarmStr.IndexOf("time=");
-            int timeEndIndex = alarmStr.IndexOf("\" mdlid=");
-            string alarmTimeStr = "";
-            if (timeBeginIndex >= 0 && timeEndIndex >= 0 && timeEndIndex > (timeBeginIndex + 6))
-            {
-                string timePartStr = alarmStr.Substring(timeBeginIndex + 6, (timeEndIndex - timeBeginIndex - 6));
-                DateTime alarmTime = DateTime.Parse(timePartStr);
-                alarmTimeStr = alarmTime.ToString("yyyy-MM-dd HH:mm:ss");
-            }
-            int mdlnameBeginIndex = alarmStr.IndexOf("mdlname=");
-            int mdlnameEndIndex = alarmStr.IndexOf("\"/></ROOT>");
-            string deviceName = "";
-            if (mdlnameBeginIndex >= 0 && mdlnameEndIndex >= 0 && mdlnameEndIndex > (mdlnameBeginIndex + 8))
-            {
-                //string mdlnamePartStr = alarmStr.Substring(mdlnameBeginIndex + 8, (mdlnameEndIndex - mdlnameBeginIndex - 8));
-                //string[] mdlnameArray = mdlnamePartStr.Split(new string[] { @"\" }, StringSplitOptions.RemoveEmptyEntries);
-                //if (mdlnameArray.Length != 4)
-                //{
-                //    FileWorker.LogHelper.WriteLog("mdlname解析错误:"+mdlnamePartStr);
-                //    return alarmEntity;
-                //}
-                //else
-                //{
-                //    string afNo = mdlnameArray[1].Replace(" ", "").Trim();
-                //    string fangquNo = mdlnameArray[3].Replace(" ","").Replace("VICTRIX-防区_", "").Trim();
-                //    deviceName = "GLBJ-" + afNo + "-" + fangquNo;
-                //}
-                string mdlnamePartStr = alarmStr.Substring(mdlnameBeginIndex + 8, (mdlnameEndIndex - mdlnameBeginIndex - 8));
-                string[] mdlnameArray = mdlnamePartStr.Split(new string[] { @"\" }, StringSplitOptions.RemoveEmptyEntries);
-                if (mdlnameArray.Length != 3)
-                {
-                    FileWorker.LogHelper.WriteLog("mdlname解析错误:" + mdlnamePartStr);
-                    return alarmEntity;
-                }
-                else
-                {
-                    string afNo = mdlnameArray[1].Split(new string[] { @"_" }, StringSplitOptions.RemoveEmptyEntries)[0].Replace("-", "").Trim();
-                    string fangquNo = mdlnameArray[2].Replace(" ", "").Replace("VICTRIX-防区_", "").Trim();
-                    deviceName = "GLBJ-" + afNo + "-" + fangquNo;
-                }
-            }
-            alarmEntity = new AlarmEntity();
-            alarmEntity.meta.eventType = "WJ_ALARM";
-            alarmEntity.meta.msgType = "ALARM";
-            alarmEntity.meta.receiver = "";
-            alarmEntity.meta.recvSequence = "";
-            alarmEntity.meta.recvTime = "";
-            alarmEntity.meta.sender = "WJALARM";
-            alarmEntity.meta.sendTime = DateTime.Now.ToString("yyyyMMddHHmmss");
-            alarmEntity.meta.sequence = "";
-            alarmEntity.body.alarmClassCode = "AC06";
-            alarmEntity.body.alarmClassName = "围界报警";
-            //alarmEntity.body.alarmTypeCode = "AC0401";
-            //alarmEntity.body.alarmTypeName = "管廊报警";
-            //alarmEntity.body.alarmName = "管廊报警";
-            alarmEntity.body.alarmTime = (alarmTimeStr == string.Empty ? DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") : alarmTimeStr);
-            //alarmEntity.body.alarmLevelCode = "AL01";
-            //alarmEntity.body.alarmLevelName = "一级";
-            alarmEntity.body.alarmEquCode = deviceName;
-            alarmEntity.body.alarmName = "围界报警新事件";
-            alarmEntity.body.alarmNameCode = "AC0601";
-            alarmEntity.body.alarmStateCode = "AS01";
-            alarmEntity.body.alarmStateName = "未解除";
-            alarmEntity.body.airportIata = "WUH";
-            alarmEntity.body.airportName = "武汉";
+            deviceStateEntity = new DeviceStateEntity();
+            deviceStateEntity.meta.eventType = "ACS_EQUINFO_UE";
+            deviceStateEntity.meta.msgType = "EQU";
+            deviceStateEntity.meta.receiver = "";
+            deviceStateEntity.meta.recvSequence = "";
+            deviceStateEntity.meta.recvTime = "";
+            deviceStateEntity.meta.sender = "WJALARM";
+            deviceStateEntity.meta.sendTime = DateTime.Now.ToString("yyyyMMddHHmmss");
+            deviceStateEntity.meta.sequence = "";
+
+            deviceStateEntity.body.createDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            deviceStateEntity.body.equCode = equCode;
+            deviceStateEntity.body.timeStateId = stateId;
+            deviceStateEntity.body.timeStateName = stateDic[stateId];
         }
         catch (Exception ex)
         {
-            FileWorker.LogHelper.WriteLog("解析报警失败，" + ex.Message);
+            FileWorker.LogHelper.WriteLog("解析设备状态失败，" + ex.Message);
+            return null;
         }
-
-        return alarmEntity;
+        return deviceStateEntity;
     }
 }

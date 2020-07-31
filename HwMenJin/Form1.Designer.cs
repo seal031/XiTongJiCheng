@@ -63,6 +63,7 @@
             this.Controls.Add(this.axHSCEventSDK1);
             this.Name = "Form1";
             this.Text = "门禁数据接入程序";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.axHSCEventSDK1)).EndInit();

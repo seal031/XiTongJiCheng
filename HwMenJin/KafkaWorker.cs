@@ -24,10 +24,6 @@ public class KafkaWorker
     static ProducerConfig configDevice = null;
     static ProducerConfig configAccess = null;
     static ConsumerConfig configCommand = null;
-    //static Action<DeliveryReport<Null, string>> handler = r =>
-    //   FileWorker.WriteLog(!r.Error.IsError
-    //       ? $"Delivered message to {r.TopicPartitionOffset}"
-    //       : $"Delivery Error: {r.Error.Reason}");
     static Action<DeliveryReport<Null, string>> handler = r =>
        FileWorker.LogHelper.WriteLog(!r.Error.IsError
            ? $"Delivered message to {r.TopicPartitionOffset}"
@@ -43,8 +39,6 @@ public class KafkaWorker
             {
                 producerAlarm = new ProducerBuilder<Null, string>(configAlarm).Build();
             }
-            //var dr = await producerAlarm.ProduceAsync(deviceTopicName, new Message<Null, string> { Value = message });
-            //FileWorker.WriteLog("消息" + message + "的发送状态为：" + dr.Status);
             producerAlarm.Produce(messageTopicName, new Message<Null, string> { Value = message }, handler);
             producerAlarm.Flush(TimeSpan.FromSeconds(5));
         }
@@ -56,19 +50,18 @@ public class KafkaWorker
     public static void sendDeviceMessage(string message)
     {
         if (configDevice == null) { configDevice = new ProducerConfig { BootstrapServers = brokerList }; }
-        //FileWorker.WriteLog("正在向kafka发送device消息" + message);
         try
         {
-            if (producerDevice == null) { producerDevice = new ProducerBuilder<Null, string>(configDevice).Build(); }
+            if (producerDevice == null)
             {
-                producerDevice.Produce(deviceTopicName, new Message<Null, string> { Value = message }, handler);
-                producerDevice.Flush(TimeSpan.FromSeconds(5));
+                producerDevice = new ProducerBuilder<Null, string>(configDevice).Build();
             }
+            producerDevice.Produce(deviceTopicName, new Message<Null, string> { Value = message }, handler);
+            producerDevice.Flush(TimeSpan.FromSeconds(5));
         }
         catch (Exception e)
         {
-            FileWorker.PrintLog("device error  " + e.Message);
-            FileWorker.WriteLog("device error  " + e.Message);
+            FileWorker.LogHelper.WriteLog("device error  " + e.Message);
         }
     }
 

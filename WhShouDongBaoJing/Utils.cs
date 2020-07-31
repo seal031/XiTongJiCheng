@@ -142,4 +142,38 @@ public class AlarmParseTool
 
         return alarmEntity;
     }
+
+    public static Dictionary<string, string> stateDic = new Dictionary<string, string>();
+    static AlarmParseTool()
+    {
+        stateDic.Add("ES01", "在线");
+        stateDic.Add("ES02", "离线");
+    }
+    public static DeviceStateEntity parseDeviceState(_ICooMonitorEvents_VistaKeypadInfoEvent alarmInfo, string stateId)
+    {
+        DeviceStateEntity deviceStateEntity = null;
+        try
+        {
+            deviceStateEntity = new DeviceStateEntity();
+            deviceStateEntity.meta.eventType = "ACS_EQUINFO_UE";
+            deviceStateEntity.meta.msgType = "EQU";
+            deviceStateEntity.meta.receiver = "";
+            deviceStateEntity.meta.recvSequence = "";
+            deviceStateEntity.meta.recvTime = "";
+            deviceStateEntity.meta.sender = "SBALARM";
+            deviceStateEntity.meta.sendTime = DateTime.Now.ToString("yyyyMMddHHmmss");
+            deviceStateEntity.meta.sequence = "";
+
+            deviceStateEntity.body.createDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            deviceStateEntity.body.equCode = alarmInfo.strMac;
+            deviceStateEntity.body.timeStateId = stateId;
+            deviceStateEntity.body.timeStateName = stateDic[stateId];
+        }
+        catch (Exception ex)
+        {
+            FileWorker.LogHelper.WriteLog("解析设备状态失败，" + ex.Message);
+            return null;
+        }
+        return deviceStateEntity;
+    }
 }

@@ -1,55 +1,125 @@
-﻿using Confluent.Kafka;
-using Confluent.Kafka.Serialization;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
-namespace IPMALARM
-{
-    public class KafkaWorker
-    {
-        private string brokerList;
-        private string topicMsg;
-        private string topicLog;
-        private Producer<Null, string> msgProducer;
-        private Producer<Null, string> logProducer;
-        public KafkaWorker()
-        {
-            this.brokerList = ConfigWorker.GetConfigValue("kafkaUrl");
-            this.topicMsg = ConfigWorker.GetConfigValue("topicAlarm");
-            this.topicLog = ConfigWorker.GetConfigValue("topicLog");
-            Dictionary<string, object> config = new Dictionary<string, object>
-            {
+using System.Threading.Tasks;
+using Confluent.Kafka;
+using System.Diagnostics;
+using System.Windows.Forms;
+using System.Threading;
+using IPMALARM;
 
+public class KafkaWorker
+{
+    static string brokerList = ConfigWorker.GetConfigValue("kafkaUrl");
+    static string messageTopicName = ConfigWorker.GetConfigValue("topicAlarm");
+    static string deviceTopicName = ConfigWorker.GetConfigValue("topicDevice");
+    static string accessTopicName = ConfigWorker.GetConfigValue("topicAccess");
+    static string commandTopicName = ConfigWorker.GetConfigValue("topicCommand");
+    static string consumerGroupId = ConfigWorker.GetConfigValue("consumerGroupId");
+    static IProducer<Null, string> producerAlarm = null;
+    static IProducer<Null, string> producerDevice = null;
+    static IProducer<Null, string> producerAccess = null;
+    static IConsumer<Ignore, string> consumerCommand = null;
+    static ProducerConfig configAlarm = null;
+    static ProducerConfig configDevice = null;
+    static ProducerConfig configAccess = null;
+    static ConsumerConfig configCommand = null;
+    static Action<DeliveryReport<Null, string>> handler = r =>
+       FileWorker.LogHelper.WriteLog(!r.Error.IsError
+           ? $"Delivered message to {r.TopicPartitionOffset}"
+           : $"Delivery Error: {r.Error.Reason}");
+
+    public static void sendAlarmMessage(string message)
+    {
+        if (configAlarm == null) { configAlarm = new ProducerConfig { BootstrapServers = brokerList }; }
+        FileWorker.LogHelper.WriteLog("正在向kafka发送alarm消息" + message);
+        try
+        {
+            if (producerAlarm == null)
+            {
+                producerAlarm = new ProducerBuilder<Null, string>(configAlarm).Build();
+            }
+            producerAlarm.Produce(messageTopicName, new Message<Null, string> { Value = message }, handler);
+            producerAlarm.Flush(TimeSpan.FromSeconds(5));
+        }
+        catch (Exception e)
+        {
+            FileWorker.LogHelper.WriteLog("alarm error  " + e.Message);
+        }
+    }
+    public static void sendDeviceMessage(string message)
+    {
+        if (configDevice == null) { configDevice = new ProducerConfig { BootstrapServers = brokerList }; }
+        FileWorker.LogHelper.WriteLog("正在向kafka发送device消息" + message);
+        try
+        {
+            if (producerDevice == null)
+            {
+                producerDevice = new ProducerBuilder<Null, string>(configDevice).Build();
+            }
+            producerDevice.Produce(deviceTopicName, new Message<Null, string> { Value = message }, handler);
+            producerDevice.Flush(TimeSpan.FromSeconds(5));
+        }
+        catch (Exception e)
+        {
+            FileWorker.LogHelper.WriteLog("device error  " + e.Message);
+        }
+    }
+
+    public static void sendAccessMessage(string message)
+    {
+        if (configAccess == null) { configAccess = new ProducerConfig { BootstrapServers = brokerList }; }
+        FileWorker.LogHelper.WriteLog("正在向kafka发送access消息" + message);
+        try
+        {
+            if (producerAccess == null)
+            {
+                producerAccess = new ProducerBuilder<Null, string>(configAccess).Build();
+            }
+            producerAccess.Produce(accessTopicName, new Message<Null, string> { Value = message }, handler);
+            producerAccess.Flush(TimeSpan.FromSeconds(5));
+        }
+        catch (Exception e)
+        {
+            FileWorker.LogHelper.WriteLog("access error  " + e.Message);
+        }
+    }
+
+    public delegate void GetMessage(string message);
+    public static event GetMessage OnGetMessage;
+
+    public static void startGetMessage()
+    {
+        configCommand = new ConsumerConfig
+        {
+            GroupId = consumerGroupId,
+            BootstrapServers = brokerList,
+            AutoOffsetReset = AutoOffsetReset.Latest
+        };
+        using (consumerCommand = new ConsumerBuilder<Ignore, string>(configCommand).Build())
+        {
+            consumerCommand.Subscribe(commandTopicName);
+            CancellationTokenSource cts = new CancellationTokenSource();
+            try
+            {
+                while (true)
                 {
-                    "bootstrap.servers",
-                    this.brokerList
+                    try
+                    {
+                        var cr = consumerCommand.Consume(cts.Token);
+                        OnGetMessage(cr.Value);
+                    }
+                    catch (ConsumeException e)
+                    {
+                        FileWorker.LogHelper.WriteLog($"Error occured: {e.Error.Reason}");
+                    }
                 }
-            };
-            this.msgProducer = new Producer<Null, string>(config, null, new StringSerializer(Encoding.UTF8));
-            this.logProducer = new Producer<Null, string>(config, null, new StringSerializer(Encoding.UTF8));
-        }
-        public void sendMsg(string msg)
-        {
-            try
-            {
-                this.msgProducer.ProduceAsync(this.topicMsg, null, msg);
-                this.msgProducer.Flush(TimeSpan.FromSeconds(1.0));
             }
-            catch (Exception var_0_33)
+            catch (OperationCanceledException e)
             {
-                throw;
-            }
-        }
-        public void sendLog(string log)
-        {
-            try
-            {
-                this.logProducer.ProduceAsync(this.topicLog, null, log);
-                this.logProducer.Flush(TimeSpan.FromSeconds(1.0));
-            }
-            catch (Exception var_0_33)
-            {
-                throw;
+                FileWorker.LogHelper.WriteLog($"Error occured1: {e.Message}");
+                consumerCommand.Close();
             }
         }
     }

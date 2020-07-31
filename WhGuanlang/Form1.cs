@@ -1,36 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Net;
-using SuperSocket.ClientEngine;
-using System.Diagnostics;
-using System.Net.Sockets;
-using System.Threading;
-using Quartz;
+﻿using Quartz;
 using Quartz.Impl;
+using SimpleTCP;
+using SuperSocket.ClientEngine;
+using System;
+using System.Text;
+using System.Threading;
+using System.Windows.Forms;
 
 namespace WhGuanlang
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form,IForm
     {
         public bool isConnected = false;
         string localIp;
         int localPort;
         string remoteIp;
         int remotePort;
-        TcpClientSession client;
+        //TcpClientSession client;
         IScheduler scheduler;
         IJobDetail job;
         JobKey jobKey;
 
-        TcpClient tcpClient;
-        Thread thrRecv;
+        SimpleTcpClient client;
 
         public Form1()
         {
@@ -39,29 +30,84 @@ namespace WhGuanlang
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //var alarmEntity= AlarmParseTool.parseAlarm("<ROOT><Event logid=\"1170\" time=\"2019 / 09 / 21 13:54:14\" mdlid=\"1006\" code=\"1\" cid=\"130\" grade=\"3\" desc=\"报警\" mrk=\"防区报警\" mdlname=\"综合管廊\\AF 08\\VICTRIX - 8_172.28.161.207\\VICTRIX - 防区_4\"/></ROOT>");
+            //var alarmEntity = AlarmParseTool.parseAlarm("<ROOT><Event logid=\"1170\" time=\"2019 / 09 / 21 13:54:14\" mdlid=\"1006\" code=\"1\" cid=\"130\" grade=\"3\" desc=\"报警\" mrk=\"防区报警\" mdlname=\"综合管廊\\AF 08\\VICTRIX - 8_172.28.161.207\\VICTRIX - 防区_4\"/></ROOT>");
+            //var alarmEntity = AlarmParseTool.parseAlarm("<ROOT><Event logid=\"1190488\" time=\"2020 / 05 / 28 10:32:55\" mdlid=\"1018\" code=\"1\" cid=\"130\" grade=\"3\" desc=\"报警\" mrk=\"防区报警\" mdlname=\"管廊报警\\AF - 01_172.28.161.200\\VICTRIX - 防区_5\"/></ROOT>");
             //string message = alarmEntity.toJson();
             //KafkaWorker.sendAlarmMessage(message);
+            //var a = AlarmParseTool.parseDeviceState("<ROOT><Event logid=\"1190495\" time=\"2020 / 05 / 28 10:33:26\" mdlid=\"1212\" code=\"1\" cid=\"\" grade=\"0\" desc=\"连接成功\" mrk=\"通讯连接成功\" mdlname=\"管廊报警\\AF - 24_172.28.162.211\"/></ROOT>", "");
             if (loadConfig() == false)
             {
                 MessageBox.Show("配置文件中的配置项解析失败，请检查配置文件内容");
                 return; 
             }
-            initJob();
-            client = new AsyncTcpSession(); 
-            client.LocalEndPoint = new IPEndPoint(IPAddress.Parse(localIp), localPort);
-            client.Connected += Client_Connected;
-            client.Closed += Client_Closed;
+            client = new SimpleTcpClient();
+            client.StringEncoder = Encoding.Default;
+            //client.LocalEndPoint = new IPEndPoint(IPAddress.Parse(localIp), localPort);
+            //client.Connected += Client_Connected;
+            //client.Closed += Client_Closed;
+            //client.DataReceived += Client_DataReceived;
             client.DataReceived += Client_DataReceived;
-            client.Error += Client_Error;
+            //client.Error += Client_Error;
             connectToServer();
 
             //tcpClient = new TcpClient(localIp, localPort);
             //thrRecv = new Thread(ReceiveMessage);
             //thrRecv.Start();
             //FileWorker.LogHelper.WriteLog("TCP监听线程已启动");
+            initJob();
         }
-        
+
+        private void Client_DataReceived(object sender, SimpleTCP.Message e)
+        {
+            string message = e.MessageString;
+            //FileWorker.LogHelper.WriteLog(Environment.NewLine + "接收的数据是" + message);
+            if (message.Contains("$HBT$"))//heart beat
+            {
+                sendHearBeat();
+            }
+            if (message.Contains("防区报警"))
+            {
+                //FileWorker.LogHelper.WriteLog("接收到报警" + message);
+                var alarmEntity = AlarmParseTool.parseAlarm(message);
+                if (alarmEntity != null)
+                {
+                    string alarmMessage = alarmEntity.toJson();
+                    FileWorker.LogHelper.WriteLog("向kafka发送报警" + alarmMessage);
+                    KafkaWorker.sendAlarmMessage(alarmMessage);
+                }
+                return;
+            }
+            if (message.Contains("ACK Login"))
+            {
+                FileWorker.LogHelper.WriteLog("登录成功");
+                return;
+            }
+            if (message.Contains("连接成功"))
+            {
+                //FileWorker.LogHelper.WriteLog("接收到设备状态变更" + message);
+                var deviceStateEntity = AlarmParseTool.parseDeviceState(message, "ES01");
+                if (deviceStateEntity != null)
+                {
+                    string deviceStateMessage = deviceStateEntity.toJson();
+                    FileWorker.LogHelper.WriteLog("向kafka发送设备状态" + deviceStateMessage);
+                    KafkaWorker.sendDeviceMessage(deviceStateMessage);
+                }
+                return;
+            }
+            if (message.Contains("断开连接"))
+            {
+                //FileWorker.LogHelper.WriteLog("接收到设备状态变更" + message);
+                var deviceStateEntity = AlarmParseTool.parseDeviceState(message, "ES02");
+                if (deviceStateEntity != null)
+                {
+                    string deviceStateMessage = deviceStateEntity.toJson();
+                    FileWorker.LogHelper.WriteLog("向kafka发送设备状态" + deviceStateMessage);
+                    KafkaWorker.sendDeviceMessage(deviceStateMessage);
+                }
+                return;
+            }
+        }
+
         private bool loadConfig()
         {
             try
@@ -87,8 +133,8 @@ namespace WhGuanlang
                     scheduler = StdSchedulerFactory.GetDefaultScheduler();
                     JobWorker.form = this;
                     job = JobBuilder.Create<JobWorker>().WithIdentity("connectJob", "jobs").Build();
-                    ITrigger trigger = TriggerBuilder.Create().WithIdentity("connectTrigger", "triggers").StartAt(DateTimeOffset.Now.AddSeconds(1))
-                        .WithSimpleSchedule(x => x.WithIntervalInSeconds(5).RepeatForever()).Build();
+                    ITrigger trigger = TriggerBuilder.Create().WithIdentity("connectTrigger", "triggers").StartAt(DateTimeOffset.Now.AddSeconds(300))
+                        .WithSimpleSchedule(x => x.WithIntervalInSeconds(120).RepeatForever()).Build();
                     scheduler.ScheduleJob(job, trigger);//把作业，触发器加入调度器。  
                     jobKey = job.Key;
                 }
@@ -169,62 +215,63 @@ namespace WhGuanlang
         
         private void Client_DataReceived(object sender, DataEventArgs e)
         {
-            string message = MessageParser.byteToStr(e.Data);
-            FileWorker.LogHelper.WriteLog(Environment.NewLine + "接收的数据是" + message);
-            if (message.Contains("$HBT$"))//heart beat
-            {
-                sendHearBeat(e.Data);
-                return;
-            }
-            if (message.Contains("防区报警"))
-            {
-                FileWorker.LogHelper.WriteLog("接收到报警" + message);
-                var alarmEntity = AlarmParseTool.parseAlarm(message);
-                if (alarmEntity != null)
-                {
-                    string alarmMessage = alarmEntity.toJson();
-                    FileWorker.LogHelper.WriteLog("向kafka发送报警" + alarmMessage);
-                    KafkaWorker.sendAlarmMessage(alarmMessage);
-                }
-            }
-            if (message.Contains("ACK Login"))
-            {
-                FileWorker.LogHelper.WriteLog("登录成功");
-            }
+            //string message = MessageParser.byteToStr(e.Data);
+            //FileWorker.LogHelper.WriteLog(Environment.NewLine + "接收的数据是" + message);
+            //if (message.Contains("$HBT$"))//heart beat
+            //{
+            //    sendHearBeat(e.Data);
+            //    return;
+            //}
+            //if (message.Contains("防区报警"))
+            //{
+            //    FileWorker.LogHelper.WriteLog("接收到报警" + message);
+            //    var alarmEntity = AlarmParseTool.parseAlarm(message);
+            //    if (alarmEntity != null)
+            //    {
+            //        string alarmMessage = alarmEntity.toJson();
+            //        FileWorker.LogHelper.WriteLog("向kafka发送报警" + alarmMessage);
+            //        KafkaWorker.sendAlarmMessage(alarmMessage);
+            //    }
+            //}
+            //if (message.Contains("ACK Login"))
+            //{
+            //    FileWorker.LogHelper.WriteLog("登录成功");
+            //}
+            //if (message.Contains("连接成功"))
+            //{
+            //    FileWorker.LogHelper.WriteLog("接收到设备状态变更" + message);
+            //    var deviceStateEntity = AlarmParseTool.parseDeviceState(message, "ES01");
+            //    if (deviceStateEntity != null)
+            //    {
+            //        string deviceStateMessage = deviceStateEntity.toJson();
+            //        FileWorker.LogHelper.WriteLog("向kafka发送报警" + deviceStateMessage);
+            //        KafkaWorker.sendDeviceMessage(deviceStateMessage);
+            //    }
+            //}
+            //if (message.Contains("断开连接"))
+            //{
+            //    FileWorker.LogHelper.WriteLog("接收到设备状态变更" + message);
+            //    var deviceStateEntity = AlarmParseTool.parseDeviceState(message, "ES02");
+            //    if (deviceStateEntity != null)
+            //    {
+            //        string deviceStateMessage = deviceStateEntity.toJson();
+            //        FileWorker.LogHelper.WriteLog("向kafka发送报警" + deviceStateMessage);
+            //        KafkaWorker.sendDeviceMessage(deviceStateMessage);
+            //    }
+            //}
         }
-
-        //private void ReceiveMessage(object obj)
-        //{
-        //    IPEndPoint remoteIpep = new IPEndPoint(IPAddress.Parse(remoteIp), remotePort);
-        //    while (true)
-        //    {
-        //        try
-        //        {
-        //            byte[] bytRecv = tcpClient.Client.Receive(ref remoteIpep);
-        //            string bytRecvStr = string.Join(" ", bytRecv);
-        //            FileWorker.LogHelper.WriteLog("接收到的原始数据是：" + bytRecvStr);
-        //            string msg = Encoding.Default.GetString(bytRecv);
-        //            FileWorker.LogHelper.WriteLog("原始数据解析后是：" + msg);
-
-        //            AlarmEntity alarm = udpToAlarm(msg);
-        //            string messageAlarm = alarm.toJson();
-        //            KafkaWorker.sendAlarmMessage(messageAlarm);
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            MessageBox.Show(ex.Message);
-        //            break;
-        //        }
-        //    }
-        //}
 
         public bool connectToServer()
         {
+            FileWorker.LogHelper.WriteLog("开始登陆服务器");
             if (client != null)
             {
                 try
                 {
-                    client.Connect(new IPEndPoint(IPAddress.Parse(remoteIp), remotePort));
+                    //client.Connect(new IPEndPoint(IPAddress.Parse(remoteIp), remotePort));
+                    client.Connect(remoteIp, remotePort);
+                    Thread.Sleep(1000);
+                    login();
                     return true; 
                 }
                 catch (Exception ex)
@@ -235,11 +282,13 @@ namespace WhGuanlang
             }
             else
             {
+                FileWorker.LogHelper.WriteLog("无法登陆服务器，client对象为空");
                 return false;
             }
         }
         public void checkAndReconnectToServer()
         {
+            isConnected = client.TcpClient.Connected;
             FileWorker.LogHelper.WriteLog("定时任务执行重连检查，当前连接状态为"+isConnected );
             if (isConnected == false)
             {
@@ -263,30 +312,14 @@ namespace WhGuanlang
                             + "content_length:0" + Environment.NewLine + Environment.NewLine;
             sendLogin(loginStr1);
         }
-
-        private void sendMessage(string message)
-        {
-            ArraySegment<byte> bytes = new ArraySegment<byte>();
-            client.Send(bytes);
-        }
-        private void sendMessage(byte[] message)
+        
+        private void sendHearBeat()
         {
             try
             {
-                client.Send(message, 0, 9);
-                FileWorker.LogHelper.WriteLog("发送数据成功,发送的数据是:"+MessageParser.byteToStr(message));
-            }
-            catch (Exception ex)
-            {
-                FileWorker.LogHelper.WriteLog("发送数据错误"+ex.Message);
-            }
-        }
-
-        private void sendHearBeat(byte[] hb)
-        {
-            try
-            {
-                client.Send(hb, 0, 9);
+                byte[] heartBytes = MessageParser.strToByte("$HBT$" + Environment.NewLine + Environment.NewLine);
+                client.Write(heartBytes);
+                FileWorker.LogHelper.WriteLog(string.Format("sendBufferSize:{0},receiveBuffSize:{1}",client.TcpClient.SendBufferSize,client.TcpClient.ReceiveBufferSize));
             }
             catch (Exception ex)
             {
@@ -299,7 +332,7 @@ namespace WhGuanlang
             try
             {
                 byte[] loginBytes = MessageParser.strToByte(loginStr);
-                client.Send(loginBytes, 0, loginBytes.Length);
+                client.Write(loginBytes);
             }
             catch (Exception ex)
             {
@@ -309,7 +342,20 @@ namespace WhGuanlang
 
         private void button1_Click(object sender, EventArgs e)
         {
-            login();
+            //login();
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+                client = client.Disconnect();
+                client.Dispose();
+            }
+            catch (Exception ex)
+            {
+                FileWorker.LogHelper.WriteLog("执行清理工作异常:"+ex.Message);
+            }
         }
     }
 }

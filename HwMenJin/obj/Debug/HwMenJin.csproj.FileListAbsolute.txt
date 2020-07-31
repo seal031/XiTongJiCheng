@@ -49,3 +49,4 @@ E:\GitHubProject\XiTongJiCheng\HwMenJin\bin\Debug\Quartz.pdb
 E:\GitHubProject\XiTongJiCheng\HwMenJin\bin\Debug\Quartz.xml
 E:\GitHubProject\XiTongJiCheng\HwMenJin\obj\Debug\门禁数据接入程序.exe
 E:\GitHubProject\XiTongJiCheng\HwMenJin\obj\Debug\门禁数据接入程序.pdb
+E:\GitHubProject\XiTongJiCheng\HwMenJin\obj\Debug\HwMenJin.csprojResolveAssemblyReference.cache

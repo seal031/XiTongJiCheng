@@ -22,7 +22,7 @@
         "Entry"
         {
         "MsmKey" = "8:_0320B4FB830F4A6E4F6C7B037F6EE601"
-        "OwnerKey" = "8:_B42399E2448F4544983FC1103A7E692C"
+        "OwnerKey" = "8:_D0339E33F4544901A9B71DDB5E827D95"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -52,7 +52,7 @@
         "Entry"
         {
         "MsmKey" = "8:_2E1621DB570DAE2F1D218F29F7E0BD41"
-        "OwnerKey" = "8:_B42399E2448F4544983FC1103A7E692C"
+        "OwnerKey" = "8:_D0339E33F4544901A9B71DDB5E827D95"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -171,6 +171,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_A0FAF1CD2E66365328F2F33EC6D7FC7E"
+        "OwnerKey" = "8:_D0339E33F4544901A9B71DDB5E827D95"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_A649C48C5988473C858E3B35B510C9CD"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -178,12 +184,6 @@
         "Entry"
         {
         "MsmKey" = "8:_ADD220DCBEF14DC8BE95509050F15DCC"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B42399E2448F4544983FC1103A7E692C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -197,6 +197,12 @@
         {
         "MsmKey" = "8:_CF0053C555B51AFEC75A3A9F2B2EAEE4"
         "OwnerKey" = "8:_1C8A7D4087C4BD14894DBE49AEB7721E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D0339E33F4544901A9B71DDB5E827D95"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -226,7 +232,7 @@
         "Entry"
         {
         "MsmKey" = "8:_E56488418DEADEF943F36928118DDAE1"
-        "OwnerKey" = "8:_B42399E2448F4544983FC1103A7E692C"
+        "OwnerKey" = "8:_D0339E33F4544901A9B71DDB5E827D95"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -238,13 +244,13 @@
         "Entry"
         {
         "MsmKey" = "8:_F75CCE263DD7351F2C1A2CAB58E27930"
-        "OwnerKey" = "8:_B42399E2448F4544983FC1103A7E692C"
+        "OwnerKey" = "8:_D0339E33F4544901A9B71DDB5E827D95"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_FBEDD7ED54783CDFA8D04FE7DBFB8F0F"
-        "OwnerKey" = "8:_B42399E2448F4544983FC1103A7E692C"
+        "OwnerKey" = "8:_D0339E33F4544901A9B71DDB5E827D95"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -256,13 +262,25 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B42399E2448F4544983FC1103A7E692C"
+        "OwnerKey" = "8:_D60E6575CC4C96C2239AF6EBCB4E492D"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_D0339E33F4544901A9B71DDB5E827D95"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_F75CCE263DD7351F2C1A2CAB58E27930"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_A0FAF1CD2E66365328F2F33EC6D7FC7E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -347,12 +365,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_52BAD099163353D36237FA914D3E6332"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_D60E6575CC4C96C2239AF6EBCB4E492D"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -1031,6 +1043,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A0FAF1CD2E66365328F2F33EC6D7FC7E"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:SimpleTCP, Version=1.0.24.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_A0FAF1CD2E66365328F2F33EC6D7FC7E"
+                    {
+                    "Name" = "8:SimpleTCP.DLL"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:SimpleTCP.DLL"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_F40C7666ADFA4EB3A6D2CE0B236C18FD"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A649C48C5988473C858E3B35B510C9CD"
             {
             "SourcePath" = "8:..\\WhGuanlang\\bin\\Release\\seed.txt"
@@ -1057,37 +1100,6 @@
             "TargetName" = "8:librdkafka.dll"
             "Tag" = "8:"
             "Folder" = "8:_F41A3712AB09481BAB7030104A28070D"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B42399E2448F4544983FC1103A7E692C"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:管廊数据接入程序, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_B42399E2448F4544983FC1103A7E692C"
-                    {
-                    "Name" = "8:管廊数据接入程序.exe"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:..\\WhGuanlang\\bin\\Release\\管廊数据接入程序.exe"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_F40C7666ADFA4EB3A6D2CE0B236C18FD"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1131,6 +1143,37 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D0339E33F4544901A9B71DDB5E827D95"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:管廊数据接入程序, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_D0339E33F4544901A9B71DDB5E827D95"
+                    {
+                    "Name" = "8:管廊数据接入程序.exe"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\WhGuanlang\\bin\\Release\\管廊数据接入程序.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_F40C7666ADFA4EB3A6D2CE0B236C18FD"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D1091837AB97425893819496A0833C23"

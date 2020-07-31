@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WhGuanlang;
@@ -112,56 +114,57 @@ public class MessageParser
 /// </summary>
 public class AlarmParseTool
 {
+    private static Dictionary<string, string> stateDic = new Dictionary<string, string>();
+    private static Regex regexAfNo = new Regex(@"AF-\d\d");
+    private static Regex regexFangqu = new Regex(@"VICTRIX-防区_");
+    private static Regex regexTime = new Regex("time=\"\\d\\d\\d\\d/\\d\\d/\\d\\d\\d\\d:\\d\\d:\\d\\d");
+    static AlarmParseTool()
+    {
+        stateDic.Add("ES01", "在线");
+        stateDic.Add("ES02", "离线");
+    }
     public static AlarmEntity parseAlarm(string alarmStr)
     {
+        alarmStr = alarmStr.Replace(" ", "");
         AlarmEntity alarmEntity = null;
         try
         {
-            int timeBeginIndex = alarmStr.IndexOf("time=");
-            int timeEndIndex = alarmStr.IndexOf("\" mdlid=");
-            string alarmTimeStr = "";
-            if (timeBeginIndex >= 0 && timeEndIndex >= 0 && timeEndIndex > (timeBeginIndex + 6))
+            string afNo = "", fangquNo = "";
+            //if (alarmStr.Contains("mdlname") && alarmStr.Contains(@"</ROOT>"))
+            //{
+            //    var list = alarmStr.Split(new string[] { @"\" }, StringSplitOptions.RemoveEmptyEntries);
+            //    if (list.Length == 3)
+            //    {
+            //        list[1]=list[1].Replace(" ", "");
+            //        afNo = list[1].Substring(0, 5).Replace("-","");
+            //        list[2] = list[2].Replace(" ","");
+            //        fangquNo = list[2].Substring(list[2].IndexOf("VICTRIX-防区_") + "VICTRIX-防区_".Length, 1);
+            //    }
+            //    else
+            //    {
+            //        return alarmEntity;
+            //    }
+            //}
+            //else
+            //{
+            //    return alarmEntity;
+            //}
+            Match matchAfNo = regexAfNo.Match(alarmStr);
+            Match matchFangqu = regexFangqu.Match(alarmStr);
+            Match matchTime = regexTime.Match(alarmStr);
+            if (matchAfNo.Success && matchFangqu.Success)
             {
-                string timePartStr = alarmStr.Substring(timeBeginIndex + 6, (timeEndIndex - timeBeginIndex - 6));
-                DateTime alarmTime = DateTime.Parse(timePartStr);
-                alarmTimeStr = alarmTime.ToString("yyyy-MM-dd HH:mm:ss");
-            }
-            int mdlnameBeginIndex = alarmStr.IndexOf("mdlname=");
-            int mdlnameEndIndex = alarmStr.IndexOf("\"/></ROOT>");
-            string deviceName = "";
-            if (mdlnameBeginIndex >= 0 && mdlnameEndIndex >= 0 && mdlnameEndIndex > (mdlnameBeginIndex + 8))
-            {
-                //string mdlnamePartStr = alarmStr.Substring(mdlnameBeginIndex + 8, (mdlnameEndIndex - mdlnameBeginIndex - 8));
-                //string[] mdlnameArray = mdlnamePartStr.Split(new string[] { @"\" }, StringSplitOptions.RemoveEmptyEntries);
-                //if (mdlnameArray.Length != 4)
-                //{
-                //    FileWorker.LogHelper.WriteLog("mdlname解析错误:"+mdlnamePartStr);
-                //    return alarmEntity;
-                //}
-                //else
-                //{
-                //    string afNo = mdlnameArray[1].Replace(" ", "").Trim();
-                //    string fangquNo = mdlnameArray[3].Replace(" ","").Replace("VICTRIX-防区_", "").Trim();
-                //    deviceName = "GLBJ-" + afNo + "-" + fangquNo;
-                //}
-                string mdlnamePartStr = alarmStr.Substring(mdlnameBeginIndex + 8, (mdlnameEndIndex - mdlnameBeginIndex - 8));
-                string[] mdlnameArray = mdlnamePartStr.Split(new string[] { @"\" }, StringSplitOptions.RemoveEmptyEntries);
-                if (mdlnameArray.Length != 3)
-                {
-                    FileWorker.LogHelper.WriteLog("mdlname解析错误:" + mdlnamePartStr);
-                    return alarmEntity;
-                }
-                else
-                {
-                    string afNo = mdlnameArray[1].Split(new string[] { @"_" }, StringSplitOptions.RemoveEmptyEntries)[0].Replace("-", "").Trim();
-                    string fangquNo = mdlnameArray[2].Replace(" ", "").Replace("VICTRIX-防区_", "").Trim();
-                    deviceName = "GLBJ-" + afNo + "-" + fangquNo;
-                }
+                afNo = matchAfNo.Value.Replace("-","");
+                fangquNo = alarmStr.Substring(matchFangqu.Index + "VICTRIX-防区_".Length, 1);
             }
             else
             {
+                FileWorker.LogHelper.WriteLog("解析报警失败，未找到正则匹配项" + alarmStr);
                 return alarmEntity;
             }
+
+            string deviceName = "GLBJ-" + afNo + "-" + fangquNo;
+
             alarmEntity = new AlarmEntity();
             alarmEntity.meta.eventType = "GL_ALARM";
             alarmEntity.meta.msgType = "ALARM";
@@ -176,7 +179,7 @@ public class AlarmParseTool
             //alarmEntity.body.alarmTypeCode = "AC0401";
             //alarmEntity.body.alarmTypeName = "管廊报警";
             //alarmEntity.body.alarmName = "管廊报警";
-            alarmEntity.body.alarmTime = (alarmTimeStr == string.Empty ? DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") : alarmTimeStr);
+            alarmEntity.body.alarmTime = matchTime.Success ? DateTime.ParseExact(matchTime.Value.Replace("time=\"", ""), "yyyy/MM/ddHH:mm:ss", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd HH:mm:ss") : DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             //alarmEntity.body.alarmLevelCode = "AL01";
             //alarmEntity.body.alarmLevelName = "一级";
             alarmEntity.body.alarmEquCode = deviceName;
@@ -190,8 +193,51 @@ public class AlarmParseTool
         catch (Exception ex)
         {
             FileWorker.LogHelper.WriteLog("解析报警失败，" + ex.Message);
+            return null;
         }
 
         return alarmEntity;
+    }
+
+    public static DeviceStateEntity parseDeviceState(string alarmStr, string stateId)
+    {
+        DeviceStateEntity deviceStateEntity = null;
+        try
+        {
+            alarmStr = alarmStr.Replace(" ", "");
+            Match matchAfNo = regexAfNo.Match(alarmStr);
+            Match matchTime = regexTime.Match(alarmStr);
+            string equCode = string.Empty;
+            if (matchAfNo.Success)
+            {
+                equCode = "GLBJ-" + matchAfNo.Value.Replace("-","");
+            }
+            else
+            {
+                FileWorker.LogHelper.WriteLog("解析设备信息失败，未找到equCode");
+                return null;
+            }
+
+            deviceStateEntity = new DeviceStateEntity();
+            deviceStateEntity.meta.eventType = "ACS_EQUINFO_UE";
+            deviceStateEntity.meta.msgType = "EQU";
+            deviceStateEntity.meta.receiver = "";
+            deviceStateEntity.meta.recvSequence = "";
+            deviceStateEntity.meta.recvTime = "";
+            deviceStateEntity.meta.sender = "GLRECORD";
+            deviceStateEntity.meta.sendTime = DateTime.Now.ToString("yyyyMMddHHmmss");
+            deviceStateEntity.meta.sequence = "";
+
+            deviceStateEntity.body.createDate = matchTime.Success ? DateTime.ParseExact(matchTime.Value.Replace("time=\"", ""), "yyyy/MM/ddHH:mm:ss", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd HH:mm:ss") : DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            deviceStateEntity.body.equCode = equCode;
+            deviceStateEntity.body.timeStateId = stateId;
+            deviceStateEntity.body.timeStateName = stateDic[stateId];
+        }
+        catch (Exception ex)
+        {
+            FileWorker.LogHelper.WriteLog("解析设备信息失败，" + ex.Message);
+            return null;
+        }
+        return deviceStateEntity;
     }
 }

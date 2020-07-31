@@ -12,14 +12,14 @@ public class KafkaWorker
 {
     static string brokerList = ConfigWorker.GetConfigValue("kafkaUrl");
     static string messageTopicName = ConfigWorker.GetConfigValue("topicAlarm");
-    //static string deviceTopicName= ConfigWorker.GetConfigValue("topicDevice");
+    static string deviceTopicName = ConfigWorker.GetConfigValue("topicDevice");
     static string commandTopicName = ConfigWorker.GetConfigValue("topicCommand");
     static string consumerGroupId = ConfigWorker.GetConfigValue("consumerGroupId");
     static IProducer<Null, string> producerAlarm=null;
-    //static IProducer<Null, string> producerDevice= null;
+    static IProducer<Null, string> producerDevice = null;
     static IConsumer<Ignore, string> consumerCommand = null;
     static ProducerConfig configAlarm = null;
-    //static ProducerConfig configDevice = null;
+    static ProducerConfig configDevice = null;
     static ConsumerConfig configCommand = null;
     //static Action<DeliveryReport<Null, string>> handler = r =>
     //   FileWorker.WriteLog(!r.Error.IsError
@@ -40,8 +40,6 @@ public class KafkaWorker
             {
                 producerAlarm = new ProducerBuilder<Null, string>(configAlarm).Build();
             }
-            //var dr = await producerAlarm.ProduceAsync(deviceTopicName, new Message<Null, string> { Value = message });
-            //FileWorker.WriteLog("消息" + message + "的发送状态为：" + dr.Status);
             producerAlarm.Produce(messageTopicName, new Message<Null, string> { Value = message }, handler);
             producerAlarm.Flush(TimeSpan.FromSeconds(5));
         }
@@ -50,25 +48,23 @@ public class KafkaWorker
             FileWorker.LogHelper.WriteLog("alarm error  " + e.Message);
         }
     }
-    //public static void sendDeviceMessage(string message)
-    //{
-    //    if (configDevice == null) { configDevice = new ProducerConfig { BootstrapServers = brokerList }; }
-    //    FileWorker.WriteLog("正在向kafka发送device消息" + message);
-    //    try
-    //    {
-    //        if (producerDevice == null) { producerDevice = new ProducerBuilder<Null, string>(configDevice).Build(); }
-    //        {
-    //            //var dr = await producerDevice.ProduceAsync(deviceTopicName, new Message<Null, string> { Value = message });
-    //            producerDevice.Produce(deviceTopicName, new Message<Null, string> { Value = message }, handler);
-    //            producerAlarm.Flush(TimeSpan.FromSeconds(5));
-    //        }
-    //    }
-    //    catch (Exception e)
-    //    {
-    //        FileWorker.PrintLog("device error  " + e.Message);
-    //        FileWorker.WriteLog("device error  " + e.Message);
-    //    }
-    //}
+    public static void sendDeviceMessage(string message)
+    {
+        if (configDevice == null) { configDevice = new ProducerConfig { BootstrapServers = brokerList }; }
+        FileWorker.LogHelper.WriteLog("正在向kafka发送device消息" + message);
+        try
+        {
+            if (producerDevice == null) { producerDevice = new ProducerBuilder<Null, string>(configDevice).Build(); }
+            {
+                producerDevice.Produce(deviceTopicName, new Message<Null, string> { Value = message }, handler);
+                producerDevice.Flush(TimeSpan.FromSeconds(5));
+            }
+        }
+        catch (Exception e)
+        {
+            FileWorker.LogHelper.WriteLog("device error  " + e.Message);
+        }
+    }
 
     public delegate void GetMessage(string message);
     public static event GetMessage OnGetMessage;

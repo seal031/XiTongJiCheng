@@ -15,6 +15,12 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_01C1AAC2002C44A889ED8AC9BFECB654"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_1397D9AA2FB4B2E33C2FCD865507B14E"
         "OwnerKey" = "8:_24CA31EE3D7A2522234C07A41CC1E99A"
         "MsmSig" = "8:_UNDEFINED"
@@ -22,7 +28,7 @@
         "Entry"
         {
         "MsmKey" = "8:_24CA31EE3D7A2522234C07A41CC1E99A"
-        "OwnerKey" = "8:_AB204BAF9CBC4AB2B7C09B65EE02B931"
+        "OwnerKey" = "8:_5BDB4BAA0E764350930DA22DE0568F2F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -52,7 +58,7 @@
         "Entry"
         {
         "MsmKey" = "8:_4B98770C0BA70877912B77C81DADE535"
-        "OwnerKey" = "8:_AB204BAF9CBC4AB2B7C09B65EE02B931"
+        "OwnerKey" = "8:_5BDB4BAA0E764350930DA22DE0568F2F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -65,6 +71,12 @@
         {
         "MsmKey" = "8:_5596C8717BF55955E733214A7EC3EB4A"
         "OwnerKey" = "8:_1397D9AA2FB4B2E33C2FCD865507B14E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5BDB4BAA0E764350930DA22DE0568F2F"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -82,12 +94,6 @@
         "Entry"
         {
         "MsmKey" = "8:_6E188B5B300E4D48A1E722155C0D45AF"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7680C2BE1C60427EB1284EA8092E3761"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -177,12 +183,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_AB204BAF9CBC4AB2B7C09B65EE02B931"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_B7EE6A4AD7524983B1972E482AE99C10"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -190,7 +190,7 @@
         "Entry"
         {
         "MsmKey" = "8:_D193D7C9E72D1BBA7949F69A9B68C9BC"
-        "OwnerKey" = "8:_AB204BAF9CBC4AB2B7C09B65EE02B931"
+        "OwnerKey" = "8:_5BDB4BAA0E764350930DA22DE0568F2F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -214,7 +214,7 @@
         "Entry"
         {
         "MsmKey" = "8:_E261F9543359F7E8CF33CEFB0A6F5929"
-        "OwnerKey" = "8:_AB204BAF9CBC4AB2B7C09B65EE02B931"
+        "OwnerKey" = "8:_5BDB4BAA0E764350930DA22DE0568F2F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -250,7 +250,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_AB204BAF9CBC4AB2B7C09B65EE02B931"
+        "OwnerKey" = "8:_5BDB4BAA0E764350930DA22DE0568F2F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -426,6 +426,26 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_01C1AAC2002C44A889ED8AC9BFECB654"
+            {
+            "SourcePath" = "8:..\\WhShouDongBaoJing\\bin\\Release\\WhShouDongBaoJing.exe.config"
+            "TargetName" = "8:WhShouDongBaoJing.exe.config"
+            "Tag" = "8:"
+            "Folder" = "8:_A1415A8312B5460A9C8168B3ED2CE72B"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1397D9AA2FB4B2E33C2FCD865507B14E"
             {
             "AssemblyRegister" = "3:1"
@@ -661,6 +681,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5BDB4BAA0E764350930DA22DE0568F2F"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:WhShouDongBaoJing, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_5BDB4BAA0E764350930DA22DE0568F2F"
+                    {
+                    "Name" = "8:WhShouDongBaoJing.exe"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\WhShouDongBaoJing\\bin\\Release\\WhShouDongBaoJing.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_A1415A8312B5460A9C8168B3ED2CE72B"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5D4EF2333C5647889DBB454D42874D96"
             {
             "SourcePath" = "8:..\\WhShouDongBaoJing\\bin\\Debug\\librdkafka\\x86\\msvcr120.dll"
@@ -707,26 +758,6 @@
             "TargetName" = "8:librdkafkacpp.dll"
             "Tag" = "8:"
             "Folder" = "8:_55810160FDC144A1A096689055C19BAD"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7680C2BE1C60427EB1284EA8092E3761"
-            {
-            "SourcePath" = "8:..\\WhShouDongBaoJing\\bin\\Release\\WhShouDongBaoJing.exe.config"
-            "TargetName" = "8:WhShouDongBaoJing.exe.config"
-            "Tag" = "8:"
-            "Folder" = "8:_A1415A8312B5460A9C8168B3ED2CE72B"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1016,37 +1047,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_AB204BAF9CBC4AB2B7C09B65EE02B931"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:WhShouDongBaoJing, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_AB204BAF9CBC4AB2B7C09B65EE02B931"
-                    {
-                    "Name" = "8:WhShouDongBaoJing.exe"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:..\\WhShouDongBaoJing\\bin\\Release\\WhShouDongBaoJing.exe"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_A1415A8312B5460A9C8168B3ED2CE72B"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B7EE6A4AD7524983B1972E482AE99C10"
@@ -1405,7 +1405,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:手动报警接入安装程序"
         "ProductCode" = "8:{E3DD6636-F289-4B31-B246-3B4DC85C9924}"
-        "PackageCode" = "8:{AD480087-DFB5-408C-8B0B-8E29744E47B8}"
+        "PackageCode" = "8:{0600DB8C-6E41-40CB-962D-920903445E55}"
         "UpgradeCode" = "8:{88F290DE-3581-4630-8C55-EF98A5C08A30}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -1533,7 +1533,7 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_AB204BAF9CBC4AB2B7C09B65EE02B931"
+            "Target" = "8:"
             "Folder" = "8:_7F01B27F134142F89EE313E16B8B83AE"
             "WorkingFolder" = "8:_A1415A8312B5460A9C8168B3ED2CE72B"
             "Icon" = "8:"

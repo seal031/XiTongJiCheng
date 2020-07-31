@@ -43,4 +43,5 @@ E:\GitHubProject\XiTongJiCheng\WhGuanlang\bin\Release\Common.Logging.Core.pdb
 E:\GitHubProject\XiTongJiCheng\WhGuanlang\bin\Release\Common.Logging.Core.xml
 E:\GitHubProject\XiTongJiCheng\WhGuanlang\bin\Release\Quartz.pdb
 E:\GitHubProject\XiTongJiCheng\WhGuanlang\bin\Release\Quartz.xml
-E:\GitHubProject\XiTongJiCheng\WhGuanlang\obj\Release\WhGuanlang.csprojResolveAssemblyReference.cache
+E:\GitHubProject\XiTongJiCheng\WhGuanlang\obj\Release\WhGuanlang.Form2.resources
+E:\GitHubProject\XiTongJiCheng\WhGuanlang\bin\Release\SimpleTCP.dll

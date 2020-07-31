@@ -11,9 +11,6 @@ E:\GitHubProject\XiTongJiCheng\WhWeiJieBaoJing\bin\Debug\librdkafka\x64\msvcp120
 E:\GitHubProject\XiTongJiCheng\WhWeiJieBaoJing\bin\Debug\librdkafka\x64\msvcr120.dll
 E:\GitHubProject\XiTongJiCheng\WhWeiJieBaoJing\bin\Debug\librdkafka\x64\zlib.dll
 E:\GitHubProject\XiTongJiCheng\WhWeiJieBaoJing\bin\Debug\log4net.config
-E:\GitHubProject\XiTongJiCheng\WhWeiJieBaoJing\bin\Debug\WhWeiJieBaoJing.exe.config
-E:\GitHubProject\XiTongJiCheng\WhWeiJieBaoJing\bin\Debug\WhWeiJieBaoJing.exe
-E:\GitHubProject\XiTongJiCheng\WhWeiJieBaoJing\bin\Debug\WhWeiJieBaoJing.pdb
 E:\GitHubProject\XiTongJiCheng\WhWeiJieBaoJing\bin\Debug\Confluent.Kafka.dll
 E:\GitHubProject\XiTongJiCheng\WhWeiJieBaoJing\bin\Debug\log4net.dll
 E:\GitHubProject\XiTongJiCheng\WhWeiJieBaoJing\bin\Debug\Newtonsoft.Json.dll
@@ -29,9 +26,11 @@ E:\GitHubProject\XiTongJiCheng\WhWeiJieBaoJing\bin\Debug\SuperSocket.ProtoBase.x
 E:\GitHubProject\XiTongJiCheng\WhWeiJieBaoJing\bin\Debug\System.Buffers.xml
 E:\GitHubProject\XiTongJiCheng\WhWeiJieBaoJing\bin\Debug\System.Memory.xml
 E:\GitHubProject\XiTongJiCheng\WhWeiJieBaoJing\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
-E:\GitHubProject\XiTongJiCheng\WhWeiJieBaoJing\obj\Debug\WhWeiJieBaoJing.csprojResolveAssemblyReference.cache
 E:\GitHubProject\XiTongJiCheng\WhWeiJieBaoJing\obj\Debug\WhWeiJieBaoJing.Form1.resources
 E:\GitHubProject\XiTongJiCheng\WhWeiJieBaoJing\obj\Debug\WhWeiJieBaoJing.Properties.Resources.resources
 E:\GitHubProject\XiTongJiCheng\WhWeiJieBaoJing\obj\Debug\WhWeiJieBaoJing.csproj.GenerateResource.Cache
-E:\GitHubProject\XiTongJiCheng\WhWeiJieBaoJing\obj\Debug\WhWeiJieBaoJing.exe
-E:\GitHubProject\XiTongJiCheng\WhWeiJieBaoJing\obj\Debug\WhWeiJieBaoJing.pdb
+E:\GitHubProject\XiTongJiCheng\WhWeiJieBaoJing\bin\Debug\围界报警接入程序.exe.config
+E:\GitHubProject\XiTongJiCheng\WhWeiJieBaoJing\bin\Debug\围界报警接入程序.exe
+E:\GitHubProject\XiTongJiCheng\WhWeiJieBaoJing\bin\Debug\围界报警接入程序.pdb
+E:\GitHubProject\XiTongJiCheng\WhWeiJieBaoJing\obj\Debug\围界报警接入程序.exe
+E:\GitHubProject\XiTongJiCheng\WhWeiJieBaoJing\obj\Debug\围界报警接入程序.pdb

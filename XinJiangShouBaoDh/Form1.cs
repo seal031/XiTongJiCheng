@@ -79,6 +79,8 @@ namespace XinJiangShouBaoDh
             switch (type)
             {
                 case EM_ALARM_TYPE.ALARM_INPUT_SOURCE_SIGNAL:  //12675  0x3183
+                    string deviceIp = Marshal.PtrToStringAnsi(pchDVRIP);
+                    //MessageBox.Show(deviceIp);
                     data = new byte[dwBufLen];
                     Marshal.Copy(pBuf, data, 0, (int)dwBufLen);
                     for (int i = 0; i < dwBufLen; i++)
@@ -87,7 +89,7 @@ namespace XinJiangShouBaoDh
                         {
                             AlarmEntity alarmEntity = new AlarmEntity();
                             alarmEntity.body.alarmTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                            alarmEntity.body.alarmEquCode = m_ID.ToString();
+                            alarmEntity.body.alarmEquCode = deviceIp + "-" + i.ToString();
                             alarmEntity.body.alarmName = "手动报警新事件";
                             alarmEntity.body.alarmNameCode = "AC0301";
                             alarmEntity.body.alarmStateCode = "AS01";
@@ -97,13 +99,52 @@ namespace XinJiangShouBaoDh
                             //info.ID = m_ID;
                             //info.Channel = i;
                             string alarmMessage = alarmEntity.toJson();
+                            FileWorker.LogHelper.WriteLog("收到ALARM_INPUT_SOURCE_SIGNAL报警");
                             KafkaWorker.sendAlarmMessage(alarmMessage);
                         }
                         else //alarm stop 报警停止
                         {
-                            
                         }
                     }
+                    break;
+                case EM_ALARM_TYPE.ALARM_ALARM_EX2:
+                    NET_ALARM_ALARM_INFO_EX2 info = (NET_ALARM_ALARM_INFO_EX2)Marshal.PtrToStructure(pBuf, typeof(NET_ALARM_ALARM_INFO_EX2));
+                    string deviceIp1 = Marshal.PtrToStringAnsi(pchDVRIP);
+                    FileWorker.LogHelper.WriteLog("收到外部报警，ip是" + deviceIp1 + "，通道号是" + info.nChannelID);
+                    AlarmEntity alarmEntity1 = new AlarmEntity();
+                    alarmEntity1.body.alarmTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                    alarmEntity1.body.alarmEquCode = deviceIp1 + "-" + info.nChannelID.ToString();
+                    alarmEntity1.body.alarmName = "手动报警新事件";
+                    alarmEntity1.body.alarmNameCode = "AC0301";
+                    alarmEntity1.body.alarmStateCode = "AS01";
+                    alarmEntity1.body.alarmStateName = "未解除";
+                    alarmEntity1.body.airportIata = "KCA";
+                    alarmEntity1.body.airportName = "库车";
+                    string alarmMessage1 = alarmEntity1.toJson();
+                    KafkaWorker.sendAlarmMessage(alarmMessage1);
+                    //data = new byte[dwBufLen];
+                    //Marshal.Copy(pBuf, data, 0, (int)dwBufLen);
+                    //for (int i = 0; i < dwBufLen; i++)
+                    //{
+                    //    if (data[i] == ALARM_START) // alarm start 报警开始
+                    //    {
+                    //        AlarmEntity alarmEntity = new AlarmEntity();
+                    //        alarmEntity.body.alarmTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                    //        alarmEntity.body.alarmEquCode = deviceIp1 + "-" + i.ToString();
+                    //        alarmEntity.body.alarmName = "手动报警新事件";
+                    //        alarmEntity.body.alarmNameCode = "AC0301";
+                    //        alarmEntity.body.alarmStateCode = "AS01";
+                    //        alarmEntity.body.alarmStateName = "未解除";
+                    //        alarmEntity.body.airportIata = "KCA";
+                    //        alarmEntity.body.airportName = "库车";
+                    //        string alarmMessage = alarmEntity.toJson();
+                    //        FileWorker.LogHelper.WriteLog("收到外部报警");
+                    //        KafkaWorker.sendAlarmMessage(alarmMessage);
+                    //    }
+                    //    else //alarm stop 报警停止
+                    //    {
+                    //    }
+                    //}
                     break;
                 default:
                     break;

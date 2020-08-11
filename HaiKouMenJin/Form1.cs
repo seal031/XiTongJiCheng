@@ -36,7 +36,7 @@ namespace HaiKouMenJin
                 return;
             }
             client = new SimpleTcpClient();
-            client.StringEncoder = Encoding.Default;
+            client.StringEncoder = Encoding.ASCII;
             client.DataReceived += Client_DataReceived;
             connectToServer();
         }
@@ -56,7 +56,8 @@ namespace HaiKouMenJin
 
         private void Client_DataReceived(object sender, SimpleTCP.Message e)
         {
-            throw new NotImplementedException();
+            
+
         }
         public bool connectToServer()
         {

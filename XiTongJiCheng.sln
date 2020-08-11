@@ -83,6 +83,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HaiKouMenJin", "HaiKouMenJi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XinJiangMenJinHwProWatchHSDK", "XinJiangMenJinHwProWatchHSDK\XinJiangMenJinHwProWatchHSDK.csproj", "{C21A0AFD-004D-4AEA-8C8F-836D14FCCFEF}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "HaiKouMenJinSetup", "HaiKouMenJinSetup\HaiKouMenJinSetup.vdproj", "{CCC1F0C8-216B-4984-AE06-E2375B59B24C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -499,6 +501,18 @@ Global
 		{C21A0AFD-004D-4AEA-8C8F-836D14FCCFEF}.Release|x64.Build.0 = Release|Any CPU
 		{C21A0AFD-004D-4AEA-8C8F-836D14FCCFEF}.Release|x86.ActiveCfg = Release|Any CPU
 		{C21A0AFD-004D-4AEA-8C8F-836D14FCCFEF}.Release|x86.Build.0 = Release|Any CPU
+		{CCC1F0C8-216B-4984-AE06-E2375B59B24C}.Debug|Any CPU.ActiveCfg = Debug
+		{CCC1F0C8-216B-4984-AE06-E2375B59B24C}.Debug|Any CPU.Build.0 = Debug
+		{CCC1F0C8-216B-4984-AE06-E2375B59B24C}.Debug|x64.ActiveCfg = Debug
+		{CCC1F0C8-216B-4984-AE06-E2375B59B24C}.Debug|x64.Build.0 = Debug
+		{CCC1F0C8-216B-4984-AE06-E2375B59B24C}.Debug|x86.ActiveCfg = Debug
+		{CCC1F0C8-216B-4984-AE06-E2375B59B24C}.Debug|x86.Build.0 = Debug
+		{CCC1F0C8-216B-4984-AE06-E2375B59B24C}.Release|Any CPU.ActiveCfg = Release
+		{CCC1F0C8-216B-4984-AE06-E2375B59B24C}.Release|Any CPU.Build.0 = Release
+		{CCC1F0C8-216B-4984-AE06-E2375B59B24C}.Release|x64.ActiveCfg = Release
+		{CCC1F0C8-216B-4984-AE06-E2375B59B24C}.Release|x64.Build.0 = Release
+		{CCC1F0C8-216B-4984-AE06-E2375B59B24C}.Release|x86.ActiveCfg = Release
+		{CCC1F0C8-216B-4984-AE06-E2375B59B24C}.Release|x86.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

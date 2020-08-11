@@ -22,7 +22,7 @@ namespace HaiKouMenJin
         IScheduler scheduler;
         IJobDetail job;
         JobKey jobKey;
-
+        Dictionary<string, string> anoAlarm = new Dictionary<string, string>();
         public Form1()
         {
             InitializeComponent();
@@ -56,7 +56,52 @@ namespace HaiKouMenJin
 
         private void Client_DataReceived(object sender, SimpleTCP.Message e)
         {
-            throw new NotImplementedException();
+            FileWorker.LogHelper.WriteLog("刷卡信息:" + e.MessageString);
+            string[] messageArr = e.MessageString.Split(new string[] { "TRDS" }, StringSplitOptions.RemoveEmptyEntries);
+            for (int j = 0; j < messageArr.Length; j++)
+            {
+                messageArr[j] = "TRDS" + messageArr[j];
+            }
+            for (int i = 0; i < messageArr.Length; i++)
+            {
+                string[] receMessage = messageArr[i].Split(new char[] { '|' });
+                if (receMessage[0] == "TRDS")
+                {
+                    if (receMessage.Length >= 10)
+                    {
+                        AccessEntity accessEnt = AccessParseTool.parseAccess(receMessage);
+                        string jsonMess = accessEnt.toJson();
+                        KafkaWorker.sendAccessMessage(jsonMess);
+                        anoAlarm = GetConfigMess();
+                        if (anoAlarm.Keys.Contains(receMessage[9]))
+                        {
+                            AlarmEntity alarmEnt = AlarmParseTool.parseAlarm(receMessage, anoAlarm);
+                            string jsonAlarm = alarmEnt.toJson();
+                            KafkaWorker.sendAlarmMessage(jsonAlarm);
+                        }
+
+                    }
+                    else
+                    {
+                        FileWorker.LogHelper.WriteLog("刷卡信息不全，" + messageArr[i]);
+                    }
+                }
+            }
+        }
+        private Dictionary<string, string> GetConfigMess()
+        {
+            Dictionary<string, string> dict = new Dictionary<string, string>();
+            string str = ConfigWorker.GetConfigValue("alarmMessage");
+            string[] keyPair = str.Split(new char[] { ',' });
+            for (int i = 0; i < keyPair.Length; i++)
+            {
+                string[] item = keyPair[i].Split(new char[] { ':' });
+                if (item.Length >= 2)
+                {
+                    dict.Add(item[0], item[1]);
+                }
+            }
+            return dict;
         }
         public bool connectToServer()
         {

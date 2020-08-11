@@ -103,7 +103,7 @@ public class BaseParseTool
 /// </summary>
 public class AlarmParseTool : BaseParseTool
 {
-    public static AlarmEntity parseAlarm()
+    public static AlarmEntity parseAlarm(string[] messCollection, Dictionary<string, string> alarmCollection)
     {
         AlarmEntity alarmEntity = null;
         try
@@ -125,8 +125,12 @@ public class AlarmParseTool : BaseParseTool
             //alarmEntity.body.alarmNameCode = alarmTypeCode;
             alarmEntity.body.alarmStateCode = "AS01";
             alarmEntity.body.alarmStateName = "未解除";
-            alarmEntity.body.airportIata = "WUH";
-            alarmEntity.body.airportName = "武汉";
+            alarmEntity.body.airportIata = "HAK";
+            alarmEntity.body.airportName = "海口";
+            alarmEntity.body.alarmTime = messCollection[6];
+            alarmEntity.body.alarmEquCode = messCollection[8];
+            alarmEntity.body.alarmNameCode = messCollection[9];
+            alarmEntity.body.alarmName = alarmCollection[messCollection[9]];
         }
         catch (Exception ex)
         {
@@ -142,7 +146,7 @@ public class AlarmParseTool : BaseParseTool
 /// </summary>
 public class AccessParseTool : BaseParseTool
 {
-    public static AccessEntity parseAccess()
+    public static AccessEntity parseAccess(string[] message)
     {
         AccessEntity accessEntity = null;
         try
@@ -157,6 +161,58 @@ public class AccessParseTool : BaseParseTool
             accessEntity.meta.sendTime = DateTime.Now.ToString("yyyyMMddHHmmss");
             accessEntity.meta.sequence = "";
 
+            accessEntity.body.swingTime = message[6]; //刷卡时间  第五个
+            accessEntity.body.personCode = message[3]; //人员编号 第三个
+            accessEntity.body.deviceCode = message[8]; //刷卡设备
+            accessEntity.body.openResult = message[2]; //刷卡的一个结果
+            accessEntity.body.channelCode = message[1];//通道编码--内部编码
+            accessEntity.body.cardNumber = message[5]; //卡编号,暂时
+            int personCode = 0;
+            if (int.TryParse(accessEntity.body.personCode, out personCode))
+            {
+                int mo = personCode % 3;
+                switch (mo)
+                {
+                    case 0:
+                        accessEntity.body.personName = "张三";
+                        accessEntity.body.deptName = "运输";
+                        //accessEntity.body.channelCode = "00000";
+                        break;
+                    case 1:
+                        accessEntity.body.personName = "李四";
+                        accessEntity.body.deptName = "安保";
+                        //accessEntity.body.channelCode = "11111";
+                        break;
+                    case 2:
+                        accessEntity.body.personName = "王五";
+                        accessEntity.body.deptName = "安检";
+                        //accessEntity.body.channelCode = "22222";
+                        break;
+                    default:
+                        break;
+                }
+            }
+            if (accessEntity.body.deviceCode.Contains("A"))
+            {
+                accessEntity.body.deviceName = "A设备";
+            }
+            else if (accessEntity.body.deviceCode.Contains("B"))
+            {
+                accessEntity.body.deviceName = "B设备";
+            }
+            else
+            {
+                accessEntity.body.deviceName = "CDEF设备";
+            }
+            //accessEntity.body.cardNumber = "";
+            accessEntity.body.cardStatus = "";
+            accessEntity.body.cardType = "";
+            accessEntity.body.channelName = "";
+            accessEntity.body.enterOrExit = "";
+            accessEntity.body.id = "";
+            accessEntity.body.openType = "";
+            accessEntity.body.paperNumber = "";
+            accessEntity.body.personId = "";
             //accessEntity.body.cardNumber = accessInfo.sUserCardID;
             //accessEntity.body.cardStatus = "";
             //accessEntity.body.cardType = "";

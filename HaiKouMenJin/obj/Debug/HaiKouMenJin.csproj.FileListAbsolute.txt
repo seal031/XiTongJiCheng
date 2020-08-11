@@ -41,3 +41,4 @@ D:\HAYC\XiTongJiCheng\HaiKouMenJin\obj\Debug\HaiKouMenJin.Properties.Resources.r
 D:\HAYC\XiTongJiCheng\HaiKouMenJin\obj\Debug\HaiKouMenJin.csproj.GenerateResource.Cache
 D:\HAYC\XiTongJiCheng\HaiKouMenJin\obj\Debug\海口门禁数据接入程序.exe
 D:\HAYC\XiTongJiCheng\HaiKouMenJin\obj\Debug\海口门禁数据接入程序.pdb
+D:\HAYC\XiTongJiCheng\HaiKouMenJin\obj\Debug\HaiKouMenJin.csprojResolveAssemblyReference.cache

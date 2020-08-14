@@ -16,7 +16,7 @@
         private IScheduler scheduler;
         private IJobDetail job;
         private List<Device> deviceList = new List<Device>();
-
+        private List<int> alarmList = new List<int>;
         private string ip;
         byte slaveAddress;
         ushort startAddress;
@@ -149,6 +149,12 @@
                                     //richTextBox1.Text += "第" + deviceIndex + "个设备故障" + "设备名:" + device.name;
                                     //richTextBox1.Text += Environment.NewLine;
                                     LogHelper.WriteLog("第" + deviceIndex + "个设备故障" + "设备名:" + device.name);
+
+                                    if (alarmList.Count > 0 && alarmList.Contains(deviceIndex))
+                                    {
+                                        return;
+                                    }
+                                    alarmList.Add(deviceIndex);
                                     MessageEntity message = new MessageEntity();
                                     message.meta.sequence= Guid.NewGuid().ToString("N");
                                     message.meta.sendTime = DateTime.Now.ToString("yyyyMMddHHmmss");
@@ -170,6 +176,7 @@
                                         message.body.alarmTypeCode = "AC0402";
                                         message.body.alarmTypeName = "烟感报警";
                                     }
+
                                     KafkaWorker.sendMessage(message.toJson());
                                 }
                                 else
@@ -177,6 +184,13 @@
                                     //richTextBox1.Text += "第" + deviceIndex + "个设备故障。设备名未找到";
                                     //richTextBox1.Text += Environment.NewLine;
                                     LogHelper.WriteLog("第" + deviceIndex + "个设备故障。设备名未找到");
+                                }
+                            }
+                            else
+                            {
+                                if (alarmList.Contains(deviceIndex))
+                                {
+                                    alarmList.Remove(deviceIndex);
                                 }
                             }
                         }

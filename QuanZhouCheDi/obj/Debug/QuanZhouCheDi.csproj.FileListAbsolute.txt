@@ -35,3 +35,5 @@ D:\HAYC\XiTongJiCheng\QuanZhouCheDi\obj\Debug\QuanZhouCheDi.Properties.Resources
 D:\HAYC\XiTongJiCheng\QuanZhouCheDi\obj\Debug\QuanZhouCheDi.csproj.GenerateResource.Cache
 D:\HAYC\XiTongJiCheng\QuanZhouCheDi\obj\Debug\QuanZhouCheDi.exe
 D:\HAYC\XiTongJiCheng\QuanZhouCheDi\obj\Debug\QuanZhouCheDi.pdb
+D:\HAYC\XiTongJiCheng\QuanZhouCheDi\bin\Debug\log4net.config
+D:\HAYC\XiTongJiCheng\QuanZhouCheDi\obj\Debug\QuanZhouCheDi.csprojResolveAssemblyReference.cache

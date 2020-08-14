@@ -36,9 +36,9 @@ D:\HAYC\XiTongJiCheng\HaiKouMenJin\bin\Release\Quartz.xml
 D:\HAYC\XiTongJiCheng\HaiKouMenJin\bin\Release\System.Buffers.xml
 D:\HAYC\XiTongJiCheng\HaiKouMenJin\bin\Release\System.Memory.xml
 D:\HAYC\XiTongJiCheng\HaiKouMenJin\bin\Release\System.Runtime.CompilerServices.Unsafe.xml
-D:\HAYC\XiTongJiCheng\HaiKouMenJin\obj\Release\HaiKouMenJin.csprojResolveAssemblyReference.cache
 D:\HAYC\XiTongJiCheng\HaiKouMenJin\obj\Release\HaiKouMenJin.Form1.resources
 D:\HAYC\XiTongJiCheng\HaiKouMenJin\obj\Release\HaiKouMenJin.Properties.Resources.resources
 D:\HAYC\XiTongJiCheng\HaiKouMenJin\obj\Release\HaiKouMenJin.csproj.GenerateResource.Cache
 D:\HAYC\XiTongJiCheng\HaiKouMenJin\obj\Release\海口门禁数据接入程序.exe
 D:\HAYC\XiTongJiCheng\HaiKouMenJin\obj\Release\海口门禁数据接入程序.pdb
+D:\HAYC\XiTongJiCheng\HaiKouMenJin\obj\Release\HaiKouMenJin.csprojResolveAssemblyReference.cache

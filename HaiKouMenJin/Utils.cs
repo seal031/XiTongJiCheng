@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -161,12 +163,15 @@ public class AccessParseTool : BaseParseTool
             accessEntity.meta.sendTime = DateTime.Now.ToString("yyyyMMddHHmmss");
             accessEntity.meta.sequence = "";
 
+            accessEntity.body.deviceCode = message[8]; //刷卡设备编号
+            //通过设备编号查询设备名称
+            accessEntity.body.deviceName = seleSql(message[8]);
+
             accessEntity.body.swingTime = message[6]; //刷卡时间  第五个
             accessEntity.body.personCode = message[3]; //人员编号 第三个
-            accessEntity.body.deviceCode = message[8]; //刷卡设备
             accessEntity.body.openResult = message[2]; //刷卡的一个结果
             accessEntity.body.channelCode = message[1];//通道编码--内部编码
-            accessEntity.body.cardNumber = message[5]; //卡编号,暂时
+            accessEntity.body.cardNumber = ""; //卡编号,暂时
             int personCode = 0;
             if (int.TryParse(accessEntity.body.personCode, out personCode))
             {
@@ -192,18 +197,18 @@ public class AccessParseTool : BaseParseTool
                         break;
                 }
             }
-            if (accessEntity.body.deviceCode.Contains("A"))
-            {
-                accessEntity.body.deviceName = "A设备";
-            }
-            else if (accessEntity.body.deviceCode.Contains("B"))
-            {
-                accessEntity.body.deviceName = "B设备";
-            }
-            else
-            {
-                accessEntity.body.deviceName = "CDEF设备";
-            }
+            //if (accessEntity.body.deviceCode.Contains("A"))
+            //{
+            //    accessEntity.body.deviceName = "A设备";
+            //}
+            //else if (accessEntity.body.deviceCode.Contains("B"))
+            //{
+            //    accessEntity.body.deviceName = "B设备";
+            //}
+            //else
+            //{
+            //    accessEntity.body.deviceName = "CDEF设备";
+            //}
             //accessEntity.body.cardNumber = "";
             accessEntity.body.cardStatus = "";
             accessEntity.body.cardType = "";
@@ -236,6 +241,27 @@ public class AccessParseTool : BaseParseTool
             FileWorker.LogHelper.WriteLog("解析刷卡失败，" + ex.Message);
         }
         return accessEntity;
+    }
+
+    private static string seleSql(string doorCode)
+    {
+        string strConn = ConfigWorker.GetConfigValue("connectString");
+        strConn = "server=127.0.0.1;database=CEMData;uid=sa;pwd=qq.123456";
+        string code = string.Format("'{0}'", doorCode);
+        string sql = string.Format("select DoorName from vwCemDoor where dev_addr = {0} group by DoorName", code);
+        SqlDataAdapter da = new SqlDataAdapter(sql, strConn);
+        DataSet ds = new DataSet();
+        da.Fill(ds);
+        
+        //FileWorker.LogHelper.WriteLog(string.Format("ds的Table数量{0},ds的行数量{1}",ds.Tables.Count, ds.Tables[0].Rows.Count));
+        int len = ds.Tables[0].Rows[0].ItemArray.Length;
+        string arr = "";
+        for (int i = 0; i < len; i++)
+        {
+            arr = arr + ds.Tables[0].Rows[0].ItemArray[i]+ "  ";
+        }
+        //FileWorker.LogHelper.WriteLog("rows itemArray" + arr);
+        return arr;
     }
 }
 

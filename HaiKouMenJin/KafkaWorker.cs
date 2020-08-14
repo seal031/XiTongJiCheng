@@ -36,7 +36,7 @@ public class KafkaWorker
     public static void sendAlarmMessage(string message)
     {
         if (configAlarm == null) { configAlarm = new ProducerConfig { BootstrapServers = brokerList}; }
-        FileWorker.LogHelper.WriteLog("正在向kafka发送alarm消息" + message);
+        FileWorker.LogHelper.WriteLog("正在向kafka发送alarm消息:" + message);
         try
         {
             if (producerAlarm == null)
@@ -72,6 +72,7 @@ public class KafkaWorker
     public static void sendAccessMessage(string message)
     {
         if (configAccess == null) { configAccess = new ProducerConfig { BootstrapServers = brokerList }; }
+        FileWorker.LogHelper.WriteLog("正在向kafka发送:" + message);
         try
         {
             if (producerAccess == null)

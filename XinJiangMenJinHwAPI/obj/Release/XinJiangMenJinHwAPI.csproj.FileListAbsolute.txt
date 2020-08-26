@@ -39,3 +39,7 @@ D:\HAYC\XiTongJiCheng\XinJiangMenJinHwAPI\bin\Release\新疆门禁数据接入�
 D:\HAYC\XiTongJiCheng\XinJiangMenJinHwAPI\obj\Release\XinJiangMenJinHwAPI.csproj.ResolveComReference.cache
 D:\HAYC\XiTongJiCheng\XinJiangMenJinHwAPI\obj\Release\新疆门禁数据接入程序WIN-PAK API版.exe
 D:\HAYC\XiTongJiCheng\XinJiangMenJinHwAPI\obj\Release\新疆门禁数据接入程序WIN-PAK API版.pdb
+D:\HAYC\XiTongJiCheng\XinJiangMenJinHwAPI\obj\Release\XinJiangMenJinHwAPI.csprojResolveAssemblyReference.cache
+D:\HAYC\XiTongJiCheng\XinJiangMenJinHwAPI\obj\Release\XinJiangMenJinHwAPI.Form1.resources
+D:\HAYC\XiTongJiCheng\XinJiangMenJinHwAPI\obj\Release\XinJiangMenJinHwAPI.Properties.Resources.resources
+D:\HAYC\XiTongJiCheng\XinJiangMenJinHwAPI\obj\Release\XinJiangMenJinHwAPI.csproj.GenerateResource.Cache

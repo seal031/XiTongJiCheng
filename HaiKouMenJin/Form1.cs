@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace HaiKouMenJin
 {
@@ -18,7 +19,6 @@ namespace HaiKouMenJin
         string remoteIp;
         int remotePort;
         SimpleTcpClient client;
-
         IScheduler scheduler;
         IJobDetail job;
         JobKey jobKey;
@@ -26,6 +26,7 @@ namespace HaiKouMenJin
         public Form1()
         {
             InitializeComponent();
+            
         }
 
         private void Form1_Shown(object sender, EventArgs e)
@@ -39,6 +40,8 @@ namespace HaiKouMenJin
             client.StringEncoder = Encoding.Default;
             client.DataReceived += Client_DataReceived;
             connectToServer();
+            cyclicWork();
+            initJob();
         }
         private bool loadConfig()
         {
@@ -135,22 +138,69 @@ namespace HaiKouMenJin
                     scheduler = StdSchedulerFactory.GetDefaultScheduler();
                     JobWorker.form = this;
                     job = JobBuilder.Create<JobWorker>().WithIdentity("connectJob", "jobs").Build();
+                    //ITrigger trigger = TriggerBuilder.Create().WithIdentity("connectTrigger", "triggers").StartAt(DateTimeOffset.Now.AddSeconds(1))
+                    //    .WithSimpleSchedule(x => x.WithIntervalInSeconds(60).RepeatForever()).Build();
+                    string time = ConfigWorker.GetConfigValue("timeTask");
                     ITrigger trigger = TriggerBuilder.Create().WithIdentity("connectTrigger", "triggers").StartAt(DateTimeOffset.Now.AddSeconds(1))
-                        .WithSimpleSchedule(x => x.WithIntervalInSeconds(5).RepeatForever()).Build();
+                        .WithCronSchedule(time).Build();
                     scheduler.ScheduleJob(job, trigger);//把作业，触发器加入调度器。  
                     jobKey = job.Key;
+                    //scheduler.DeleteJob
                 }
-                //scheduler.Start();
+                scheduler.Start();
             }
             catch (Exception ex)
             {
                 FileWorker.LogHelper.WriteLog("定时任务异常：" + ex.Message);
             }
         }
-
+        /// <summary>
+        /// 定时查询数据
+        /// </summary>
         public void cyclicWork()
         {
-           
+            string strConn = ConfigWorker.GetConfigValue("connectString");
+            //strConn = "server=127.0.0.1;database=CEMData;uid=sa;pwd=qq.123456";
+            string tableName = ConfigWorker.GetConfigValue("devTableName");
+            string sql = string.Format("select DoorID,dev_addr,DoorName from {0} ", tableName);
+            FileWorker.LogHelper.WriteLog("定时查询设备信息");
+            try
+            {
+                DataSet ds = null;
+                using (SqlDataAdapter da = new SqlDataAdapter(sql, strConn))
+                {
+                    ds = new DataSet();
+                    da.Fill(ds);
+                }
+                foreach (DataRow item in ds.Tables[0].Rows)
+                {
+                    List<string> devList = new List<string>();
+                    devList.Add(item.ItemArray[0].ToString());
+                    devList.Add(item.ItemArray[1].ToString());
+                    devList.Add(item.ItemArray[2].ToString());
+                    ResourStateEntity accessEnt = StateParseTool.parseState(devList);
+                    string jsonMess = accessEnt.toJson();
+                    KafkaWorker.sendDeviceMessage(jsonMess);
+                }
+            }
+            catch (Exception e)
+            {
+                FileWorker.LogHelper.WriteLog("解析设备信息表失败:" + e.Message);
+            }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+                scheduler.Shutdown();
+                //scheduler.DeleteJob(jobKey);
+                //scheduler.PauseJob(jobKey);
+            }
+            catch (Exception ex)
+            {
+                FileWorker.LogHelper.WriteLog("定时任务异常：" + ex.Message);
+            }
         }
     }
 }

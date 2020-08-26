@@ -49,3 +49,10 @@ E:\GitHubProject\XiTongJiCheng\HwMenJin\obj\Release\HwMenJin.Properties.Resource
 E:\GitHubProject\XiTongJiCheng\HwMenJin\obj\Release\HwMenJin.csproj.GenerateResource.Cache
 E:\GitHubProject\XiTongJiCheng\HwMenJin\obj\Release\门禁数据接入程序.exe
 E:\GitHubProject\XiTongJiCheng\HwMenJin\obj\Release\门禁数据接入程序.pdb
+D:\HAYC\XiTongJiCheng\HwMenJin\obj\Release\HwMenJin.csprojResolveAssemblyReference.cache
+D:\HAYC\XiTongJiCheng\HwMenJin\obj\Release\HwMenJin.csproj.ResolveComReference.cache
+D:\HAYC\XiTongJiCheng\HwMenJin\obj\Release\HwMenJin.Form1.resources
+D:\HAYC\XiTongJiCheng\HwMenJin\obj\Release\HwMenJin.Properties.Resources.resources
+D:\HAYC\XiTongJiCheng\HwMenJin\obj\Release\HwMenJin.csproj.GenerateResource.Cache
+D:\HAYC\XiTongJiCheng\HwMenJin\obj\Release\门禁数据接入程序.exe
+D:\HAYC\XiTongJiCheng\HwMenJin\obj\Release\门禁数据接入程序.pdb

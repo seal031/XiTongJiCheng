@@ -60,7 +60,7 @@ namespace HaiKouMenJin
                     scheduler.ScheduleJob(job, trigger);//把作业，触发器加入调度器。  
                     jobKey = job.Key;
                 }
-                //scheduler.Start();
+                scheduler.Start();
             }
             catch (Exception ex)
             {

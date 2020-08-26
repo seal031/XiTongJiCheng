@@ -37,3 +37,10 @@ E:\GitHubProject\XiTongJiCheng\WhShouDongBaoJing\obj\Release\WhShouDongBaoJing.c
 E:\GitHubProject\XiTongJiCheng\WhShouDongBaoJing\obj\Release\WhShouDongBaoJing.exe
 E:\GitHubProject\XiTongJiCheng\WhShouDongBaoJing\obj\Release\WhShouDongBaoJing.pdb
 E:\GitHubProject\XiTongJiCheng\WhShouDongBaoJing\obj\Release\WhShouDongBaoJing.csprojResolveAssemblyReference.cache
+D:\HAYC\XiTongJiCheng\WhShouDongBaoJing\obj\Release\WhShouDongBaoJing.csprojResolveAssemblyReference.cache
+D:\HAYC\XiTongJiCheng\WhShouDongBaoJing\obj\Release\WhShouDongBaoJing.csproj.ResolveComReference.cache
+D:\HAYC\XiTongJiCheng\WhShouDongBaoJing\obj\Release\WhShouDongBaoJing.Form1.resources
+D:\HAYC\XiTongJiCheng\WhShouDongBaoJing\obj\Release\WhShouDongBaoJing.Properties.Resources.resources
+D:\HAYC\XiTongJiCheng\WhShouDongBaoJing\obj\Release\WhShouDongBaoJing.csproj.GenerateResource.Cache
+D:\HAYC\XiTongJiCheng\WhShouDongBaoJing\obj\Release\WhShouDongBaoJing.exe
+D:\HAYC\XiTongJiCheng\WhShouDongBaoJing\obj\Release\WhShouDongBaoJing.pdb

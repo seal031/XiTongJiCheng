@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -125,8 +127,8 @@ public class AlarmParseTool : BaseParseTool
             //alarmEntity.body.alarmNameCode = alarmTypeCode;
             alarmEntity.body.alarmStateCode = "AS01";
             alarmEntity.body.alarmStateName = "未解除";
-            alarmEntity.body.airportIata = "HAK";
-            alarmEntity.body.airportName = "海口";
+            alarmEntity.body.airportIata = ConfigWorker.GetConfigValue("airportIata");
+            alarmEntity.body.airportName = ConfigWorker.GetConfigValue("airportName");
             alarmEntity.body.alarmTime = messCollection[6];
             alarmEntity.body.alarmEquCode = messCollection[8];
             alarmEntity.body.alarmNameCode = messCollection[9];
@@ -161,49 +163,20 @@ public class AccessParseTool : BaseParseTool
             accessEntity.meta.sendTime = DateTime.Now.ToString("yyyyMMddHHmmss");
             accessEntity.meta.sequence = "";
 
+            accessEntity.body.deviceCode = message[8]; //刷卡设备编号
+            //通过设备编号查询设备名称
+            accessEntity.body.deviceName = SeleSql(message[8]);
+
             accessEntity.body.swingTime = message[6]; //刷卡时间  第五个
             accessEntity.body.personCode = message[3]; //人员编号 第三个
-            accessEntity.body.deviceCode = message[8]; //刷卡设备
+            accessEntity.body.personName = SelePersonTable(message[3], 0);
+            accessEntity.body.deptName = SelePersonTable(message[3], 3);
+            //accessEntity.body.personName 人员名称
+            //accessEntity.body.deptName 部门名称
+
             accessEntity.body.openResult = message[2]; //刷卡的一个结果
             accessEntity.body.channelCode = message[1];//通道编码--内部编码
-            accessEntity.body.cardNumber = message[5]; //卡编号,暂时
-            int personCode = 0;
-            if (int.TryParse(accessEntity.body.personCode, out personCode))
-            {
-                int mo = personCode % 3;
-                switch (mo)
-                {
-                    case 0:
-                        accessEntity.body.personName = "张三";
-                        accessEntity.body.deptName = "运输";
-                        //accessEntity.body.channelCode = "00000";
-                        break;
-                    case 1:
-                        accessEntity.body.personName = "李四";
-                        accessEntity.body.deptName = "安保";
-                        //accessEntity.body.channelCode = "11111";
-                        break;
-                    case 2:
-                        accessEntity.body.personName = "王五";
-                        accessEntity.body.deptName = "安检";
-                        //accessEntity.body.channelCode = "22222";
-                        break;
-                    default:
-                        break;
-                }
-            }
-            if (accessEntity.body.deviceCode.Contains("A"))
-            {
-                accessEntity.body.deviceName = "A设备";
-            }
-            else if (accessEntity.body.deviceCode.Contains("B"))
-            {
-                accessEntity.body.deviceName = "B设备";
-            }
-            else
-            {
-                accessEntity.body.deviceName = "CDEF设备";
-            }
+            accessEntity.body.cardNumber = ""; //卡编号,暂时
             //accessEntity.body.cardNumber = "";
             accessEntity.body.cardStatus = "";
             accessEntity.body.cardType = "";
@@ -236,6 +209,73 @@ public class AccessParseTool : BaseParseTool
             FileWorker.LogHelper.WriteLog("解析刷卡失败，" + ex.Message);
         }
         return accessEntity;
+    }
+    /// <summary>
+    /// 查询人员表的信息
+    /// </summary>
+    /// <param name="v1"></param>
+    /// <param name="v2"></param>
+    /// <returns></returns>
+    private static string SelePersonTable(string perCode, int index)
+    {
+        string strConn = ConfigWorker.GetConfigValue("connectString");
+        //strConn = "server=127.0.0.1;database=CEMData;uid=sa;pwd=qq.123456";
+        string code = string.Format("'{0}'", perCode);
+        string perTable = ConfigWorker.GetConfigValue("perTableName");
+        string sql = string.Format("select * from {0} where per_ser = {1}", perTable, code);
+        SqlDataAdapter da = new SqlDataAdapter(sql, strConn);
+        string str = "";
+        try
+        {
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            int len = ds.Tables[0].Rows.Count;
+            for (int i = 0; i < len; i++)
+            {
+                str = ds.Tables[0].Rows[i].ItemArray[index].ToString();
+            }
+        }
+        catch (Exception ex)
+        {
+            FileWorker.LogHelper.WriteLog("解析数据失败，" + ex.Message);
+            str = "";
+        }
+        return str;
+    }
+    /// <summary>
+    /// 查询设备表的信息
+    /// </summary>
+    /// <param name="doorCode"></param>
+    /// <returns></returns>
+    private static string SeleSql(string doorCode)
+    {
+        string strConn = ConfigWorker.GetConfigValue("connectString");
+        //strConn = "server=127.0.0.1;database=CEMData;uid=sa;pwd=qq.123456";
+        string code = string.Format("'{0}'", doorCode);
+        string tableName = ConfigWorker.GetConfigValue("devTableName");
+        string sql = string.Format("select DoorName from {1} where dev_addr = {0} group by DoorName", code, tableName);
+
+        string arr = "";
+        try
+        {
+            DataSet ds = null;
+            using (SqlDataAdapter da = new SqlDataAdapter(sql, strConn))
+            {
+                ds = new DataSet();
+                da.Fill(ds);
+            }
+            int len = ds.Tables[0].Rows[0].ItemArray.Length;
+            for (int i = 0; i < len; i++)
+            {
+                arr = arr + ds.Tables[0].Rows[0].ItemArray[0];
+            }
+
+        }
+        catch (Exception ex)
+        {
+            FileWorker.LogHelper.WriteLog("解析数据失败，" + ex.Message);
+        }
+        return arr;
     }
 }
 
@@ -277,3 +317,40 @@ public class DeviceStateParseTool
         }
         return deviceStateEntity;
     } }
+/// <summary>
+/// 定时任务,状态信息解析
+/// </summary>
+public class StateParseTool
+{
+    public static ResourStateEntity parseState(List<string> devList)
+    {
+        ResourStateEntity stateEntity = null;
+        try
+        {
+            stateEntity = new ResourStateEntity();
+            #region meta
+            stateEntity.meta.eventType = "MJ_EQUINFO_UE";
+            stateEntity.meta.msgType = "EQU";
+            stateEntity.meta.receiver = "";
+            stateEntity.meta.recvSequence = "";
+            stateEntity.meta.recvTime = "";
+            stateEntity.meta.sender = "MJ";
+            stateEntity.meta.sendTime = DateTime.Now.ToString("yyyyMMddHHmmss");
+            stateEntity.meta.sequence = "";
+            #endregion
+            #region body
+            stateEntity.body.equCode = devList[1];
+            stateEntity.body.equName = devList[2];
+            stateEntity.body.resClassCode = "RC01";
+            stateEntity.body.resClassName = "安保资源";
+            stateEntity.body.airportIata = ConfigWorker.GetConfigValue("airportIata");
+            stateEntity.body.airportName = ConfigWorker.GetConfigValue("airportName");
+            #endregion
+        }
+        catch (Exception ex)
+        {
+            FileWorker.LogHelper.WriteLog("解析设备状态失败，" + ex.Message);
+        }
+        return stateEntity;
+    }
+}

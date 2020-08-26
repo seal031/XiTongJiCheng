@@ -244,12 +244,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_4190423914F233C87706857105D863B0"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_60466FA2A2794D169221993418C2A8C0"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -331,6 +325,12 @@
         "OwnerKey" = "8:_11A0959A5246BD5EA5F3F41075D9F5E3"
         "MsmSig" = "8:_UNDEFINED"
         }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_4190423914F233C87706857105D863B0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -371,7 +371,7 @@
         "DisplayName" = "8:Release"
         "IsDebugOnly" = "11:FALSE"
         "IsReleaseOnly" = "11:TRUE"
-        "OutputFilename" = "8:Release\\ShouDongBaoJingSetup.msi"
+        "OutputFilename" = "8:Release\\手动报警数据接入安装程序.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -1405,7 +1405,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:手动报警数据接入安装程序"
         "ProductCode" = "8:{A3B9E384-ABC6-43F3-9EC8-D7AFB44685D2}"
-        "PackageCode" = "8:{685CC85C-4C73-42E8-98DB-A1C5DB664B74}"
+        "PackageCode" = "8:{4D2337DA-97D0-4CF8-BD0C-C2F826B0F56A}"
         "UpgradeCode" = "8:{10E485AD-270E-4085-B98D-F34E4D0FB2AC}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

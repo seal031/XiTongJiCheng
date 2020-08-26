@@ -143,6 +143,10 @@ public class AccessEntity
         /// </summary>
         public string cardType { get; set; }
         /// <summary>
+        /// 卡类型名称
+        /// </summary>
+        public string cardTypeName { get; set; }
+        /// <summary>
         /// 通道编码
         /// </summary>
         public string channelCode { get; set; }
@@ -175,6 +179,10 @@ public class AccessEntity
         /// 开门类型
         /// </summary>
         public string openType { get; set; }
+        /// <summary>
+        /// 开门类型名称
+        /// </summary>
+        public string openTypeName { get; set; }
         /// <summary>
         /// 证件号码
         /// </summary>

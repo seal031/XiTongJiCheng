@@ -97,7 +97,7 @@ public class FileWorker
 /// </summary>
 public class AlarmParseTool
 {
-    public static AlarmEntity parseAlarm(_ICooMonitorEvents_VistaCIDReportEvent alarmInfo)
+    public static AlarmEntity parseAlarm(_ICooMonitorEvents_VistaCIDReportEvent alarmInfo,string airportIata,string airportName)
     {
     //  strMac： 设备的Mac地址；
     //lPlayback：0为实时上报，1为回放；
@@ -127,13 +127,13 @@ public class AlarmParseTool
             alarmEntity.body.alarmTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             //alarmEntity.body.alarmLevelCode = "AL01";
             //alarmEntity.body.alarmLevelName = "一级";
-            alarmEntity.body.alarmEquCode = alarmInfo.strMac;
+            alarmEntity.body.alarmEquCode = alarmInfo.strMac + "," + alarmInfo.strCode;
             alarmEntity.body.alarmName = "手动报警新事件";
             alarmEntity.body.alarmNameCode = "AC0301";
             alarmEntity.body.alarmStateCode = "AS01";
             alarmEntity.body.alarmStateName = "未解除";
-            alarmEntity.body.airportIata = "WUH";
-            alarmEntity.body.airportName = "武汉";
+            alarmEntity.body.airportIata = airportIata;
+            alarmEntity.body.airportName = airportName;
         }
         catch (Exception ex)
         {

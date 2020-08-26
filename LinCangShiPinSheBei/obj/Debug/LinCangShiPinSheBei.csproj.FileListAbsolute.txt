@@ -1,0 +1,8 @@
+E:\GitHubProject\XiTongJiCheng\LinCangShiPinSheBei\bin\Debug\LinCangShiPinSheBei.exe.config
+E:\GitHubProject\XiTongJiCheng\LinCangShiPinSheBei\bin\Debug\LinCangShiPinSheBei.exe
+E:\GitHubProject\XiTongJiCheng\LinCangShiPinSheBei\bin\Debug\LinCangShiPinSheBei.pdb
+E:\GitHubProject\XiTongJiCheng\LinCangShiPinSheBei\obj\Debug\LinCangShiPinSheBei.csprojResolveAssemblyReference.cache
+E:\GitHubProject\XiTongJiCheng\LinCangShiPinSheBei\obj\Debug\LinCangShiPinSheBei.Properties.Resources.resources
+E:\GitHubProject\XiTongJiCheng\LinCangShiPinSheBei\obj\Debug\LinCangShiPinSheBei.csproj.GenerateResource.Cache
+E:\GitHubProject\XiTongJiCheng\LinCangShiPinSheBei\obj\Debug\LinCangShiPinSheBei.exe
+E:\GitHubProject\XiTongJiCheng\LinCangShiPinSheBei\obj\Debug\LinCangShiPinSheBei.pdb

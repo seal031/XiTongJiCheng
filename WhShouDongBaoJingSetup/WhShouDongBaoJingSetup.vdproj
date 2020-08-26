@@ -244,12 +244,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_A5882CFA771AF1A3A5E56A2856D5A3A7"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_5BDB4BAA0E764350930DA22DE0568F2F"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -329,6 +323,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_D193D7C9E72D1BBA7949F69A9B68C9BC"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_A5882CFA771AF1A3A5E56A2856D5A3A7"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -1416,7 +1416,7 @@
         "Manufacturer" = "8:HAYC"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:WhShouDongBaoJingSetup"
+        "Title" = "8:手动报警接入安装程序"
         "Subject" = "8:"
         "ARPCONTACT" = "8:HAYC"
         "Keywords" = "8:"
@@ -1525,15 +1525,15 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_CBC9173FC808437D80A6B2F44DDEB0A2"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_74253626B8C94B3A9F5BDDF7BF143FD7"
             {
-            "Name" = "8:手动报警数据接入程序.exe"
+            "Name" = "8:手动报警接入程序"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:"
+            "Target" = "8:_5BDB4BAA0E764350930DA22DE0568F2F"
             "Folder" = "8:_7F01B27F134142F89EE313E16B8B83AE"
             "WorkingFolder" = "8:_A1415A8312B5460A9C8168B3ED2CE72B"
             "Icon" = "8:"

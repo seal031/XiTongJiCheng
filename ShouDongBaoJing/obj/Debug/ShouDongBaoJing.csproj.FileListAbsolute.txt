@@ -36,3 +36,4 @@ E:\GitHubProject\XiTongJiCheng\ShouDongBaoJing\obj\Debug\IPMALARM.Properties.Res
 E:\GitHubProject\XiTongJiCheng\ShouDongBaoJing\obj\Debug\ShouDongBaoJing.csproj.GenerateResource.Cache
 E:\GitHubProject\XiTongJiCheng\ShouDongBaoJing\obj\Debug\ShouDongBaoJing.exe
 E:\GitHubProject\XiTongJiCheng\ShouDongBaoJing\obj\Debug\ShouDongBaoJing.pdb
+E:\GitHubProject\XiTongJiCheng\ShouDongBaoJing\bin\Debug\log4net.config

@@ -17,6 +17,8 @@ namespace WhShouDongBaoJing
     {
         private delegate void delInfoList(string text);
         private int sdkPort = 0;
+        private string airportIata;
+        private string airportName;
         public Form1()
         {
             try
@@ -32,6 +34,8 @@ namespace WhShouDongBaoJing
             {
                 this.sdkPort = int.Parse(ConfigWorker.GetConfigValue("sdkPort"));
                 this.SDK.Port = this.sdkPort;
+                airportIata = ConfigWorker.GetConfigValue("airportIata");
+                airportName = ConfigWorker.GetConfigValue("airportName");
             }
             catch (Exception ex)
             {
@@ -42,11 +46,12 @@ namespace WhShouDongBaoJing
         {
             try
             {
+                FileWorker.LogHelper.WriteLog("页面加载，SDK初始化并绑定事件");
                 //this.SDK.NewAlarm += new _ICooMonitorEvents_NewAlarmEventHandler(this.SDK_NewAlarm);
                 //this.SDK.PanelStatusEx += new _ICooMonitorEvents_PanelStatusExEventHandler(this.SDK_PanelStatusEx);
                 //this.SDK.ArmReport += new _ICooMonitorEvents_ArmReportEventHandler(this.SDK_ArmReport);
                 this.SDK.VistaCIDReport += SDK_VistaCIDReport;
-                this.SDK.VistaKeypadInfo += SDK_VistaKeypadInfo;
+                //this.SDK.VistaKeypadInfo += SDK_VistaKeypadInfo;
                 this.SDK.Startup();
             }
             catch (Exception ex)
@@ -206,14 +211,30 @@ namespace WhShouDongBaoJing
                     "\r\n"
                 });
                 FileWorker.LogHelper.WriteLog(text.Replace("\r\n", " "));
-                AlarmEntity alarmEntity = AlarmParseTool.parseAlarm(e);
-                string msg = alarmEntity.toJson();
-                //Debug.WriteLine(msg);
-                KafkaWorker.sendAlarmMessage(msg);
+                if (e.isNewEvent !=0 && e.lPlayback == 0)
+                {
+                    AlarmEntity alarmEntity = AlarmParseTool.parseAlarm(e, airportIata, airportName);
+                    string msg = alarmEntity.toJson();
+                    //Debug.WriteLine(msg);
+                    KafkaWorker.sendAlarmMessage(msg);
+                }
             }
             catch (Exception ex)
             {
                 FileWorker.LogHelper.WriteLog("获取报警信息及发送消息异常"+ex.Message);
+            }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+                SDK.Shutdown();
+                FileWorker.LogHelper.WriteLog("SDK关闭");
+            }
+            catch (Exception ex)
+            {
+                FileWorker.LogHelper.WriteLog("SDK关闭异常："+ex.Message);
             }
         }
     }

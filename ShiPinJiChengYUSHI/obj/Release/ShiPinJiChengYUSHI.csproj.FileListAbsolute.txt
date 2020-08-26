@@ -1,0 +1,9 @@
+D:\HAYC\XiTongJiCheng\ShiPinJiChengYUSHI\bin\Release\ShiPinJiChengYUSHI.exe.config
+D:\HAYC\XiTongJiCheng\ShiPinJiChengYUSHI\bin\Release\ShiPinJiChengYUSHI.exe
+D:\HAYC\XiTongJiCheng\ShiPinJiChengYUSHI\bin\Release\ShiPinJiChengYUSHI.pdb
+D:\HAYC\XiTongJiCheng\ShiPinJiChengYUSHI\obj\Release\ShiPinJiChengYUSHI.Form1.resources
+D:\HAYC\XiTongJiCheng\ShiPinJiChengYUSHI\obj\Release\ShiPinJiChengYUSHI.Properties.Resources.resources
+D:\HAYC\XiTongJiCheng\ShiPinJiChengYUSHI\obj\Release\ShiPinJiChengYUSHI.videoPanel.resources
+D:\HAYC\XiTongJiCheng\ShiPinJiChengYUSHI\obj\Release\ShiPinJiChengYUSHI.csproj.GenerateResource.Cache
+D:\HAYC\XiTongJiCheng\ShiPinJiChengYUSHI\obj\Release\ShiPinJiChengYUSHI.exe
+D:\HAYC\XiTongJiCheng\ShiPinJiChengYUSHI\obj\Release\ShiPinJiChengYUSHI.pdb

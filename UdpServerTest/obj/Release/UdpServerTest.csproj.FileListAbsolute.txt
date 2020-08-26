@@ -1,0 +1,12 @@
+D:\HAYC\XiTongJiCheng\UdpServerTest\bin\Release\UdpServerTest.exe.config
+D:\HAYC\XiTongJiCheng\UdpServerTest\bin\Release\UdpServerTest.exe
+D:\HAYC\XiTongJiCheng\UdpServerTest\bin\Release\UdpServerTest.pdb
+D:\HAYC\XiTongJiCheng\UdpServerTest\bin\Release\LiteNetLib.dll
+D:\HAYC\XiTongJiCheng\UdpServerTest\bin\Release\LiteNetLib.pdb
+D:\HAYC\XiTongJiCheng\UdpServerTest\bin\Release\LiteNetLib.xml
+D:\HAYC\XiTongJiCheng\UdpServerTest\obj\Release\UdpServerTest.csprojResolveAssemblyReference.cache
+D:\HAYC\XiTongJiCheng\UdpServerTest\obj\Release\UdpServerTest.Form1.resources
+D:\HAYC\XiTongJiCheng\UdpServerTest\obj\Release\UdpServerTest.Properties.Resources.resources
+D:\HAYC\XiTongJiCheng\UdpServerTest\obj\Release\UdpServerTest.csproj.GenerateResource.Cache
+D:\HAYC\XiTongJiCheng\UdpServerTest\obj\Release\UdpServerTest.exe
+D:\HAYC\XiTongJiCheng\UdpServerTest\obj\Release\UdpServerTest.pdb

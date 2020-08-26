@@ -36,3 +36,10 @@ E:\GitHubProject\XiTongJiCheng\ShouDongBaoJing\obj\Release\IPMALARM.Properties.R
 E:\GitHubProject\XiTongJiCheng\ShouDongBaoJing\obj\Release\ShouDongBaoJing.csproj.GenerateResource.Cache
 E:\GitHubProject\XiTongJiCheng\ShouDongBaoJing\obj\Release\ShouDongBaoJing.exe
 E:\GitHubProject\XiTongJiCheng\ShouDongBaoJing\obj\Release\ShouDongBaoJing.pdb
+D:\HAYC\XiTongJiCheng\ShouDongBaoJing\obj\Release\ShouDongBaoJing.csprojResolveAssemblyReference.cache
+D:\HAYC\XiTongJiCheng\ShouDongBaoJing\obj\Release\ShouDongBaoJing.csproj.ResolveComReference.cache
+D:\HAYC\XiTongJiCheng\ShouDongBaoJing\obj\Release\IPMALARM.Form1.resources
+D:\HAYC\XiTongJiCheng\ShouDongBaoJing\obj\Release\IPMALARM.Properties.Resources.resources
+D:\HAYC\XiTongJiCheng\ShouDongBaoJing\obj\Release\ShouDongBaoJing.csproj.GenerateResource.Cache
+D:\HAYC\XiTongJiCheng\ShouDongBaoJing\obj\Release\ShouDongBaoJing.exe
+D:\HAYC\XiTongJiCheng\ShouDongBaoJing\obj\Release\ShouDongBaoJing.pdb

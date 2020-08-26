@@ -16,7 +16,7 @@
         private IScheduler scheduler;
         private IJobDetail job;
         private List<Device> deviceList = new List<Device>();
-        private List<int> alarmList = new List<int>;
+        private List<int> alarmList = new List<int>();
         private string ip;
         byte slaveAddress;
         ushort startAddress;
@@ -83,7 +83,7 @@
                 {
                     array[i] = Convert.ToByte(list[i]);
                 }
-                IPAddress iPAddress = new IPAddress(array);
+                IPAddress iPAddress = new IPAddress(array);//502
                 using (TcpClient tcpClient = new TcpClient(iPAddress.ToString(), 502))
                 {
                     //tcpClient.SendTimeout = 1;
@@ -134,6 +134,10 @@
                     if (uData == 0)
                     {
                         deviceIndex += 16;
+                        if (alarmList.Contains(deviceIndex-16+1))
+                        {
+                            alarmList.Remove(deviceIndex - 16 + 1);
+                        }
                     }
                     else
                     {
@@ -148,36 +152,35 @@
                                 {
                                     //richTextBox1.Text += "第" + deviceIndex + "个设备故障" + "设备名:" + device.name;
                                     //richTextBox1.Text += Environment.NewLine;
-                                    LogHelper.WriteLog("第" + deviceIndex + "个设备故障" + "设备名:" + device.name);
 
-                                    if (alarmList.Count > 0 && alarmList.Contains(deviceIndex))
+                                    if (alarmList.Count == 0 || alarmList.Contains(deviceIndex) == false)
                                     {
-                                        return;
-                                    }
-                                    alarmList.Add(deviceIndex);
-                                    MessageEntity message = new MessageEntity();
-                                    message.meta.sequence= Guid.NewGuid().ToString("N");
-                                    message.meta.sendTime = DateTime.Now.ToString("yyyyMMddHHmmss");
-                                    message.meta.recvTime = DateTime.Now.ToString("yyyyMMddHHmmss");
-                                    message.meta.forward = DateTime.Now.ToString("yyyyMMddHHmmss");
-                                    message.body.alarmClassCode = "AC04";
-                                    message.body.alarmClassName = "消防报警";
-                                    message.body.alarmLevelCode = "AL01";
-                                    message.body.alarmLevelName = "一级";
-                                    message.body.alarmTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                                    message.body.alarmEquCode = device.name;
-                                    if (deviceIndex <= 200)//前200设备是红线门，之后的是烟感报警
-                                    {
-                                        message.body.alarmTypeCode = "AC0401";
-                                        message.body.alarmTypeName = "红线门报警";
-                                    }
-                                    else
-                                    {
-                                        message.body.alarmTypeCode = "AC0402";
-                                        message.body.alarmTypeName = "烟感报警";
-                                    }
+                                        LogHelper.WriteLog("第" + deviceIndex + "个设备故障" + "设备名:" + device.name);
+                                        alarmList.Add(deviceIndex);
+                                        MessageEntity message = new MessageEntity();
+                                        message.meta.sequence = Guid.NewGuid().ToString("N");
+                                        message.meta.sendTime = DateTime.Now.ToString("yyyyMMddHHmmss");
+                                        message.meta.recvTime = DateTime.Now.ToString("yyyyMMddHHmmss");
+                                        message.meta.forward = DateTime.Now.ToString("yyyyMMddHHmmss");
+                                        message.body.alarmClassCode = "AC04";
+                                        message.body.alarmClassName = "消防报警";
+                                        message.body.alarmLevelCode = "AL01";
+                                        message.body.alarmLevelName = "一级";
+                                        message.body.alarmTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                                        message.body.alarmEquCode = device.name;
+                                        if (deviceIndex <= 200)//前200设备是红线门，之后的是烟感报警
+                                        {
+                                            message.body.alarmTypeCode = "AC0401";
+                                            message.body.alarmTypeName = "红线门报警";
+                                        }
+                                        else
+                                        {
+                                            message.body.alarmTypeCode = "AC0402";
+                                            message.body.alarmTypeName = "烟感报警";
+                                        }
 
-                                    KafkaWorker.sendMessage(message.toJson());
+                                        KafkaWorker.sendMessage(message.toJson());
+                                    }
                                 }
                                 else
                                 {

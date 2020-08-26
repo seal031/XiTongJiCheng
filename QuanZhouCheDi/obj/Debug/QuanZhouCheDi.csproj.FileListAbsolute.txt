@@ -10,9 +10,6 @@ D:\HAYC\XiTongJiCheng\QuanZhouCheDi\bin\Debug\librdkafka\x64\libzstd.dll
 D:\HAYC\XiTongJiCheng\QuanZhouCheDi\bin\Debug\librdkafka\x64\msvcp120.dll
 D:\HAYC\XiTongJiCheng\QuanZhouCheDi\bin\Debug\librdkafka\x64\msvcr120.dll
 D:\HAYC\XiTongJiCheng\QuanZhouCheDi\bin\Debug\librdkafka\x64\zlib.dll
-D:\HAYC\XiTongJiCheng\QuanZhouCheDi\bin\Debug\QuanZhouCheDi.exe.config
-D:\HAYC\XiTongJiCheng\QuanZhouCheDi\bin\Debug\QuanZhouCheDi.exe
-D:\HAYC\XiTongJiCheng\QuanZhouCheDi\bin\Debug\QuanZhouCheDi.pdb
 D:\HAYC\XiTongJiCheng\QuanZhouCheDi\bin\Debug\Common.Logging.Core.dll
 D:\HAYC\XiTongJiCheng\QuanZhouCheDi\bin\Debug\Common.Logging.dll
 D:\HAYC\XiTongJiCheng\QuanZhouCheDi\bin\Debug\Confluent.Kafka.dll
@@ -33,7 +30,9 @@ D:\HAYC\XiTongJiCheng\QuanZhouCheDi\bin\Debug\System.Memory.xml
 D:\HAYC\XiTongJiCheng\QuanZhouCheDi\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\HAYC\XiTongJiCheng\QuanZhouCheDi\obj\Debug\QuanZhouCheDi.Properties.Resources.resources
 D:\HAYC\XiTongJiCheng\QuanZhouCheDi\obj\Debug\QuanZhouCheDi.csproj.GenerateResource.Cache
-D:\HAYC\XiTongJiCheng\QuanZhouCheDi\obj\Debug\QuanZhouCheDi.exe
-D:\HAYC\XiTongJiCheng\QuanZhouCheDi\obj\Debug\QuanZhouCheDi.pdb
 D:\HAYC\XiTongJiCheng\QuanZhouCheDi\bin\Debug\log4net.config
-D:\HAYC\XiTongJiCheng\QuanZhouCheDi\obj\Debug\QuanZhouCheDi.csprojResolveAssemblyReference.cache
+D:\HAYC\XiTongJiCheng\QuanZhouCheDi\bin\Debug\泉州车底数据接入程序.exe.config
+D:\HAYC\XiTongJiCheng\QuanZhouCheDi\bin\Debug\泉州车底数据接入程序.exe
+D:\HAYC\XiTongJiCheng\QuanZhouCheDi\bin\Debug\泉州车底数据接入程序.pdb
+D:\HAYC\XiTongJiCheng\QuanZhouCheDi\obj\Debug\泉州车底数据接入程序.exe
+D:\HAYC\XiTongJiCheng\QuanZhouCheDi\obj\Debug\泉州车底数据接入程序.pdb

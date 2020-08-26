@@ -17,48 +17,60 @@ namespace QuanZhouCheDi
             {
                 //FileWorker.LogHelper.WriteLog("解析汽车记录失败，" + ex.Message);
                 messCommand = new MessCommand();
+                #region meta
+                messCommand.meta.eventType = "CROSSING_CAR_PASS_INFO";
+                messCommand.meta.msgType = "CROSSING_DATA";
+                messCommand.meta.receiver = "";
+                messCommand.meta.recvSequence = "";
+                messCommand.meta.recvTime = "";
+                messCommand.meta.sender = "CROSSING";
+                messCommand.meta.sendTime = DateTime.Now.ToString("yyyyMMddHHmmss");
+                messCommand.meta.sequence = "";
+                #endregion
+                #region body
                 #region
-                messCommand.cardNo = "";
-                messCommand.carTypeCode = "";
-                messCommand.carType = "";
-                messCommand.capPlace = "";
-                messCommand.imgName = "";
-                messCommand.capRemark = "";
-                messCommand.vechicleShape = "";
-                messCommand.vechicleShapeName = "";
-                messCommand.vechicleColour = "";
-                messCommand.vechicleColourName = "";
-                messCommand.vechicleInUvssImg = "";
-                messCommand.vechicleInAnprImg = "";
-                messCommand.vechicleInTopImg = "";
-                messCommand.vechicleInTopPicpath = "";
-                messCommand.vechicleOutTime = "";
-                messCommand.vechicleInState = "";
-                messCommand.vechicleInStateName = "";
-                messCommand.driverName = "";
-                messCommand.driverCard = "";
-                messCommand.driverLicense = "";
-                messCommand.vechicleDept = "";
-                messCommand.createDate = "";
-                messCommand.updateDate = "";
-                messCommand.airportIata = "";
-                messCommand.airportIame = "";
+                messCommand.body.cardNo = "";
+                messCommand.body.carTypeCode = "";
+                messCommand.body.carType = "";
+                messCommand.body.capPlace = "";
+                messCommand.body.imgName = "";
+                messCommand.body.capRemark = "";
+                messCommand.body.vechicleShape = "";
+                messCommand.body.vechicleShapeName = "";
+                messCommand.body.vechicleColour = "";
+                messCommand.body.vechicleColourName = "";
+                messCommand.body.vechicleInUvssImg = "";
+                messCommand.body.vechicleInAnprImg = "";
+                messCommand.body.vechicleInTopImg = "";
+                messCommand.body.vechicleInTopPicpath = "";
+                messCommand.body.vechicleOutTime = "";
+                messCommand.body.vechicleInState = "";
+                messCommand.body.vechicleInStateName = "";
+                messCommand.body.driverName = "";
+                messCommand.body.driverCard = "";
+                messCommand.body.driverLicense = "";
+                messCommand.body.vechicleDept = "";
+                messCommand.body.createDate = "";
+                messCommand.body.updateDate = "";
+                messCommand.body.airportIata = "";
+                messCommand.body.airportIame = "";
                 #endregion
 
-                messCommand.capTime = inforColl[1];
-                messCommand.parkCode = inforColl[3];
-                messCommand.vechicleInUvssPicpath = inforColl[4];
-                messCommand.vechicleInAnprPicpath = inforColl[5];
-                messCommand.plateNo = inforColl[6];
+                messCommand.body.capTime = inforColl[1];
+                messCommand.body.parkCode = inforColl[3];
+                messCommand.body.vechicleInUvssPicpath = inforColl[4];
+                messCommand.body.vechicleInAnprPicpath = inforColl[5];
+                messCommand.body.plateNo = inforColl[6];
                 if (inforColl[7] == "0")
                 {
-                    messCommand.capFlag = "1";
+                    messCommand.body.capFlag = "1";
                 }
                 else
                 {
-                    messCommand.capFlag = "0";
+                    messCommand.body.capFlag = "0";
                 }
-                messCommand.driverJobNo = inforColl[11];
+                messCommand.body.driverJobNo = inforColl[11];
+                #endregion
             }
             catch (Exception ex)
             {
@@ -98,6 +110,18 @@ namespace QuanZhouCheDi
                 FileWorker.LogHelper.WriteLog("解析D02记录失败," + e.Message);
             }
             return order;
+        }
+
+        public static string UrlEncode(string str)
+        {
+            StringBuilder stringBuild = new StringBuilder();
+            byte[] byStr = System.Text.Encoding.UTF8.GetBytes(str); //默认是System.Text.Encoding.Default.GetBytes(str)
+            for (int i = 0; i < byStr.Length; i++)
+            {
+                stringBuild.Append(@"%" + Convert.ToString(byStr[i], 16));
+            }
+
+            return (stringBuild.ToString());
         }
     }
     public class FileWorker

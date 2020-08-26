@@ -78,7 +78,6 @@ D:\HAYC\XiTongJiCheng\XiaoFangBaoJing\bin\Release\Quartz.xml
 D:\HAYC\XiTongJiCheng\XiaoFangBaoJing\bin\Release\System.Buffers.xml
 D:\HAYC\XiTongJiCheng\XiaoFangBaoJing\bin\Release\System.Memory.xml
 D:\HAYC\XiTongJiCheng\XiaoFangBaoJing\bin\Release\System.Runtime.CompilerServices.Unsafe.xml
-D:\HAYC\XiTongJiCheng\XiaoFangBaoJing\obj\Release\XiaoFangBaoJing.csprojResolveAssemblyReference.cache
 D:\HAYC\XiTongJiCheng\XiaoFangBaoJing\obj\Release\XiaoFangBaoJing.Form1.resources
 D:\HAYC\XiTongJiCheng\XiaoFangBaoJing\obj\Release\XiaoFangBaoJing.Properties.Resources.resources
 D:\HAYC\XiTongJiCheng\XiaoFangBaoJing\obj\Release\XiaoFangBaoJing.csproj.GenerateResource.Cache

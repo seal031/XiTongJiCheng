@@ -54,14 +54,20 @@ public class KafkaWorker
     public static void sendDeviceMessage(string message)
     {
         if (configDevice == null) { configDevice = new ProducerConfig { BootstrapServers = brokerList }; }
-        FileWorker.WriteLog("正在向kafka发送device消息" + message);
+        FileWorker.LogHelper.WriteLog("正在向kafka发送device消息" + message);
         try
         {
-            if (producerDevice == null) { producerDevice = new ProducerBuilder<Null, string>(configDevice).Build(); }
+            //if (producerDevice == null) { producerDevice = new ProducerBuilder<Null, string>(configDevice).Build(); }
+            //{
+            //    producerDevice.Produce(deviceTopicName, new Message<Null, string> { Value = message }, handler);
+            //    producerDevice.Flush(TimeSpan.FromSeconds(5));
+            //}
+            if (producerDevice == null)
             {
-                producerDevice.Produce(deviceTopicName, new Message<Null, string> { Value = message }, handler);
-                producerDevice.Flush(TimeSpan.FromSeconds(5));
+                producerDevice = new ProducerBuilder<Null, string>(configDevice).Build();
             }
+            producerDevice.Produce(deviceTopicName, new Message<Null, string> { Value = message }, handler);
+            producerDevice.Flush(TimeSpan.FromSeconds(5));
         }
         catch (Exception e)
         {

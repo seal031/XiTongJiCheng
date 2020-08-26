@@ -231,3 +231,91 @@ public class CommandEntity
         return JsonConvert.DeserializeObject<CommandEntity>(json);
     }
 }
+/// <summary>
+/// 资源状态
+/// </summary>
+public class ResourStateEntity
+{
+    public ResourStateEntity()
+    {
+        meta = new Head();
+        body = new Body();
+    }
+    public Head meta { get; set; }
+    public class Head
+    {
+        public string sender { get; set; }
+        public string msgType { get; set; }
+        public string eventType { get; set; }
+        public string receiver { get; set; }
+        public string sequence { get; set; }
+        public string recvSequence { get; set; }
+        public string sendTime { get; set; }
+        public string recvTime { get; set; }
+    }
+    public Body body { get; set; }
+    public class Body
+    {
+        /// <summary>
+        /// 资源编码
+        /// </summary>
+        public string equCode { get; set; }
+        /// <summary>
+        /// 资源名称
+        /// </summary>
+        public string equName { get; set; }
+        /// <summary>
+        /// 资源大类编码
+        /// </summary>
+        public string resClassCode { get; set; }
+        /// <summary>
+        /// 资源大类名称
+        /// </summary>
+        public string resClassName { get; set; }
+        /// <summary>
+        /// 资源小类编码
+        /// </summary>
+        public string equClassCode { get; set; }
+        /// <summary>
+        /// 资源小类名称
+        /// </summary>
+        public string equClassName { get; set; }
+        /// <summary>
+        /// 资源类型编码
+        /// </summary>
+        public string equTypeCode { get; set; }
+        /// <summary>
+        /// 资源类型名称
+        /// </summary>
+        public string equTypeName { get; set; }
+        /// <summary>
+        /// 机场三字码
+        /// </summary>
+        public string airportIata { get; set; }
+        /// <summary>
+        /// 机场名称
+        /// </summary>
+        public string airportName { get; set; }
+        /// <summary>
+        /// 操作标识
+        /// </summary>
+        public string operationType { get; set; }
+    }
+    public string toJson()
+    {
+        return JsonConvert.SerializeObject(this, JsonSerializer.IgnoreSerializerSetting);
+    }
+}
+static class JsonSerializer
+{
+    static JsonSerializerSettings jssIgnore = new JsonSerializerSettings();
+
+    public static JsonSerializerSettings IgnoreSerializerSetting
+    {
+        get
+        {
+            jssIgnore.NullValueHandling = NullValueHandling.Ignore;
+            return jssIgnore;
+        }
+    }
+}

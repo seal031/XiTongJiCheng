@@ -87,6 +87,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuanZhouCheDi", "QuanZhouCh
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "HaiKouMenJinSetup", "HaiKouMenJinSetup\HaiKouMenJinSetup.vdproj", "{497DB069-4C50-4F01-8B19-F58DF136C2F5}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "QuanZhouCheDiSetup", "QuanZhouCheDiSetup\QuanZhouCheDiSetup.vdproj", "{A6FBAB4F-E9E4-40EB-B49C-249A17EE031B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -521,6 +523,12 @@ Global
 		{497DB069-4C50-4F01-8B19-F58DF136C2F5}.Release|Any CPU.ActiveCfg = Release
 		{497DB069-4C50-4F01-8B19-F58DF136C2F5}.Release|x64.ActiveCfg = Release
 		{497DB069-4C50-4F01-8B19-F58DF136C2F5}.Release|x86.ActiveCfg = Release
+		{A6FBAB4F-E9E4-40EB-B49C-249A17EE031B}.Debug|Any CPU.ActiveCfg = Debug
+		{A6FBAB4F-E9E4-40EB-B49C-249A17EE031B}.Debug|x64.ActiveCfg = Debug
+		{A6FBAB4F-E9E4-40EB-B49C-249A17EE031B}.Debug|x86.ActiveCfg = Debug
+		{A6FBAB4F-E9E4-40EB-B49C-249A17EE031B}.Release|Any CPU.ActiveCfg = Release
+		{A6FBAB4F-E9E4-40EB-B49C-249A17EE031B}.Release|x64.ActiveCfg = Release
+		{A6FBAB4F-E9E4-40EB-B49C-249A17EE031B}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -71,3 +71,4 @@ D:\HAYC\XiTongJiCheng\WhWeiJieBaoJing\obj\Release\WhWeiJieBaoJing.Properties.Res
 D:\HAYC\XiTongJiCheng\WhWeiJieBaoJing\obj\Release\WhWeiJieBaoJing.csproj.GenerateResource.Cache
 D:\HAYC\XiTongJiCheng\WhWeiJieBaoJing\obj\Release\围界报警接入程序.exe
 D:\HAYC\XiTongJiCheng\WhWeiJieBaoJing\obj\Release\围界报警接入程序.pdb
+E:\GitHubProject\XiTongJiCheng\WhWeiJieBaoJing\obj\Release\WhWeiJieBaoJing.csprojResolveAssemblyReference.cache

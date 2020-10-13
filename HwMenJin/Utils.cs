@@ -1,4 +1,5 @@
-﻿using AxSMSDKPWEventInfo;
+﻿using AxSMSDKPWCardHolderInfo;
+using AxSMSDKPWEventInfo;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -148,7 +149,7 @@ public class AlarmParseTool
 /// </summary>
 public class AccessParseTool
 {
-    public static AccessEntity parseAccess(AxHSCEventSDK accessInfo)
+    public static AccessEntity parseAccess(AxHSCEventSDK accessInfo,AxHSCCardHolderSDK cardHolder)
     {
         AccessEntity accessEntity = null;
         try
@@ -168,7 +169,7 @@ public class AccessParseTool
             accessEntity.body.cardType = "";
             accessEntity.body.channelCode = "";
             accessEntity.body.channelName = accessInfo.sPanelName;
-            accessEntity.body.deptName = accessInfo.sUserDepartment;
+            accessEntity.body.deptName = cardHolder.sCardUserDepartment;//accessInfo.sUserDepartment;
             accessEntity.body.deviceCode = accessInfo.sEventLocation;
             accessEntity.body.deviceName = accessInfo.sEventDes;
             accessEntity.body.enterOrExit = "3";
@@ -187,7 +188,6 @@ public class AccessParseTool
         }
         return accessEntity;
     }
-
 }
 
 /// <summary>

@@ -98,8 +98,9 @@ namespace HwMenJin
         {
             axHSCEventSDK1.sSQLDBLinkString = connectStr;
             axHSCReaderSDK1.sSQLDBLinkString = connectStr;
+            axHSCCardHolderSDK1.sSQLDBLinkString = connectStr;
             //连接服务 0：失败 1：成功
-            if (axHSCEventSDK1.lConnectSQLDB() > 0 && axHSCReaderSDK1.lConnectSQLDB() > 0)
+            if (axHSCEventSDK1.lConnectSQLDB() > 0 && axHSCReaderSDK1.lConnectSQLDB() > 0 && axHSCCardHolderSDK1.lConnectSQLDB() > 0)
             {
                 FileWorker.LogHelper.WriteLog("连接成功");
             }
@@ -190,7 +191,10 @@ namespace HwMenJin
             }
             else if (axHSCEventSDK1.sEventName == "正常开门")//正常刷卡信息
             {
-                var accessEntity = AccessParseTool.parseAccess(axHSCEventSDK1);
+                var cardId = axHSCEventSDK1.sUserCardID;
+                axHSCCardHolderSDK1.sCardID = cardId;
+                axHSCCardHolderSDK1.GetPIDUserInfo();
+                var accessEntity = AccessParseTool.parseAccess(axHSCEventSDK1,axHSCCardHolderSDK1);
                 if (accessEntity != null)
                 {
                     string accessMessage = accessEntity.toJson();

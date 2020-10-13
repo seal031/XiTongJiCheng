@@ -27,7 +27,7 @@ namespace LinCangHwMenJin
 
         public Form1()
         {
-            //var date = DataFormatTool.formatDatetime("2020/10/23 19:12:32");
+            //var date = DataFormatTool.formatDatetime("2020/9/1 9:12:32");
             InitializeComponent();
             httpManager = new HttpManager(LogMessage, ShowStatusBar);
         }

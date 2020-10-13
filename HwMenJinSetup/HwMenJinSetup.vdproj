@@ -16,7 +16,7 @@
         "Entry"
         {
         "MsmKey" = "8:_026A5AFBE6FD23356D027D1C442AFAA3"
-        "OwnerKey" = "8:_ECDCC77728064BDAAA264FE47BE12114"
+        "OwnerKey" = "8:_66ADEA152E8F4E8ABA96CECFE8599BAD"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -64,13 +64,13 @@
         "Entry"
         {
         "MsmKey" = "8:_1CE88B3FE035882DAD18EB6B95361EC9"
-        "OwnerKey" = "8:_ECDCC77728064BDAAA264FE47BE12114"
+        "OwnerKey" = "8:_66ADEA152E8F4E8ABA96CECFE8599BAD"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_1E954AD9FEE06C33BA85BB363014D64F"
-        "OwnerKey" = "8:_ECDCC77728064BDAAA264FE47BE12114"
+        "OwnerKey" = "8:_66ADEA152E8F4E8ABA96CECFE8599BAD"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -111,6 +111,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_4C32A44BB4BF2CA1A6D139A782AC2740"
+        "OwnerKey" = "8:_5C357EB247FEBBBDFEB0555826E04694"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_54561CF69EBF44B98BA4E161AB6FA50B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -129,6 +135,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_55C675EAD18838C93BE9DEE1621C8844"
+        "OwnerKey" = "8:_66ADEA152E8F4E8ABA96CECFE8599BAD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_56F12788222548A894E1CE7E8192F9E3"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -137,6 +149,18 @@
         {
         "MsmKey" = "8:_5C145F51FCA5EB7E1E5DC46304C30EC7"
         "OwnerKey" = "8:_B788015D9148DEE686FDF1F905985D82"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5C357EB247FEBBBDFEB0555826E04694"
+        "OwnerKey" = "8:_55C675EAD18838C93BE9DEE1621C8844"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_66ADEA152E8F4E8ABA96CECFE8599BAD"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -154,7 +178,7 @@
         "Entry"
         {
         "MsmKey" = "8:_7FA672A8620465DAC436F4426E2933C8"
-        "OwnerKey" = "8:_ECDCC77728064BDAAA264FE47BE12114"
+        "OwnerKey" = "8:_66ADEA152E8F4E8ABA96CECFE8599BAD"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -220,7 +244,7 @@
         "Entry"
         {
         "MsmKey" = "8:_C618B424ABAD56E45CF6151A68F1DE97"
-        "OwnerKey" = "8:_ECDCC77728064BDAAA264FE47BE12114"
+        "OwnerKey" = "8:_66ADEA152E8F4E8ABA96CECFE8599BAD"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -238,18 +262,12 @@
         "Entry"
         {
         "MsmKey" = "8:_E6F5F4727A20DFA571706B35156912A5"
-        "OwnerKey" = "8:_ECDCC77728064BDAAA264FE47BE12114"
+        "OwnerKey" = "8:_66ADEA152E8F4E8ABA96CECFE8599BAD"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_EC69AD2E032A49CEA4C9C4BA50F6F309"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_ECDCC77728064BDAAA264FE47BE12114"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -286,13 +304,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_2B3C8BE0243801A860BBCB79C86BBDE0"
+        "OwnerKey" = "8:_5C357EB247FEBBBDFEB0555826E04694"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_ECDCC77728064BDAAA264FE47BE12114"
+        "OwnerKey" = "8:_66ADEA152E8F4E8ABA96CECFE8599BAD"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -403,6 +421,18 @@
         "OwnerKey" = "8:_E6F5F4727A20DFA571706B35156912A5"
         "MsmSig" = "8:_UNDEFINED"
         }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_2B3C8BE0243801A860BBCB79C86BBDE0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_55C675EAD18838C93BE9DEE1621C8844"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -428,6 +458,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.5 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.5"
+                    }
+                }
             }
         }
         "Release"
@@ -452,6 +490,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.5 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.5"
+                    }
+                }
             }
         }
     }
@@ -743,7 +789,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Interop.SMSDKPWEventInfo, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Interop.SMSDKPWEventInfo, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
                     "_2B3C8BE0243801A860BBCB79C86BBDE0"
@@ -861,6 +907,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4C32A44BB4BF2CA1A6D139A782AC2740"
+            {
+            "SourcePath" = "8:HSCCardHolderSDK.ocx"
+            "TargetName" = "8:HSCCardHolderSDK.ocx"
+            "Tag" = "8:"
+            "Folder" = "8:_7C9E527E5C6D43D49BD117F542B9D784"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:4"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_54561CF69EBF44B98BA4E161AB6FA50B"
             {
             "SourcePath" = "8:..\\HwMenJin\\bin\\x86\\Release\\librdkafka\\x86\\msvcr120.dll"
@@ -921,6 +987,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_55C675EAD18838C93BE9DEE1621C8844"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:AxInterop.SMSDKPWCardHolderInfo, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_55C675EAD18838C93BE9DEE1621C8844"
+                    {
+                    "Name" = "8:AxInterop.SMSDKPWCardHolderInfo.DLL"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:AxInterop.SMSDKPWCardHolderInfo.DLL"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_7C9E527E5C6D43D49BD117F542B9D784"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_56F12788222548A894E1CE7E8192F9E3"
             {
             "SourcePath" = "8:..\\HwMenJin\\bin\\x86\\Release\\librdkafka\\x64\\librdkafka.dll"
@@ -972,11 +1069,73 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5C357EB247FEBBBDFEB0555826E04694"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Interop.SMSDKPWCardHolderInfo, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_5C357EB247FEBBBDFEB0555826E04694"
+                    {
+                    "Name" = "8:Interop.SMSDKPWCardHolderInfo.DLL"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Interop.SMSDKPWCardHolderInfo.DLL"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_7C9E527E5C6D43D49BD117F542B9D784"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_66ADEA152E8F4E8ABA96CECFE8599BAD"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:门禁数据接入程序, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_66ADEA152E8F4E8ABA96CECFE8599BAD"
+                    {
+                    "Name" = "8:门禁数据接入程序.exe"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\HwMenJin\\bin\\Release\\门禁数据接入程序.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_7C9E527E5C6D43D49BD117F542B9D784"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6DD76ED3575D910469CB3492E6746FDB"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Interop.SMSDKPWReaderControl, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Interop.SMSDKPWReaderControl, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
                     "_6DD76ED3575D910469CB3492E6746FDB"
@@ -1377,37 +1536,6 @@
             "TargetName" = "8:librdkafkacpp.dll"
             "Tag" = "8:"
             "Folder" = "8:_906353EFC89D44FC95D8F35D3AB57B53"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_ECDCC77728064BDAAA264FE47BE12114"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:门禁数据接入程序, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_ECDCC77728064BDAAA264FE47BE12114"
-                    {
-                    "Name" = "8:门禁数据接入程序.exe"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:..\\HwMenJin\\bin\\Release\\门禁数据接入程序.exe"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_7C9E527E5C6D43D49BD117F542B9D784"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"

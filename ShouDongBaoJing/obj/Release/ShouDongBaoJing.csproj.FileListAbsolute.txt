@@ -43,3 +43,4 @@ D:\HAYC\XiTongJiCheng\ShouDongBaoJing\obj\Release\IPMALARM.Properties.Resources.
 D:\HAYC\XiTongJiCheng\ShouDongBaoJing\obj\Release\ShouDongBaoJing.csproj.GenerateResource.Cache
 D:\HAYC\XiTongJiCheng\ShouDongBaoJing\obj\Release\ShouDongBaoJing.exe
 D:\HAYC\XiTongJiCheng\ShouDongBaoJing\obj\Release\ShouDongBaoJing.pdb
+E:\GitHubProject\XiTongJiCheng\ShouDongBaoJing\obj\Release\ShouDongBaoJing.csprojResolveAssemblyReference.cache

@@ -27,6 +27,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_18A27A697498421DA85212F5F4A5AC83"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_290482786FED4FBAAC1C5BF42ACB7BF1"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -58,7 +64,7 @@
         "Entry"
         {
         "MsmKey" = "8:_5885A2E0A0E9343919B6004003984BD0"
-        "OwnerKey" = "8:_DD5F3319BF4548548E2FB4B8BE18877E"
+        "OwnerKey" = "8:_18A27A697498421DA85212F5F4A5AC83"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -70,7 +76,7 @@
         "Entry"
         {
         "MsmKey" = "8:_5F8328CFFF1BF29EA8719308A89625C3"
-        "OwnerKey" = "8:_DD5F3319BF4548548E2FB4B8BE18877E"
+        "OwnerKey" = "8:_18A27A697498421DA85212F5F4A5AC83"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -135,14 +141,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_DD5F3319BF4548548E2FB4B8BE18877E"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_E7C80D8755A7A0C17FACD53A308455EF"
-        "OwnerKey" = "8:_DD5F3319BF4548548E2FB4B8BE18877E"
+        "OwnerKey" = "8:_18A27A697498421DA85212F5F4A5AC83"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -154,7 +154,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_DD5F3319BF4548548E2FB4B8BE18877E"
+        "OwnerKey" = "8:_5885A2E0A0E9343919B6004003984BD0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_18A27A697498421DA85212F5F4A5AC83"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -179,12 +185,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_5F8328CFFF1BF29EA8719308A89625C3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_5885A2E0A0E9343919B6004003984BD0"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -276,6 +276,37 @@
             "TargetName" = "8:librdkafka.dll"
             "Tag" = "8:"
             "Folder" = "8:_4511A0FD21774B4181B9F0C3390C8E19"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_18A27A697498421DA85212F5F4A5AC83"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:临沧视频设备信息接入, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64"
+                "ScatterAssemblies"
+                {
+                    "_18A27A697498421DA85212F5F4A5AC83"
+                    {
+                    "Name" = "8:临沧视频设备信息接入.exe"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Release\\临沧视频设备信息接入.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -674,37 +705,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DD5F3319BF4548548E2FB4B8BE18877E"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:临沧视频设备信息接入, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_DD5F3319BF4548548E2FB4B8BE18877E"
-                    {
-                    "Name" = "8:临沧视频设备信息接入.exe"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Release\\临沧视频设备信息接入.exe"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E7C80D8755A7A0C17FACD53A308455EF"
             {
             "AssemblyRegister" = "3:1"
@@ -764,7 +764,7 @@
         {
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_425748280D7A4FACB46A8E82771BDFC7"
             {
-            "DefaultLocation" = "8:[ProgramFilesFolder][Manufacturer]\\[ProductName]"
+            "DefaultLocation" = "8:[ProgramFiles64Folder][Manufacturer]\\[ProductName]"
             "Name" = "8:#1925"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
@@ -857,7 +857,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:临沧视频设备信息接入程序"
         "ProductCode" = "8:{30E631A1-210D-4BEF-95B3-267176BE175E}"
-        "PackageCode" = "8:{7C3D3A22-19B4-4975-90F0-28F768346DC5}"
+        "PackageCode" = "8:{980F5D76-941F-42E4-AAB2-1EFAB445F630}"
         "UpgradeCode" = "8:{1B893656-9F32-41B4-B9A7-08873F4B91C1}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -878,7 +878,7 @@
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
-        "TargetPlatform" = "3:0"
+        "TargetPlatform" = "3:1"
         "PreBuildEvent" = "8:"
         "PostBuildEvent" = "8:"
         "RunPostBuildEvent" = "3:0"

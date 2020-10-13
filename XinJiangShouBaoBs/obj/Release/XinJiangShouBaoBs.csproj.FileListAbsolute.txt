@@ -64,3 +64,4 @@ D:\HAYC\XiTongJiCheng\XinJiangShouBaoBs\obj\Release\XinJiangShouBaoBs.Properties
 D:\HAYC\XiTongJiCheng\XinJiangShouBaoBs\obj\Release\XinJiangShouBaoBs.csproj.GenerateResource.Cache
 D:\HAYC\XiTongJiCheng\XinJiangShouBaoBs\obj\Release\新疆手动报警数据接入程序(二标段).exe
 D:\HAYC\XiTongJiCheng\XinJiangShouBaoBs\obj\Release\新疆手动报警数据接入程序(二标段).pdb
+E:\GitHubProject\XiTongJiCheng\XinJiangShouBaoBs\obj\Release\XinJiangShouBaoBs.csprojResolveAssemblyReference.cache

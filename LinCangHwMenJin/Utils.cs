@@ -232,7 +232,7 @@ public class DataFormatTool
         string result=string.Empty;
         try
         {
-            DateTime datetime = DateTime.ParseExact(inputStr, "yyyy/M/dd H:mm:ss", CultureInfo.InvariantCulture);
+            DateTime datetime = DateTime.ParseExact(inputStr, "yyyy/M/d H:mm:ss", CultureInfo.InvariantCulture);
             result = datetime.ToString("yyyy-MM-dd HH:mm:ss");
         }
         catch (Exception ex)

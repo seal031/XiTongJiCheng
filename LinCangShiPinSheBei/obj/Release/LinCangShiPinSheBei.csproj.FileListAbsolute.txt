@@ -83,4 +83,3 @@ D:\HAYC\XiTongJiCheng\LinCangShiPinSheBei\obj\Release\LinCangShiPinSheBei.Proper
 D:\HAYC\XiTongJiCheng\LinCangShiPinSheBei\obj\Release\LinCangShiPinSheBei.csproj.GenerateResource.Cache
 D:\HAYC\XiTongJiCheng\LinCangShiPinSheBei\obj\Release\临沧视频设备信息接入.exe
 D:\HAYC\XiTongJiCheng\LinCangShiPinSheBei\obj\Release\临沧视频设备信息接入.pdb
-D:\HAYC\XiTongJiCheng\LinCangShiPinSheBei\obj\Release\LinCangShiPinSheBei.csprojResolveAssemblyReference.cache

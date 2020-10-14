@@ -31,6 +31,7 @@ E:\GitHubProject\XiTongJiCheng\XinJiangShouBaoBs\bin\Release\新疆手动报警�
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBaoBs\bin\Release\新疆手动报警数据接入程序(二标段).pdb
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBaoBs\obj\Release\新疆手动报警数据接入程序(二标段).exe
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBaoBs\obj\Release\新疆手动报警数据接入程序(二标段).pdb
+E:\GitHubProject\XiTongJiCheng\XinJiangShouBaoBs\obj\Release\XinJiangShouBaoBs.csprojResolveAssemblyReference.cache
 D:\HAYC\XiTongJiCheng\XinJiangShouBaoBs\bin\Release\librdkafka\x86\librdkafka.dll
 D:\HAYC\XiTongJiCheng\XinJiangShouBaoBs\bin\Release\librdkafka\x86\librdkafkacpp.dll
 D:\HAYC\XiTongJiCheng\XinJiangShouBaoBs\bin\Release\librdkafka\x86\libzstd.dll
@@ -59,9 +60,9 @@ D:\HAYC\XiTongJiCheng\XinJiangShouBaoBs\bin\Release\Newtonsoft.Json.xml
 D:\HAYC\XiTongJiCheng\XinJiangShouBaoBs\bin\Release\System.Buffers.xml
 D:\HAYC\XiTongJiCheng\XinJiangShouBaoBs\bin\Release\System.Memory.xml
 D:\HAYC\XiTongJiCheng\XinJiangShouBaoBs\bin\Release\System.Runtime.CompilerServices.Unsafe.xml
+D:\HAYC\XiTongJiCheng\XinJiangShouBaoBs\obj\Release\XinJiangShouBaoBs.csprojResolveAssemblyReference.cache
 D:\HAYC\XiTongJiCheng\XinJiangShouBaoBs\obj\Release\XinJiangShouBaoBs.Form1.resources
 D:\HAYC\XiTongJiCheng\XinJiangShouBaoBs\obj\Release\XinJiangShouBaoBs.Properties.Resources.resources
 D:\HAYC\XiTongJiCheng\XinJiangShouBaoBs\obj\Release\XinJiangShouBaoBs.csproj.GenerateResource.Cache
 D:\HAYC\XiTongJiCheng\XinJiangShouBaoBs\obj\Release\新疆手动报警数据接入程序(二标段).exe
 D:\HAYC\XiTongJiCheng\XinJiangShouBaoBs\obj\Release\新疆手动报警数据接入程序(二标段).pdb
-E:\GitHubProject\XiTongJiCheng\XinJiangShouBaoBs\obj\Release\XinJiangShouBaoBs.csprojResolveAssemblyReference.cache

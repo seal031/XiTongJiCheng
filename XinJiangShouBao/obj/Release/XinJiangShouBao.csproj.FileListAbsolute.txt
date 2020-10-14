@@ -66,7 +66,6 @@ D:\HAYC\XiTongJiCheng\XinJiangShouBao\bin\Release\SuperSocket.ProtoBase.xml
 D:\HAYC\XiTongJiCheng\XinJiangShouBao\bin\Release\System.Buffers.xml
 D:\HAYC\XiTongJiCheng\XinJiangShouBao\bin\Release\System.Memory.xml
 D:\HAYC\XiTongJiCheng\XinJiangShouBao\bin\Release\System.Runtime.CompilerServices.Unsafe.xml
-D:\HAYC\XiTongJiCheng\XinJiangShouBao\obj\Release\XinJiangShouBao.csprojResolveAssemblyReference.cache
 D:\HAYC\XiTongJiCheng\XinJiangShouBao\obj\Release\XinJiangShouBao.Form1.resources
 D:\HAYC\XiTongJiCheng\XinJiangShouBao\obj\Release\XinJiangShouBao.Properties.Resources.resources
 D:\HAYC\XiTongJiCheng\XinJiangShouBao\obj\Release\XinJiangShouBao.csproj.GenerateResource.Cache

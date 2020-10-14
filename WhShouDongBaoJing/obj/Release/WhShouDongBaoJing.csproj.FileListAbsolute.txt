@@ -42,5 +42,3 @@ D:\HAYC\XiTongJiCheng\WhShouDongBaoJing\obj\Release\WhShouDongBaoJing.csproj.Res
 D:\HAYC\XiTongJiCheng\WhShouDongBaoJing\obj\Release\WhShouDongBaoJing.Form1.resources
 D:\HAYC\XiTongJiCheng\WhShouDongBaoJing\obj\Release\WhShouDongBaoJing.Properties.Resources.resources
 D:\HAYC\XiTongJiCheng\WhShouDongBaoJing\obj\Release\WhShouDongBaoJing.csproj.GenerateResource.Cache
-D:\HAYC\XiTongJiCheng\WhShouDongBaoJing\obj\Release\WhShouDongBaoJing.exe
-D:\HAYC\XiTongJiCheng\WhShouDongBaoJing\obj\Release\WhShouDongBaoJing.pdb

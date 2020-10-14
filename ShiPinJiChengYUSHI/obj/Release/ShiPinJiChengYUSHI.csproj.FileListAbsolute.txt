@@ -7,3 +7,13 @@ D:\HAYC\XiTongJiCheng\ShiPinJiChengYUSHI\obj\Release\ShiPinJiChengYUSHI.videoPan
 D:\HAYC\XiTongJiCheng\ShiPinJiChengYUSHI\obj\Release\ShiPinJiChengYUSHI.csproj.GenerateResource.Cache
 D:\HAYC\XiTongJiCheng\ShiPinJiChengYUSHI\obj\Release\ShiPinJiChengYUSHI.exe
 D:\HAYC\XiTongJiCheng\ShiPinJiChengYUSHI\obj\Release\ShiPinJiChengYUSHI.pdb
+E:\GitHubProject\XiTongJiCheng\ShiPinJiChengYUSHI\bin\Release\ShiPinJiChengYUSHI.exe.config
+E:\GitHubProject\XiTongJiCheng\ShiPinJiChengYUSHI\bin\Release\ShiPinJiChengYUSHI.exe
+E:\GitHubProject\XiTongJiCheng\ShiPinJiChengYUSHI\bin\Release\ShiPinJiChengYUSHI.pdb
+E:\GitHubProject\XiTongJiCheng\ShiPinJiChengYUSHI\obj\Release\ShiPinJiChengYUSHI.csprojResolveAssemblyReference.cache
+E:\GitHubProject\XiTongJiCheng\ShiPinJiChengYUSHI\obj\Release\ShiPinJiChengYUSHI.Form1.resources
+E:\GitHubProject\XiTongJiCheng\ShiPinJiChengYUSHI\obj\Release\ShiPinJiChengYUSHI.Properties.Resources.resources
+E:\GitHubProject\XiTongJiCheng\ShiPinJiChengYUSHI\obj\Release\ShiPinJiChengYUSHI.videoPanel.resources
+E:\GitHubProject\XiTongJiCheng\ShiPinJiChengYUSHI\obj\Release\ShiPinJiChengYUSHI.csproj.GenerateResource.Cache
+E:\GitHubProject\XiTongJiCheng\ShiPinJiChengYUSHI\obj\Release\ShiPinJiChengYUSHI.exe
+E:\GitHubProject\XiTongJiCheng\ShiPinJiChengYUSHI\obj\Release\ShiPinJiChengYUSHI.pdb

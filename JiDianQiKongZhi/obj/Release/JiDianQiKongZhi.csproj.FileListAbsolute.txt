@@ -8,3 +8,13 @@ D:\HAYC\XiTongJiCheng\JiDianQiKongZhi\obj\Release\JiDianQiKongZhi.Properties.Res
 D:\HAYC\XiTongJiCheng\JiDianQiKongZhi\obj\Release\JiDianQiKongZhi.csproj.GenerateResource.Cache
 D:\HAYC\XiTongJiCheng\JiDianQiKongZhi\obj\Release\JiDianQiKongZhi.exe
 D:\HAYC\XiTongJiCheng\JiDianQiKongZhi\obj\Release\JiDianQiKongZhi.pdb
+E:\GitHubProject\XiTongJiCheng\JiDianQiKongZhi\bin\Release\JiDianQiKongZhi.exe.config
+E:\GitHubProject\XiTongJiCheng\JiDianQiKongZhi\bin\Release\JiDianQiKongZhi.exe
+E:\GitHubProject\XiTongJiCheng\JiDianQiKongZhi\bin\Release\JiDianQiKongZhi.pdb
+E:\GitHubProject\XiTongJiCheng\JiDianQiKongZhi\bin\Release\NModbus4.DLL
+E:\GitHubProject\XiTongJiCheng\JiDianQiKongZhi\obj\Release\JiDianQiKongZhi.csprojResolveAssemblyReference.cache
+E:\GitHubProject\XiTongJiCheng\JiDianQiKongZhi\obj\Release\JiDianQiKongZhi.Form1.resources
+E:\GitHubProject\XiTongJiCheng\JiDianQiKongZhi\obj\Release\JiDianQiKongZhi.Properties.Resources.resources
+E:\GitHubProject\XiTongJiCheng\JiDianQiKongZhi\obj\Release\JiDianQiKongZhi.csproj.GenerateResource.Cache
+E:\GitHubProject\XiTongJiCheng\JiDianQiKongZhi\obj\Release\JiDianQiKongZhi.exe
+E:\GitHubProject\XiTongJiCheng\JiDianQiKongZhi\obj\Release\JiDianQiKongZhi.pdb

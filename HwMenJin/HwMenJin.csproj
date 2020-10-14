@@ -150,6 +150,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <COMReference Include="AxSMSDKPWCardHolderInfo">
+      <Guid>{D96EF38E-2411-4884-A714-99659582D32A}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
     <COMReference Include="AxSMSDKPWEventInfo">
       <Guid>{C5C23270-8984-4398-B48E-10A45E3BA844}</Guid>
       <VersionMajor>1</VersionMajor>
@@ -165,6 +173,15 @@
       <Lcid>0</Lcid>
       <WrapperTool>aximp</WrapperTool>
       <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="SMSDKPWCardHolderInfo">
+      <Guid>{D96EF38E-2411-4884-A714-99659582D32A}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
     <COMReference Include="SMSDKPWEventInfo">
       <Guid>{C5C23270-8984-4398-B48E-10A45E3BA844}</Guid>

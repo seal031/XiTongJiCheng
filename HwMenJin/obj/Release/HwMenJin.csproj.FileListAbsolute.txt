@@ -56,3 +56,8 @@ D:\HAYC\XiTongJiCheng\HwMenJin\obj\Release\HwMenJin.Properties.Resources.resourc
 D:\HAYC\XiTongJiCheng\HwMenJin\obj\Release\HwMenJin.csproj.GenerateResource.Cache
 D:\HAYC\XiTongJiCheng\HwMenJin\obj\Release\门禁数据接入程序.exe
 D:\HAYC\XiTongJiCheng\HwMenJin\obj\Release\门禁数据接入程序.pdb
+E:\GitHubProject\XiTongJiCheng\HwMenJin\obj\Release\HwMenJin.csprojResolveAssemblyReference.cache
+E:\GitHubProject\XiTongJiCheng\HwMenJin\bin\Release\Interop.SMSDKPWCardHolderInfo.dll
+E:\GitHubProject\XiTongJiCheng\HwMenJin\bin\Release\AxInterop.SMSDKPWCardHolderInfo.dll
+E:\GitHubProject\XiTongJiCheng\HwMenJin\obj\Release\Interop.SMSDKPWCardHolderInfo.dll
+E:\GitHubProject\XiTongJiCheng\HwMenJin\obj\Release\AxInterop.SMSDKPWCardHolderInfo.dll

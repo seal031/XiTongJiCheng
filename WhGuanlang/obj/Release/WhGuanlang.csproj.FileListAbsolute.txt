@@ -92,3 +92,4 @@ D:\HAYC\XiTongJiCheng\WhGuanlang\obj\Release\WhGuanlang.Properties.Resources.res
 D:\HAYC\XiTongJiCheng\WhGuanlang\obj\Release\WhGuanlang.csproj.GenerateResource.Cache
 D:\HAYC\XiTongJiCheng\WhGuanlang\obj\Release\管廊数据接入程序.exe
 D:\HAYC\XiTongJiCheng\WhGuanlang\obj\Release\管廊数据接入程序.pdb
+E:\GitHubProject\XiTongJiCheng\WhGuanlang\obj\Release\WhGuanlang.csprojResolveAssemblyReference.cache

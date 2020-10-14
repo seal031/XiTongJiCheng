@@ -10,3 +10,15 @@ D:\HAYC\XiTongJiCheng\UdpServerTest\obj\Release\UdpServerTest.Properties.Resourc
 D:\HAYC\XiTongJiCheng\UdpServerTest\obj\Release\UdpServerTest.csproj.GenerateResource.Cache
 D:\HAYC\XiTongJiCheng\UdpServerTest\obj\Release\UdpServerTest.exe
 D:\HAYC\XiTongJiCheng\UdpServerTest\obj\Release\UdpServerTest.pdb
+E:\GitHubProject\XiTongJiCheng\UdpServerTest\bin\Release\UdpServerTest.exe.config
+E:\GitHubProject\XiTongJiCheng\UdpServerTest\bin\Release\UdpServerTest.exe
+E:\GitHubProject\XiTongJiCheng\UdpServerTest\bin\Release\UdpServerTest.pdb
+E:\GitHubProject\XiTongJiCheng\UdpServerTest\bin\Release\LiteNetLib.dll
+E:\GitHubProject\XiTongJiCheng\UdpServerTest\bin\Release\LiteNetLib.pdb
+E:\GitHubProject\XiTongJiCheng\UdpServerTest\bin\Release\LiteNetLib.xml
+E:\GitHubProject\XiTongJiCheng\UdpServerTest\obj\Release\UdpServerTest.csprojResolveAssemblyReference.cache
+E:\GitHubProject\XiTongJiCheng\UdpServerTest\obj\Release\UdpServerTest.Form1.resources
+E:\GitHubProject\XiTongJiCheng\UdpServerTest\obj\Release\UdpServerTest.Properties.Resources.resources
+E:\GitHubProject\XiTongJiCheng\UdpServerTest\obj\Release\UdpServerTest.csproj.GenerateResource.Cache
+E:\GitHubProject\XiTongJiCheng\UdpServerTest\obj\Release\UdpServerTest.exe
+E:\GitHubProject\XiTongJiCheng\UdpServerTest\obj\Release\UdpServerTest.pdb

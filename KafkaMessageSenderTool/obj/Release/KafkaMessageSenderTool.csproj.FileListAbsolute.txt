@@ -57,8 +57,6 @@ D:\HAYC\XiTongJiCheng\KafkaMessageSenderTool\bin\Release\IBMMQ_LIB.dll
 D:\HAYC\XiTongJiCheng\KafkaMessageSenderTool\bin\Release\System.Buffers.dll
 D:\HAYC\XiTongJiCheng\KafkaMessageSenderTool\bin\Release\System.Memory.dll
 D:\HAYC\XiTongJiCheng\KafkaMessageSenderTool\bin\Release\System.Runtime.CompilerServices.Unsafe.dll
-D:\HAYC\XiTongJiCheng\KafkaMessageSenderTool\bin\Release\amqmdnet.dll
-D:\HAYC\XiTongJiCheng\KafkaMessageSenderTool\bin\Release\fastJSON.dll
 D:\HAYC\XiTongJiCheng\KafkaMessageSenderTool\bin\Release\Confluent.Kafka.xml
 D:\HAYC\XiTongJiCheng\KafkaMessageSenderTool\bin\Release\ExcelDataReader.pdb
 D:\HAYC\XiTongJiCheng\KafkaMessageSenderTool\bin\Release\ExcelDataReader.xml

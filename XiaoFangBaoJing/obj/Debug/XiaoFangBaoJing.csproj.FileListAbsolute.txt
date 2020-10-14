@@ -50,9 +50,9 @@ E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\Newtonsoft.Json.xml
 E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\Quartz.pdb
 E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\Quartz.xml
 E:\GitHubProject\XiTongJiCheng\XiaoFangBaoJing\obj\Debug\XiaoFangBaoJing.csprojResolveAssemblyReference.cache
-D:\HAYC\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\XiaoFangBaoJing.exe.config
-D:\HAYC\XiTongJiCheng\XiaoFangBaoJing\obj\Debug\XiaoFangBaoJing.exe
-D:\HAYC\XiTongJiCheng\XiaoFangBaoJing\obj\Debug\XiaoFangBaoJing.pdb
+D:\HAYC\XiTongJiCheng\XiaoFangBaoJing\obj\Debug\XiaoFangBaoJing.Form1.resources
+D:\HAYC\XiTongJiCheng\XiaoFangBaoJing\obj\Debug\XiaoFangBaoJing.Properties.Resources.resources
+D:\HAYC\XiTongJiCheng\XiaoFangBaoJing\obj\Debug\XiaoFangBaoJing.csproj.GenerateResource.Cache
 D:\HAYC\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\librdkafka\x86\librdkafka.dll
 D:\HAYC\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\librdkafka\x86\librdkafkacpp.dll
 D:\HAYC\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\librdkafka\x86\libzstd.dll
@@ -65,6 +65,7 @@ D:\HAYC\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\librdkafka\x64\libzstd.dll
 D:\HAYC\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\librdkafka\x64\msvcp120.dll
 D:\HAYC\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\librdkafka\x64\msvcr120.dll
 D:\HAYC\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\librdkafka\x64\zlib.dll
+D:\HAYC\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\XiaoFangBaoJing.exe.config
 D:\HAYC\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\XiaoFangBaoJing.exe
 D:\HAYC\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\XiaoFangBaoJing.pdb
 D:\HAYC\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\Common.Logging.Core.dll
@@ -89,6 +90,6 @@ D:\HAYC\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\Quartz.xml
 D:\HAYC\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\System.Buffers.xml
 D:\HAYC\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\System.Memory.xml
 D:\HAYC\XiTongJiCheng\XiaoFangBaoJing\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
-D:\HAYC\XiTongJiCheng\XiaoFangBaoJing\obj\Debug\XiaoFangBaoJing.Form1.resources
-D:\HAYC\XiTongJiCheng\XiaoFangBaoJing\obj\Debug\XiaoFangBaoJing.Properties.Resources.resources
-D:\HAYC\XiTongJiCheng\XiaoFangBaoJing\obj\Debug\XiaoFangBaoJing.csproj.GenerateResource.Cache
+D:\HAYC\XiTongJiCheng\XiaoFangBaoJing\obj\Debug\XiaoFangBaoJing.exe
+D:\HAYC\XiTongJiCheng\XiaoFangBaoJing\obj\Debug\XiaoFangBaoJing.pdb
+D:\HAYC\XiTongJiCheng\XiaoFangBaoJing\obj\Debug\XiaoFangBaoJing.csprojResolveAssemblyReference.cache

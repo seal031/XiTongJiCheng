@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Globalization;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 public class ConfigWorker
@@ -197,33 +198,97 @@ public class DeviceStateParseTool
         stateDic.Add("ES02", "离线");
     }
 
-    public static DeviceStateEntity parseDeviceState(string stateId)
+    public static DeviceStateEntity parseDeviceState(string devId, string state)
     {
         DeviceStateEntity deviceStateEntity = null;
         try
         {
             deviceStateEntity = new DeviceStateEntity();
-            deviceStateEntity.meta.eventType = "ACS_EQUINFO_UE";
-            deviceStateEntity.meta.msgType = "EQU";
+            deviceStateEntity.meta.eventType = "SVMS_EQU_STATUS_UE";
+            deviceStateEntity.meta.msgType = "EQU_STATUS";
             deviceStateEntity.meta.receiver = "";
             deviceStateEntity.meta.recvSequence = "";
             deviceStateEntity.meta.recvTime = "";
-            deviceStateEntity.meta.sender = "MJEQU";
+            deviceStateEntity.meta.sender = "MJ";
             deviceStateEntity.meta.sendTime = DateTime.Now.ToString("yyyyMMddHHmmss");
-            deviceStateEntity.meta.sequence = "";
-
-            //deviceStateEntity.body.createDate =deviceStateInfo.sEventTime;
-            //deviceStateEntity.body.equCode =deviceStateInfo.sEventLocation;
-            deviceStateEntity.body.timeStateId = stateId;
-            deviceStateEntity.body.timeStateName = stateDic[stateId];
+            deviceStateEntity.meta.sequence = Guid.NewGuid().ToString(); ;
+            //string pattern = "[\\[ \\] \\^ \\-_*×――(^)$%~!@#$…&%￥—+<>《》!！??？:：•`·、。，；,;\"‘’“”-]";
+            //string channelID = Regex.Replace(devArr[1], pattern, "").Split(new char[] { '=' })[1];
+            //string channelStatus = Regex.Replace(devArr[4], pattern, "").Split(new char[] { '=' })[1];
+            deviceStateEntity.body.equCode = devId;
+            if (state == "离线")
+            {
+                deviceStateEntity.body.timeStateId = "ES02";
+                deviceStateEntity.body.timeStateName = "离线";
+            }
+            else if (state == "上线")
+            {
+                deviceStateEntity.body.timeStateId = "ES01";
+                deviceStateEntity.body.timeStateName = "在线";
+            }
+            else
+            {
+                deviceStateEntity.body.timeStateId = "ES03";
+                deviceStateEntity.body.timeStateName = "故障";
+            }
+            deviceStateEntity.body.operateTime =DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            deviceStateEntity.body.airportIata = ConfigWorker.GetConfigValue("airportIata");
+            deviceStateEntity.body.airportName = ConfigWorker.GetConfigValue("airportName");
         }
         catch (Exception ex)
         {
             FileWorker.LogHelper.WriteLog("解析设备状态失败，" + ex.Message);
         }
         return deviceStateEntity;
-    } }
+    }
+}
+public class DeviceResourceParseTool
+{
+    public static DeviceResourEntity parseDeviceRec(string[] devArr)
+    {
+        DeviceResourEntity devResEnt = null;
+        try
+        {
+            devResEnt = new DeviceResourEntity();
+            devResEnt.meta.eventType = "SVMS_EQUINFO_UE";
+            devResEnt.meta.msgType = "EQU";
+            devResEnt.meta.receiver = "";
+            devResEnt.meta.recvSequence = "";
+            devResEnt.meta.recvTime = "";
+            devResEnt.meta.sender = "SXJ";
+            devResEnt.meta.sendTime = DateTime.Now.ToString("yyyyMMddHHmmss");
+            devResEnt.meta.sequence = "";
 
+            string pattern = "[\\[ \\] \\^ \\-_*×――(^)%~!@#…&%￥—+<>《》!！??？:：•`·、。，；,;\"‘’“”-]";
+            string channelID = Regex.Replace(devArr[1], pattern, "").Split(new char[] { '=' })[1];
+            devResEnt.body.equCode = channelID;
+            devResEnt.body.equName = Regex.Replace(devArr[2], pattern, "").Split(new char[] { '=' })[1];
+            devResEnt.body.equTypeCode = Regex.Replace(devArr[8], pattern, "").Split(new char[] { '=' })[1];
+            if (devResEnt.body.equTypeCode == "1")
+            {
+                devResEnt.body.equTypeName = "枪机";
+            }
+            else if (devResEnt.body.equTypeCode == "2")
+            {
+                devResEnt.body.equTypeName = "球机";
+            }
+            else if (devResEnt.body.equTypeCode == "3")
+            {
+                devResEnt.body.equTypeName = "半球";
+            }
+            else
+            {
+                devResEnt.body.equTypeName = "枪机";
+            }
+            //devResEnt.body.operationType = "0";
+        }
+        catch (Exception ex)
+        {
+            FileWorker.LogHelper.WriteLog("解析设备基本信息失败，" + ex.Message);
+        }
+        return devResEnt;
+    }
+}
 public class DataFormatTool
 {
     public static string formatDatetime(string inputStr)

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LinCangShiPinSheBei
 {
-    class SDK
+    public partial class Form1
     {
         /// <summary>
         /// 报警回调函数。
@@ -243,7 +243,7 @@ namespace LinCangShiPinSheBei
         public extern static int GetWindowRect(IntPtr hWnd, out Rect lpRect);
 
         [DllImport("DPSDK_Core.dll", CharSet = CharSet.Ansi)]
-        private extern static IntPtr DPSDK_Create(dpsdk_sdk_type_e nType, ref IntPtr nPDLLHandle);
+        public extern static IntPtr DPSDK_Create(dpsdk_sdk_type_e nType, ref IntPtr nPDLLHandle);
 
         [DllImport("DPSDK_Core.dll", CharSet = CharSet.Ansi)]
         private extern static IntPtr DPSDK_Destroy(IntPtr nPDLLHandle);

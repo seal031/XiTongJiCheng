@@ -15,176 +15,512 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_0550376E01D34C8BA0A4D7A06809C283"
+        "MsmKey" = "8:_02DD102B349D4D27B95BB493BA7D6BF7"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_11524B5F2B994B4F859D7AF9CCE14FC4"
+        "MsmKey" = "8:_0F4F5160B40C43469A82E211AFAC2739"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_18A27A697498421DA85212F5F4A5AC83"
+        "MsmKey" = "8:_0F5AF79C0BA845F3A889D13413AC7368"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_290482786FED4FBAAC1C5BF42ACB7BF1"
+        "MsmKey" = "8:_10DB2C81A27F4574ACB9C29871456582"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_3A218CFF3385450C9A85A616188EA4A9"
+        "MsmKey" = "8:_1C95578130EC95E24C409711744BA0AB"
+        "OwnerKey" = "8:_7F7E7CAB49D31102318C14961634598C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_23E49E41BC9809E0AEC21513CE7A1FC2"
+        "OwnerKey" = "8:_7F7E7CAB49D31102318C14961634598C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_23E49E41BC9809E0AEC21513CE7A1FC2"
+        "OwnerKey" = "8:_EA262303361AF2730971F3490A78DD81"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_267B424E51A74D66BD95D8BE68EC4107"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_46050606AABC41D0BB30DA0889541476"
+        "MsmKey" = "8:_2A00B0A282A04A28BF7C5D6B3199D08D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_4FD4A27DD0824194BE6C62F2D42DAB12"
+        "MsmKey" = "8:_2BA4F6E7771DD1EF7E85D9F449C92075"
+        "OwnerKey" = "8:_7F7E7CAB49D31102318C14961634598C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_2CDB59083C86465A8573175FD45A0B75"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_55CC13048BE24E5CB2D8CD04F244102F"
+        "MsmKey" = "8:_347B423F530A4BE4ACDBD96C0298D716"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_5885A2E0A0E9343919B6004003984BD0"
-        "OwnerKey" = "8:_18A27A697498421DA85212F5F4A5AC83"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_59C8CCD2F3A644C98689B0B2F780F66D"
+        "MsmKey" = "8:_39E648E129CC4C768AA9A2F0EC932321"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_5F8328CFFF1BF29EA8719308A89625C3"
-        "OwnerKey" = "8:_18A27A697498421DA85212F5F4A5AC83"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_6761B9C8A95847F287E992920CA04028"
+        "MsmKey" = "8:_3B51FB35F3FD42D48F20A129B8E9BD06"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_683E085615394BF789EBE1AE6ECC6E20"
+        "MsmKey" = "8:_3BC165EDE6894ADE89E5D9B3AADCA332"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_7596AE1E03404C9691A538612337080D"
+        "MsmKey" = "8:_4006B440AACDCBD906D6088C50777458"
+        "OwnerKey" = "8:_AB88DFD94FF542A1BFD79F2BF0AD10AA"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_41B3C9025CF44230BB9E5FE7DBDA99A9"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_8368094FE59543FDB4DBC0C9B50371B1"
+        "MsmKey" = "8:_467E4F7CF007452AB2F710AFB0D2359A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_9F43851517824B679125C4C9318AFCC1"
+        "MsmKey" = "8:_48465F1788994B05BD8273B4ABA9A16C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_AE76E5AD2367461C9E99C0619A4B2940"
+        "MsmKey" = "8:_5856B42A408F410BB43428D4E745481F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_B05ADA52AB1F5067392C262AFF5DBE48"
-        "OwnerKey" = "8:_E7C80D8755A7A0C17FACD53A308455EF"
+        "MsmKey" = "8:_5A495EFDF5164664421F09CA89A426C6"
+        "OwnerKey" = "8:_7F7E7CAB49D31102318C14961634598C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_B3B772182B7E7C4F552F1421CA08EA64"
-        "OwnerKey" = "8:_E7C80D8755A7A0C17FACD53A308455EF"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B3B772182B7E7C4F552F1421CA08EA64"
-        "OwnerKey" = "8:_B05ADA52AB1F5067392C262AFF5DBE48"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_D67F90C90F6E49DF803153B9675D39C3"
+        "MsmKey" = "8:_5B4EBA0392D54D358CF6CBABD062FC27"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_E7C80D8755A7A0C17FACD53A308455EF"
-        "OwnerKey" = "8:_18A27A697498421DA85212F5F4A5AC83"
+        "MsmKey" = "8:_5F4D4511681E42469DB61E395D89803C"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_EEBA83213B0442B38F1CCFCDF03F9080"
+        "MsmKey" = "8:_5FB2B2BF037B4C0A9BC173551F59C174"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_63BF1B179F8E4FC2822A7E2F6223946B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_66CBE3E816A24463BA6EB425A0B6E325"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_66F671E4F24C08E389BD87F4BE1E8B42"
+        "OwnerKey" = "8:_7F7E7CAB49D31102318C14961634598C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_66F671E4F24C08E389BD87F4BE1E8B42"
+        "OwnerKey" = "8:_EA262303361AF2730971F3490A78DD81"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_698EDA848DC94A04912D6194A48BCF46"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_699DEA429BEF41D0A7A4C020C23D5E6B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6A4D726603854708B73B6858FE980FEB"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6B564450BF6F4D1E998E3C325560CC2D"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6E588642A308429083F93E328E758471"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_749EF228049946F9B9AA3536C31850CC"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7F7E7CAB49D31102318C14961634598C"
+        "OwnerKey" = "8:_C3B6CFB6F4C7F5C237D72A85796877F3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7F7EA08DC501425490A34A48327777B2"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_89EFB3545EF011C52B9E0D154C573113"
+        "OwnerKey" = "8:_A8BFC7A3A228917B21120D72C4991E50"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9C477665DDBD4FE18552C9F09747F839"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9C992582B40349B0A4642BCCC165B2B1"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9EA71270907E4BE78F4B0ED0E104AB34"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A658276820564D2E84CDBFF68E94A2B1"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A8BFC7A3A228917B21120D72C4991E50"
+        "OwnerKey" = "8:_AB88DFD94FF542A1BFD79F2BF0AD10AA"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_AAA93DE0EA495F6B70BEE9A58394E5AC"
+        "OwnerKey" = "8:_EA262303361AF2730971F3490A78DD81"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_AB88DFD94FF542A1BFD79F2BF0AD10AA"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B95B2497C40A49FA8CCA0482D9A77019"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B99629C1FB4B41A69ACFD78CA5C98011"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_BA9BC94C938E00596C37F59916730B22"
+        "OwnerKey" = "8:_AB88DFD94FF542A1BFD79F2BF0AD10AA"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_BC614196D81B335F0CDEE03FE81D10C8"
+        "OwnerKey" = "8:_EA262303361AF2730971F3490A78DD81"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C3B6CFB6F4C7F5C237D72A85796877F3"
+        "OwnerKey" = "8:_AB88DFD94FF542A1BFD79F2BF0AD10AA"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C4A20E2F5FED7881422C2CF842948EE3"
+        "OwnerKey" = "8:_7F7E7CAB49D31102318C14961634598C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C4A20E2F5FED7881422C2CF842948EE3"
+        "OwnerKey" = "8:_E076B21B02B0E3B668F9F38807F5BA07"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C4A20E2F5FED7881422C2CF842948EE3"
+        "OwnerKey" = "8:_EA262303361AF2730971F3490A78DD81"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C4E3C95B4D1D496CA380D5D3DC312B49"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C809D7D191044314BA4CFF431118ED46"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_CB358B30C3D946F8BC43EB549B3A9C59"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D02B2AF91ED3A525492DB4865689826F"
+        "OwnerKey" = "8:_7F7E7CAB49D31102318C14961634598C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D0FD739E8EE94820B22B4A89D543B1B9"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D1A6D7C1BB7442828F005EC31B32B6A8"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D76C9ACAED514BFCB4A14F9BEE1E101B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D816F4C55A3D4292832BAAFDDB0032EC"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DA0114C242A283EB8FF8F2E5406165B0"
+        "OwnerKey" = "8:_A8BFC7A3A228917B21120D72C4991E50"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DA0114C242A283EB8FF8F2E5406165B0"
+        "OwnerKey" = "8:_89EFB3545EF011C52B9E0D154C573113"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E076B21B02B0E3B668F9F38807F5BA07"
+        "OwnerKey" = "8:_7F7E7CAB49D31102318C14961634598C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E734F86498004B2BA8903E3DB5BC1DEE"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_EA262303361AF2730971F3490A78DD81"
+        "OwnerKey" = "8:_7F7E7CAB49D31102318C14961634598C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_ECD9724B308C4E1CB4AA6B4638BA247A"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F2F060802AAF4020B34E96B47E967F2A"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F829A56465FD4A04A205E02113C3CED5"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FE04870D981742F7BCEBFAF222498CD8"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_5885A2E0A0E9343919B6004003984BD0"
+        "OwnerKey" = "8:_23E49E41BC9809E0AEC21513CE7A1FC2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_18A27A697498421DA85212F5F4A5AC83"
+        "OwnerKey" = "8:_AB88DFD94FF542A1BFD79F2BF0AD10AA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E7C80D8755A7A0C17FACD53A308455EF"
+        "OwnerKey" = "8:_A8BFC7A3A228917B21120D72C4991E50"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B05ADA52AB1F5067392C262AFF5DBE48"
+        "OwnerKey" = "8:_89EFB3545EF011C52B9E0D154C573113"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B3B772182B7E7C4F552F1421CA08EA64"
+        "OwnerKey" = "8:_DA0114C242A283EB8FF8F2E5406165B0"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_5F8328CFFF1BF29EA8719308A89625C3"
+        "OwnerKey" = "8:_BA9BC94C938E00596C37F59916730B22"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_4006B440AACDCBD906D6088C50777458"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_C3B6CFB6F4C7F5C237D72A85796877F3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_BC614196D81B335F0CDEE03FE81D10C8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_AAA93DE0EA495F6B70BEE9A58394E5AC"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_C4A20E2F5FED7881422C2CF842948EE3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_1C95578130EC95E24C409711744BA0AB"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_2BA4F6E7771DD1EF7E85D9F449C92075"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_66F671E4F24C08E389BD87F4BE1E8B42"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_D02B2AF91ED3A525492DB4865689826F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_5A495EFDF5164664421F09CA89A426C6"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -205,6 +541,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.5 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.5"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -221,6 +573,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.5 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.5"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -250,10 +618,10 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0550376E01D34C8BA0A4D7A06809C283"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_02DD102B349D4D27B95BB493BA7D6BF7"
             {
-            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Release\\DPSDK_Ext.dll"
-            "TargetName" = "8:DPSDK_Ext.dll"
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\临沧视频设备信息接入.exe.config"
+            "TargetName" = "8:临沧视频设备信息接入.exe.config"
             "Tag" = "8:"
             "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
             "Condition" = "8:"
@@ -270,9 +638,282 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_11524B5F2B994B4F859D7AF9CCE14FC4"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0F4F5160B40C43469A82E211AFAC2739"
             {
-            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Release\\librdkafka\\x64\\librdkafka.dll"
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\dhstream.dll"
+            "TargetName" = "8:dhstream.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0F5AF79C0BA845F3A889D13413AC7368"
+            {
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\librdkafka\\x64\\librdkafkacpp.dll"
+            "TargetName" = "8:librdkafkacpp.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_4511A0FD21774B4181B9F0C3390C8E19"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_10DB2C81A27F4574ACB9C29871456582"
+            {
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\HWDec.dll"
+            "TargetName" = "8:HWDec.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1C95578130EC95E24C409711744BA0AB"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:TRUE"
+            "AssemblyAsmDisplayName" = "8:System.Runtime.InteropServices, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_1C95578130EC95E24C409711744BA0AB"
+                    {
+                    "Name" = "8:System.Runtime.InteropServices.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:System.Runtime.InteropServices.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_23E49E41BC9809E0AEC21513CE7A1FC2"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:TRUE"
+            "AssemblyAsmDisplayName" = "8:System.Diagnostics.Debug, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_23E49E41BC9809E0AEC21513CE7A1FC2"
+                    {
+                    "Name" = "8:System.Diagnostics.Debug.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:System.Diagnostics.Debug.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_267B424E51A74D66BD95D8BE68EC4107"
+            {
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\PicSDK.dll"
+            "TargetName" = "8:PicSDK.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2A00B0A282A04A28BF7C5D6B3199D08D"
+            {
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\Infra.dll"
+            "TargetName" = "8:Infra.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2BA4F6E7771DD1EF7E85D9F449C92075"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:TRUE"
+            "AssemblyAsmDisplayName" = "8:System.Runtime.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_2BA4F6E7771DD1EF7E85D9F449C92075"
+                    {
+                    "Name" = "8:System.Runtime.Extensions.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:System.Runtime.Extensions.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2CDB59083C86465A8573175FD45A0B75"
+            {
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\librdkafka\\x86\\msvcp120.dll"
+            "TargetName" = "8:msvcp120.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_FBBF28C445834C15B7E99C4A952FC075"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_347B423F530A4BE4ACDBD96C0298D716"
+            {
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\dslalien.dll"
+            "TargetName" = "8:dslalien.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_39E648E129CC4C768AA9A2F0EC932321"
+            {
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\DPSDK_Core.dll"
+            "TargetName" = "8:DPSDK_Core.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3B51FB35F3FD42D48F20A129B8E9BD06"
+            {
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\MCL_FPTZ.dll"
+            "TargetName" = "8:MCL_FPTZ.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3BC165EDE6894ADE89E5D9B3AADCA332"
+            {
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\librdkafka\\x64\\librdkafka.dll"
             "TargetName" = "8:librdkafka.dll"
             "Tag" = "8:"
             "Folder" = "8:_4511A0FD21774B4181B9F0C3390C8E19"
@@ -290,145 +931,14 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_18A27A697498421DA85212F5F4A5AC83"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:临沧视频设备信息接入, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64"
-                "ScatterAssemblies"
-                {
-                    "_18A27A697498421DA85212F5F4A5AC83"
-                    {
-                    "Name" = "8:临沧视频设备信息接入.exe"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Release\\临沧视频设备信息接入.exe"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_290482786FED4FBAAC1C5BF42ACB7BF1"
-            {
-            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Release\\librdkafka\\x86\\msvcp120.dll"
-            "TargetName" = "8:msvcp120.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_FBBF28C445834C15B7E99C4A952FC075"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3A218CFF3385450C9A85A616188EA4A9"
-            {
-            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Release\\log\\seed.txt"
-            "TargetName" = "8:seed.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_F36DFAB0ABE1449896FDA118D177A144"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_46050606AABC41D0BB30DA0889541476"
-            {
-            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Release\\librdkafka\\x86\\zlib.dll"
-            "TargetName" = "8:zlib.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_FBBF28C445834C15B7E99C4A952FC075"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4FD4A27DD0824194BE6C62F2D42DAB12"
-            {
-            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Release\\librdkafka\\x64\\msvcr120.dll"
-            "TargetName" = "8:msvcr120.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_4511A0FD21774B4181B9F0C3390C8E19"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_55CC13048BE24E5CB2D8CD04F244102F"
-            {
-            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Release\\librdkafka\\x64\\msvcp120.dll"
-            "TargetName" = "8:msvcp120.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_4511A0FD21774B4181B9F0C3390C8E19"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5885A2E0A0E9343919B6004003984BD0"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4006B440AACDCBD906D6088C50777458"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_5885A2E0A0E9343919B6004003984BD0"
+                    "_4006B440AACDCBD906D6088C50777458"
                     {
                     "Name" = "8:log4net.DLL"
                     "Attributes" = "3:512"
@@ -452,10 +962,30 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_59C8CCD2F3A644C98689B0B2F780F66D"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_41B3C9025CF44230BB9E5FE7DBDA99A9"
             {
-            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Release\\DPSDK_Core.dll"
-            "TargetName" = "8:DPSDK_Core.dll"
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\log\\send.txt"
+            "TargetName" = "8:send.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_F36DFAB0ABE1449896FDA118D177A144"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_467E4F7CF007452AB2F710AFB0D2359A"
+            {
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\Inframd64.dll"
+            "TargetName" = "8:Inframd64.dll"
             "Tag" = "8:"
             "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
             "Condition" = "8:"
@@ -472,20 +1002,60 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5F8328CFFF1BF29EA8719308A89625C3"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_48465F1788994B05BD8273B4ABA9A16C"
+            {
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\librdkafka\\x86\\zlib.dll"
+            "TargetName" = "8:zlib.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_FBBF28C445834C15B7E99C4A952FC075"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5856B42A408F410BB43428D4E745481F"
+            {
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\dhconfigsdk.dll"
+            "TargetName" = "8:dhconfigsdk.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5A495EFDF5164664421F09CA89A426C6"
             {
             "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
+            "AssemblyIsInGAC" = "11:TRUE"
+            "AssemblyAsmDisplayName" = "8:System.Globalization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_5F8328CFFF1BF29EA8719308A89625C3"
+                    "_5A495EFDF5164664421F09CA89A426C6"
                     {
-                    "Name" = "8:Newtonsoft.Json.DLL"
+                    "Name" = "8:System.Globalization.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:Newtonsoft.Json.DLL"
+            "SourcePath" = "8:System.Globalization.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
@@ -503,30 +1073,10 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6761B9C8A95847F287E992920CA04028"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5B4EBA0392D54D358CF6CBABD062FC27"
             {
-            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Release\\临沧视频设备信息接入.exe.config"
-            "TargetName" = "8:临沧视频设备信息接入.exe.config"
-            "Tag" = "8:"
-            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_683E085615394BF789EBE1AE6ECC6E20"
-            {
-            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Release\\librdkafka\\x86\\librdkafka.dll"
-            "TargetName" = "8:librdkafka.dll"
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\librdkafka\\x86\\librdkafkacpp.dll"
+            "TargetName" = "8:librdkafkacpp.dll"
             "Tag" = "8:"
             "Folder" = "8:_FBBF28C445834C15B7E99C4A952FC075"
             "Condition" = "8:"
@@ -543,9 +1093,9 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7596AE1E03404C9691A538612337080D"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5F4D4511681E42469DB61E395D89803C"
             {
-            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Release\\librdkafka\\x86\\msvcr120.dll"
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\librdkafka\\x86\\msvcr120.dll"
             "TargetName" = "8:msvcr120.dll"
             "Tag" = "8:"
             "Folder" = "8:_FBBF28C445834C15B7E99C4A952FC075"
@@ -563,12 +1113,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8368094FE59543FDB4DBC0C9B50371B1"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5FB2B2BF037B4C0A9BC173551F59C174"
             {
-            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Release\\librdkafka\\x86\\libzstd.dll"
-            "TargetName" = "8:libzstd.dll"
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\Inframd.dll"
+            "TargetName" = "8:Inframd.dll"
             "Tag" = "8:"
-            "Folder" = "8:_FBBF28C445834C15B7E99C4A952FC075"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -583,10 +1133,141 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9F43851517824B679125C4C9318AFCC1"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_63BF1B179F8E4FC2822A7E2F6223946B"
             {
-            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Release\\librdkafka\\x64\\librdkafkacpp.dll"
-            "TargetName" = "8:librdkafkacpp.dll"
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\AnalyzeData.dll"
+            "TargetName" = "8:AnalyzeData.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_66CBE3E816A24463BA6EB425A0B6E325"
+            {
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\fisheye.dll"
+            "TargetName" = "8:fisheye.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_66F671E4F24C08E389BD87F4BE1E8B42"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:TRUE"
+            "AssemblyAsmDisplayName" = "8:System.Resources.ResourceManager, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_66F671E4F24C08E389BD87F4BE1E8B42"
+                    {
+                    "Name" = "8:System.Resources.ResourceManager.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:System.Resources.ResourceManager.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_698EDA848DC94A04912D6194A48BCF46"
+            {
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\IvsDrawer.dll"
+            "TargetName" = "8:IvsDrawer.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_699DEA429BEF41D0A7A4C020C23D5E6B"
+            {
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\StreamPackage.dll"
+            "TargetName" = "8:StreamPackage.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6A4D726603854708B73B6858FE980FEB"
+            {
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\DhHevcParserlib.dll"
+            "TargetName" = "8:DhHevcParserlib.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6B564450BF6F4D1E998E3C325560CC2D"
+            {
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\librdkafka\\x64\\msvcp120.dll"
+            "TargetName" = "8:msvcp120.dll"
             "Tag" = "8:"
             "Folder" = "8:_4511A0FD21774B4181B9F0C3390C8E19"
             "Condition" = "8:"
@@ -603,10 +1284,81 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AE76E5AD2367461C9E99C0619A4B2940"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6E588642A308429083F93E328E758471"
             {
-            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Release\\librdkafka\\x64\\libzstd.dll"
-            "TargetName" = "8:libzstd.dll"
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\TSParse.dll"
+            "TargetName" = "8:TSParse.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_749EF228049946F9B9AA3536C31850CC"
+            {
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\FT_ParseFactoryType.dll"
+            "TargetName" = "8:FT_ParseFactoryType.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7F7E7CAB49D31102318C14961634598C"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:System.Memory, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_7F7E7CAB49D31102318C14961634598C"
+                    {
+                    "Name" = "8:System.Memory.DLL"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:System.Memory.DLL"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7F7EA08DC501425490A34A48327777B2"
+            {
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\librdkafka\\x64\\msvcr120.dll"
+            "TargetName" = "8:msvcr120.dll"
             "Tag" = "8:"
             "Folder" = "8:_4511A0FD21774B4181B9F0C3390C8E19"
             "Condition" = "8:"
@@ -623,14 +1375,14 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B05ADA52AB1F5067392C262AFF5DBE48"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_89EFB3545EF011C52B9E0D154C573113"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:Common.Logging, Version=3.3.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_B05ADA52AB1F5067392C262AFF5DBE48"
+                    "_89EFB3545EF011C52B9E0D154C573113"
                     {
                     "Name" = "8:Common.Logging.DLL"
                     "Attributes" = "3:512"
@@ -654,21 +1406,10 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B3B772182B7E7C4F552F1421CA08EA64"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9C477665DDBD4FE18552C9F09747F839"
             {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Common.Logging.Core, Version=3.3.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_B3B772182B7E7C4F552F1421CA08EA64"
-                    {
-                    "Name" = "8:Common.Logging.Core.DLL"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Common.Logging.Core.DLL"
-            "TargetName" = "8:"
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\DPSDK_Ext.dll"
+            "TargetName" = "8:DPSDK_Ext.dll"
             "Tag" = "8:"
             "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
             "Condition" = "8:"
@@ -682,12 +1423,32 @@
             "PackageAs" = "3:1"
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D67F90C90F6E49DF803153B9675D39C3"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9C992582B40349B0A4642BCCC165B2B1"
             {
-            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Release\\librdkafka\\x64\\zlib.dll"
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\Inframdd.dll"
+            "TargetName" = "8:Inframdd.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9EA71270907E4BE78F4B0ED0E104AB34"
+            {
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\librdkafka\\x64\\zlib.dll"
             "TargetName" = "8:zlib.dll"
             "Tag" = "8:"
             "Folder" = "8:_4511A0FD21774B4181B9F0C3390C8E19"
@@ -705,14 +1466,34 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E7C80D8755A7A0C17FACD53A308455EF"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A658276820564D2E84CDBFF68E94A2B1"
+            {
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\StreamAnalyzer.dll"
+            "TargetName" = "8:StreamAnalyzer.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A8BFC7A3A228917B21120D72C4991E50"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:Quartz, Version=2.6.2.0, Culture=neutral, PublicKeyToken=f6b8c98a402cc8a4, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_E7C80D8755A7A0C17FACD53A308455EF"
+                    "_A8BFC7A3A228917B21120D72C4991E50"
                     {
                     "Name" = "8:Quartz.DLL"
                     "Attributes" = "3:512"
@@ -736,10 +1517,580 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EEBA83213B0442B38F1CCFCDF03F9080"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_AAA93DE0EA495F6B70BEE9A58394E5AC"
             {
-            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Release\\librdkafka\\x86\\librdkafkacpp.dll"
-            "TargetName" = "8:librdkafkacpp.dll"
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:TRUE"
+            "AssemblyAsmDisplayName" = "8:System.Diagnostics.Tracing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_AAA93DE0EA495F6B70BEE9A58394E5AC"
+                    {
+                    "Name" = "8:System.Diagnostics.Tracing.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:System.Diagnostics.Tracing.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_AB88DFD94FF542A1BFD79F2BF0AD10AA"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:临沧视频设备信息接入, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64"
+                "ScatterAssemblies"
+                {
+                    "_AB88DFD94FF542A1BFD79F2BF0AD10AA"
+                    {
+                    "Name" = "8:临沧视频设备信息接入.exe"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\临沧视频设备信息接入.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B95B2497C40A49FA8CCA0482D9A77019"
+            {
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\H264Parser.dll"
+            "TargetName" = "8:H264Parser.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B99629C1FB4B41A69ACFD78CA5C98011"
+            {
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\StreamConvertor.dll"
+            "TargetName" = "8:StreamConvertor.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_BA9BC94C938E00596C37F59916730B22"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_BA9BC94C938E00596C37F59916730B22"
+                    {
+                    "Name" = "8:Newtonsoft.Json.DLL"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Newtonsoft.Json.DLL"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_BC614196D81B335F0CDEE03FE81D10C8"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:TRUE"
+            "AssemblyAsmDisplayName" = "8:System.Threading, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_BC614196D81B335F0CDEE03FE81D10C8"
+                    {
+                    "Name" = "8:System.Threading.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:System.Threading.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C3B6CFB6F4C7F5C237D72A85796877F3"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Confluent.Kafka, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_C3B6CFB6F4C7F5C237D72A85796877F3"
+                    {
+                    "Name" = "8:Confluent.Kafka.DLL"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Confluent.Kafka.DLL"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C4A20E2F5FED7881422C2CF842948EE3"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:TRUE"
+            "AssemblyAsmDisplayName" = "8:System.Runtime, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_C4A20E2F5FED7881422C2CF842948EE3"
+                    {
+                    "Name" = "8:System.Runtime.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:System.Runtime.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C4E3C95B4D1D496CA380D5D3DC312B49"
+            {
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\PlatformSDK.dll"
+            "TargetName" = "8:PlatformSDK.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C809D7D191044314BA4CFF431118ED46"
+            {
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\DahuaAdaptor.dll"
+            "TargetName" = "8:DahuaAdaptor.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CB358B30C3D946F8BC43EB549B3A9C59"
+            {
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\libdsl.dll"
+            "TargetName" = "8:libdsl.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D02B2AF91ED3A525492DB4865689826F"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:TRUE"
+            "AssemblyAsmDisplayName" = "8:System.Reflection, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_D02B2AF91ED3A525492DB4865689826F"
+                    {
+                    "Name" = "8:System.Reflection.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:System.Reflection.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D0FD739E8EE94820B22B4A89D543B1B9"
+            {
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\librdkafka\\x86\\libzstd.dll"
+            "TargetName" = "8:libzstd.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_FBBF28C445834C15B7E99C4A952FC075"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D1A6D7C1BB7442828F005EC31B32B6A8"
+            {
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\log4net.config"
+            "TargetName" = "8:log4net.config"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D76C9ACAED514BFCB4A14F9BEE1E101B"
+            {
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\librdkafka\\x64\\libzstd.dll"
+            "TargetName" = "8:libzstd.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_4511A0FD21774B4181B9F0C3390C8E19"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D816F4C55A3D4292832BAAFDDB0032EC"
+            {
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\h264_enc.dll"
+            "TargetName" = "8:h264_enc.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DA0114C242A283EB8FF8F2E5406165B0"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Common.Logging.Core, Version=3.3.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_DA0114C242A283EB8FF8F2E5406165B0"
+                    {
+                    "Name" = "8:Common.Logging.Core.DLL"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Common.Logging.Core.DLL"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E076B21B02B0E3B668F9F38807F5BA07"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:System.Runtime.CompilerServices.Unsafe, Version=4.0.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_E076B21B02B0E3B668F9F38807F5BA07"
+                    {
+                    "Name" = "8:System.Runtime.CompilerServices.Unsafe.DLL"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:System.Runtime.CompilerServices.Unsafe.DLL"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E734F86498004B2BA8903E3DB5BC1DEE"
+            {
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\StreamParser.dll"
+            "TargetName" = "8:StreamParser.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EA262303361AF2730971F3490A78DD81"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_EA262303361AF2730971F3490A78DD81"
+                    {
+                    "Name" = "8:System.Buffers.DLL"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:System.Buffers.DLL"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_ECD9724B308C4E1CB4AA6B4638BA247A"
+            {
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\dhplay.dll"
+            "TargetName" = "8:dhplay.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F2F060802AAF4020B34E96B47E967F2A"
+            {
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\WinRender.dll"
+            "TargetName" = "8:WinRender.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F829A56465FD4A04A205E02113C3CED5"
+            {
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\VAXPlayer.dll"
+            "TargetName" = "8:VAXPlayer.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FE04870D981742F7BCEBFAF222498CD8"
+            {
+            "SourcePath" = "8:..\\LinCangShiPinSheBei\\bin\\Debug\\librdkafka\\x86\\librdkafka.dll"
+            "TargetName" = "8:librdkafka.dll"
             "Tag" = "8:"
             "Folder" = "8:_FBBF28C445834C15B7E99C4A952FC075"
             "Condition" = "8:"
@@ -857,7 +2208,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:临沧视频设备信息接入程序"
         "ProductCode" = "8:{30E631A1-210D-4BEF-95B3-267176BE175E}"
-        "PackageCode" = "8:{980F5D76-941F-42E4-AAB2-1EFAB445F630}"
+        "PackageCode" = "8:{3C3DF4CC-B522-45ED-9180-5772AD0E32AF}"
         "UpgradeCode" = "8:{1B893656-9F32-41B4-B9A7-08873F4B91C1}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -977,6 +2328,20 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_C7DD3060B61C4B67A1F9F371C3CA7DCB"
+            {
+            "Name" = "8:Shortcut to 临沧视频设备信息接入.exe"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_AB88DFD94FF542A1BFD79F2BF0AD10AA"
+            "Folder" = "8:_E3A4C95BD58747F1B5F12558C7FC2250"
+            "WorkingFolder" = "8:_425748280D7A4FACB46A8E82771BDFC7"
+            "Icon" = "8:"
+            "Feature" = "8:"
+            }
         }
         "UserInterface"
         {

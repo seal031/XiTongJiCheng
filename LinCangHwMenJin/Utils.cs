@@ -198,25 +198,40 @@ public class DeviceStateParseTool
         stateDic.Add("ES02", "离线");
     }
 
-    public static DeviceStateEntity parseDeviceState(string stateId)
+    public static DeviceStateEntity parseDeviceState(string stateId,string eventType)
     {
         DeviceStateEntity deviceStateEntity = null;
         try
         {
             deviceStateEntity = new DeviceStateEntity();
             deviceStateEntity.meta.eventType = "ACS_EQUINFO_UE";
-            deviceStateEntity.meta.msgType = "EQU";
+            deviceStateEntity.meta.msgType = "EQU_STATUS";
             deviceStateEntity.meta.receiver = "";
             deviceStateEntity.meta.recvSequence = "";
             deviceStateEntity.meta.recvTime = "";
-            deviceStateEntity.meta.sender = "MJEQU";
+            deviceStateEntity.meta.sender = "MJ";
             deviceStateEntity.meta.sendTime = DateTime.Now.ToString("yyyyMMddHHmmss");
             deviceStateEntity.meta.sequence = "";
+            deviceStateEntity.body.equCode = stateId;
+            if (eventType == "903")//903---ES02---离线---开门
+            {
+                deviceStateEntity.body.timeStateId = "ES02";
+                deviceStateEntity.body.timeStateName = "开门";
+            }
+            else if (eventType == "10903")//10903---ES01---在线---关门
+            {
+                deviceStateEntity.body.timeStateId = "ES01";
+                deviceStateEntity.body.timeStateName = "关门";
+            }
+            else
+            {
+                deviceStateEntity.body.timeStateId = "ES03";
+                deviceStateEntity.body.timeStateName = "故障";
+            }
+            deviceStateEntity.body.operateTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            deviceStateEntity.body.airportIata = ConfigWorker.GetConfigValue("airportIata");
+            deviceStateEntity.body.airportName = ConfigWorker.GetConfigValue("airportName");
 
-            //deviceStateEntity.body.createDate =deviceStateInfo.sEventTime;
-            //deviceStateEntity.body.equCode =deviceStateInfo.sEventLocation;
-            deviceStateEntity.body.timeStateId = stateId;
-            deviceStateEntity.body.timeStateName = stateDic[stateId];
         }
         catch (Exception ex)
         {

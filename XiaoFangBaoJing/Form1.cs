@@ -124,23 +124,47 @@
         }
 
         private int deviceIndex = 0;
+        private Dictionary<int,int> alarmDict = new Dictionary<int,int>();
         private void dealData(ushort[] data, int numInputs)
         {
             try
             {
+                int itemIndex = 0;
+                bool flag = true;
                 foreach (ushort uData in data)
                 {
                     //richTextBox1.Text += uData.ToString() + ",";
                     if (uData == 0)
                     {
                         deviceIndex += 16;
-                        if (alarmList.Contains(deviceIndex-16+1))
-                        {
-                            alarmList.Remove(deviceIndex - 16 + 1);
+                        if (alarmDict.ContainsKey(itemIndex))
+                        {   
+                            if (alarmDict[itemIndex] != uData)
+                            {
+                                alarmDict.Remove(itemIndex);
+                            }
                         }
                     }
                     else
                     {
+                        flag = true;
+                        if (alarmDict.ContainsKey(itemIndex))
+                        {
+                            if (alarmDict[itemIndex] == uData)
+                            {
+                                //itemIndex++;
+                                //continue;
+                                flag = false;
+                            }
+                            else
+                            {
+                                alarmDict[itemIndex] = uData;
+                            }
+                        }
+                        else
+                        {
+                            alarmDict.Add(itemIndex, uData);
+                        }
                         char[] charArray = MathTransfer.Ten2Tow(uData);
                         foreach (char c in charArray)
                         {
@@ -152,11 +176,10 @@
                                 {
                                     //richTextBox1.Text += "第" + deviceIndex + "个设备故障" + "设备名:" + device.name;
                                     //richTextBox1.Text += Environment.NewLine;
-
-                                    if (alarmList.Count == 0 || alarmList.Contains(deviceIndex) == false)
+                                    if (flag)
                                     {
                                         LogHelper.WriteLog("第" + deviceIndex + "个设备故障" + "设备名:" + device.name);
-                                        alarmList.Add(deviceIndex);
+                                        alarmList.Add(uData);
                                         MessageEntity message = new MessageEntity();
                                         message.meta.sequence = Guid.NewGuid().ToString("N");
                                         message.meta.sendTime = DateTime.Now.ToString("yyyyMMddHHmmss");
@@ -191,13 +214,14 @@
                             }
                             else
                             {
-                                if (alarmList.Contains(deviceIndex))
-                                {
-                                    alarmList.Remove(deviceIndex);
-                                }
+                                //if (alarmList.Contains(uData))
+                                //{
+                                //    alarmList.Remove(uData);
+                                //}
                             }
                         }
                     }
+                    itemIndex++;
                 }
             }
             catch (Exception ex)

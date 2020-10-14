@@ -159,7 +159,7 @@ public class AlarmParseTool
             }
             else
             {
-                FileWorker.LogHelper.WriteLog("解析报警失败，未找到正则匹配项" + alarmStr);
+                FileWorker.LogHelper.WriteLog("解析报警失败，未找到正则匹配项" + alarmStr.Replace('<','{').Replace('>','}'));
                 return alarmEntity;
             }
 

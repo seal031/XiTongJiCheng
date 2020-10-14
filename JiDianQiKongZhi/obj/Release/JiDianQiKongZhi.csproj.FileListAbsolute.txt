@@ -1,13 +1,3 @@
-D:\HAYC\XiTongJiCheng\JiDianQiKongZhi\bin\Release\JiDianQiKongZhi.exe.config
-D:\HAYC\XiTongJiCheng\JiDianQiKongZhi\bin\Release\JiDianQiKongZhi.exe
-D:\HAYC\XiTongJiCheng\JiDianQiKongZhi\bin\Release\JiDianQiKongZhi.pdb
-D:\HAYC\XiTongJiCheng\JiDianQiKongZhi\bin\Release\NModbus4.DLL
-D:\HAYC\XiTongJiCheng\JiDianQiKongZhi\obj\Release\JiDianQiKongZhi.csprojResolveAssemblyReference.cache
-D:\HAYC\XiTongJiCheng\JiDianQiKongZhi\obj\Release\JiDianQiKongZhi.Form1.resources
-D:\HAYC\XiTongJiCheng\JiDianQiKongZhi\obj\Release\JiDianQiKongZhi.Properties.Resources.resources
-D:\HAYC\XiTongJiCheng\JiDianQiKongZhi\obj\Release\JiDianQiKongZhi.csproj.GenerateResource.Cache
-D:\HAYC\XiTongJiCheng\JiDianQiKongZhi\obj\Release\JiDianQiKongZhi.exe
-D:\HAYC\XiTongJiCheng\JiDianQiKongZhi\obj\Release\JiDianQiKongZhi.pdb
 E:\GitHubProject\XiTongJiCheng\JiDianQiKongZhi\bin\Release\JiDianQiKongZhi.exe.config
 E:\GitHubProject\XiTongJiCheng\JiDianQiKongZhi\bin\Release\JiDianQiKongZhi.exe
 E:\GitHubProject\XiTongJiCheng\JiDianQiKongZhi\bin\Release\JiDianQiKongZhi.pdb
@@ -18,3 +8,13 @@ E:\GitHubProject\XiTongJiCheng\JiDianQiKongZhi\obj\Release\JiDianQiKongZhi.Prope
 E:\GitHubProject\XiTongJiCheng\JiDianQiKongZhi\obj\Release\JiDianQiKongZhi.csproj.GenerateResource.Cache
 E:\GitHubProject\XiTongJiCheng\JiDianQiKongZhi\obj\Release\JiDianQiKongZhi.exe
 E:\GitHubProject\XiTongJiCheng\JiDianQiKongZhi\obj\Release\JiDianQiKongZhi.pdb
+D:\HAYC\XiTongJiCheng\JiDianQiKongZhi\bin\Release\JiDianQiKongZhi.exe.config
+D:\HAYC\XiTongJiCheng\JiDianQiKongZhi\bin\Release\JiDianQiKongZhi.exe
+D:\HAYC\XiTongJiCheng\JiDianQiKongZhi\bin\Release\JiDianQiKongZhi.pdb
+D:\HAYC\XiTongJiCheng\JiDianQiKongZhi\bin\Release\NModbus4.DLL
+D:\HAYC\XiTongJiCheng\JiDianQiKongZhi\obj\Release\JiDianQiKongZhi.csprojResolveAssemblyReference.cache
+D:\HAYC\XiTongJiCheng\JiDianQiKongZhi\obj\Release\JiDianQiKongZhi.Form1.resources
+D:\HAYC\XiTongJiCheng\JiDianQiKongZhi\obj\Release\JiDianQiKongZhi.Properties.Resources.resources
+D:\HAYC\XiTongJiCheng\JiDianQiKongZhi\obj\Release\JiDianQiKongZhi.csproj.GenerateResource.Cache
+D:\HAYC\XiTongJiCheng\JiDianQiKongZhi\obj\Release\JiDianQiKongZhi.exe
+D:\HAYC\XiTongJiCheng\JiDianQiKongZhi\obj\Release\JiDianQiKongZhi.pdb

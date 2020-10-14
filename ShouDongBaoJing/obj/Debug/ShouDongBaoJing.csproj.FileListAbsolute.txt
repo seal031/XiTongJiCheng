@@ -37,3 +37,11 @@ E:\GitHubProject\XiTongJiCheng\ShouDongBaoJing\obj\Debug\ShouDongBaoJing.csproj.
 E:\GitHubProject\XiTongJiCheng\ShouDongBaoJing\obj\Debug\ShouDongBaoJing.exe
 E:\GitHubProject\XiTongJiCheng\ShouDongBaoJing\obj\Debug\ShouDongBaoJing.pdb
 E:\GitHubProject\XiTongJiCheng\ShouDongBaoJing\bin\Debug\log4net.config
+D:\HAYC\XiTongJiCheng\ShouDongBaoJing\bin\Debug\ShouDongBaoJing.exe.config
+D:\HAYC\XiTongJiCheng\ShouDongBaoJing\obj\Debug\ShouDongBaoJing.csproj.ResolveComReference.cache
+D:\HAYC\XiTongJiCheng\ShouDongBaoJing\obj\Debug\ShouDongBaoJing.exe
+D:\HAYC\XiTongJiCheng\ShouDongBaoJing\obj\Debug\ShouDongBaoJing.pdb
+D:\HAYC\XiTongJiCheng\ShouDongBaoJing\obj\Debug\ShouDongBaoJing.csprojResolveAssemblyReference.cache
+D:\HAYC\XiTongJiCheng\ShouDongBaoJing\obj\Debug\IPMALARM.Form1.resources
+D:\HAYC\XiTongJiCheng\ShouDongBaoJing\obj\Debug\IPMALARM.Properties.Resources.resources
+D:\HAYC\XiTongJiCheng\ShouDongBaoJing\obj\Debug\ShouDongBaoJing.csproj.GenerateResource.Cache

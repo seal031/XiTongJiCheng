@@ -302,7 +302,7 @@ public class DeviceStateParseTool
             deviceStateEntity.meta.receiver = "";
             deviceStateEntity.meta.recvSequence = "";
             deviceStateEntity.meta.recvTime = "";
-            deviceStateEntity.meta.sender = "MJEQU";
+            deviceStateEntity.meta.sender = "SXJ";
             deviceStateEntity.meta.sendTime = DateTime.Now.ToString("yyyyMMddHHmmss");
             deviceStateEntity.meta.sequence = "";
 

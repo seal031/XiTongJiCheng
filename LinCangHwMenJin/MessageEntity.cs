@@ -93,12 +93,14 @@ public class DeviceStateEntity
     {
         public string equCode { get; set; }
         public string timeStateId { get; set; }
-        public string createDate { get; set; }
         public string timeStateName { get; set; }
+        public string operateTime { get; set; }
+        public string airportIata { get; set; }
+        public string airportName { get; set; }
     }
     public string toJson()
     {
-        return JsonConvert.SerializeObject(this);
+        return JsonConvert.SerializeObject(this, JsonSerializer.IgnoreSerializerSetting);
     }
 }
 
@@ -237,5 +239,18 @@ public class CommandEntity
     public static CommandEntity fromJson(string json)
     {
         return JsonConvert.DeserializeObject<CommandEntity>(json);
+    }
+}
+static class JsonSerializer
+{
+    static JsonSerializerSettings jssIgnore = new JsonSerializerSettings();
+
+    public static JsonSerializerSettings IgnoreSerializerSetting
+    {
+        get
+        {
+            jssIgnore.NullValueHandling = NullValueHandling.Ignore;
+            return jssIgnore;
+        }
     }
 }

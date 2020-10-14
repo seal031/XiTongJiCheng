@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +14,7 @@ namespace QuanZhouCheDi
         public static MessCommand ParseCarScanMess(string[] inforColl)
         {
             MessCommand messCommand = null;
-            
+
             try
             {
                 //FileWorker.LogHelper.WriteLog("解析汽车记录失败，" + ex.Message);
@@ -58,7 +60,21 @@ namespace QuanZhouCheDi
 
                 messCommand.body.capTime = inforColl[1];
                 messCommand.body.parkCode = inforColl[3];
-                messCommand.body.vechicleInUvssPicpath = inforColl[4];
+                //messCommand.body.vechicleInUvssPicpath = inforColl[4];
+                string test = "https://img-blog.csdnimg.cn/2020091110132619.jpg";
+                //test = "https://img-blog.csdnimg.cn/20191016215757571.png";
+                //inforColl[4] = test;
+                //messCommand.body.vechicleInUvssPicpath = BaseHelper.ImgToBase64String(inforColl[4]); 
+                //string base64Str = BaseHelper.ImgToBase64Test();
+                if (inforColl[4].Contains("http"))
+                {
+                    messCommand.body.vechicleInUvssPicpath = BaseHelper.WebImageToBase64(inforColl[4]);
+                }
+                else
+                {
+                    messCommand.body.vechicleInUvssPicpath = BaseHelper.ImgToBase64String(inforColl[4]);
+                }
+                //messCommand.body.vechicleInUvssPicpath = BaseHelper.ImgToBase64String(test);
                 messCommand.body.vechicleInAnprPicpath = inforColl[5];
                 messCommand.body.plateNo = inforColl[6];
                 if (inforColl[7] == "0")
@@ -105,7 +121,7 @@ namespace QuanZhouCheDi
                 order = new MessageOrder();
                 order.maxJoinNumber = int.Parse(messColl[2]);
             }
-            catch (Exception e) 
+            catch (Exception e)
             {
                 FileWorker.LogHelper.WriteLog("解析D02记录失败," + e.Message);
             }
@@ -124,6 +140,7 @@ namespace QuanZhouCheDi
             return (stringBuild.ToString());
         }
     }
+
     public class FileWorker
     {
         static string txtFilePath = "";
@@ -159,7 +176,6 @@ namespace QuanZhouCheDi
                 }
             }
         }
-
     }
     public class ConfigWorker
     {
@@ -184,6 +200,100 @@ namespace QuanZhouCheDi
             }
             cfa.Save();
             ConfigurationManager.RefreshSection("appSettings");
+        }
+    }
+    public static class BaseHelper
+    {
+        public static string WebImageToBase64(string urlAddress)
+        {
+            try
+            {
+                Uri url = new Uri(urlAddress);
+                System.Net.WebRequest webRequest = System.Net.WebRequest.Create(url);
+                System.Net.WebResponse webResponse = webRequest.GetResponse();
+                Bitmap myImage = new Bitmap(webResponse.GetResponseStream());
+                MemoryStream ms = new MemoryStream();
+                myImage.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
+                byte[] arr = new byte[ms.Length];
+                ms.Position = 0;
+                ms.Read(arr, 0, (int)ms.Length);
+                ms.Close();
+                return Convert.ToBase64String(arr);
+            }
+            catch
+            {
+                return string.Empty;
+            }
+        }
+        //图片 转为    base64编码的文本
+        public static string ImgToBase64String(string Imagefilename)
+        {
+            try
+            {
+                Bitmap bmp = new Bitmap(Imagefilename);
+                MemoryStream ms = new MemoryStream();
+
+                bmp.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                byte[] arr = new byte[ms.Length];
+                //byte[] arr = ms.GetBuffer();
+                ms.Position = 0;
+                ms.Read(arr, 0, (int)ms.Length);
+                ms.Close();
+                String strbaser64 = Convert.ToBase64String(arr);
+                return strbaser64;
+                // MessageBox.Show("转换成功!");
+
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show("ImgToBase64String 转换失败\nException:" + ex.Message);
+                return "";
+            }
+        }
+        public static Image Base64StringToImage(string code)
+        {
+            Image ima = null;
+            try
+            {
+                byte[] arr = Convert.FromBase64String(code);
+                MemoryStream ms = new MemoryStream(arr);
+                Bitmap bmp = new Bitmap(ms);
+
+                ms.Close();
+                ima = bmp;
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show("Base64StringToImage 转换失败\nException：" + ex.Message);
+            }
+            return ima;
+        }
+
+        public static string ImgToBase64Test()
+        {
+            System.Windows.Forms.OpenFileDialog dlg = new System.Windows.Forms.OpenFileDialog();
+            dlg.Multiselect = true;
+            dlg.Title = "选择要转换的图片";
+            String strbaser64 = "";
+            dlg.Filter = "Image files (*.jpg;*.bmp;*.gif;*.png)|*.jpg*.jpeg;*.gif;*.bmp|AllFiles (*.*)|*.*";
+            if (System.Windows.Forms.DialogResult.OK == dlg.ShowDialog())
+            {
+                for (int i = 0; i < dlg.FileNames.Length; i++)
+                {
+                    string Imagefilename = dlg.FileNames[i].ToString();
+                    Bitmap bmp = new Bitmap(Imagefilename);
+                    //this.pictureBox1.Image = bmp;
+                    MemoryStream ms = new MemoryStream();
+                    bmp.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    byte[] arr = new byte[ms.Length];
+                    ms.Position = 0;
+                    ms.Read(arr, 0, (int)ms.Length);
+                    ms.Close();
+                    strbaser64 = Convert.ToBase64String(arr);
+
+                }
+            }
+            return strbaser64;
         }
     }
 }

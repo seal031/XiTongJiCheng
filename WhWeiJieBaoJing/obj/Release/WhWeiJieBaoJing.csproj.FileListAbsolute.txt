@@ -34,6 +34,7 @@ E:\GitHubProject\XiTongJiCheng\WhWeiJieBaoJing\bin\Release\围界报警接入程
 E:\GitHubProject\XiTongJiCheng\WhWeiJieBaoJing\bin\Release\围界报警接入程序.pdb
 E:\GitHubProject\XiTongJiCheng\WhWeiJieBaoJing\obj\Release\围界报警接入程序.exe
 E:\GitHubProject\XiTongJiCheng\WhWeiJieBaoJing\obj\Release\围界报警接入程序.pdb
+E:\GitHubProject\XiTongJiCheng\WhWeiJieBaoJing\obj\Release\WhWeiJieBaoJing.csprojResolveAssemblyReference.cache
 D:\HAYC\XiTongJiCheng\WhWeiJieBaoJing\bin\Release\librdkafka\x86\librdkafka.dll
 D:\HAYC\XiTongJiCheng\WhWeiJieBaoJing\bin\Release\librdkafka\x86\librdkafkacpp.dll
 D:\HAYC\XiTongJiCheng\WhWeiJieBaoJing\bin\Release\librdkafka\x86\libzstd.dll
@@ -71,4 +72,3 @@ D:\HAYC\XiTongJiCheng\WhWeiJieBaoJing\obj\Release\WhWeiJieBaoJing.Properties.Res
 D:\HAYC\XiTongJiCheng\WhWeiJieBaoJing\obj\Release\WhWeiJieBaoJing.csproj.GenerateResource.Cache
 D:\HAYC\XiTongJiCheng\WhWeiJieBaoJing\obj\Release\围界报警接入程序.exe
 D:\HAYC\XiTongJiCheng\WhWeiJieBaoJing\obj\Release\围界报警接入程序.pdb
-E:\GitHubProject\XiTongJiCheng\WhWeiJieBaoJing\obj\Release\WhWeiJieBaoJing.csprojResolveAssemblyReference.cache

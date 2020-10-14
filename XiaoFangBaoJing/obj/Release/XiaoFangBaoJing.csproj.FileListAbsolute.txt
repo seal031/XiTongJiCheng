@@ -83,3 +83,4 @@ D:\HAYC\XiTongJiCheng\XiaoFangBaoJing\obj\Release\XiaoFangBaoJing.Properties.Res
 D:\HAYC\XiTongJiCheng\XiaoFangBaoJing\obj\Release\XiaoFangBaoJing.csproj.GenerateResource.Cache
 D:\HAYC\XiTongJiCheng\XiaoFangBaoJing\obj\Release\XiaoFangBaoJing.exe
 D:\HAYC\XiTongJiCheng\XiaoFangBaoJing\obj\Release\XiaoFangBaoJing.pdb
+D:\HAYC\XiTongJiCheng\XiaoFangBaoJing\obj\Release\XiaoFangBaoJing.csprojResolveAssemblyReference.cache

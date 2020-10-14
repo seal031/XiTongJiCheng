@@ -1,4 +1,5 @@
 ﻿using HoneywellAccess.HSDK.oBIX;
+using HoneywellAccess.HSDK.oBIX.IO;
 using HoneywellAccess.SmartPlus.IntegrationServer.Logging;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -22,7 +24,7 @@ namespace LinCangHwMenJin
         WatchType type = WatchType.Alarm;
         long interval = 1000;
         double lease = 600;
-        
+        Thread threadGetMessage;
         public HttpManager httpManager;
 
         public Form1()
@@ -34,17 +36,77 @@ namespace LinCangHwMenJin
 
         private void Form1_Shown(object sender, EventArgs e)
         {
+            KafkaWorker.OnGetMessage += KafkaWorker_OnGetMessage;
+            threadGetMessage = new Thread(new ThreadStart(KafkaWorker.startGetMessage));
+            threadGetMessage.Start();
             loadLocalConfig();
             watch = new Watch(watchName, type, interval, lease, WindowsFormsSynchronizationContext.Current, 
                 UpdateTestClient, LogMessage, httpManager);
             watch.CreateWatch();
             watch.SetLease();
+
             if (watch.type == WatchType.Alarm)
             {
                 Obj obj = watch.SubscribeToWatch();
                 FileWorker.LogHelper.WriteLog("watch订阅");
             }
             watch.StartPolling();
+        }
+
+        private void KafkaWorker_OnGetMessage(string message)
+        {
+            FileWorker.LogHelper.WriteLog("收到kafka消息" + message);
+            string doorName = pickDoorNameFormMessage(message);
+            if (doorName != string.Empty)
+            {
+                unlockDoor(doorName);
+            }
+            else
+            {
+                FileWorker.LogHelper.WriteLog("门id为空，无法执行开门操作");
+            }
+        }
+
+        private void unlockDoor(string doorName)
+        {
+            try
+            {
+                StringBuilder sb = new StringBuilder();
+                Obj reqObj = httpManager.SendRequest("http://172.20.150.11/HSDKPNLApplicationModule/def/MomentaryUnLockContract", "", MethodType.GET);
+                Obj currentInvokeObj = reqObj;
+                string strURL = string.Format("http://172.20.150.11/HSDKPNLApplicationModule/pacs/accessPoints/{0}/MomentaryUnLock/", doorName);
+                oBIXEncoder encoder = new oBIXEncoder(sb);
+                encoder.encodeDocument(currentInvokeObj);
+                sb = sb.Replace("utf-16", "utf-8");
+                Obj responseObj = httpManager.SendRequest(strURL, sb.ToString(), MethodType.POST);
+                FileWorker.LogHelper.WriteLog("开门成功" + doorName);
+                //if (responseObj.Status == Status.ok)
+                //{
+                //    FileWorker.LogHelper.WriteLog("开门成功" + doorName);
+                //}
+                //else
+                //{
+                //    FileWorker.LogHelper.WriteLog(doorName+ "开门结果" + responseObj.Status.ToString());
+                //}
+            }
+            catch (Exception ex)
+            {
+                FileWorker.LogHelper.WriteLog("开门" + doorName + "失败。失败原因：" + ex.Message);
+            }
+        }
+
+        private string pickDoorNameFormMessage(string message)
+        {
+            CommandEntity command = CommandEntity.fromJson(message);
+
+            if (command != null)
+            {
+                return command.body.equId;
+            }
+            else
+            {
+                return string.Empty;
+            }
         }
 
         private void loadLocalConfig()
@@ -149,7 +211,7 @@ namespace LinCangHwMenJin
                                         }
                                         AccessEntity access = AccessParseTool.parseAccess(card, source, "1", user, time, deptName, deviceName, lname + fname,"","刷卡+密码开门");
                                         KafkaWorker.sendAccessMessage(access.toJson());
-                                        continue;
+                                        //continue;
                                     }
                                     if (type == "608")//按钮开门，无卡号、人员编号
                                     {
@@ -157,7 +219,12 @@ namespace LinCangHwMenJin
                                         KafkaWorker.sendAccessMessage(access.toJson());
                                         continue;
                                     }
-
+                                    if (type == "903" || type == "10903")
+                                    {
+                                        DeviceStateEntity devState = DeviceStateParseTool.parseDeviceState(source,type);
+                                        KafkaWorker.sendDeviceMessage(devState.toJson());
+                                    }
+                                    //423,400,10900,900,500,903
                                     if (alarmRuleDic.ContainsKey(type))//报警
                                     {
                                         AlarmEntity alarm = AlarmParseTool.parseAlarm(source, alarmRuleDic[type].Item1, alarmRuleDic[type].Item2, time, airportIata, airportName);
@@ -233,6 +300,62 @@ namespace LinCangHwMenJin
             }
                 #endregion
         }
+
+        //private void PopulateObixDataTree(Obj rootObj)
+        //{
+        //    treObixData.Nodes.Clear();
+
+        //    TreeNode rootNode = CreateNewNode(rootObj);
+        //    treObixData.Nodes.Add(rootNode);
+
+        //    PopulateNodes(treObixData.Nodes[0], HSDKConfiguration.MaxTreeLevel);
+        //}
+        private void PopulateNodes(TreeNode parentNode,int maxLevel)
+        {
+            if (parentNode.Level >= maxLevel || ((Obj)(parentNode.Tag)).isOp() || ((Obj)(parentNode.Tag)).NormalizedHref == null)
+            {
+                return;
+            }
+            Obj parentObj = httpManager.SendRequest(((Obj)(parentNode.Tag)).NormalizedHref.ToString(), "", MethodType.GET);
+            if (! parentObj.isOp())
+            {
+                Obj[] childObj;
+                if (HSDKConfiguration.ShowPropertiesInTree)
+                {
+                    childObj = parentObj.list();
+                }
+                else
+                {
+                    childObj = parentObj.list(typeof(Ref));
+                }
+                foreach (Obj child in childObj)
+                {
+                    if (child.isOp() || child.NormalizedHref == null)
+                    {
+                        continue;
+                    }
+                    TreeNode newNode = CreateNewNode(child);
+                    int index = parentNode.Nodes.Add(newNode);
+                    PopulateNodes(parentNode.Nodes[index], maxLevel);
+                }
+            }
+        }
+
+
+        private TreeNode CreateNewNode(Obj nodeObj)
+        {
+            TreeNode newNode = new TreeNode();
+
+            if (nodeObj.Parent != null && nodeObj.Parent.ToString().Contains("?page="))
+                newNode.Text = nodeObj.DisplayName;
+            else
+                newNode.Text = nodeObj.toDisplayName();
+
+            newNode.ToolTipText = nodeObj.NormalizedHref.ToString();
+            newNode.Tag = nodeObj;
+            return newNode;
+        }
+
         private void LogMessage(string message, SmartPlus_LOG_TYPE logType)
         { }
         private void ShowStatusBar(string message, MessageType messageType)
@@ -240,7 +363,12 @@ namespace LinCangHwMenJin
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            
+            threadGetMessage.Abort();
         }
+
+        //private void button1_Click(object sender, EventArgs e)
+        //{
+        //    unlockDoor("0x006FA464D7AC336D4E3FB54037C0F1C1D827");
+        //}
     }
 }

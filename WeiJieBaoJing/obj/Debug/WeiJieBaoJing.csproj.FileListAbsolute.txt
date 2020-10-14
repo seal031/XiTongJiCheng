@@ -78,3 +78,6 @@ E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\log4net.xml
 E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\zh-Hans\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
 E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\bin\Debug\log4net.config
 E:\GitHubProject\XiTongJiCheng\WeiJieBaoJing\obj\Debug\WeiJieBaoJing.csprojResolveAssemblyReference.cache
+D:\HAYC\XiTongJiCheng\WeiJieBaoJing\bin\Debug\WeiJieBaoJing.exe.config
+D:\HAYC\XiTongJiCheng\WeiJieBaoJing\obj\Debug\WeiJieBaoJing.exe
+D:\HAYC\XiTongJiCheng\WeiJieBaoJing\obj\Debug\WeiJieBaoJing.pdb

@@ -16,6 +16,7 @@ namespace WhGuanlang
         int localPort;
         string remoteIp;
         int remotePort;
+        string showlog;
         //TcpClientSession client;
         IScheduler scheduler;
         IJobDetail job;
@@ -41,6 +42,7 @@ namespace WhGuanlang
                 return; 
             }
             client = new SimpleTcpClient();
+            
             client.StringEncoder = Encoding.Default;
             //client.LocalEndPoint = new IPEndPoint(IPAddress.Parse(localIp), localPort);
             //client.Connected += Client_Connected;
@@ -60,7 +62,13 @@ namespace WhGuanlang
         private void Client_DataReceived(object sender, SimpleTCP.Message e)
         {
             string message = e.MessageString;
-            //FileWorker.LogHelper.WriteLog(Environment.NewLine + "接收的数据是" + message);
+            if (showlog == "1")
+            {
+                FileWorker.LogHelper.WriteLog(Environment.NewLine + "接收的数据是" + message);
+            }
+            //if (message != "")
+            //{
+            //}
             if (message.Contains("$HBT$"))//heart beat
             {
                 sendHearBeat();
@@ -116,6 +124,7 @@ namespace WhGuanlang
                 localPort = int.Parse(ConfigWorker.GetConfigValue("localPort"));
                 remoteIp = ConfigWorker.GetConfigValue("remoteIp");
                 remotePort = int.Parse(ConfigWorker.GetConfigValue("remotePort"));
+                showlog = ConfigWorker.GetConfigValue("showlog");
                 return true;
             }
             catch (Exception)
@@ -319,7 +328,7 @@ namespace WhGuanlang
             {
                 byte[] heartBytes = MessageParser.strToByte("$HBT$" + Environment.NewLine + Environment.NewLine);
                 client.Write(heartBytes);
-                FileWorker.LogHelper.WriteLog(string.Format("sendBufferSize:{0},receiveBuffSize:{1}",client.TcpClient.SendBufferSize,client.TcpClient.ReceiveBufferSize));
+                //FileWorker.LogHelper.WriteLog(string.Format("sendBufferSize:{0},receiveBuffSize:{1}",client.TcpClient.SendBufferSize,client.TcpClient.ReceiveBufferSize));
             }
             catch (Exception ex)
             {

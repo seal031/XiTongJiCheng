@@ -187,7 +187,12 @@ using System.Collections;
         } 
         string GetWatchXml(string url)
         {
-            return GetWatchXml(new string[] { url });
+        //return GetWatchXml(new string[] { url });
+        return @" < obj is= 'obix:WatchIn' >
+                        < list name = 'hrefs' >
+                             " + url + @"
+                         </ list >
+                        </ obj > ";
         }
         string GetWatchXml(string[] urls)
         {

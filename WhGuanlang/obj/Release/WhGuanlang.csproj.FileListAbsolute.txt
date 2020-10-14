@@ -86,7 +86,6 @@ D:\HAYC\XiTongJiCheng\WhGuanlang\bin\Release\SuperSocket.ProtoBase.xml
 D:\HAYC\XiTongJiCheng\WhGuanlang\bin\Release\System.Buffers.xml
 D:\HAYC\XiTongJiCheng\WhGuanlang\bin\Release\System.Memory.xml
 D:\HAYC\XiTongJiCheng\WhGuanlang\bin\Release\System.Runtime.CompilerServices.Unsafe.xml
-D:\HAYC\XiTongJiCheng\WhGuanlang\obj\Release\WhGuanlang.csprojResolveAssemblyReference.cache
 D:\HAYC\XiTongJiCheng\WhGuanlang\obj\Release\WhGuanlang.Form2.resources
 D:\HAYC\XiTongJiCheng\WhGuanlang\obj\Release\WhGuanlang.Form1.resources
 D:\HAYC\XiTongJiCheng\WhGuanlang\obj\Release\WhGuanlang.Properties.Resources.resources

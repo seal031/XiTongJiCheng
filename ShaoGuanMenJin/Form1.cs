@@ -29,6 +29,9 @@ namespace ShaoGuanMenJin
         {
             if (loadLocalConfig())
             {
+                m_dataChange = new DATACHANGEPROC(DataChange); ;
+                m_shutDown = new SHUTDOWNPROC(ShutDown); ;
+                DACLTSDK.ASDAC_Init();
                 Connect();
             }
             else
@@ -53,6 +56,30 @@ namespace ShaoGuanMenJin
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Disconnect();
+        }
+        unsafe public void DataChange(uint sHandle, uint gHandle, uint iHandle, object value, long timeStamp, ushort quality)
+        {
+            foreach (OPCItem item in ItemArray)
+            {
+                if (item.m_Handle == iHandle)
+                {
+                    item.m_Value = value;
+                    item.m_Quality = quality;
+                    item.m_TimeStamp = timeStamp;
+                    ListViewItem lvi;
+                    lvi = listView1.Items[ItemArray.IndexOf(item)];
+                    if (value != null)
+                        lvi.SubItems[1].Text = value.ToString();
+                    else
+                        lvi.SubItems[1].Text = "";
+                    lvi.SubItems[2].Text = DateTime.FromFileTime(timeStamp).ToString();
+                }
+            }
+        }
+
+        unsafe public void ShutDown(uint sHandle, string reason)
         {
             Disconnect();
         }
@@ -101,6 +128,33 @@ namespace ShaoGuanMenJin
             catch (Exception ex)
             {
                 FileWorker.LogHelper.WriteLog("断开服务器连接时出现异常：" + ex.Message);
+            }
+        }
+
+
+        private void openDoor(string doorName)
+        {
+            if (version == 3)
+            {
+                if (DACLTSDK.ASDAC_WriteItemEx(m_ServerHandle, doorName, 1))
+                {
+                    FileWorker.LogHelper.WriteLog("发送开门指令成功" + doorName);
+                }
+                else
+                {
+                    FileWorker.LogHelper.WriteLog("发送开门指令失败" + doorName);
+                }
+            }
+            else
+            {
+                //if (DACLTSDK.ASDAC_WriteItem(m_ServerHandle, m_GroupHandle, ((OPCItem)ItemArray[listView1.SelectedItems[0].Index]).m_Handle, 1, true))
+                //{
+
+                //}
+                //else
+                //{
+
+                //}
             }
         }
     }

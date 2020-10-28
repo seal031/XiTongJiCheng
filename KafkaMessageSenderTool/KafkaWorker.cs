@@ -33,7 +33,7 @@ namespace KafkaMessageSenderTool
             {
                 //if (configAlarm == null)
                 {
-                    configAlarm = new ProducerConfig { BootstrapServers = brokerList };
+                    configAlarm = new ProducerConfig { BootstrapServers = brokerList,QueueBufferingMaxKbytes= 10485760 };
                 }
                 //if (producerAlarm == null)
                 {

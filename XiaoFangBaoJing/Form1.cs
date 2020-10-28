@@ -18,18 +18,21 @@
         private List<Device> deviceList = new List<Device>();
         private List<int> alarmList = new List<int>();
         private string ip;
-        byte slaveAddress;
-        ushort startAddress;
-        ushort numInputs;
-        int maxPoint;
-        string functionType;
-        int scanTimeSpan;
+        private byte slaveAddress;
+        private ushort startAddress;
+        private ushort numInputs;
+        private int maxPoint;
+        private string functionType;
+        private int scanTimeSpan;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Form1"/> class.
+        /// </summary>
         public Form1()
         {
             this.InitializeComponent();
             //var a = MathTransfer.Ten2Tow(720);
-            functionType = ConfigWorker.GetConfigValue("functionType");
+            this.functionType = ConfigWorker.GetConfigValue("functionType");
             this.scanTimeSpan = int.Parse(ConfigWorker.GetConfigValue("scanTimeSpan"));
             var lines = FileWorker.readTxt(System.AppDomain.CurrentDomain.BaseDirectory.ToString() + "device.txt");
             LogHelper.WriteLog("从文件" + System.AppDomain.CurrentDomain.BaseDirectory.ToString() + "device.txt" + "中加载设备名称");
@@ -39,10 +42,11 @@
                 if (deviceInfo.Length == 2)
                 {
                     Device device = new Device() { index = deviceInfo[0], name = deviceInfo[1] };
-                    deviceList.Add(device);
+                    this.deviceList.Add(device);
                 }
             }
-            LogHelper.WriteLog("共加载设备" + deviceList.Count + "个");
+
+            LogHelper.WriteLog("共加载设备" + this.deviceList.Count + "个");
         }
 
         private void startJob()
@@ -117,9 +121,10 @@
             finally
             {
                 LogHelper.WriteLog("一次扫描完毕");
-                //richTextBox1.Text += Environment.NewLine;
-                //richTextBox1.Text += "-------------------------------------------------------------";
-                //richTextBox1.Text += Environment.NewLine;
+
+                // richTextBox1.Text += Environment.NewLine;
+                // richTextBox1.Text += "-------------------------------------------------------------";
+                // richTextBox1.Text += Environment.NewLine;
             }
         }
 

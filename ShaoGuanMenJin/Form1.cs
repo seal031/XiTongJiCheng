@@ -61,22 +61,22 @@ namespace ShaoGuanMenJin
         }
         unsafe public void DataChange(uint sHandle, uint gHandle, uint iHandle, object value, long timeStamp, ushort quality)
         {
-            foreach (OPCItem item in ItemArray)
-            {
-                if (item.m_Handle == iHandle)
-                {
-                    item.m_Value = value;
-                    item.m_Quality = quality;
-                    item.m_TimeStamp = timeStamp;
-                    ListViewItem lvi;
-                    lvi = listView1.Items[ItemArray.IndexOf(item)];
-                    if (value != null)
-                        lvi.SubItems[1].Text = value.ToString();
-                    else
-                        lvi.SubItems[1].Text = "";
-                    lvi.SubItems[2].Text = DateTime.FromFileTime(timeStamp).ToString();
-                }
-            }
+            //foreach (OPCItem item in ItemArray)
+            //{
+            //    if (item.m_Handle == iHandle)
+            //    {
+            //        item.m_Value = value;
+            //        item.m_Quality = quality;
+            //        item.m_TimeStamp = timeStamp;
+            //        ListViewItem lvi;
+            //        lvi = listView1.Items[ItemArray.IndexOf(item)];
+            //        if (value != null)
+            //            lvi.SubItems[1].Text = value.ToString();
+            //        else
+            //            lvi.SubItems[1].Text = "";
+            //        lvi.SubItems[2].Text = DateTime.FromFileTime(timeStamp).ToString();
+            //    }
+            //}
         }
 
         unsafe public void ShutDown(uint sHandle, string reason)

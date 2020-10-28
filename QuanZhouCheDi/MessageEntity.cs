@@ -156,7 +156,7 @@ public class MessCommand
 
     public string toJson()
     {
-        return JsonConvert.SerializeObject(this);
+        return JsonConvert.SerializeObject(this, JsonSerializer.IgnoreSerializerSetting);
     }
 }
 /// <summary>
@@ -178,4 +178,17 @@ public class MessageOrder
 {
     public string roadNumber { get; set; }//道口编号
     public int maxJoinNumber { get; set; }//最大接入客户端数量
+}
+static class JsonSerializer
+{
+    static JsonSerializerSettings jssIgnore = new JsonSerializerSettings();
+
+    public static JsonSerializerSettings IgnoreSerializerSetting
+    {
+        get
+        {
+            jssIgnore.NullValueHandling = NullValueHandling.Ignore;
+            return jssIgnore;
+        }
+    }
 }

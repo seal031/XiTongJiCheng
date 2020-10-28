@@ -71,9 +71,9 @@ D:\HAYC\XiTongJiCheng\QuanZhouCheDi\bin\Release\Newtonsoft.Json.xml
 D:\HAYC\XiTongJiCheng\QuanZhouCheDi\bin\Release\System.Buffers.xml
 D:\HAYC\XiTongJiCheng\QuanZhouCheDi\bin\Release\System.Memory.xml
 D:\HAYC\XiTongJiCheng\QuanZhouCheDi\bin\Release\System.Runtime.CompilerServices.Unsafe.xml
-D:\HAYC\XiTongJiCheng\QuanZhouCheDi\obj\Release\QuanZhouCheDi.csprojResolveAssemblyReference.cache
 D:\HAYC\XiTongJiCheng\QuanZhouCheDi\obj\Release\QuanZhouCheDi.Form1.resources
 D:\HAYC\XiTongJiCheng\QuanZhouCheDi\obj\Release\QuanZhouCheDi.Properties.Resources.resources
 D:\HAYC\XiTongJiCheng\QuanZhouCheDi\obj\Release\QuanZhouCheDi.csproj.GenerateResource.Cache
 D:\HAYC\XiTongJiCheng\QuanZhouCheDi\obj\Release\泉州车底数据接入程序.exe
 D:\HAYC\XiTongJiCheng\QuanZhouCheDi\obj\Release\泉州车底数据接入程序.pdb
+D:\HAYC\XiTongJiCheng\QuanZhouCheDi\obj\Release\QuanZhouCheDi.csprojResolveAssemblyReference.cache

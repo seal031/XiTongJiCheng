@@ -21,6 +21,10 @@ namespace QuanZhouCheDi
         public Form1()
         {
             InitializeComponent();
+            //string path = "C:\\Users\\40640\\Desktop\\zzz.txt";
+            //string str = System.IO.File.ReadAllText(path, Encoding.Default);
+            //int len = str.Length;
+            //KafkaWorker.sendCarRecordMessage(str);
         }
         public struct COPYDATASTRUCT
         {
@@ -43,8 +47,6 @@ namespace QuanZhouCheDi
                         //MessageBox.Show(mystr.lpData);
                         FileWorker.LogHelper.WriteLog("接受车底信息记录D00:" + mystr.lpData);
                         MessCommand messComm = Utils.ParseCarScanMess(messColl);
-                        Image img = BaseHelper.Base64StringToImage(messComm.body.vechicleInUvssPicpath);
-                        pic.Image = img;
                         string jsonMess = messComm.toJson();
                         KafkaWorker.sendCarRecordMessage(jsonMess);
                     }

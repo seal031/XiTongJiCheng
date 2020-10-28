@@ -97,6 +97,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinCangShiPinSheBei", "LinC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShaoGuanMenJin", "ShaoGuanMenJin\ShaoGuanMenJin.csproj", "{B32DAE20-58D7-4A94-A30C-1BE1C427E3B8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShaoGuanXiaoFangBaoJing", "ShaoGuanXiaoFangBaoJing\ShaoGuanXiaoFangBaoJing.csproj", "{A191CA48-1C07-4CC2-8BF7-B577E52A1EA2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -585,6 +587,18 @@ Global
 		{B32DAE20-58D7-4A94-A30C-1BE1C427E3B8}.Release|x64.Build.0 = Release|Any CPU
 		{B32DAE20-58D7-4A94-A30C-1BE1C427E3B8}.Release|x86.ActiveCfg = Release|Any CPU
 		{B32DAE20-58D7-4A94-A30C-1BE1C427E3B8}.Release|x86.Build.0 = Release|Any CPU
+		{A191CA48-1C07-4CC2-8BF7-B577E52A1EA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A191CA48-1C07-4CC2-8BF7-B577E52A1EA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A191CA48-1C07-4CC2-8BF7-B577E52A1EA2}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A191CA48-1C07-4CC2-8BF7-B577E52A1EA2}.Debug|x64.Build.0 = Debug|Any CPU
+		{A191CA48-1C07-4CC2-8BF7-B577E52A1EA2}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A191CA48-1C07-4CC2-8BF7-B577E52A1EA2}.Debug|x86.Build.0 = Debug|Any CPU
+		{A191CA48-1C07-4CC2-8BF7-B577E52A1EA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A191CA48-1C07-4CC2-8BF7-B577E52A1EA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A191CA48-1C07-4CC2-8BF7-B577E52A1EA2}.Release|x64.ActiveCfg = Release|Any CPU
+		{A191CA48-1C07-4CC2-8BF7-B577E52A1EA2}.Release|x64.Build.0 = Release|Any CPU
+		{A191CA48-1C07-4CC2-8BF7-B577E52A1EA2}.Release|x86.ActiveCfg = Release|Any CPU
+		{A191CA48-1C07-4CC2-8BF7-B577E52A1EA2}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

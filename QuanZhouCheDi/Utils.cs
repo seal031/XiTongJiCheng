@@ -31,51 +31,39 @@ namespace QuanZhouCheDi
                 #endregion
                 #region body
                 #region
-                messCommand.body.cardNo = "";
-                messCommand.body.carTypeCode = "";
-                messCommand.body.carType = "";
-                messCommand.body.capPlace = "";
-                messCommand.body.imgName = "";
-                messCommand.body.capRemark = "";
-                messCommand.body.vechicleShape = "";
-                messCommand.body.vechicleShapeName = "";
-                messCommand.body.vechicleColour = "";
-                messCommand.body.vechicleColourName = "";
-                messCommand.body.vechicleInUvssImg = "";
-                messCommand.body.vechicleInAnprImg = "";
-                messCommand.body.vechicleInTopImg = "";
-                messCommand.body.vechicleInTopPicpath = "";
-                messCommand.body.vechicleOutTime = "";
-                messCommand.body.vechicleInState = "";
-                messCommand.body.vechicleInStateName = "";
-                messCommand.body.driverName = "";
-                messCommand.body.driverCard = "";
-                messCommand.body.driverLicense = "";
-                messCommand.body.vechicleDept = "";
-                messCommand.body.createDate = "";
-                messCommand.body.updateDate = "";
-                messCommand.body.airportIata = "";
-                messCommand.body.airportIame = "";
+                //messCommand.body.cardNo = "";
+                //messCommand.body.carTypeCode = "";
+                //messCommand.body.carType = "";
+                //messCommand.body.capPlace = "";
+                //messCommand.body.imgName = "";
+                //messCommand.body.capRemark = "";
+                //messCommand.body.vechicleShape = "";
+                //messCommand.body.vechicleShapeName = "";
+                //messCommand.body.vechicleColour = "";
+                //messCommand.body.vechicleColourName = "";
+                //messCommand.body.vechicleInUvssImg = "";
+                //messCommand.body.vechicleInAnprImg = "";
+                //messCommand.body.vechicleInTopImg = "";
+                //messCommand.body.vechicleInTopPicpath = "";
+                //messCommand.body.vechicleOutTime = "";
+                //messCommand.body.vechicleInState = "";
+                //messCommand.body.vechicleInStateName = "";
+                //messCommand.body.driverName = "";
+                //messCommand.body.driverCard = "";
+                //messCommand.body.driverLicense = "";
+                //messCommand.body.vechicleDept = "";
+                //messCommand.body.createDate = "";
+                //messCommand.body.updateDate = "";
+                //messCommand.body.airportIata = "";
+                //messCommand.body.airportIame = "";
                 #endregion
 
                 messCommand.body.capTime = inforColl[1];
                 messCommand.body.parkCode = inforColl[3];
-                //messCommand.body.vechicleInUvssPicpath = inforColl[4];
-                string test = "https://img-blog.csdnimg.cn/2020091110132619.jpg";
+                //string test = "https://img-blog.csdnimg.cn/2020091110132619.jpg";
                 //test = "https://img-blog.csdnimg.cn/20191016215757571.png";
-                //inforColl[4] = test;
-                //messCommand.body.vechicleInUvssPicpath = BaseHelper.ImgToBase64String(inforColl[4]); 
-                //string base64Str = BaseHelper.ImgToBase64Test();
-                if (inforColl[4].Contains("http"))
-                {
-                    messCommand.body.vechicleInUvssPicpath = BaseHelper.WebImageToBase64(inforColl[4]);
-                }
-                else
-                {
-                    messCommand.body.vechicleInUvssPicpath = BaseHelper.ImgToBase64String(inforColl[4]);
-                }
-                //messCommand.body.vechicleInUvssPicpath = BaseHelper.ImgToBase64String(test);
-                messCommand.body.vechicleInAnprPicpath = inforColl[5];
+                messCommand.body.vechicleInAnprPicpath = BaseHelper.ImgToBase64String(inforColl[5]);
+                //messCommand.body.vechicleInUvssPicpath = BaseHelper.ImgToBase64String(inforColl[4]);
                 messCommand.body.plateNo = inforColl[6];
                 if (inforColl[7] == "0")
                 {
@@ -239,7 +227,11 @@ namespace QuanZhouCheDi
                 ms.Position = 0;
                 ms.Read(arr, 0, (int)ms.Length);
                 ms.Close();
+                //String test = Convert.ToBase64String(arr);
+                //int len = test.Length;
+                //arr = zipBase64(arr);
                 String strbaser64 = Convert.ToBase64String(arr);
+                //len = strbaser64.Length;
                 return strbaser64;
                 // MessageBox.Show("转换成功!");
 
@@ -258,7 +250,6 @@ namespace QuanZhouCheDi
                 byte[] arr = Convert.FromBase64String(code);
                 MemoryStream ms = new MemoryStream(arr);
                 Bitmap bmp = new Bitmap(ms);
-
                 ms.Close();
                 ima = bmp;
             }
@@ -294,6 +285,15 @@ namespace QuanZhouCheDi
                 }
             }
             return strbaser64;
+        }
+
+        public static byte[] zipBase64(byte[] rawData)
+        {
+            MemoryStream ms = new MemoryStream();
+            System.IO.Compression.GZipStream compressedzipStream = new System.IO.Compression.GZipStream(ms, System.IO.Compression.CompressionMode.Compress, true);
+            compressedzipStream.Write(rawData, 0, rawData.Length);
+            compressedzipStream.Close();
+            return ms.ToArray();
         }
     }
 }

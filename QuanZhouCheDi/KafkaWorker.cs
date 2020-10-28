@@ -30,7 +30,21 @@ public class KafkaWorker
 
     public static void sendCarRecordMessage(string message)
     {
+        int len = message.Length;
         if (configMess == null) { configMess = new ProducerConfig { BootstrapServers = brokerList}; }
+        //if (configMess == null)
+        //{
+        //    ClientConfig clientfig = new ClientConfig();
+        //    clientfig.BootstrapServers = brokerList;
+        //    clientfig.MessageMaxBytes = 92914560;
+        //    clientfig.MessageCopyMaxBytes = 1000000000;
+        //    //clientfig.ReceiveMessageMaxBytes = 800000000;
+        //    //clientfig.SocketSendBufferBytes = 100000000;
+        //    clientfig.MetadataRequestTimeoutMs = 1000 * 60 *3;
+        //    configMess = new ProducerConfig(clientfig);
+        //    //configMess.
+        //    //configMess.MessageTimeoutMs = 300000;
+        //}
         FileWorker.LogHelper.WriteLog("正在向kafka发送MessComm消息:" + message);
         try
         {

@@ -91,3 +91,4 @@ D:\HA\LinCangShiPinSheBei\bin\Debug\System.Buffers.xml
 D:\HA\LinCangShiPinSheBei\bin\Debug\System.Memory.xml
 D:\HA\LinCangShiPinSheBei\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\HA\LinCangShiPinSheBei\obj\Debug\LinCangShiPinSheBei.csprojResolveAssemblyReference.cache
+D:\HAYC\XiTongJiCheng\LinCangShiPinSheBei\obj\Debug\LinCangShiPinSheBei.csprojResolveAssemblyReference.cache

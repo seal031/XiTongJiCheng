@@ -66,7 +66,10 @@ public class KafkaWorker
             FileWorker.LogHelper.WriteLog("device error  " + e.Message);
         }
     }
-
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="message"></param>
     public static void sendAccessMessage(string message)
     {
         if (configAccess == null) { configAccess = new ProducerConfig { BootstrapServers = brokerList }; }

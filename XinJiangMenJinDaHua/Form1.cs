@@ -32,12 +32,36 @@ namespace XinJiangMenJinDaHua
             {
                 if (login())
                 {
-                    getDeviceInfo();
                     getDeviceState();
+                    loadOrganization();
                 }
             }
 
         }
+
+        private void loadOrganization()
+        {
+            IntPtr result = DPSDK_LoadDGroupInfo(nPDLLHandle, ref nGroupLen, (IntPtr)60000);
+            if (result == (IntPtr)0)
+            {
+                FileWorker.LogHelper.WriteLog("加载组织结构成功");
+                byte[] szGroupStr = new byte[(int)nGroupLen + 1];
+                // IntPtr iRet = DPSDK_GetDGroupStr(nPDLLHandle, ref szGroupStr[0], nGroupLen, (IntPtr)10000);
+                IntPtr iRet = DPSDK_GetDGroupStr(nPDLLHandle, szGroupStr, nGroupLen, (IntPtr)10000);
+                if (iRet == IntPtr.Zero)
+                {
+                }
+                else
+                {
+                    FileWorker.LogHelper.WriteLog("获取组织树XML失败，错误码：" + result.ToString());
+                }
+            }
+            else
+            {
+                FileWorker.LogHelper.WriteLog("获取组织树XML失败，错误码：" + result.ToString());
+            }
+        }
+
         private bool loadLocalConfig()
         {
             try
@@ -65,7 +89,8 @@ namespace XinJiangMenJinDaHua
             loginInfo.nProtocol = dpsdk_protocol_version_e.DPSDK_PROTOCOL_VERSION_II;
             loginInfo.iType = 1;
             IntPtr result = DPSDK_Login(this.nPDLLHandle, ref loginInfo, (IntPtr)10000);
-            if (result == (IntPtr)0)
+            IntPtr result2 = DPSDK_InitExt();//初始化解码播放接口
+            if (result == (IntPtr)0 && result2 == (IntPtr)0)
             {
                 FileWorker.LogHelper.WriteLog("登录成功");
                 return true;
@@ -76,138 +101,48 @@ namespace XinJiangMenJinDaHua
                 return false;
             }
         }
-        public void getDeviceInfo()
-        {
-            IntPtr result = DPSDK_LoadDGroupInfo(nPDLLHandle, ref nGroupLen, (IntPtr)60000);
-            if (result == (IntPtr)0)
-            {
-                FileWorker.LogHelper.WriteLog("加载组织结构成功");
-            }
-            else
-            {
-                FileWorker.LogHelper.WriteLog("加载组织结构失败，错误码：" + result.ToString());
-            }
-            byte[] szGroupStr = new byte[(int)nGroupLen + 1];
-            result = DPSDK_GetDGroupStr(nPDLLHandle, szGroupStr, nGroupLen, (IntPtr)10000);
-            if (result == IntPtr.Zero)
-            {
-                string strXML = System.Text.Encoding.UTF8.GetString(szGroupStr);
-                //FileWorker.LogHelper.WriteLog(strXML);
-                try
-                {
-                    var doc = new XmlDocument();
-                    strXML = strXML.Trim('\0');
-                    doc.LoadXml(strXML);
-                    XmlNodeList xmlNodeList = doc.GetElementsByTagName("Channel");//获取节点
-                    List<String> channList = new List<string>();
-                    string pattern = "[\\[ \\] \\^ \\-_*×――(^)%~!@#…&%￥—+<>《》!！??？:：•`·、。，；,;\"‘’“”-]";
-                    for (int i = 0; i < xmlNodeList.Count; i++)
-                    {
-                        string[] devArr = Regex.Replace(xmlNodeList[i].OuterXml, pattern, "").Split(new char[] { '=' });
-                        string channID = devArr[1].Substring(0, 7);
-                        if (xmlNodeList[i].OuterXml.Length > 40 && channID != "1000016" && channID != "1000017")
-                        {
-                            channList.Add(xmlNodeList[i].OuterXml);
-                        }
-                    }
-                    for (int j = 0; j < channList.Count; j++)
-                    {
-                        string[] strArr = channList[j].Split(new char[] { ' ' });
-                        string channType = Regex.Replace(strArr[5], pattern, "").Split(new char[] { '=' })[1];
-                        string code = Regex.Replace(strArr[8], pattern, "").Split(new char[] { '=' })[1];
-                        int cameraType = int.Parse(code);
-                        if (channType == "1" && cameraType <= 4)
-                        {
-                            //DeviceResourEntity devResEnt = DeviceResourceParseTool.parseDeviceRec(strArr);
-                            //string jsonMess = devResEnt.toJson();
-                            //KafkaWorker.sendDeviceMessage(jsonMess, "基本信息");
-                        }
-                    }
-
-                }
-                catch (Exception ex)
-                {
-                    FileWorker.LogHelper.WriteLog("解析XML数据失败：" + ex.Message);
-                }
-            }
-            else
-            {
-                FileWorker.LogHelper.WriteLog("获取组织树XML失败，错误码：" + result.ToString());
-            }
-        }
 
         public void getDeviceState()
         {
             IntPtr result = (IntPtr)10;
             IntPtr pUser = default(IntPtr);
-            fDevStatus = DevStatusCallback;
-            //开启设备状态上报监听
-            result = DPSDK_SetDPSDKDeviceStatusCallback(nPDLLHandle, fDevStatus, pUser);
+            result = DPSDK_SetSyncTimeOpen(nPDLLHandle, 1);//开启校时
+            fDPSDKAlarmCallback  alarmCallback= AlarmStatusCallback;
+            result = DPSDK_SetDPSDKAlarmCallback(nPDLLHandle, alarmCallback, pUser);
             if (result == (IntPtr)0)
             {
-                FileWorker.LogHelper.WriteLog("设置设备状态回调成功");
+                FileWorker.LogHelper.WriteLog("报警状态回调成功");
             }
             else
             {
-                FileWorker.LogHelper.WriteLog("设置设备状态回调失败，错误码：" + result.ToString());
-                MessageBox.Show("设置设备状态回调失败，错误码：" + result.ToString());
-            }
-            fNVRChnlStatus = NvrStatusCallback;
-            result = DPSDK_SetDPSDKNVRChnlStatusCallback(nPDLLHandle, fNVRChnlStatus, pUser);
-            if (result == (IntPtr)0)
-            {
-                //MessageBox.Show("设置设备状态回调成功");
-                FileWorker.LogHelper.WriteLog("设置Nvr通道状态回调成功");
-            }
-            else
-            {
-                //return
-                //MessageBox.Show("设置设备状态回调失败，错误码：" + result.ToString());
-                FileWorker.LogHelper.WriteLog("设置设备状态回调失败，错误码：" + result.ToString());
+                FileWorker.LogHelper.WriteLog("报警状态回调成功，错误码：" + result.ToString());
             }
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="nPDLLHandle">SDK句柄</param>
-        /// <param name="szDeviceId">设备Id</param>
-        /// <param name="nStatus">状态  1在线  2离线</param>
-        /// <param name="pUserParam">用户数据</param>
-        public static IntPtr DevStatusCallback(IntPtr nPDLLHandle, [MarshalAs(UnmanagedType.LPStr)] StringBuilder szDeviceId, IntPtr nStatus, IntPtr pUserParam)
+
+        private IntPtr AlarmStatusCallback(IntPtr nPDLLHandle, StringBuilder szAlarmId, IntPtr nDeviceType, StringBuilder szCameraId, StringBuilder szDeviceName, StringBuilder szChannelName, StringBuilder szCoding, StringBuilder szMessage, IntPtr nAlarmType, IntPtr nEventType, IntPtr nLevel, long nTime, StringBuilder pAlarmData, IntPtr nAlarmDataLen, StringBuilder pPicData, IntPtr nPicDataLen, IntPtr pUserParam)
         {
-            String status = "未知";
-            if (nStatus == (IntPtr)1)
-            {
-                status = "上线";
-            }
-            else if (nStatus == (IntPtr)2)
-            {
-                status = "离线";
-            }
-            string mess = string.Format("设备ID:{0}  状态:{1}", szDeviceId.ToString(), status);
-            //MessageBox.Show("设备ID：" + szDeviceId.ToString() + "  状态：" + status);
+            FileWorker.LogHelper.WriteLog("信息开始接收");
+            byte[] bDevName = System.Text.Encoding.Default.GetBytes(szDeviceName.ToString());
+            string szDevName = System.Text.Encoding.UTF8.GetString(bDevName);//设备名称
+
+            byte[] bName = System.Text.Encoding.Default.GetBytes(szChannelName.ToString());
+            string strname = System.Text.Encoding.UTF8.GetString(bName);//通道名称
+
+            DateTime dAlarmTime = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));
+            DateTime dtAlarmTime = dAlarmTime.AddSeconds((UInt64)nTime);
+            string uAlarmTime = dtAlarmTime.ToString("yyyy-MM-dd HH:mm:ss"); //报警时间
+
+            byte[] bMessage = System.Text.Encoding.Default.GetBytes(szMessage.ToString());
+            string alarmMessage = System.Text.Encoding.UTF8.GetString(bMessage);//报警信息
+
+            string str = string.Format("报警Id:{0},设备类型:{1},通道Id:{2},设备名称:{3},通道名称:{4},编码:{5},报警信息:{6},报警类型:{7},发生类型:{8},报警时间(时间戳):{9},报警数据:{10},报警数据长度:{11},用户数据:{12}",
+                szAlarmId.ToString(), nDeviceType.ToInt32(), szCameraId.ToString(), szDevName, strname, szCoding.ToString(), alarmMessage, nAlarmType, nEventType, uAlarmTime, pAlarmData, nAlarmDataLen, pUserParam);
+            //FileWorker.LogHelper.WriteLog(str);
+            AlarmEntity alarmEnt = AlarmParseTool.parseAlarm(uAlarmTime, szCameraId.ToString());
+            string mess = alarmEnt.toJson();
+            KafkaWorker.sendAlarmMessage(mess);
             return (IntPtr)0;
         }
 
-        public static IntPtr NvrStatusCallback(IntPtr nPDLLHandle,
-                                 [MarshalAs(UnmanagedType.LPStr)] StringBuilder szChnlId,
-                                 IntPtr nStatus,
-                                 IntPtr pUserParam)
-        {
-            String status = "未知";
-            if (nStatus == (IntPtr)1)
-            {
-                status = "上线";
-            }
-            else
-            {
-                status = "离线";
-            }
-            string str = "NvrStatusCallback ChannelId:" + szChnlId.ToString() + "  nStatus:" + status;
-            //DeviceStateEntity devEnt = DeviceStateParseTool.parseDeviceState(szChnlId.ToString(), status);
-            //string jsonMess = devEnt.toJson();
-            //KafkaWorker.sendDeviceMessage(jsonMess, "状态");
-            return (IntPtr)0;
-        }
     }
 }

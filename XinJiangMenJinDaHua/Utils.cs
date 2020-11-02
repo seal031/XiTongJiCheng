@@ -137,58 +137,34 @@ public abstract class BaseParseTool
 /// </summary>
 public class AlarmParseTool: BaseParseTool
 {
-    public static AlarmEntity parseAlarm(string message,string airportIata,string airportName,string alarmNameCode,string alarmName)
+    public static AlarmEntity parseAlarm(string alarmTime,string alarmEquCode)
     {
         AlarmEntity alarmEntity = null;
         try
         {
             alarmEntity = new AlarmEntity();
-            alarmEntity.meta.eventType = "MJ_ALARM";
+            alarmEntity.meta.eventType = "ACS_ALARM";
             alarmEntity.meta.msgType = "ALARM";
             alarmEntity.meta.receiver = "";
             alarmEntity.meta.recvSequence = "";
             alarmEntity.meta.recvTime = "";
-            alarmEntity.meta.sender = "MJALARM";
+            alarmEntity.meta.sender = "DHMJ";
             alarmEntity.meta.sendTime = DateTime.Now.ToString("yyyyMMddHHmmss");
             alarmEntity.meta.sequence = "";
+
             alarmEntity.body.alarmClassCode = "AC02";
             alarmEntity.body.alarmClassName = "门禁报警事件";
-
-            string date = matchRegex(regexDate, message, new List<string>() { "</Date>", "<Date>" });
-            if (date == string.Empty)
-            {
-                alarmEntity.body.alarmTime = "";
-            }
-            else
-            {
-                string time = matchRegex(regexTime, message, new List<string>() { "</Time>", "<Time>" });
-                if (time == string.Empty)
-                {
-                    alarmEntity.body.alarmTime = "";
-                }
-                else
-                {
-                    var dateReal = parseDate(date);
-                    alarmEntity.body.alarmTime = dateReal + " " + time;
-                }
-            }
-
-            string deviceId = matchRegex(regexDeviceID, message, new List<string>() { "<DeviceID>", "</DeviceID>" });
-            if (deviceId != string.Empty)
-            {
-                alarmEntity.body.alarmEquCode = airportIata + "-" + deviceId;
-            }
-            else
-            {
-                FileWorker.LogHelper.WriteLog("从消息中无法解析出DeviceID：" + message);
-                return null;
-            }
-            alarmEntity.body.alarmName = alarmName;
-            alarmEntity.body.alarmNameCode = alarmNameCode;
+            alarmEntity.body.alarmNameCode = "AC0201";
             alarmEntity.body.alarmStateCode = "AS01";
             alarmEntity.body.alarmStateName = "未解除";
-            alarmEntity.body.airportIata = airportIata;
-            alarmEntity.body.airportName = airportName;
+            alarmEntity.body.airportIata = ConfigWorker.GetConfigValue("airportIata");
+            alarmEntity.body.airportName = ConfigWorker.GetConfigValue("airportName");
+            alarmEntity.body.alarmTime = alarmTime;
+
+            alarmEntity.body.alarmEquCode = alarmEquCode;
+            alarmEntity.body.alarmName = "门禁报警新事件";
+
+
         }
         catch (Exception ex)
         {

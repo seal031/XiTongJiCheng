@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace QuanZhouCheDi
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form,IJobWorke
     {
         const int WM_COPYDATA = 0x004A;
         [DllImport("User32.dll")]
@@ -105,6 +105,14 @@ namespace QuanZhouCheDi
                 cdata.lpData = "U02=2=EOF";
                 SendMessage(handle, WM_COPYDATA, 0, ref cdata);
             }
+        }
+
+        /// <summary>
+        /// 定时任务，检查是否有
+        /// </summary>
+        public void circleWork()
+        {
+            
         }
     }
 }

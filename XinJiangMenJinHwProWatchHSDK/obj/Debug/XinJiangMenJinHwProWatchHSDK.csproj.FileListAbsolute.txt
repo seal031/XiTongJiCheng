@@ -1,0 +1,42 @@
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\bin\Debug\librdkafka\x86\librdkafka.dll
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\bin\Debug\librdkafka\x86\librdkafkacpp.dll
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\bin\Debug\librdkafka\x86\libzstd.dll
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\bin\Debug\librdkafka\x86\msvcp120.dll
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\bin\Debug\librdkafka\x86\msvcr120.dll
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\bin\Debug\librdkafka\x86\zlib.dll
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\bin\Debug\librdkafka\x64\librdkafka.dll
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\bin\Debug\librdkafka\x64\librdkafkacpp.dll
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\bin\Debug\librdkafka\x64\libzstd.dll
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\bin\Debug\librdkafka\x64\msvcp120.dll
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\bin\Debug\librdkafka\x64\msvcr120.dll
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\bin\Debug\librdkafka\x64\zlib.dll
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\bin\Debug\log4net.config
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\bin\Debug\新疆门禁数据接入程序Pro-Watch HSDK版.exe.config
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\bin\Debug\新疆门禁数据接入程序Pro-Watch HSDK版.exe
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\bin\Debug\新疆门禁数据接入程序Pro-Watch HSDK版.pdb
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\bin\Debug\Confluent.Kafka.dll
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\bin\Debug\HTTPStub.dll
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\bin\Debug\log4net.dll
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Logging.dll
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\bin\Debug\Microsoft.Practices.Unity.dll
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\bin\Debug\Microsoft.Practices.Unity.Interception.dll
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\bin\Debug\Newtonsoft.Json.dll
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\bin\Debug\oBIXToolKit.dll
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\bin\Debug\SmartPlusLogger.dll
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\bin\Debug\System.Buffers.dll
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\bin\Debug\System.Memory.dll
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\bin\Debug\Confluent.Kafka.xml
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\bin\Debug\log4net.xml
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\bin\Debug\Newtonsoft.Json.xml
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\bin\Debug\System.Buffers.xml
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\bin\Debug\System.Memory.xml
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\obj\Debug\XinJiangMenJinHwProWatchHSDK.csprojResolveAssemblyReference.cache
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\obj\Debug\XinJiangMenJinHwProWatchHSDK.Form1.resources
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\obj\Debug\XinJiangMenJinHwProWatchHSDK.Properties.Resources.resources
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\obj\Debug\XinJiangMenJinHwProWatchHSDK.csproj.GenerateResource.Cache
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\obj\Debug\新疆门禁数据接入程序Pro-Watch HSDK版.exe
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwProWatchHSDK\obj\Debug\新疆门禁数据接入程序Pro-Watch HSDK版.pdb

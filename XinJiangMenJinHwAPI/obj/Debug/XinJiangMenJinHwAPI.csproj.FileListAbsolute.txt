@@ -1,7 +1,6 @@
 E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwAPI\bin\Debug\新疆门禁数据接入程序WIN-PAK API版.exe.config
 E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwAPI\obj\Debug\Interop.Accw.dll
 E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwAPI\obj\Debug\XinJiangMenJinHwAPI.csproj.ResolveComReference.cache
-E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwAPI\obj\Debug\XinJiangMenJinHwAPI.csprojResolveAssemblyReference.cache
 E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwAPI\obj\Debug\XinJiangMenJinHwAPI.Form1.resources
 E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwAPI\obj\Debug\XinJiangMenJinHwAPI.Properties.Resources.resources
 E:\GitHubProject\XiTongJiCheng\XinJiangMenJinHwAPI\obj\Debug\XinJiangMenJinHwAPI.csproj.GenerateResource.Cache

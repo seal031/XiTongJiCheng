@@ -33,3 +33,7 @@ E:\GitHubProject\XiTongJiCheng\KafkaMessageSenderTool\bin\Debug\System.Memory.xm
 E:\GitHubProject\XiTongJiCheng\KafkaMessageSenderTool\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 E:\GitHubProject\XiTongJiCheng\KafkaMessageSenderTool\obj\Debug\SODB产品模拟数据发送程序.exe
 E:\GitHubProject\XiTongJiCheng\KafkaMessageSenderTool\obj\Debug\SODB产品模拟数据发送程序.pdb
+E:\GitHubProject\XiTongJiCheng\KafkaMessageSenderTool\bin\Debug\IBMMQ_LIB.dll
+E:\GitHubProject\XiTongJiCheng\KafkaMessageSenderTool\bin\Debug\amqmdnet.dll
+E:\GitHubProject\XiTongJiCheng\KafkaMessageSenderTool\bin\Debug\fastJSON.dll
+E:\GitHubProject\XiTongJiCheng\KafkaMessageSenderTool\obj\Debug\KafkaMessageSenderTool.Form2.resources

@@ -35,3 +35,8 @@ E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\obj\Debug\XinJiangShouBao.csproj.
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\obj\Debug\XinJiangShouBao.exe
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\obj\Debug\XinJiangShouBao.pdb
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\obj\Debug\XinJiangShouBao.csprojResolveAssemblyReference.cache
+E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Debug\Interop.VSPOcxClientLib.dll
+E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Debug\AxInterop.VSPOcxClientLib.dll
+E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\obj\Debug\Interop.VSPOcxClientLib.dll
+E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\obj\Debug\AxInterop.VSPOcxClientLib.dll
+E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\obj\Debug\XinJiangShouBao.csproj.ResolveComReference.cache

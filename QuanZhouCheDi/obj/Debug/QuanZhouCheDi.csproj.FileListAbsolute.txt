@@ -78,3 +78,8 @@ E:\GitHubProject\XiTongJiCheng\QuanZhouCheDi\obj\Debug\QuanZhouCheDi.Properties.
 E:\GitHubProject\XiTongJiCheng\QuanZhouCheDi\obj\Debug\QuanZhouCheDi.csproj.GenerateResource.Cache
 E:\GitHubProject\XiTongJiCheng\QuanZhouCheDi\obj\Debug\泉州车底数据接入程序.exe
 E:\GitHubProject\XiTongJiCheng\QuanZhouCheDi\obj\Debug\泉州车底数据接入程序.pdb
+E:\GitHubProject\XiTongJiCheng\QuanZhouCheDi\bin\Debug\FluentFTP.dll
+E:\GitHubProject\XiTongJiCheng\QuanZhouCheDi\bin\Debug\Quartz.dll
+E:\GitHubProject\XiTongJiCheng\QuanZhouCheDi\bin\Debug\FluentFTP.xml
+E:\GitHubProject\XiTongJiCheng\QuanZhouCheDi\bin\Debug\Quartz.pdb
+E:\GitHubProject\XiTongJiCheng\QuanZhouCheDi\bin\Debug\Quartz.xml

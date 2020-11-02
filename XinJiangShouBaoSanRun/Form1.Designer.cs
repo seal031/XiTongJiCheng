@@ -29,37 +29,38 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.axVSPOcxClient = new AxVSPOcxClientLib.AxVSPOcxClient();
-            ((System.ComponentModel.ISupportInitialize)(this.axVSPOcxClient)).BeginInit();
+            this.sdk = new AxVSPOcxClientLib.AxVSPOcxClient();
+            ((System.ComponentModel.ISupportInitialize)(this.sdk)).BeginInit();
             this.SuspendLayout();
             // 
-            // axVSPOcxClient
+            // sdk
             // 
-            this.axVSPOcxClient.Enabled = true;
-            this.axVSPOcxClient.Location = new System.Drawing.Point(0, 0);
-            this.axVSPOcxClient.Name = "axVSPOcxClient";
-            this.axVSPOcxClient.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axVSPOcxClient.OcxState")));
-            this.axVSPOcxClient.Size = new System.Drawing.Size(800, 600);
-            this.axVSPOcxClient.TabIndex = 0;
-            this.axVSPOcxClient.Visible = false;
+            this.sdk.Enabled = true;
+            this.sdk.Location = new System.Drawing.Point(0, 0);
+            this.sdk.Name = "sdk";
+            this.sdk.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("sdk.OcxState")));
+            this.sdk.Size = new System.Drawing.Size(800, 600);
+            this.sdk.TabIndex = 0;
+            this.sdk.Visible = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1104, 520);
-            this.Controls.Add(this.axVSPOcxClient);
+            this.Controls.Add(this.sdk);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Shown += new System.EventHandler(this.Form1_Shown);
-            ((System.ComponentModel.ISupportInitialize)(this.axVSPOcxClient)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sdk)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private AxVSPOcxClientLib.AxVSPOcxClient axVSPOcxClient;
+        private AxVSPOcxClientLib.AxVSPOcxClient sdk;
     }
 }
 

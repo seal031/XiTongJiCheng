@@ -36,3 +36,4 @@ E:\GitHubProject\XiTongJiCheng\WhShouDongBaoJing\bin\Debug\AxInterop.IPModuleLib
 E:\GitHubProject\XiTongJiCheng\WhShouDongBaoJing\obj\Debug\WhShouDongBaoJing.Form1.resources
 E:\GitHubProject\XiTongJiCheng\WhShouDongBaoJing\obj\Debug\WhShouDongBaoJing.exe
 E:\GitHubProject\XiTongJiCheng\WhShouDongBaoJing\obj\Debug\WhShouDongBaoJing.pdb
+E:\GitHubProject\XiTongJiCheng\WhShouDongBaoJing\obj\Debug\WhShouDongBaoJing.csprojResolveAssemblyReference.cache

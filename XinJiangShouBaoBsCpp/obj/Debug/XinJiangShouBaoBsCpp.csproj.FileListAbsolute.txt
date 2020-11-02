@@ -31,3 +31,4 @@ E:\GitHubProject\XiTongJiCheng\XinJiangShouBaoBsCpp\obj\Debug\XinJiangShouBaoBsC
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBaoBsCpp\obj\Debug\XinJiangShouBaoBsCpp.csproj.GenerateResource.Cache
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBaoBsCpp\obj\Debug\XinJiangShouBaoBsCpp.exe
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBaoBsCpp\obj\Debug\XinJiangShouBaoBsCpp.pdb
+E:\GitHubProject\XiTongJiCheng\XinJiangShouBaoBsCpp\bin\Debug\log4net.config

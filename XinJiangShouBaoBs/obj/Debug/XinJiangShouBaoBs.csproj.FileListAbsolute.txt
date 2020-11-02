@@ -31,4 +31,3 @@ E:\GitHubProject\XiTongJiCheng\XinJiangShouBaoBs\obj\Debug\XinJiangShouBaoBs.Pro
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBaoBs\obj\Debug\XinJiangShouBaoBs.csproj.GenerateResource.Cache
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBaoBs\obj\Debug\新疆手动报警数据接入程序(二标段).exe
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBaoBs\obj\Debug\新疆手动报警数据接入程序(二标段).pdb
-E:\GitHubProject\XiTongJiCheng\XinJiangShouBaoBs\obj\Debug\XinJiangShouBaoBs.csprojResolveAssemblyReference.cache

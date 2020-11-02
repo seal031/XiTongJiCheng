@@ -34,3 +34,4 @@ E:\GitHubProject\XiTongJiCheng\WhWeiJieBaoJing\bin\Debug\围界报警接入程�
 E:\GitHubProject\XiTongJiCheng\WhWeiJieBaoJing\bin\Debug\围界报警接入程序.pdb
 E:\GitHubProject\XiTongJiCheng\WhWeiJieBaoJing\obj\Debug\围界报警接入程序.exe
 E:\GitHubProject\XiTongJiCheng\WhWeiJieBaoJing\obj\Debug\围界报警接入程序.pdb
+E:\GitHubProject\XiTongJiCheng\WhWeiJieBaoJing\obj\Debug\WhWeiJieBaoJing.csprojResolveAssemblyReference.cache

@@ -31,3 +31,4 @@ E:\GitHubProject\XiTongJiCheng\XinJiangMenJinDaHua\bin\Debug\System.Memory.xml
 E:\GitHubProject\XiTongJiCheng\XinJiangMenJinDaHua\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 E:\GitHubProject\XiTongJiCheng\XinJiangMenJinDaHua\obj\Debug\XinJiangMenJinDaHua.exe
 E:\GitHubProject\XiTongJiCheng\XinJiangMenJinDaHua\obj\Debug\XinJiangMenJinDaHua.pdb
+E:\GitHubProject\XiTongJiCheng\XinJiangMenJinDaHua\obj\Debug\XinJiangMenJinDaHua.csprojResolveAssemblyReference.cache

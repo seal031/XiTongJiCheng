@@ -42,7 +42,7 @@ public class AlarmEntity
     }
     public string toJson()
     {
-        return JsonConvert.SerializeObject(this);
+        return JsonConvert.SerializeObject(this, JsonSerializer.IgnoreSerializerSetting);
     }
 }
 
@@ -212,5 +212,18 @@ public class CommandEntity
     public static CommandEntity fromJson(string json)
     {
         return JsonConvert.DeserializeObject<CommandEntity>(json);
+    }
+}
+static class JsonSerializer
+{
+    static JsonSerializerSettings jssIgnore = new JsonSerializerSettings();
+
+    public static JsonSerializerSettings IgnoreSerializerSetting
+    {
+        get
+        {
+            jssIgnore.NullValueHandling = NullValueHandling.Ignore;
+            return jssIgnore;
+        }
     }
 }

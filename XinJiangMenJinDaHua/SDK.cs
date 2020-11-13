@@ -38,7 +38,7 @@ namespace XinJiangMenJinDaHua
                                                     [MarshalAs(UnmanagedType.LPStr)] StringBuilder szChannelName,
                                                     [MarshalAs(UnmanagedType.LPStr)] StringBuilder szCoding,
                                                     [MarshalAs(UnmanagedType.LPStr)] StringBuilder szMessage,
-                                                    IntPtr nAlarmType,
+                                                    Int32 nAlarmType,
                                                     IntPtr nEventType,
                                                     IntPtr nLevel,
                                                     Int64 nTime,

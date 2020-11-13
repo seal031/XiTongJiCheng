@@ -137,7 +137,7 @@ public abstract class BaseParseTool
 /// </summary>
 public class AlarmParseTool: BaseParseTool
 {
-    public static AlarmEntity parseAlarm(string alarmTime,string alarmEquCode)
+    public static AlarmEntity parseAlarm(List<string> alarmMessList,string alarmTime,string alarmEquCode)
     {
         AlarmEntity alarmEntity = null;
         try
@@ -154,15 +154,15 @@ public class AlarmParseTool: BaseParseTool
 
             alarmEntity.body.alarmClassCode = "AC02";
             alarmEntity.body.alarmClassName = "门禁报警事件";
-            alarmEntity.body.alarmNameCode = "AC0201";
             alarmEntity.body.alarmStateCode = "AS01";
             alarmEntity.body.alarmStateName = "未解除";
-            alarmEntity.body.airportIata = ConfigWorker.GetConfigValue("airportIata");
-            alarmEntity.body.airportName = ConfigWorker.GetConfigValue("airportName");
+            //alarmEntity.body.airportIata = ConfigWorker.GetConfigValue("airportIata");
+            //alarmEntity.body.airportName = ConfigWorker.GetConfigValue("airportName");
             alarmEntity.body.alarmTime = alarmTime;
-
             alarmEntity.body.alarmEquCode = alarmEquCode;
-            alarmEntity.body.alarmName = "门禁报警新事件";
+            alarmEntity.body.alarmNameCode = alarmMessList[0];
+            alarmEntity.body.alarmName = alarmMessList[1];//报警类型编码对应的名称
+            //alarmEntity.body.alarmNameCode = "AC0201";//报警类型编码
 
 
         }

@@ -9,7 +9,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>XinJiangShouBao</RootNamespace>
-    <AssemblyName>XinJiangShouBao</AssemblyName>
+    <AssemblyName>新疆手动报警数据接入程序%28三标段%29</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>

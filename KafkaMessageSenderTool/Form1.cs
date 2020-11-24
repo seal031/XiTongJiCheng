@@ -15,8 +15,8 @@ namespace KafkaMessageSenderTool
         public Form1()
         {
             InitializeComponent();
-            KafkaWorker.init();
-            KafkaWorker.sendAlarmMessage("asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasfasdfasdfasdfasdfasddf");
+            //KafkaWorker.init();
+            //KafkaWorker.sendAlarmMessage("asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasfasdfasdfasdfasdfasddf");
             setRtb();
         }
 

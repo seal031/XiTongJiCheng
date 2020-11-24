@@ -1,4 +1,3 @@
-E:\GitHubProject\XiTongJiCheng\KafkaMessageSenderTool\obj\Debug\KafkaMessageSenderTool.csprojResolveAssemblyReference.cache
 E:\GitHubProject\XiTongJiCheng\KafkaMessageSenderTool\obj\Debug\KafkaMessageSenderTool.Form1.resources
 E:\GitHubProject\XiTongJiCheng\KafkaMessageSenderTool\obj\Debug\KafkaMessageSenderTool.Properties.Resources.resources
 E:\GitHubProject\XiTongJiCheng\KafkaMessageSenderTool\obj\Debug\KafkaMessageSenderTool.csproj.GenerateResource.Cache
@@ -34,6 +33,4 @@ E:\GitHubProject\XiTongJiCheng\KafkaMessageSenderTool\bin\Debug\System.Runtime.C
 E:\GitHubProject\XiTongJiCheng\KafkaMessageSenderTool\obj\Debug\SODB产品模拟数据发送程序.exe
 E:\GitHubProject\XiTongJiCheng\KafkaMessageSenderTool\obj\Debug\SODB产品模拟数据发送程序.pdb
 E:\GitHubProject\XiTongJiCheng\KafkaMessageSenderTool\bin\Debug\IBMMQ_LIB.dll
-E:\GitHubProject\XiTongJiCheng\KafkaMessageSenderTool\bin\Debug\amqmdnet.dll
-E:\GitHubProject\XiTongJiCheng\KafkaMessageSenderTool\bin\Debug\fastJSON.dll
 E:\GitHubProject\XiTongJiCheng\KafkaMessageSenderTool\obj\Debug\KafkaMessageSenderTool.Form2.resources

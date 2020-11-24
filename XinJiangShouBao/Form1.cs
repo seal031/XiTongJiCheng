@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Net;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -36,6 +37,9 @@ namespace XinJiangShouBao
 
         private volatile bool isConnected = false;
         private volatile bool isReconecting = false;
+
+        SpinLock sl = new SpinLock(false);
+        bool gotLock = false;
 
         public Form1()
         {
@@ -94,19 +98,44 @@ namespace XinJiangShouBao
         {
             try
             {
-                client.Connect(new IPEndPoint(IPAddress.Parse(remoteIp), remotePort));
+                if (sl.IsHeld == false)
+                {
+                    Debug.WriteLine("开始连接服务端");
+                    try
+                    {
+                        gotLock = false;
+                        Debug.WriteLine("尝试获取锁");
+                        sl.TryEnter(reconnectInterval * 1000, ref gotLock);
+                    }
+                    catch (Exception ex)
+                    {
+                        
+                    }
+                    client.Connect(new IPEndPoint(IPAddress.Parse(remoteIp), remotePort));
+                }
             }
             catch (Exception ex)
             {
-                FileWorker.LogHelper.WriteLog("连接时出现异常："+ex.Message);
+                FileWorker.LogHelper.WriteLog("连接时出现异常：" + ex.Message);
+                Debug.WriteLine("连接时出现异常：" + ex.Message);
             }
         }
 
         private void Client_Connected(object sender, EventArgs e)
         {
+            try
+            {
+                Debug.WriteLine("连接成功，释放锁");
+                sl.Exit(true);
+            }
+            catch (Exception ex)
+            {
+                
+            }
             isConnected = true;
             isReconecting = false;
             FileWorker.LogHelper.WriteLog("已连接到服务器");
+            Debug.WriteLine("已连接到服务器");
             setFormate();
             login();
         }
@@ -114,8 +143,9 @@ namespace XinJiangShouBao
         private void Client_Closed(object sender, EventArgs e)
         {
             FileWorker.LogHelper.WriteLog("连接关闭");
+            Debug.WriteLine("连接关闭");
             isConnected = false;
-            if (isReconecting == false)
+            if (isReconecting == false) 
             {
                 Task.Run(() =>
                 {
@@ -126,7 +156,17 @@ namespace XinJiangShouBao
 
         private void Client_Error(object sender, ErrorEventArgs e)
         {
+            try
+            {
+                Debug.WriteLine("client error，释放锁");
+                sl.Exit(true);
+            }
+            catch (Exception ex)
+            {
+
+            }
             FileWorker.LogHelper.WriteLog("client error" + e.Exception.Message);
+            Debug.WriteLine("client error" + e.Exception.Message);
             isConnected = false;
             if (isReconecting == false)
             {
@@ -140,12 +180,21 @@ namespace XinJiangShouBao
         private void reConnect()
         {
             FileWorker.LogHelper.WriteLog("执行断线重连");
+            Debug.WriteLine("执行断线重连");
             isReconecting = true;
             while (true)
             {
+                if (isConnected)
+                {
+                    Debug.WriteLine("重连成功，退出重连");
+                    FileWorker.LogHelper.WriteLog("重连成功，退出重连");
+                    break;
+                }
                 connect();
                 if (isConnected)
                 {
+                    Debug.WriteLine("重连成功，退出重连");
+                    FileWorker.LogHelper.WriteLog("重连成功，退出重连");
                     break;
                 }
                 Thread.Sleep(reconnectInterval * 1000);
@@ -159,6 +208,7 @@ namespace XinJiangShouBao
                 //FileWorker.LogHelper.WriteLog("接收到了数据");
                 string tcpMessage = MessageParser.byteToStr(e.Data);
                 FileWorker.LogHelper.WriteLog("接收的数据是" + tcpMessage);
+                Debug.WriteLine("接收的数据是" + tcpMessage);
                 string tcpMessageClean = tcpMessage.Replace("$", "").Replace("{", "").Replace("}", "").Replace("\"", "").Replace("\0", "");
                 //Debug.WriteLine(tcpMessage);
                 foreach (string subTcpMessage in tcpMessageClean.Split(new string[] { "IsDisposed" }, StringSplitOptions.RemoveEmptyEntries))
@@ -229,6 +279,7 @@ namespace XinJiangShouBao
             catch (Exception ex)
             {
                 FileWorker.LogHelper.WriteLog("接收数据时出现异常："+ex.Message);
+                Debug.WriteLine("接收数据时出现异常：" + ex.Message);
             }
         }
 

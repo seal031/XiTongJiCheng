@@ -34,7 +34,6 @@ E:\GitHubProject\XiTongJiCheng\KafkaMessageSenderTool\bin\Release\ExcelDataReade
 E:\GitHubProject\XiTongJiCheng\KafkaMessageSenderTool\bin\Release\ExcelDataReader.DataSet.xml
 E:\GitHubProject\XiTongJiCheng\KafkaMessageSenderTool\bin\Release\IBMMQ_LIB.dll
 E:\GitHubProject\XiTongJiCheng\KafkaMessageSenderTool\obj\Release\KafkaMessageSenderTool.Form2.resources
-E:\GitHubProject\XiTongJiCheng\KafkaMessageSenderTool\obj\Release\KafkaMessageSenderTool.csprojResolveAssemblyReference.cache
 D:\HAYC\XiTongJiCheng\KafkaMessageSenderTool\bin\Release\librdkafka\x86\librdkafka.dll
 D:\HAYC\XiTongJiCheng\KafkaMessageSenderTool\bin\Release\librdkafka\x86\librdkafkacpp.dll
 D:\HAYC\XiTongJiCheng\KafkaMessageSenderTool\bin\Release\librdkafka\x86\libzstd.dll

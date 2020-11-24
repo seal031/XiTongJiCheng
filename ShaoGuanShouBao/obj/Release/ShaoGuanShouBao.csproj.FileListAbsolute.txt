@@ -1,0 +1,4 @@
+E:\GitHubProject\XiTongJiCheng\ShaoGuanShouBao\bin\Release\ShaoGuanShouBao.exe.config
+E:\GitHubProject\XiTongJiCheng\ShaoGuanShouBao\obj\Release\Interop.IPModuleLib.dll
+E:\GitHubProject\XiTongJiCheng\ShaoGuanShouBao\obj\Release\AxInterop.IPModuleLib.dll
+E:\GitHubProject\XiTongJiCheng\ShaoGuanShouBao\obj\Release\ShaoGuanShouBao.csproj.ResolveComReference.cache

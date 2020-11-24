@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CefSharp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,6 +15,9 @@ namespace XinJiangShouBaoSanRun
         [STAThread]
         static void Main()
         {
+            CefSharpSettings.SubprocessExitIfParentProcessClosed = true;
+            CefSharpSettings.LegacyJavascriptBindingEnabled = true;
+            Cef.EnableHighDPISupport();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());

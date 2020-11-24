@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
@@ -104,7 +106,7 @@ public class BaseParseTool
 /// </summary>
 public class AlarmParseTool : BaseParseTool
 {
-    public static AlarmEntity parseAlarm(string equCode,string alarmNameCode,string alarmName,string alarmTime,string airportIata,string airportName)
+    public static AlarmEntity parseAlarm(string alarmTime,string equCode,List<string> alarmList)
     {
         AlarmEntity alarmEntity = null;
         try
@@ -118,16 +120,18 @@ public class AlarmParseTool : BaseParseTool
             alarmEntity.meta.sender = "MJALARM";
             alarmEntity.meta.sendTime = DateTime.Now.ToString("yyyyMMddHHmmss");
             alarmEntity.meta.sequence = "";
-            alarmEntity.body.alarmEquCode = equCode;
-            alarmEntity.body.alarmNameCode = alarmNameCode;
-            alarmEntity.body.alarmName = alarmName;
-            alarmEntity.body.alarmTime = alarmTime;
+
+
             alarmEntity.body.alarmClassCode = "AC02";
             alarmEntity.body.alarmClassName = "门禁报警事件";
             alarmEntity.body.alarmStateCode = "AS01";
             alarmEntity.body.alarmStateName = "未解除";
-            alarmEntity.body.airportIata = airportIata;
-            alarmEntity.body.airportName = airportName;
+            alarmEntity.body.alarmEquCode = equCode;
+            alarmEntity.body.alarmNameCode = alarmList[0];
+            alarmEntity.body.alarmName = alarmList[1];
+            alarmEntity.body.alarmTime = alarmTime;
+            //alarmEntity.body.airportIata = airportIata;
+            //alarmEntity.body.airportName = airportName;
         }
         catch (Exception ex)
         {
@@ -143,7 +147,7 @@ public class AlarmParseTool : BaseParseTool
 /// </summary>
 public class AccessParseTool : BaseParseTool
 {
-    public static AccessEntity parseAccess(string cardNumber,string deviceCode,string enterOrExit,string personId,string swingTime,string deptName,string deviceName,string personName,string openType,string openTypeName)
+    public static AccessEntity parseAccess(string cardId,string time,string deviceCode)
     {
         AccessEntity accessEntity = null;
         try
@@ -158,31 +162,64 @@ public class AccessParseTool : BaseParseTool
             accessEntity.meta.sendTime = DateTime.Now.ToString("yyyyMMddHHmmss");
             accessEntity.meta.sequence = "";
 
-            accessEntity.body.cardNumber = cardNumber;
-            accessEntity.body.cardStatus = "";
-            accessEntity.body.cardType = "";
-            accessEntity.body.cardTypeName = "IC卡";
-            accessEntity.body.channelCode = "";
-            accessEntity.body.channelName = "";
-            accessEntity.body.deptName = deptName;
+            
+            accessEntity.body.channelCode = deviceCode;
             accessEntity.body.deviceCode = deviceCode;
-            accessEntity.body.deviceName = deviceName;
-            accessEntity.body.enterOrExit = enterOrExit;
-            accessEntity.body.id = "";
+            accessEntity.body.deviceName = deviceCode;
             accessEntity.body.openResult = "1";
-            accessEntity.body.openType = openType;
-            accessEntity.body.openTypeName = openTypeName;
+            accessEntity.body.swingTime = time;
+
+
+
+            accessEntity.body.cardNumber = cardId;
+            if (cardId != "")
+            {
+                Dictionary<string, string> seleDict = SelePersonTable(cardId);
+                accessEntity.body.personCode = seleDict["人员编号"];
+                accessEntity.body.personName = seleDict["人员名称"];
+                accessEntity.body.deptName = seleDict["部分名称"];
+            }
+            else
+            {
+                accessEntity.body.personCode = "";
+                accessEntity.body.personName = "";
+                accessEntity.body.deptName = "";
+            }
+
+
+            accessEntity.body.id = "";
+            accessEntity.body.cardTypeName = "";
+            accessEntity.body.enterOrExit = "";
+            accessEntity.body.cardType = "";
+            accessEntity.body.cardStatus = "";
+            accessEntity.body.channelName = "";
+            accessEntity.body.openType = "";
+            accessEntity.body.openTypeName = "";
             accessEntity.body.paperNumber = "";
-            accessEntity.body.personCode = personId;
-            accessEntity.body.personId = personId;
-            accessEntity.body.personName = personName;
-            accessEntity.body.swingTime = swingTime;
+            accessEntity.body.personId = "";
         }
         catch (Exception ex)
         {
             FileWorker.LogHelper.WriteLog("解析刷卡失败，" + ex.Message);
         }
         return accessEntity;
+    }
+    private static Dictionary<string, string> SelePersonTable(string cardId)
+    {
+        string strConn = ConfigWorker.GetConfigValue("connectString");
+        Dictionary<string, string> sqlResult = new Dictionary<string, string>();
+        string sql = string.Format("select C.CardID,U.UserID,U.UserName,D.DepartmentName from Card as C,UserList as U,Department as D where C.UserID = U.UserID and D.DepartmentID = U.DepartmentID and C.CardID = '{0}'",cardId);
+        using (SqlDataAdapter da = new SqlDataAdapter(sql, strConn))
+        {
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            DataRow row = ds.Tables[0].Rows[0];
+            sqlResult.Add("卡号", row.ItemArray[0].ToString());
+            sqlResult.Add("人员编号", row.ItemArray[1].ToString());
+            sqlResult.Add("人员名称", row.ItemArray[2].ToString());
+            sqlResult.Add("部分名称", row.ItemArray[3].ToString());
+        }
+        return sqlResult;
     }
 }
 
@@ -198,7 +235,7 @@ public class DeviceStateParseTool
         stateDic.Add("ES02", "离线");
     }
 
-    public static DeviceStateEntity parseDeviceState(string stateId)
+    public static DeviceStateEntity parseDeviceState(string alarmTime, string equCode, string state)
     {
         DeviceStateEntity deviceStateEntity = null;
         try
@@ -214,9 +251,23 @@ public class DeviceStateParseTool
             deviceStateEntity.meta.sequence = "";
 
             //deviceStateEntity.body.createDate =deviceStateInfo.sEventTime;
-            //deviceStateEntity.body.equCode =deviceStateInfo.sEventLocation;
-            deviceStateEntity.body.timeStateId = stateId;
-            deviceStateEntity.body.timeStateName = stateDic[stateId];
+            deviceStateEntity.body.equCode =equCode;
+            deviceStateEntity.body.operateTime = alarmTime;
+            if (state == "28.门开时间过长")
+            {
+                deviceStateEntity.body.timeStateId = "ES02";
+                deviceStateEntity.body.timeStateName = "开门";
+            }
+            else if (state == "26.门重新进入安全状态")
+            {
+                deviceStateEntity.body.timeStateId = "ES01";
+                deviceStateEntity.body.timeStateName = "关门";
+            }
+            else
+            {
+                deviceStateEntity.body.timeStateId = "ES03";
+                deviceStateEntity.body.timeStateName = "故障";
+            }
         }
         catch (Exception ex)
         {

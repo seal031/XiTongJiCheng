@@ -76,4 +76,8 @@ D:\HAYC\XiTongJiCheng\QuanZhouCheDi\obj\Release\QuanZhouCheDi.Properties.Resourc
 D:\HAYC\XiTongJiCheng\QuanZhouCheDi\obj\Release\QuanZhouCheDi.csproj.GenerateResource.Cache
 D:\HAYC\XiTongJiCheng\QuanZhouCheDi\obj\Release\泉州车底数据接入程序.exe
 D:\HAYC\XiTongJiCheng\QuanZhouCheDi\obj\Release\泉州车底数据接入程序.pdb
-D:\HAYC\XiTongJiCheng\QuanZhouCheDi\obj\Release\QuanZhouCheDi.csprojResolveAssemblyReference.cache
+D:\HAYC\XiTongJiCheng\QuanZhouCheDi\bin\Release\FluentFTP.dll
+D:\HAYC\XiTongJiCheng\QuanZhouCheDi\bin\Release\Quartz.dll
+D:\HAYC\XiTongJiCheng\QuanZhouCheDi\bin\Release\FluentFTP.xml
+D:\HAYC\XiTongJiCheng\QuanZhouCheDi\bin\Release\Quartz.pdb
+D:\HAYC\XiTongJiCheng\QuanZhouCheDi\bin\Release\Quartz.xml

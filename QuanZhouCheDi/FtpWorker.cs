@@ -28,7 +28,7 @@ namespace QuanZhouCheDi
             catch (Exception ex)
             {
                 FileWorker.LogHelper.WriteLog("实例化FTP客户端失败：" + ex.Message);
-                MessageBox.Show("实例化FTP客户端失败：" + ex.Message);
+                //MessageBox.Show("实例化FTP客户端失败：" + ex.Message);
             }
         }
 
@@ -60,25 +60,14 @@ namespace QuanZhouCheDi
             try
             {
                 client.Connect();
+                FileWorker.LogHelper.WriteLog("连接成功");
                 var state = client.UploadFile(localFilePath, remoteFilePath, existsMode: FtpRemoteExists.Skip, createRemoteDir: true, verifyOptions: FtpVerify.None, progress: progress);
-                if (state == FtpStatus.Success)
-                {
-                    FileWorker.LogHelper.WriteLog("上传文件" + localFilePath + "成功");
-                }
-                if (state == FtpStatus.Skipped)
-                {
-                    FileWorker.LogHelper.WriteLog("上传文件" + localFilePath + "在服务端已存在，跳过传输");
-                }
-                else
-                {
-                    FileWorker.LogHelper.WriteLog("上传文件" + localFilePath + "失败");
-                }
                 client.Disconnect();
                 return state;
             }
             catch (Exception ex)
             {
-                FileWorker.LogHelper.WriteLog("上传文件"+localFilePath+"出现异常：" + ex.Message);
+                FileWorker.LogHelper.WriteLog("上传文件"+localFilePath+"出现异常：" + ex.InnerException.Message);
                 return FtpStatus.Failed;
             }
         }
@@ -118,5 +107,12 @@ namespace QuanZhouCheDi
                 client.DeleteFile(remoteFilePath);
             }
         }
+
+        public static void closeFTP()
+        {
+            client.Dispose();
+            client = null;
+            GC.Collect();
+        } 
     }
 }

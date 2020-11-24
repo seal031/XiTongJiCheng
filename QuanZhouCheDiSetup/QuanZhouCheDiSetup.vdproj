@@ -21,6 +21,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_128DA8348353E99031532F7F123A861D"
+        "OwnerKey" = "8:_39B112DA3C1F4364B150A9A72D9ECD75"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_2262806D38CE45848661E1C8D0EA57C4"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -29,6 +35,18 @@
         {
         "MsmKey" = "8:_3129F015669E468BB90012D544952CED"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3950A17E4B268DFCEFCF03FA29F729B2"
+        "OwnerKey" = "8:_5ECC661155034E4BF1E646B8FC3CD45A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3950A17E4B268DFCEFCF03FA29F729B2"
+        "OwnerKey" = "8:_696148DC4E25C8D5D975FE2F36F7C2AD"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -57,6 +75,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_5ECC661155034E4BF1E646B8FC3CD45A"
+        "OwnerKey" = "8:_39B112DA3C1F4364B150A9A72D9ECD75"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_62D218801DE5D4F75FF27FEE9F3137F9"
         "OwnerKey" = "8:_39B112DA3C1F4364B150A9A72D9ECD75"
         "MsmSig" = "8:_UNDEFINED"
@@ -70,6 +94,18 @@
         "Entry"
         {
         "MsmKey" = "8:_686A50C23CDB467F9F1FC9CC43FD2D47"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_696148DC4E25C8D5D975FE2F36F7C2AD"
+        "OwnerKey" = "8:_5ECC661155034E4BF1E646B8FC3CD45A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6A35875A4A594A9CA35D5064BFBED074"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -226,13 +262,25 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_83F868F54759889318E5B53F5ECA73DF"
+        "OwnerKey" = "8:_39B112DA3C1F4364B150A9A72D9ECD75"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_39B112DA3C1F4364B150A9A72D9ECD75"
+        "OwnerKey" = "8:_5ECC661155034E4BF1E646B8FC3CD45A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_696148DC4E25C8D5D975FE2F36F7C2AD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_3950A17E4B268DFCEFCF03FA29F729B2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -245,6 +293,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_62D218801DE5D4F75FF27FEE9F3137F9"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_128DA8348353E99031532F7F123A861D"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -301,6 +355,12 @@
         "OwnerKey" = "8:_E7C80297B6A8418F26889EC1806B7F9B"
         "MsmSig" = "8:_UNDEFINED"
         }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_83F868F54759889318E5B53F5ECA73DF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -319,6 +379,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -335,6 +403,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -384,6 +460,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_128DA8348353E99031532F7F123A861D"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:FluentFTP, Version=33.0.2.0, Culture=neutral, PublicKeyToken=f4af092b1d8df44f, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_128DA8348353E99031532F7F123A861D"
+                    {
+                    "Name" = "8:FluentFTP.DLL"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:FluentFTP.DLL"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_3E0A2DC06D9F41428E3EBF72DC7039AF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2262806D38CE45848661E1C8D0EA57C4"
             {
             "SourcePath" = "8:..\\QuanZhouCheDi\\bin\\Release\\librdkafka\\x86\\libzstd.dll"
@@ -422,6 +529,37 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_3950A17E4B268DFCEFCF03FA29F729B2"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Common.Logging.Core, Version=3.4.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_3950A17E4B268DFCEFCF03FA29F729B2"
+                    {
+                    "Name" = "8:Common.Logging.Core.DLL"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Common.Logging.Core.DLL"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_3E0A2DC06D9F41428E3EBF72DC7039AF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_39B112DA3C1F4364B150A9A72D9ECD75"
@@ -537,6 +675,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5ECC661155034E4BF1E646B8FC3CD45A"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Quartz, Version=2.6.2.0, Culture=neutral, PublicKeyToken=f6b8c98a402cc8a4, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_5ECC661155034E4BF1E646B8FC3CD45A"
+                    {
+                    "Name" = "8:Quartz.DLL"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Quartz.DLL"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_3E0A2DC06D9F41428E3EBF72DC7039AF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_62D218801DE5D4F75FF27FEE9F3137F9"
             {
             "AssemblyRegister" = "3:1"
@@ -594,6 +763,57 @@
             "TargetName" = "8:libzstd.dll"
             "Tag" = "8:"
             "Folder" = "8:_1C721A1D487943ECB0EECD50B9F2F1D2"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_696148DC4E25C8D5D975FE2F36F7C2AD"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Common.Logging, Version=3.4.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_696148DC4E25C8D5D975FE2F36F7C2AD"
+                    {
+                    "Name" = "8:Common.Logging.DLL"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Common.Logging.DLL"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_3E0A2DC06D9F41428E3EBF72DC7039AF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6A35875A4A594A9CA35D5064BFBED074"
+            {
+            "SourcePath" = "8:..\\QuanZhouCheDi\\bin\\Debug\\imageErrorMess.txt"
+            "TargetName" = "8:imageErrorMess.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_3E0A2DC06D9F41428E3EBF72DC7039AF"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"

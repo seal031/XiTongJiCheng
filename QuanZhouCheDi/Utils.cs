@@ -63,7 +63,8 @@ namespace QuanZhouCheDi
                 //string test = "https://img-blog.csdnimg.cn/2020091110132619.jpg";
                 //test = "https://img-blog.csdnimg.cn/20191016215757571.png";
                 messCommand.body.vechicleInAnprPicpath = BaseHelper.ImgToBase64String(inforColl[5]);
-                //messCommand.body.vechicleInUvssPicpath = BaseHelper.ImgToBase64String(inforColl[4]);
+                messCommand.body.vechicleInUvssPicpath = inforColl[4];
+                messCommand.body.vechicleInUvssPicpath = string.Format("/photo/sodb/{0}/{1}", DateTime.Now.ToString("yyyyMMdd"), Path.GetFileName(messCommand.body.vechicleInUvssPicpath));
                 messCommand.body.plateNo = inforColl[6];
                 if (inforColl[7] == "0")
                 {

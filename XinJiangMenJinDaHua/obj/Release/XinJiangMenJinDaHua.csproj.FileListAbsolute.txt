@@ -87,4 +87,3 @@ D:\HAYC\XiTongJiCheng\XinJiangMenJinDaHua\bin\Release\新疆大华门禁接入�
 D:\HAYC\XiTongJiCheng\XinJiangMenJinDaHua\bin\Release\新疆大华门禁接入程序.pdb
 D:\HAYC\XiTongJiCheng\XinJiangMenJinDaHua\obj\Release\新疆大华门禁接入程序.exe
 D:\HAYC\XiTongJiCheng\XinJiangMenJinDaHua\obj\Release\新疆大华门禁接入程序.pdb
-D:\HAYC\XiTongJiCheng\XinJiangMenJinDaHua\obj\Release\XinJiangMenJinDaHua.csprojResolveAssemblyReference.cache

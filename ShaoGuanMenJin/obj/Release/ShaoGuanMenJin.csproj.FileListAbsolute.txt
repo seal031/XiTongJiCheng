@@ -11,9 +11,6 @@ D:\HAYC\XiTongJiCheng\ShaoGuanMenJin\bin\Release\librdkafka\x64\msvcp120.dll
 D:\HAYC\XiTongJiCheng\ShaoGuanMenJin\bin\Release\librdkafka\x64\msvcr120.dll
 D:\HAYC\XiTongJiCheng\ShaoGuanMenJin\bin\Release\librdkafka\x64\zlib.dll
 D:\HAYC\XiTongJiCheng\ShaoGuanMenJin\bin\Release\log4net.config
-D:\HAYC\XiTongJiCheng\ShaoGuanMenJin\bin\Release\ShaoGuanMenJin.exe.config
-D:\HAYC\XiTongJiCheng\ShaoGuanMenJin\bin\Release\ShaoGuanMenJin.exe
-D:\HAYC\XiTongJiCheng\ShaoGuanMenJin\bin\Release\ShaoGuanMenJin.pdb
 D:\HAYC\XiTongJiCheng\ShaoGuanMenJin\bin\Release\Confluent.Kafka.dll
 D:\HAYC\XiTongJiCheng\ShaoGuanMenJin\bin\Release\log4net.dll
 D:\HAYC\XiTongJiCheng\ShaoGuanMenJin\bin\Release\Newtonsoft.Json.dll
@@ -29,5 +26,9 @@ D:\HAYC\XiTongJiCheng\ShaoGuanMenJin\bin\Release\System.Runtime.CompilerServices
 D:\HAYC\XiTongJiCheng\ShaoGuanMenJin\obj\Release\ShaoGuanMenJin.Form1.resources
 D:\HAYC\XiTongJiCheng\ShaoGuanMenJin\obj\Release\ShaoGuanMenJin.Properties.Resources.resources
 D:\HAYC\XiTongJiCheng\ShaoGuanMenJin\obj\Release\ShaoGuanMenJin.csproj.GenerateResource.Cache
-D:\HAYC\XiTongJiCheng\ShaoGuanMenJin\obj\Release\ShaoGuanMenJin.exe
-D:\HAYC\XiTongJiCheng\ShaoGuanMenJin\obj\Release\ShaoGuanMenJin.pdb
+D:\HAYC\XiTongJiCheng\ShaoGuanMenJin\bin\Release\韶关门禁数据接入程序.exe.config
+D:\HAYC\XiTongJiCheng\ShaoGuanMenJin\bin\Release\韶关门禁数据接入程序.exe
+D:\HAYC\XiTongJiCheng\ShaoGuanMenJin\bin\Release\韶关门禁数据接入程序.pdb
+D:\HAYC\XiTongJiCheng\ShaoGuanMenJin\obj\Release\韶关门禁数据接入程序.exe
+D:\HAYC\XiTongJiCheng\ShaoGuanMenJin\obj\Release\韶关门禁数据接入程序.pdb
+D:\HAYC\XiTongJiCheng\ShaoGuanMenJin\obj\Release\ShaoGuanMenJin.csprojResolveAssemblyReference.cache

@@ -173,7 +173,6 @@ public class AccessParseTool : BaseParseTool
             accessEntity.body.deptName = SelePersonTable(message[3], 3);
             //accessEntity.body.personName 人员名称
             //accessEntity.body.deptName 部门名称
-
             accessEntity.body.openResult = message[2]; //刷卡的一个结果
             accessEntity.body.channelCode = message[1];//通道编码--内部编码
             accessEntity.body.cardNumber = ""; //卡编号,暂时

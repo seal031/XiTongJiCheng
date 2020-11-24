@@ -93,7 +93,7 @@ public class DeviceStateEntity
     {
         public string equCode { get; set; }
         public string timeStateId { get; set; }
-        public string createDate { get; set; }
+        public string operateTime { get; set; }
         public string timeStateName { get; set; }
     }
     public string toJson()

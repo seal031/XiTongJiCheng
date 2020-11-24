@@ -107,6 +107,8 @@ Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "XinJiangMenJinDaHuaSetup", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShaoGuanXiaoFangBaoJing", "ShaoGuanXiaoFangBaoJing\ShaoGuanXiaoFangBaoJing.csproj", "{A191CA48-1C07-4CC2-8BF7-B577E52A1EA2}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ShaoGuanMenJinSetup", "ShaoGuanMenJinSetup\ShaoGuanMenJinSetup.vdproj", "{EBD2D063-91FD-42BA-9AC9-9CE3A0DDA0AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -649,6 +651,12 @@ Global
 		{A191CA48-1C07-4CC2-8BF7-B577E52A1EA2}.Release|x64.Build.0 = Release|Any CPU
 		{A191CA48-1C07-4CC2-8BF7-B577E52A1EA2}.Release|x86.ActiveCfg = Release|Any CPU
 		{A191CA48-1C07-4CC2-8BF7-B577E52A1EA2}.Release|x86.Build.0 = Release|Any CPU
+		{EBD2D063-91FD-42BA-9AC9-9CE3A0DDA0AD}.Debug|Any CPU.ActiveCfg = Debug
+		{EBD2D063-91FD-42BA-9AC9-9CE3A0DDA0AD}.Debug|x64.ActiveCfg = Debug
+		{EBD2D063-91FD-42BA-9AC9-9CE3A0DDA0AD}.Debug|x86.ActiveCfg = Debug
+		{EBD2D063-91FD-42BA-9AC9-9CE3A0DDA0AD}.Release|Any CPU.ActiveCfg = Release
+		{EBD2D063-91FD-42BA-9AC9-9CE3A0DDA0AD}.Release|x64.ActiveCfg = Release
+		{EBD2D063-91FD-42BA-9AC9-9CE3A0DDA0AD}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -46,6 +46,7 @@ namespace WhShouDongBaoJing
         {
             try
             {
+                //武汉手报型号为VISTA，所以监听VistaCIDReport事件
                 FileWorker.LogHelper.WriteLog("页面加载，SDK初始化并绑定事件");
                 //this.SDK.NewAlarm += new _ICooMonitorEvents_NewAlarmEventHandler(this.SDK_NewAlarm);
                 //this.SDK.PanelStatusEx += new _ICooMonitorEvents_PanelStatusExEventHandler(this.SDK_PanelStatusEx);

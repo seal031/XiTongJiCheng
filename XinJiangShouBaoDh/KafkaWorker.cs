@@ -60,7 +60,7 @@ public class KafkaWorker
     //        {
     //            //var dr = await producerDevice.ProduceAsync(deviceTopicName, new Message<Null, string> { Value = message });
     //            producerDevice.Produce(deviceTopicName, new Message<Null, string> { Value = message }, handler);
-    //            producerAlarm.Flush(TimeSpan.FromSeconds(5));
+    //            producerDevice.Flush(TimeSpan.FromSeconds(5));
     //        }
     //    }
     //    catch (Exception e)

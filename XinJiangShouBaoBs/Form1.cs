@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Quartz;
+using Quartz.Impl;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Net;
@@ -14,7 +17,7 @@ using System.Windows.Forms;
 
 namespace XinJiangShouBaoBs
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form,IJobWork
     {
         string localIp;
         int localPort;
@@ -22,8 +25,15 @@ namespace XinJiangShouBaoBs
         int serverPort;
         string airportIata;
         string airportName;
+
+        IPEndPoint localIpep;
+        IPEndPoint remoteIpep;
         UdpClient udpcRecv;
         Thread thrRecv;
+
+        IScheduler scheduler;
+        IJobDetail job;
+        JobKey jobKey;
 
         public Form1()
         {
@@ -59,7 +69,9 @@ namespace XinJiangShouBaoBs
             }
             else
             {
+                //initJob();
                 startListener();
+                //startJob();
             }
         }
 
@@ -67,8 +79,10 @@ namespace XinJiangShouBaoBs
         {
             try
             {
-                IPEndPoint localIpep = new IPEndPoint(IPAddress.Parse(localIp), localPort); // 本机IP和监听端口号  
+                localIpep = new IPEndPoint(IPAddress.Parse(localIp), localPort); // 本机IP和监听端口号  
+                remoteIpep = new IPEndPoint(IPAddress.Parse(serverIp), serverPort);//服务端IP和监听端口号
                 udpcRecv = new UdpClient(localIpep);
+                udpcRecv.Connect(remoteIpep);
                 thrRecv = new Thread(ReceiveMessage);
                 thrRecv.Start();
                 FileWorker.LogHelper.WriteLog("UDP监听线程已启动");
@@ -81,7 +95,6 @@ namespace XinJiangShouBaoBs
 
         private void ReceiveMessage(object obj)
         {
-            IPEndPoint remoteIpep = new IPEndPoint(IPAddress.Parse(serverIp), serverPort);
             while (true)
             {
                 try
@@ -89,6 +102,7 @@ namespace XinJiangShouBaoBs
                     byte[] bytRecv = udpcRecv.Receive(ref remoteIpep);
                     string bytRecvStr = string.Join(" ", bytRecv);
                     //FileWorker.LogHelper.WriteLog("接收到的原始数据是：" + bytRecvStr);
+                    Debug.WriteLine("接收到的原始数据是：" + bytRecvStr);
                     string msg = Encoding.Default.GetString(bytRecv);
                     FileWorker.LogHelper.WriteLog("原始数据解析后是：" + msg);
                     if (msg.Contains("紧急求助报警"))//报警
@@ -180,6 +194,90 @@ namespace XinJiangShouBaoBs
             deviceState.body.timeStateId = "ES03";
             deviceState.body.timeStateName = "故障";
             return deviceState;
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //stopJob();
+            udpcRecv.Close();
+            udpcRecv = null;
+        }
+
+        private void initJob()
+        {
+            try
+            {
+                if (scheduler == null && job == null)
+                {
+                    scheduler = StdSchedulerFactory.GetDefaultScheduler();
+                    JobWorker.jobWork = this;
+                    job = JobBuilder.Create<JobWorker>().WithIdentity("connectJob", "jobs").Build();
+                    ITrigger trigger = TriggerBuilder.Create().WithIdentity("connectTrigger", "triggers").StartAt(DateTimeOffset.Now.AddSeconds(5))
+                        .WithSimpleSchedule(x => x.WithIntervalInSeconds(5).RepeatForever()).Build();
+                    scheduler.ScheduleJob(job, trigger);//把作业，触发器加入调度器。  
+                    jobKey = job.Key;
+                }
+            }
+            catch (Exception ex)
+            {
+                FileWorker.LogHelper.WriteLog("定时任务异常：" + ex.Message);
+            }
+        }
+        public void startJob()
+        {
+            try
+            {
+                if (scheduler != null && job != null && jobKey != null)
+                {
+                    if (scheduler.IsStarted == false)
+                    {
+                        FileWorker.LogHelper.WriteLog("定时任务初次开启");
+                        scheduler.Start();
+                    }
+                    else
+                    {
+                        FileWorker.LogHelper.WriteLog("定时任务恢复运行");
+                        scheduler.ResumeJob(jobKey);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                FileWorker.LogHelper.WriteLog("定时任务开启/恢复过程中出现异常：" + ex.Message);
+            }
+        }
+        public void stopJob()
+        {
+            try
+            {
+                if (scheduler != null && job != null && jobKey != null)
+                {
+                    if (scheduler.IsStarted)
+                    {
+                        FileWorker.LogHelper.WriteLog("定时任务暂停运行");
+                        scheduler.PauseJob(jobKey);
+                    }
+                    else
+                    {
+                        FileWorker.LogHelper.WriteLog("定时任务尚未初次启动，所以不需要暂停");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                FileWorker.LogHelper.WriteLog("定时任务暂停过程中出现异常：" + ex.Message);
+            }
+        }
+
+        public void doJobWork()
+        {
+            Debug.WriteLine(udpcRecv.Client.Poll(500,SelectMode.SelectWrite));
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            byte[] data = new byte[3] { 11, 22, 33 };
+            udpcRecv.Send(data, data.Length);
         }
     }
 }

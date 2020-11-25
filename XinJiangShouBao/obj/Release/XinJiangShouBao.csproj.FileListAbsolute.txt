@@ -11,9 +11,6 @@ E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Release\librdkafka\x64\msvcp1
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Release\librdkafka\x64\msvcr120.dll
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Release\librdkafka\x64\zlib.dll
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Release\log4net.config
-E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Release\XinJiangShouBao.exe.config
-E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Release\XinJiangShouBao.exe
-E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Release\XinJiangShouBao.pdb
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Release\Confluent.Kafka.dll
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Release\log4net.dll
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Release\Newtonsoft.Json.dll
@@ -32,9 +29,6 @@ E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Release\System.Runtime.Compil
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\obj\Release\XinJiangShouBao.Form1.resources
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\obj\Release\XinJiangShouBao.Properties.Resources.resources
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\obj\Release\XinJiangShouBao.csproj.GenerateResource.Cache
-E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\obj\Release\XinJiangShouBao.exe
-E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\obj\Release\XinJiangShouBao.pdb
-E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\obj\Release\XinJiangShouBao.csprojResolveAssemblyReference.cache
 D:\HAYC\XiTongJiCheng\XinJiangShouBao\bin\Release\librdkafka\x86\librdkafka.dll
 D:\HAYC\XiTongJiCheng\XinJiangShouBao\bin\Release\librdkafka\x86\librdkafkacpp.dll
 D:\HAYC\XiTongJiCheng\XinJiangShouBao\bin\Release\librdkafka\x86\libzstd.dll
@@ -71,3 +65,14 @@ D:\HAYC\XiTongJiCheng\XinJiangShouBao\obj\Release\XinJiangShouBao.Properties.Res
 D:\HAYC\XiTongJiCheng\XinJiangShouBao\obj\Release\XinJiangShouBao.csproj.GenerateResource.Cache
 D:\HAYC\XiTongJiCheng\XinJiangShouBao\obj\Release\XinJiangShouBao.exe
 D:\HAYC\XiTongJiCheng\XinJiangShouBao\obj\Release\XinJiangShouBao.pdb
+E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\obj\Release\Interop.VSPOcxClientLib.dll
+E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\obj\Release\AxInterop.VSPOcxClientLib.dll
+E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\obj\Release\XinJiangShouBao.csproj.ResolveComReference.cache
+E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Release\Interop.VSPOcxClientLib.dll
+E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Release\AxInterop.VSPOcxClientLib.dll
+E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Release\新疆手动报警数据接入程序(三标段).exe.config
+E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Release\新疆手动报警数据接入程序(三标段).exe
+E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Release\新疆手动报警数据接入程序(三标段).pdb
+E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\obj\Release\新疆手动报警数据接入程序(三标段).exe
+E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\obj\Release\新疆手动报警数据接入程序(三标段).pdb
+E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\obj\Release\XinJiangShouBao.csprojResolveAssemblyReference.cache

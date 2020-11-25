@@ -88,9 +88,9 @@ public class DeviceEntity
     {
         public Head()
         {
-            this.eventType = "";
+            this.eventType = "HAND_EQU";
             this.sendTime = DateTime.Now.ToString("yyyyMMddHHmmss");
-            this.msgType = "";
+            this.msgType = "EQU";
             this.sequence = Guid.NewGuid().ToString("N");
         }
         public string sender { get; set; }

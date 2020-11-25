@@ -1,0 +1,2 @@
+E:\GitHubProject\XiTongJiCheng\XinJiangShouBaoSanRun\obj\x64\Debug\XinJiangShouBaoSanRun.csprojResolveAssemblyReference.cache
+E:\GitHubProject\XiTongJiCheng\XinJiangShouBaoSanRun\obj\x64\Debug\Interop.VSPOcxClientLib.dll

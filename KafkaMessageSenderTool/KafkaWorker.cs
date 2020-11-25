@@ -33,7 +33,15 @@ namespace KafkaMessageSenderTool
             {
                 //if (configAlarm == null)
                 {
-                    configAlarm = new ProducerConfig { BootstrapServers = brokerList,QueueBufferingMaxKbytes= 10485760 };
+                    ClientConfig clientconfig = new ClientConfig();
+                    clientconfig.BootstrapServers = brokerList;
+                    clientconfig.MessageMaxBytes = 92914560;
+                    //clientfig.MessageCopyMaxBytes = 1000000000;
+                    //clientfig.ReceiveMessageMaxBytes = 800000000;
+                    //clientfig.SocketSendBufferBytes = 100000000;
+                    //clientfig.MetadataRequestTimeoutMs = 1000 * 60;
+                    //configAlarm = new ProducerConfig { BootstrapServers = brokerList,QueueBufferingMaxKbytes= 10485760 };
+                    configAlarm = new ProducerConfig(clientconfig);
                 }
                 //if (producerAlarm == null)
                 {

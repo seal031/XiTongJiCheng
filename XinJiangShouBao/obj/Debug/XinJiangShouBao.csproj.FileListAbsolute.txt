@@ -11,9 +11,6 @@ E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Debug\librdkafka\x64\msvcp120
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Debug\librdkafka\x64\msvcr120.dll
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Debug\librdkafka\x64\zlib.dll
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Debug\log4net.config
-E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Debug\XinJiangShouBao.exe.config
-E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Debug\XinJiangShouBao.exe
-E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Debug\XinJiangShouBao.pdb
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Debug\Confluent.Kafka.dll
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Debug\log4net.dll
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Debug\Newtonsoft.Json.dll
@@ -32,11 +29,14 @@ E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Debug\System.Runtime.Compiler
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\obj\Debug\XinJiangShouBao.Form1.resources
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\obj\Debug\XinJiangShouBao.Properties.Resources.resources
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\obj\Debug\XinJiangShouBao.csproj.GenerateResource.Cache
-E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\obj\Debug\XinJiangShouBao.exe
-E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\obj\Debug\XinJiangShouBao.pdb
-E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\obj\Debug\XinJiangShouBao.csprojResolveAssemblyReference.cache
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Debug\Interop.VSPOcxClientLib.dll
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Debug\AxInterop.VSPOcxClientLib.dll
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\obj\Debug\Interop.VSPOcxClientLib.dll
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\obj\Debug\AxInterop.VSPOcxClientLib.dll
 E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\obj\Debug\XinJiangShouBao.csproj.ResolveComReference.cache
+E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\obj\Debug\XinJiangShouBao.csprojResolveAssemblyReference.cache
+E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Debug\新疆手动报警数据接入程序(三标段).exe.config
+E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Debug\新疆手动报警数据接入程序(三标段).exe
+E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\bin\Debug\新疆手动报警数据接入程序(三标段).pdb
+E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\obj\Debug\新疆手动报警数据接入程序(三标段).exe
+E:\GitHubProject\XiTongJiCheng\XinJiangShouBao\obj\Debug\新疆手动报警数据接入程序(三标段).pdb

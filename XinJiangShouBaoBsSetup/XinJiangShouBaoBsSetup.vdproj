@@ -16,13 +16,19 @@
         "Entry"
         {
         "MsmKey" = "8:_0183909571E07B5E44248D4A1C951858"
-        "OwnerKey" = "8:_871415F6E7C04D42A347DCAF2C6FFDC8"
+        "OwnerKey" = "8:_B30D6CF2203E453B962536C7BAC4AAAF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_0329EBAC2FC64B25B1C391448102DD0E"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_03C2BA43B42E6ED502D46243A5DC4A26"
+        "OwnerKey" = "8:_4DE09B728D265F1447C1BB26CFA6996B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -47,6 +53,12 @@
         {
         "MsmKey" = "8:_2BE7F52B7FED45AFB1AEF944397EA0BC"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4DE09B728D265F1447C1BB26CFA6996B"
+        "OwnerKey" = "8:_B30D6CF2203E453B962536C7BAC4AAAF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -94,7 +106,7 @@
         "Entry"
         {
         "MsmKey" = "8:_6B8D256719A8297BBFC594149597E334"
-        "OwnerKey" = "8:_871415F6E7C04D42A347DCAF2C6FFDC8"
+        "OwnerKey" = "8:_B30D6CF2203E453B962536C7BAC4AAAF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -118,13 +130,7 @@
         "Entry"
         {
         "MsmKey" = "8:_83687E6A2912B421F5B7918A138496B9"
-        "OwnerKey" = "8:_871415F6E7C04D42A347DCAF2C6FFDC8"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_871415F6E7C04D42A347DCAF2C6FFDC8"
-        "OwnerKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_B30D6CF2203E453B962536C7BAC4AAAF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -165,6 +171,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_B30D6CF2203E453B962536C7BAC4AAAF"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_C1831C01A828AAFCA41E4B6893F4639A"
         "OwnerKey" = "8:_743E2A5737DD38A6707D0F54AC56421C"
         "MsmSig" = "8:_UNDEFINED"
@@ -179,6 +191,18 @@
         {
         "MsmKey" = "8:_C6A39A3871B541C0B76F34837D68590F"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_CB26E00A2079686DFEE0D66C13D62606"
+        "OwnerKey" = "8:_4DE09B728D265F1447C1BB26CFA6996B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_CB26E00A2079686DFEE0D66C13D62606"
+        "OwnerKey" = "8:_03C2BA43B42E6ED502D46243A5DC4A26"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -226,7 +250,43 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_871415F6E7C04D42A347DCAF2C6FFDC8"
+        "OwnerKey" = "8:_B30D6CF2203E453B962536C7BAC4AAAF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_4DE09B728D265F1447C1BB26CFA6996B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_03C2BA43B42E6ED502D46243A5DC4A26"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_CB26E00A2079686DFEE0D66C13D62606"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_0183909571E07B5E44248D4A1C951858"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_6B8D256719A8297BBFC594149597E334"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_83687E6A2912B421F5B7918A138496B9"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -283,24 +343,6 @@
         "OwnerKey" = "8:_29685B83D8B86271C22FBEE027BF628C"
         "MsmSig" = "8:_UNDEFINED"
         }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_0183909571E07B5E44248D4A1C951858"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_6B8D256719A8297BBFC594149597E334"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_83687E6A2912B421F5B7918A138496B9"
-        "MsmSig" = "8:_UNDEFINED"
-        }
     }
     "Configurations"
     {
@@ -319,6 +361,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.5 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.5"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -335,6 +393,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.5 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.5"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -413,6 +487,37 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_03C2BA43B42E6ED502D46243A5DC4A26"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Common.Logging, Version=3.3.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_03C2BA43B42E6ED502D46243A5DC4A26"
+                    {
+                    "Name" = "8:Common.Logging.DLL"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Common.Logging.DLL"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_E1CEE12068F44536A54DD9B56B6DC835"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_07340480BB09834759C868A23D5A6622"
@@ -495,6 +600,37 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4DE09B728D265F1447C1BB26CFA6996B"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Quartz, Version=2.6.2.0, Culture=neutral, PublicKeyToken=f6b8c98a402cc8a4, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_4DE09B728D265F1447C1BB26CFA6996B"
+                    {
+                    "Name" = "8:Quartz.DLL"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Quartz.DLL"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_E1CEE12068F44536A54DD9B56B6DC835"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5428F16CDFE543DBBBAC6BFD1281DD55"
@@ -763,37 +899,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_871415F6E7C04D42A347DCAF2C6FFDC8"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:新疆手动报警数据接入程序(二标段), Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_871415F6E7C04D42A347DCAF2C6FFDC8"
-                    {
-                    "Name" = "8:新疆手动报警数据接入程序(二标段).exe"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:..\\XinJiangShouBaoBs\\bin\\Release\\新疆手动报警数据接入程序(二标段).exe"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_E1CEE12068F44536A54DD9B56B6DC835"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8999424DCB364C1A8B2FEA79A68A51B4"
             {
             "SourcePath" = "8:..\\XinJiangShouBaoBs\\bin\\Release\\新疆手动报警数据接入程序(二标段).exe.config"
@@ -925,6 +1030,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B30D6CF2203E453B962536C7BAC4AAAF"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:新疆手动报警数据接入程序(二标段), Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_B30D6CF2203E453B962536C7BAC4AAAF"
+                    {
+                    "Name" = "8:新疆手动报警数据接入程序(二标段).exe"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\XinJiangShouBaoBs\\bin\\Release\\新疆手动报警数据接入程序(二标段).exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_E1CEE12068F44536A54DD9B56B6DC835"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C1831C01A828AAFCA41E4B6893F4639A"
             {
             "AssemblyRegister" = "3:1"
@@ -974,6 +1110,37 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_CB26E00A2079686DFEE0D66C13D62606"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Common.Logging.Core, Version=3.3.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_CB26E00A2079686DFEE0D66C13D62606"
+                    {
+                    "Name" = "8:Common.Logging.Core.DLL"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Common.Logging.Core.DLL"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_E1CEE12068F44536A54DD9B56B6DC835"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D26DDB9B07FB4BD1845D5ED85FF802BA"
@@ -1381,7 +1548,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_0941411F57BC4DE38D63FC49447CF078"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_3CC31B0850804D689037C6EADFCCBC49"
             {
             "Name" = "8:新疆手动报警数据接入程序(二标段).exe"
             "Arguments" = "8:"
@@ -1389,7 +1556,7 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_871415F6E7C04D42A347DCAF2C6FFDC8"
+            "Target" = "8:_B30D6CF2203E453B962536C7BAC4AAAF"
             "Folder" = "8:_BC8ACCC4F94642BDB4FD293A42EACE8F"
             "WorkingFolder" = "8:_E1CEE12068F44536A54DD9B56B6DC835"
             "Icon" = "8:"

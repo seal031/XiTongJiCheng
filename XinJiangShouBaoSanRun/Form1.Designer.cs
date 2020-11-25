@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.sdk = new AxVSPOcxClientLib.AxVSPOcxClient();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.sdk)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,11 +44,23 @@
             this.sdk.TabIndex = 0;
             this.sdk.Visible = false;
             // 
+            // button1
+            // 
+            this.button1.AutoSize = true;
+            this.button1.Location = new System.Drawing.Point(961, 128);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(113, 25);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "GetLastError";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1104, 520);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.sdk);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -55,12 +68,14 @@
             this.Shown += new System.EventHandler(this.Form1_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.sdk)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private AxVSPOcxClientLib.AxVSPOcxClient sdk;
+        private System.Windows.Forms.Button button1;
     }
 }
 
